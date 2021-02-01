@@ -14,7 +14,7 @@ function Allert(){
 	denyButtonText: "Batal"
 	}).then((Answer) =>{
 		if (Answer.isConfirmed){
-			location.href="../../login1.html";
+			location.href="../../index.html";
 		}
 	})
 };
