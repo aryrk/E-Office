@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Office</title>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300'>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'><link rel="stylesheet" href="./style.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Roboto+Slab&display=swap" rel="stylesheet">
 
@@ -370,7 +374,7 @@
             <div class="wow fadeInLeft"><li><a><u>Tugas</u></a></li></div> 
             <div class="wow fadeInLeft"><li><a href="../../Absensi/Home.html">Absen</a></li></div>
 			<div class="wow fadeInLeft"><li><a href="">Pengumuman</a></li></div>
-            <div class="wow fadeInLeft"><li><a href="">Log-out</a></li></div>
+            <div class="wow fadeInLeft"><li><a onclick="Allert()">Log-out</a></li></div>
 			<!--Dark mode button-->
 			<div class="wow fadeInLeft"><li><button onclick="DarkMode()" class="dark"><img src="https://static.thenounproject.com/png/1664849-200.png" alt="" height="23px" id="dark"></button></li></div>
         </ul>
@@ -447,6 +451,8 @@
 </script>
 <script src="script.js"></script>
 <script src="wow.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script>
 	new WOW().init();
 	</script>
