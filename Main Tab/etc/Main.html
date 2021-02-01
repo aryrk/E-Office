@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Office</title>
+    
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300'>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'><link rel="stylesheet" href="./style.css">
+	
+	
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="Animate.css">
+	
+<style>
+/*Dark mode*/
+	.darkmode{
+		background-image: url("../media/Dark.png");
+		transition: all 1s;
+	}
+	.darkmode nav{
+    	background-color: cornflowerblue;
+		transition: all 1s;
+	}
+	.darkmode .center{
+  		color: white;
+		transition: all 1s;
+	}
+	.darkmode a{
+		color:white;
+		transition: all 1s;
+	}
+	.darkmode a:hover{
+		color: cornflowerblue;
+		text-decoration: underline;
+		transition: all 1s;
+	}
+	.darkmode .center2{
+		color:white;
+		transition: all 1s;
+	}
+	.darkmode .center2 a:hover{
+		color:cornflowerblue;
+		text-decoration: none;
+		transition: all 1s;
+	}
+	.darkmode .progres{
+		color:white;
+		transition: all 1s;
+	}
+	.darkmode nav ul li a:hover{
+    	color: black;
+		background: white;
+		transition: all 1s;
+	}
+	.darkmode nav ul{
+		background-color: cornflowerblue;
+		transition: all 1s;
+	}
+/*Hamburger*/
+	.ham .center{
+		transition: all 1s;
+		z-index: -5;
+		opacity: 0.7;
+	}
+	.ham .progres {
+		transform: translateX(-100%);
+		transition: all 1s;
+    	opacity: 0;
+	}
+	.ham .center2{
+		transform: translateX(-100%);
+		transition: all 1s;
+		opacity: 0;
+		margin-bottom: 2%;
+	}
+	.ham .ov{
+		transition: all 1s;
+		opacity: 0;
+		margin-bottom: 2%;
+	}
+	.ham nav{
+		transition: all 1s;
+		opacity: 0.8;
+	}
+/*Overview Button*/
+	.overview .center2{
+		transform: translateY(0);
+		font-size: 32px;
+		transition: all 1s;
+	}
+	.overview .progres label{
+		font-size: 300%;
+		transform: translateX(0);
+		opacity: 0.8;
+		transition: all 3s;
+		animation-delay: 1.4s;
+	}
+	.overview .progres progress{
+		margin-left: 2.7%;
+		margin-right: auto;
+		width: 95%;
+		font-size: 300%;
+		transform: translateX(0);
+		opacity: 0.4;
+		transition: all 3.3s;
+		animation-delay: 1.4s;
+	}
+	.overview .ov hr{
+		opacity: 1;
+		width:95%;
+		margin-left:auto;
+		margin-right: auto;
+		transition: all 3.5s;
+		animation-delay: 3s;
+	}
+/*Loading Page*/
+	#loader {
+  		position: absolute;
+  		left: 50%;
+  		top: 50%;
+  		z-index: 1;
+  		width: 120px;
+  		height: 120px;
+  		margin: -76px 0 0 -76px;
+  		border: 16px solid #f3f3f3;
+  		border-radius: 50%;
+  		border-top: 16px solid #3498db;
+  		-webkit-animation: spin 2s linear infinite;
+  		animation: spin 2s linear infinite;
+	}
+
+	@-webkit-keyframes spin {
+		0% { -webkit-transform: rotate(0deg); }
+		100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+  		0% { transform: rotate(0deg); }
+  		100% { transform: rotate(360deg); }
+	}
+	#myDiv {
+  		display: none;
+	}
+</style>
+</head>
+	
+	<div style="display:none;" id="myDiv">
+	<div class="wow fadeIn">
+	
+<body onload="Loading()">
+		
+		<audio id="wosh">
+  			<source src="../media/Wosh.wav" type="audio/wav">
+		</audio>
+		
+	<div id="loader"></div>
+	<div class="wow slideInDown">
+		
+<nav>
+	<div class="logo">
+	<div class="wow logo">
+		<h3>E-Office</h3>
+	</div>
+	</div>
+
+        <ul>
+            <div class="wow fadeInLeft"><li><a><u>Bio</u></a></li></div>
+            <div class="wow fadeInLeft"><li><a href="Tugas.html" target="_parent">Tugas</a></li></div> 
+            <div class="wow fadeInLeft"><li><a href="../../Absensi/Home.html">Absen</a></li></div>
+			<div class="wow fadeInLeft"><li><a href="">Pengumuman</a></li></div>
+            <div class="wow fadeInLeft"><li><a onclick="Allert()">Log-out</a></li></div>
+			<div class="wow fadeInLeft"><li><button onclick="DarkMode()" class="dark"><img src="https://static.thenounproject.com/png/1664849-200.png" alt="" height="23px"></button></li></div>
+        </ul>
+
+	<div class="menu-toggle">
+		<input type="checkbox" onClick="Hamburger()">
+            <span></span>
+            <span></span>
+            <span></span>
+	</div>
+</nav>
+	</div>
+	<div class="bio">
+		<table class="center">	
+	  		<tr>
+    			<td rowspan="8"><img src="data:image/png;base64,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" alt="" width="250px" draggable="false" style="overflow: hidden"></td>
+  			</tr>
+  			<tr style="opacity: 0.8">
+				<td height="10%" style="opacity: 0">1</td>
+    			<td height="10%">Nama</td>
+				<td height="10%" style="opacity: 0">1</td>
+    			<td height="10%">:</td>
+				<td height="10%">Udin Yayat</td>
+  			</tr>
+  			<tr style="opacity: 0.8">
+				<td height="10%" style="opacity: 0">1</td>
+    			<td height="10%">Umur</td>
+				<td height="10%" style="opacity: 0">1</td>
+    			<td height="10%">:</td>
+				<td height="10%">Tdk terbatas</td>
+  			</tr>
+			<tr>
+			<tr style="opacity: 0.8">
+				<td height="10%" style="opacity: 0">1</td>
+				<td height="10%">Jabatan</td>
+				<td height="10%" style="opacity: 0">1</td>
+				<td height="10%">:</td>
+				<td height="10%">Sekuriti</td>
+			</tr>
+			</tr>
+			<tr style="opacity: 0.8">
+				<td height="10%" style="opacity: 0">1</td>
+				<td height="10%">NIK</td>
+				<td height="10%" style="opacity: 0">1</td>
+				<td height="10%">:</td>
+				<td height="10%">068582871897</td>
+			</tr>
+				<tr style="opacity: 0.8">
+				<td height="10%" style="opacity: 0">1</td>
+				<td height="10%">No.Telp</td>
+				<td height="10%" style="opacity: 0">1</td>
+				<td height="10%">:</td>
+				<td height="10%"><a href="tel:0815-4727-2729">081547272729</a></td>
+			</tr>
+			<tr style="opacity: 0.8">
+				<td height="10%" style="opacity: 0">1</td>
+				<td height="10%">Email</td>
+				<td height="10%" style="opacity: 0">1</td>
+				<td height="10%">:</td>
+				<td height="10%"><a href="mailto: example@gmail.com">example@gmail.com</a></td>
+			</tr>
+			<tr> 
+				<td style="opacity: 0"> 1 </td>
+			</tr>
+		</table>
+	</div>
+	<div class="ov">
+		<hr>
+	<div class="wow zoomIn"><h1 class="center2"><a onClick="overview()">Overview</a></h1></div><hr>
+	</div>
+		
+	<div class="progres">
+	<div class="wow slideInLeft">
+		<label>Skills:</label><br>
+			<progress value="90" max="100"> 90% </progress><br>
+		<label>Progres pekerjaan:</label><br>
+			<progress value="70" max="100"> 70% </progress>
+	</div>
+</div>
+
+<script>
+		var myVar;
+	function DarkMode() {
+		var element = document.body;
+   		var wosh = document.getElementById("wosh");
+			wosh.volume= 0.5;
+			wosh.play(); 
+   		element.classList.toggle("darkmode");
+	}
+	function overview(){
+		var element = document.body;
+		element.classList.toggle("overview");
+	}
+	function Hamburger() {
+   		var element = document.body;
+   		element.classList.toggle("ham");
+	}
+	function Loading() {
+  		myVar = setTimeout(showPage, 1000);
+	}
+
+	function showPage() {
+  		document.getElementById("loader").style.display = "none";
+  		document.getElementById("myDiv").style.display = "block";
+	}
+</script>
+<script src="script.js"></script>
+<script src="wow.min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script>
+	new WOW().init();
+</script>
+</body>
+	</div>
+	</div>
+</html>
