@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Log in</title>
+<style>
+form {
+border: 3px solid #f1f1f1;
+margin-left: 470px;
+margin-top: 25px;
+width: 400px;
+background-color: white;
+text-align: center;
+}
+input[type=text], input[type=password] {
+width: 70%;
+padding: 12px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+.oa {
+padding: 10px;
+}
+button {
+width: 70%;
+padding: 12px;
+margin: 8px 0;
+background-color: #4CAF50;
+color: white;
+}
+.imag {
+text-align: center;
+margin: 24px 0 12px 0;
+}
+.imeg {
+width: 50%;
+border-radius: 50%;
+}
+.canc {
+background-color:#f44366;
+}
+body {
+background-image: url("Main Tab/media/Bg.jpg");
+background-repeat: no-repeat;
+background-size: 100%;
+overflow: auto;
+}
+h1 {
+text-align: center;
+}
+.moday {
+display: none;
+width: 100%;
+overflow: auto;
+}
+.tutup {
+position: absolute;
+right: 25px;
+color: #000;
+font-size: 35px;
+font-weight: bold;
+}
+.animasi {
+-webkit-animation: animatezoom 2,6s;
+animation: animatezoom 2,6s;
+}
+@-webkit-keyframes animatezoom{
+from{webkit-animation: scale(0)}
+to{webkit-animation: scale(1)}
+}
+@keyframes animatezoom{
+from{transform: scale(0)}
+to{transform: scale(1)}
+}
+modayten {
+background-color: #fefefe;
+margin: 5px auto;
+border: 1px solid #888;
+}
+.katakana {
+margin-left: 540px;
+float: center;
+width: 100px;
+color: white;
+background-color: #4CAF50;
+}
+.rotate {
+-webkit-transform: rotate(90deg);
+-moz-transform: rotate(90deg);
+-o-transform: rotate(90deg);
+-ms-transform: rotate(90deg);
+transform: (90deg);
+}
+</style>
+<body>
+<form class="animasi" action="Main Tab/etc/Main.html">
+<h1>LOGIN E-Office</h1>
+<div class="imag">
+<img src="Login/sans.png" alt="imeg" class="imeg" class="rotate">
+</div>
+<div class="ja">
+<label for="uname"><b>Nama</b></label></br>
+<input type="text" placeholder="Ketik Nama" name="uname" required></br>
+</div>
+<div class="ja">
+<label for="pass"><b>Password</b></label></br>
+<input type="password" placeholder="Ketik Password" name="pass" required>
+</div>
+<button type="submit">Login</button></br>
+<span class="pass">Belum Punya Akun? Daftar Disini</span>
+<button type="submit" onclick="window.location='Login/regis.html'">Daftar</button></br>
+<input type="checkbox" checked="checked" name="remember">Ingat Saya</br>
+<button type="button" onclick="document.getElementById('id01').style.display='none'" class="canc">Batalkan</button></br>
+<span class="pass">Forgot<a href="#"> password?</a></span>
+</form>
+</div>
+</body>
+</head>
+</html>
+<script>
+var moday = document.getElementByIdById('id01');
+
+</script>
