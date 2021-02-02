@@ -237,12 +237,12 @@ nav ul li a:hover{
 		font-size: 95%;
 	}
 	.bio {
-		margin-left: 20px;
-		margin-top: 20px;
+		margin-left: 5%;
+		margin-top: 5%;
 	}
 	.center2{
-		font-size: 80px;
-		transform: translateY(100%);
+		font-size: 400%;
+		transform: translateY(150%);
 	}
 	.center img{
 	width: 90%;
