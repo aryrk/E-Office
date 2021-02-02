@@ -36,6 +36,9 @@ a:hover{
   	margin-bottom: auto;
 	transition: all 1s;
 }
+.center img{
+	width: 250px;
+}
 .ov hr{
 	opacity: 0;
 	width:0%;
@@ -234,12 +237,16 @@ nav ul li a:hover{
 		font-size: 95%;
 	}
 	.bio {
-		margin-left: 15px;
-		margin-top: 15px;
+		margin-left: 20px;
+		margin-top: 20px;
 	}
 	.center2{
 		font-size: 80px;
+		transform: translateY(100%);
 	}
+	.center img{
+	width: 200px;
+}
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
 	tr { 
@@ -272,7 +279,6 @@ nav ul li a:hover{
         transform: translateX(100%);
         transition: all 1s;
         opacity: 0;
-		font-size: 0px;
     }
 
     nav ul.slide{
@@ -280,6 +286,5 @@ nav ul li a:hover{
         opacity: 1;
         transform: translateX(0);
 		width: 30%;
-		font-size: 100%;
     }
 	
