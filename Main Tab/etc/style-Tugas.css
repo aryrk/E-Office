@@ -324,10 +324,10 @@ a:hover{
     }
 
     nav ul{
-        position: absolute;
+        position: fixed;
         right: 0;
         top: 0;
-        width: 30%;
+        width: 0%;
         height: 100vh;
         justify-content: space-evenly;
         flex-direction: column;
@@ -336,9 +336,13 @@ a:hover{
         transform: translateX(100%);
         transition: all 1s;
         opacity: 0;
+		font-size: 0px;
     }
 
     nav ul.slide{
+		position: absolute;
         opacity: 1;
         transform: translateX(0);
+		width: 30%;
+		font-size: 100%;
     }
