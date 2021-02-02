@@ -245,7 +245,7 @@ nav ul li a:hover{
 		transform: translateY(100%);
 	}
 	.center img{
-	width: 200px;
+	width: 150px;
 }
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
