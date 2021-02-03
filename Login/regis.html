@@ -79,5 +79,14 @@ name="repeat" id="repet" required><br>
 <button type="submit">Daftar</button>
 </div>
 <div class="ca ci">
-<p>Sudah Punya Akun?<a href="login1.html">Log-in</a><p>
+<p>Sudah Punya Akun?<a href="index.html">Log-in</a><p>
 </div>
+<script>
+function validasi() {
+var pas = document.getElementById('pasudo');
+var pos = document.getElementById('repet');
+if (pos!=pas) {
+document.getElementById('meseg').innerHTML="*Password Salah*";
+}
+else {
+location.href=""
