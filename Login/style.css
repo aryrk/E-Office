@@ -37,7 +37,7 @@ background-color:#f44366;
 body {
 background-image: url("../Main Tab/media/Bg.jpg");
 background-repeat: no-repeat;
-background-size: 150%;
+background-size: 250%;
 overflow: auto;
 }
 h1 {
@@ -72,6 +72,6 @@ form {
 width: 1000%;
 }
 	body {
-		background-size: 400%;
+		background-size: 300%;
 	}
 }
