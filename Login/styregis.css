@@ -18,7 +18,7 @@ margin: 8px;
 display: inline-block;
 border: 1px solid #ccc;
 border-sizing: border-box;
-text-align: left;
+float: right;
 }
 label {
 text-align: right;
