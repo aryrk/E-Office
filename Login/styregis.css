@@ -10,15 +10,18 @@ background-repeat: no-repeat;
 background-size: 200%;
 overflow: auto;
 }
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"] 
+input[type="radio"] {
 width: 70%;
 padding: 12px;
 margin: 8px;
 display: inline-block;
 border: 1px solid #ccc;
 border-sizing: border-box;
+text-align: left;
 }
 label {
+text-align: right;
 margin: 8px;
 }
 button {
@@ -51,8 +54,6 @@ display: none;
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
 form {
 width: 1000%;
-margin-left: 200px;
-margin-top: 25px;
 }
 	body {
 		background-size: 350%;
