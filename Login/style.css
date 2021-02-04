@@ -6,7 +6,7 @@ background-color: white;
 text-align: center;
 }
 input[type=text], input[type=password] {
-width: 70%;
+width: 80%;
 padding: 12px;
 margin: 8px 0;
 display: inline-block;
@@ -17,7 +17,7 @@ box-sizing: border-box;
 padding: 10px;
 }
 button {
-width: 70%;
+width: 80%;
 padding: 12px;
 margin: 8px 0;
 background-color: #4CAF50;
