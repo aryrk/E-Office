@@ -1,14 +1,13 @@
 form {
 border: 3px solid #f1f1f1;
 margin-top: 25px;
-width: 35%;
+width: 40%;
 background-color: white;
-text-align: center;
 }
 body {
 background-image: url("Bg.jpg");
 background-repeat: no-repeat;
-background-size: 150%;
+background-size: 180%;
 overflow: auto;
 }
 input[type="text"], input[type="password"] {
