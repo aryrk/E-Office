@@ -1,0 +1,59 @@
+form {
+border: 3px solid #f1f1f1;
+margin-top: 25px;
+width: 35%;
+background-color: white;
+text-align: center;
+}
+body {
+background-image: url("Bg.jpg");
+background-repeat: no-repeat;
+background-size: 150%;
+overflow: auto;
+}
+input[type="text"], input[type="password"] {
+width: 70%;
+padding: 12px;
+margin: 8px;
+display: inline-block;
+border: 1px solid #ccc;
+border-sizing: border-box;
+}
+label {
+margin: 8px;
+}
+button {
+width: 100%;
+padding: 12px;
+margin: 8px 0;
+background-color: #4CAF50;
+color: white;
+text-align: center;
+}
+h1 {
+text-align: center;
+}
+.ca {
+padding: 5px;
+}
+.ci {
+background-color: #f1f1f1;
+text-align: center;
+}
+hr {
+border: 1px solid #f1f1f1;
+}
+span {
+color: red;
+}
+.dis {
+display: none;
+}
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+form {
+width: 1000%;
+}
+	body {
+		background-size: 300%;
+	}
+}
