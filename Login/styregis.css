@@ -5,6 +5,9 @@ margin-left: 470px:
 width: 40%;
 background-color: white;
 }
+table {
+width: 50%;
+}
 body {
 background-image: url("../Main Tab/media/Bg.jpg");
 background-repeat: no-repeat;
