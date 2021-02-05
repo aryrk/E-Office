@@ -5,9 +5,6 @@ margin-left: 470px;
 width: 40%;
 background-color: white;
 }
-table {
-width: 50%;
-}
 body {
 background-image: url("../Main Tab/media/Bg.jpg");
 background-repeat: no-repeat;
@@ -54,7 +51,7 @@ display: none;
 }
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
 form {
-
+width: 100%;
 }
 	body {
 		background-size: 400%;
