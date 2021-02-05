@@ -6,7 +6,8 @@
 <title>Registration</title>
 <link rel="stylesheet" href="styregis.css">
 <body>
-<form onsubmit="return validasi(); valid();">
+<center>
+<form onsubmit="return valid();">
 <h1>Registration Account</h1>
 <hr>
 <label for="mail">Email </label><br>
@@ -35,6 +36,21 @@ syarat dan kebijakan privasi</a><br>
 <p>Sudah Punya Akun?<a href="../index.html">Log-in</a></p>
 </div>
 </form>
+</center>
 </body>
 </head>
 </html>
+<script>
+function valid () {
+var pas = document.getElementById('pasudo');
+var pos = document.getElementById('repet');
+if (pos!=pas) {
+document.getElementById('meseg').innerHTML="*Password Salah*";
+return false;
+}
+else {
+location.href="../index.html";
+}
+}
+</script>
+</script>
