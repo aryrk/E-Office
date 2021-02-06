@@ -1,5 +1,5 @@
-# E-Office
-E-Office adalah web yang dikembangkan untuk mewujudkan sistem absen karyawan yang mudah, permintaan izin cuti yang bisa diakses dimana saja dan kapan saja. Para kariawan juga dapat menandai setiap tugas mingguan dan mengunggah perkembangannya, sehingga perusahaan dapat dengan mudah mengawasi karyawan sekaligus projek yang dikembangkan.
+# Officia
+Officia adalah web yang dikembangkan untuk mewujudkan sistem absen karyawan yang mudah, permintaan izin cuti yang bisa diakses dimana saja dan kapan saja. Para kariawan juga dapat menandai setiap tugas mingguan dan mengunggah perkembangannya, sehingga perusahaan dapat dengan mudah mengawasi karyawan sekaligus projek yang dikembangkan.
 <br><br>Anda bisa mengaksesnya melalui<br>https://xzoom117.github.io/E-Office/
 
 ## Login
