@@ -1,3 +1,41 @@
+/*Body things*/
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    position: relative;
+    background-image: url("../media/Bg.jpg");
+	background-repeat: repeat-y;
+	background-size: 150%;
+	z-index: -5;
+	transition: all 1s;
+}
+
+table, th, td {
+	resize: both;
+	width: auto;
+	border: 0px solid black;
+	font-size: 140%;
+	position: relative;
+	font-family: "Helvetica";
+	transition: all 1s;
+}
+
+p{
+	color: black;
+    text-align: left;
+	margin-left: 30px;
+    margin-top: 25px;
+	z-index: -5;
+	transition: all 1s;
+}
+.popup{
+	margin-left: auto;
+}
+
 /*Tugas*/
 	/*Tugas 1*/
 .box{
@@ -153,41 +191,6 @@
 	margin-right: auto;
 	transition: all 1s;
 	transform: translateY(-55px);
-}
-
-/*Body things*/
-*{
-    margin: 0;
-    padding: 0;
-    
-}
-
-body{
-    position: relative;
-    background-image: url("../media/Bg.jpg");
-	background-repeat: repeat-y;
-	background-size: 150%;
-	z-index: -5;
-	transition: all 1s;
-}
-
-table, th, td {
-	resize: both;
-	width: auto;
-	border: 0px solid black;
-	font-size: 140%;
-	position: relative;
-	font-family: "Helvetica";
-	transition: all 1s;
-}
-
-p{
-	color: black;
-    text-align: left;
-	margin-left: 30px;
-    margin-top: 25px;
-	z-index: -5;
-	transition: all 1s;
 }
 
 /*Navigasi*/
