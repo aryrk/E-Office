@@ -1,0 +1,40 @@
+form {
+border: 3px solid #f1f1f1;
+margin-top: 25px;
+width: 350px;
+background-color: white;
+margin-top: 25px;
+}
+body {
+background-image: url("Bg.jpg");
+background-repeat: no-repeat;
+background-size: 150%;
+overflow: auto;
+}
+input[type="text"], input[type="password"] {
+width: 90%;
+padding: 12px;
+margin: 8px;
+display: inline-block;
+border: 1px solid #ccc;
+border-sizing: border-box;
+}
+label {
+margin: 8px;
+margin-right: 277px;
+}
+p {
+margin: 8px;
+text-align: left;
+}
+button {
+width: 90%;
+padding: 12px;
+margin: 8px 0;
+background-color: #4CAF50;
+color: white;
+text-align: center;
+}
+hr {
+border: 1px solid #f1f1f1;
+}
