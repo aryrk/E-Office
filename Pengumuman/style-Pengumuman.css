@@ -74,11 +74,12 @@ html{
 	padding: 0px;
 	margin: 0%;
 	background-color:rgba(23, 87, 184, 0.884);
-	font-size: 200%;
+	font-size: 0%;
 	color: white;
 	font-family:monospace;
 	opacity: 0;
 	transform: translateY(-50%);
+	transform: translateX(-100%);
 }
 .TwoNdBox2{
 	text-align: center;
@@ -108,6 +109,7 @@ html{
 	font-family: monospace;
 	opacity: 0;
 	transform: translateY(-70%);
+	transform: translateX(-100%);
 }
 .ExtendBox2{
 	text-align: center;
@@ -134,11 +136,12 @@ html{
 	padding: 0px;
 	margin: 0%;
 	background-color:rgba(23, 87, 184, 0.884);
-	font-size: 200%;
+	font-size: 0%;
 	color: white;
 	font-family: monospace;
 	opacity: 0;
 	transform: translateY(-90%);
+	transform: translateX(-100%);
 }
 .MaxBox2{
 	text-align: center;
@@ -165,7 +168,7 @@ html{
 	margin-left:auto;
 	margin-right: auto;
 	transition: all 1s;
-	transform: translateY(-60px);
+	transform: translateY(-30px);
 }
 .BorderExtend{
 	width:0%;
@@ -173,7 +176,7 @@ html{
 	margin-left:auto;
 	margin-right: auto;
 	transition: all 1s;
-	transform: translateY(-115px);
+	transform: translateY(-50px);
 }
 .BorderMax{
 	width:0%;
@@ -181,7 +184,7 @@ html{
 	margin-left:auto;
 	margin-right: auto;
 	transition: all 1s;
-	transform: translateY(-155px);
+	transform: translateY(-55px);
 }
 
 /*Body things*/
