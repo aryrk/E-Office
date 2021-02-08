@@ -8,7 +8,7 @@ margin-top: 25px;
 body {
 background-image: url("../Main Tab/media/Bg.jpg");
 background-repeat: no-repeat;
-background-size: 150%;
+background-size: 300%;
 overflow: auto;
 }
 input[type="text"], input[type="password"] {
