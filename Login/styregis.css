@@ -7,7 +7,7 @@ background-color: white;
 body {
 background-image: url("../Main Tab/media/Bg.jpg");
 background-repeat: no-repeat;
-background-size: 250%;
+background-size: 300%;
 overflow: auto;
 }
 input[type="text"], input[type="password"] {
