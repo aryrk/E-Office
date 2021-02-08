@@ -6,7 +6,7 @@ background-color: white;
 margin-top: 25px;
 }
 body {
-background-image: url("Bg.jpg");
+background-image: url("../Main Tab/media/Bg.jpg");
 background-repeat: no-repeat;
 background-size: 150%;
 overflow: auto;
