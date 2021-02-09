@@ -312,18 +312,18 @@
 		opacity: 0.7;
 	}
 	.ham .progres {
-		transform: translateX(1000%);
+		transform: translateX(-1000%);
 		transition: all 1s;
     	opacity: 0;
 	}
 	.ham .center2{
-		transform: translateX(1000%);
+		transform: translateX(-1000%);
 		transition: all 1s;
 		opacity: 0;
 		margin-bottom: 2%;
 	}
 	.ham .ov{
-		transform: translateX(1000%);
+		transform: translateX(-1000%);
 		transition: all 1s;
 		opacity: 0;
 		margin-bottom: 2%;
@@ -465,7 +465,7 @@
 	<div id="loader"></div>
 	<div class="wow slideInDown">
 		
-<nav>
+<nav id="navigation">
 		<div class="menu-toggle">
 		<input type="checkbox" onClick="Hamburger()">
             <span></span>
@@ -629,6 +629,24 @@
 	function avg(){
 		window.scrollTo(0,document.body.scrollHeight);
 	}
+	
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navigation");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
 </script>
 <script src="script.js"></script>
 <script src="wow.min.js"></script>
