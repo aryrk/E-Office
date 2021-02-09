@@ -25,7 +25,7 @@
 <span class="pass">Belum Punya Akun? Daftar Disini</span>
 <button type="submit" onclick="window.location='Login/regis.html'">Daftar</button><br>
 <input type="checkbox" checked="checked" name="remember">Ingat Saya<br>
-<button type="button" onclick="exit()" class="canc">Exit</button><br>
+<button type="button" onclick="close()" class="canc">Exit</button><br>
 <span class="pass">Forgot<a href="Forgot Password/Forgotpassdesign.html"> password?</a></span>
 </form>
 		</center>
@@ -36,4 +36,10 @@
 window.onbeforeunload = function exit() {
 msg = "Apa anda yakin ingin keluar ?";
 return msg;
+
+function close() {
+  if (confirm("Yakin?")) {
+    close();
+  }
+}
 </script>
