@@ -1,5 +1,5 @@
 html {
-  scroll-behavior: smooth;
+  	scroll-behavior: smooth;
 }
 *{
     margin: 0;
@@ -341,6 +341,13 @@ nav{
     align-items: center;
     z-index: 2;
 	transition: all 1s;
+	
+}
+.sticky {
+  	position: fixed;
+  	top: 0;
+  	width: 100%;
+	opacity: 1;
 }
 
 nav .logo{
