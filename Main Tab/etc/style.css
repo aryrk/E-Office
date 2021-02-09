@@ -1,6 +1,17 @@
 html {
   	scroll-behavior: smooth;
 }
+::-webkit-scrollbar {
+display: none;
+}
+.copyr{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	color: darkgray;
+	margin: 2px;
+	opacity: 0.8;
+}
 *{
     margin: 0;
     padding: 0;
@@ -137,13 +148,22 @@ a:hover{
 	opacity: 1;
 	position: fixed;
 	bottom: 0;
+	transition: all 0s;
 	animation: bounce 2s infinite;
 	-webkit-animation: bounce 2s infinite;
 	-moz-animation: bounce 2s infinite;
 	-o-animation: bounce 2s infinite;
+	z-index: 100000;img {
+  -webkit-filter: invert(.8);
+  filter: invert(.8);
+}img {
+  -webkit-filter: invert(.8);
+  filter: invert(.8);
+}
 }
 .Activated:hover{
 	animation-play-state: paused;
+	background-color:rgba(95,158,160,0.8);
 }
  
 @-webkit-keyframes bounce {
