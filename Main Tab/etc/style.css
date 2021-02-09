@@ -446,7 +446,7 @@ nav ul li a:hover{
 	/* Force table to not be like tables anymore */
 	table, th, td, tr { 
 		font-size: 95%;
-		transform: translateX(-5%);
+		transform: translateX(-18px);
 	}
 	.bio {
 		margin-left: 5%;
@@ -466,7 +466,11 @@ nav ul li a:hover{
 		
 	}
 	body {
+		background-image: url("../media/Bg_verti.jpg");
 		background-size: 300%;
+	}
+	.darkmode{
+		background-image: url("../media/Dark _verti.jpg");
 	}
 	td { 
 		/* Behave  like a "row" */
