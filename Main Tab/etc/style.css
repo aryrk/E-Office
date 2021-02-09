@@ -453,7 +453,7 @@ nav ul li a:hover{
 	/* Force table to not be like tables anymore */
 	table, th, td, tr { 
 		font-size: 95%;
-		transform: translateX(-18px);
+		
 	}
 	.bio {
 		margin-left: 5%;
@@ -464,7 +464,7 @@ nav ul li a:hover{
 		transform: translateY(50%);
 	}
 	.center img{
-		width: 70%;
+		width: 100px;
 		float: right;
 	}
 	/* Hide table headers (but not display: none;, for accessibility) */
