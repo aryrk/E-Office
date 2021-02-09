@@ -453,7 +453,7 @@ nav ul li a:hover{
 	/* Force table to not be like tables anymore */
 	table, th, td, tr { 
 		font-size: 95%;
-		
+		left: 0;
 	}
 	.bio {
 		margin-left: 5%;
