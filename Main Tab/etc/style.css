@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 *{
     margin: 0;
     padding: 0;
@@ -115,6 +118,212 @@ a:hover{
   	z-index: -5;
 	transition: all 1s;
 }
+/*Tugas*/
+.Activated{
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	text-align: center;
+	border: 5px solid cadetblue ;
+	padding: 1%;
+	margin: 20px;
+	background-color:rgba(95,158,160,0.5);
+	font-size: 200%;
+	color: white;
+	font-family: "Helvetica";
+	opacity: 1;
+	position: fixed;
+	bottom: 0;
+	animation: bounce 2s infinite;
+	-webkit-animation: bounce 2s infinite;
+	-moz-animation: bounce 2s infinite;
+	-o-animation: bounce 2s infinite;
+}
+.Activated:hover{
+	animation-play-state: paused;
+}
+ 
+@-webkit-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}	
+	40% {-webkit-transform: translateY(-30px);}
+	60% {-webkit-transform: translateY(-15px);}
+}
+ 
+@-moz-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+	40% {-moz-transform: translateY(-30px);}
+	60% {-moz-transform: translateY(-15px);}
+}
+ 
+@-o-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+	40% {-o-transform: translateY(-30px);}
+	60% {-o-transform: translateY(-15px);}
+}
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-30px);}
+	60% {transform: translateY(-15px);}
+}
+	/*Tugas 1*/
+.box{
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	text-align: center;
+	border: 0px solid cadetblue ;
+	padding: 0%;
+	margin: 0px;
+	background-color:rgba(95,158,160,0.5);
+	font-size: 0%;
+	color: white;
+	font-family: "Helvetica";
+	opacity: 0;
+}
+.box2{
+	text-align: center;
+	border: 0px solid cadetblue ;
+	padding: 0%;
+	margin: 0px;
+	background-color:rgba(95,158,160,0.5);
+	font-size: 0%;
+	color: white;
+	font-family: "Helvetica";
+	opacity: 0;
+}
+	/*Tugas 2*/
+.TwoNdBox{
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	text-align: center;
+	border: 0px solid cadetblue ;
+	padding: 0px;
+	margin: 0%;
+	background-color:rgba(95,158,160,0.5);
+	font-size: 0%;
+	color: white;
+	font-family: "Helvetica";
+	opacity: 0;
+	transform: translateY(-50%);
+	transform: translateX(-100%);
+}
+.TwoNdBox2{
+	text-align: center;
+	border: 0px solid cadetblue ;
+	padding: 0%;
+	margin: 0px;
+	background-color:rgba(95,158,160,0.5);
+	font-size: 0%;
+	color: white;
+	font-family: "Helvetica";
+	opacity: 0;
+}
+	/*Tugas 3*/
+.ExtendBox{
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	text-align: center;
+	border: 0px solid cadetblue ;
+	padding: 0px;
+	margin: 0%;
+	background-color:rgba(95,158,160,0.5);
+	font-size: 0%;
+	color: white;
+	font-family: "Helvetica";
+	opacity: 0;
+	transform: translateY(-70%);
+	transform: translateX(-100%);
+}
+.ExtendBox2{
+	text-align: center;
+	border: 0px solid cadetblue ;
+	padding: 0%;
+	margin: 0px;
+	background-color:rgba(95,158,160,0.5);
+	font-size: 0%;
+	color: white;
+	font-family: "Helvetica";
+	opacity: 0;
+}
+	
+	/*Tugas 4*/
+.MaxBox{
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	text-align: center;
+	border: 0px solid cadetblue ;
+	padding: 0px;
+	margin: 0%;
+	background-color:rgba(95,158,160,0.5);
+	font-size: 0%;
+	color: white;
+	font-family: "Helvetica";
+	opacity: 0;
+	transform: translateY(-90%);
+	transform: translateX(-100%);
+}
+.MaxBox2{
+	text-align: center;
+	border: 0px solid cadetblue ;
+	padding: 0%;
+	margin: 0px;
+	background-color:rgba(95,158,160,0.5);
+	font-size: 0%;
+	color: white;
+	font-family: "Helvetica";
+	opacity: 0;
+}
+/*Border*/
+.BorderOne{
+	width:0%;
+	opacity: 0;
+	margin-left:auto;
+	margin-right: auto;
+	transition: all 1s;
+}
+.BorderTwo{
+	width:0%;
+	opacity: 0;
+	margin-left:auto;
+	margin-right: auto;
+	transition: all 1s;
+	transform: translateY(-30px);
+}
+.BorderExtend{
+	width:0%;
+	opacity: 0;
+	margin-left:auto;
+	margin-right: auto;
+	transition: all 1s;
+	transform: translateY(-50px);
+}
+.BorderMax{
+	width:0%;
+	opacity: 0;
+	margin-left:auto;
+	margin-right: auto;
+	transition: all 1s;
+	transform: translateY(-55px);
+}
+
 /* Navbar */
 nav{
 	-webkit-touch-callout: none; /* iOS Safari */
@@ -245,7 +454,7 @@ nav ul li a:hover{
 	}
 	.center2{
 		font-size: 400%;
-		transform: translateY(150%);
+		transform: translateY(50%);
 	}
 	.center img{
 		width: 70%;
