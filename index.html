@@ -114,7 +114,7 @@
 	</div>
 	<div class="wow fadeInUpBig">
 <div class="row">
-  <div class="column">
+  <div class="column" id="card1">
     <div class="card">
       <img src="Media/Beo.jpg" alt="Aryo" style="width:100%">
       <div class="container">
@@ -124,12 +124,12 @@
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>amanwhohave@gmail.com</p>
 			  </div>
-        <p><a href="mailto: amanwhohave@gmail.com"><button class="button">Contact</button></a></p>
+        <p><a href="mailto: amanwhohave@gmail.com"><button class="button" id="button1">Contact</button></a></p>
       </div>
     </div>
   </div>
 
-  <div class="column">
+  <div class="column" id="card2">
     <div class="card">
       <img src="Media/garfield.png" alt="Chandra" style="width:100%">
       <div class="container">
@@ -139,12 +139,12 @@
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>Nadhimwijaya@gmail.com</p>
 		  </div>
-        <p><a href="mailto: Nadhimwijaya@gmail.com"><button class="button">Contact</button></a></p>
+        <p><a href="mailto: Nadhimwijaya@gmail.com"><button class="button" id="button2">Contact</button></a></p>
       </div>
     </div>
   </div>
   
-  <div class="column">
+  <div class="column" id="card3">
     <div class="card">
       <img src="Media/Ayam.jpg" alt="Rifqi" style="width:100%">
       <div class="container">
@@ -154,12 +154,12 @@
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>rifqirahmawan4@gmail.com</p>
 		  </div>
-        <p><a href="mailto: rifqirahmawan4@gmail.com"><button class="button">Contact</button></a></p>
+        <p><a href="mailto: rifqirahmawan4@gmail.com"><button class="button" id="button3">Contact</button></a></p>
       </div>
     </div>
   </div>
 	
-	<div class="column">
+	<div class="column" id="card4">
     <div class="card">
       <img src="Media/Kuda.jpg" alt="Uta" style="width:100%">
       <div class="container">
@@ -169,7 +169,7 @@
         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
         <p>nurdianasaputra39@gmail.com</p>
 		  </div>
-        <p><a href="mailto: nurdianasaputra39@gmail.com"><button class="button">Contact</button></a></p>
+        <p><a href="mailto: nurdianasaputra39@gmail.com"><button class="button" id="button4">Contact</button></a></p>
       </div>
     </div>
   </div>
@@ -265,6 +265,114 @@ function myFunction() {
     navbar.classList.remove("sticky")
 	navbar2.classList.remove("navUsed");
   }
+}
+var card1 = document.getElementById("card1");
+document.getElementById("card1").onmouseover = function() {mouseOvercard1()};
+document.getElementById("card1").onmouseout = function() {mouseOutcard1()};
+
+var card2 = document.getElementById("card2");
+document.getElementById("card2").onmouseover = function() {mouseOvercard2()};
+document.getElementById("card2").onmouseout = function() {mouseOutcard2()};
+	
+var card3 = document.getElementById("card3");
+document.getElementById("card3").onmouseover = function() {mouseOvercard3()};
+document.getElementById("card3").onmouseout = function() {mouseOutcard3()};
+	
+var card4 = document.getElementById("card4");
+document.getElementById("card4").onmouseover = function() {mouseOvercard4()};
+document.getElementById("card4").onmouseout = function() {mouseOutcard4()};
+	
+var button1 = document.getElementById("button1");
+var button2 = document.getElementById("button2");
+var button3 = document.getElementById("button3");
+var button4 = document.getElementById("button4");
+
+function mouseOvercard1() {
+  	card1.classList.add("columnUsed")
+	card2.classList.add("columnUnUsed")
+	card3.classList.add("columnUnUsed")
+	card4.classList.add("columnUnUsed")
+	
+	button2.classList.add("buttonUsed")
+	button3.classList.add("buttonUsed")
+	button4.classList.add("buttonUsed");
+}
+
+function mouseOutcard1() {
+  	card1.classList.remove("columnUsed")
+	card2.classList.remove("columnUnUsed")
+	card3.classList.remove("columnUnUsed")
+	card4.classList.remove("columnUnUsed")
+	
+	button2.classList.remove("buttonUsed")
+	button3.classList.remove("buttonUsed")
+	button4.classList.remove("buttonUsed");
+}
+	
+function mouseOvercard2() {
+  	card1.classList.add("columnUnUsed")
+	card2.classList.add("columnUsed")
+	card3.classList.add("columnUnUsed")
+	card4.classList.add("columnUnUsed")
+	
+	button1.classList.add("buttonUsed")
+	button3.classList.add("buttonUsed")
+	button4.classList.add("buttonUsed");
+}
+
+function mouseOutcard2() {
+  	card1.classList.remove("columnUnUsed")
+	card2.classList.remove("columnUsed")
+	card3.classList.remove("columnUnUsed")
+	card4.classList.remove("columnUnUsed")
+	
+	button1.classList.remove("buttonUsed")
+	button3.classList.remove("buttonUsed")
+	button4.classList.remove("buttonUsed");
+}
+	
+function mouseOvercard3() {
+  	card1.classList.add("columnUnUsed")
+	card2.classList.add("columnUnUsed")
+	card3.classList.add("columnUsed")
+	card4.classList.add("columnUnUsed")
+	
+	button1.classList.add("buttonUsed")
+	button2.classList.add("buttonUsed")
+	button4.classList.add("buttonUsed");
+}
+
+function mouseOutcard3() {
+  	card1.classList.remove("columnUnUsed")
+	card2.classList.remove("columnUnUsed")
+	card3.classList.remove("columnUsed")
+	card4.classList.remove("columnUnUsed")
+	
+	button1.classList.remove("buttonUsed")
+	button2.classList.remove("buttonUsed")
+	button4.classList.remove("buttonUsed");
+}
+	
+function mouseOvercard4() {
+  	card1.classList.add("columnUnUsed")
+	card2.classList.add("columnUnUsed")
+	card3.classList.add("columnUnUsed")
+	card4.classList.add("columnUsed")
+	
+	button1.classList.add("buttonUsed")
+	button2.classList.add("buttonUsed")
+	button3.classList.add("buttonUsed");
+}
+
+function mouseOutcard4() {
+  	card1.classList.remove("columnUnUsed")
+	card2.classList.remove("columnUnUsed")
+	card3.classList.remove("columnUnUsed")
+	card4.classList.remove("columnUsed")
+	
+	button1.classList.remove("buttonUsed")
+	button2.classList.remove("buttonUsed")
+	button3.classList.remove("buttonUsed");
 }
 </script>
 <script src="etc/script.js"></script>
