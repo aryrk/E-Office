@@ -62,12 +62,26 @@ html {
 }
 
 .column {
+	font-size: 100%;
   float: left;
   width: 25%;
   margin-bottom: 16px;
   padding: 0 8px;
+	transition: all 0.3s;
 }
-
+.columnUsed {
+  width: 28%;
+	font-size: 103%;
+}
+.columnUnUsed {
+  width: 22%;
+	font-size: 97%;
+}
+.buttonUsed{
+	opacity: 0;
+	font-size: 100%;
+	transition: all 0.3s;
+}
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 8px;
@@ -105,6 +119,7 @@ html {
   text-align: center;
   cursor: pointer;
   width: 100%;
+	transition: all 0.3s;
 }
 
 .button:hover {
@@ -230,8 +245,18 @@ nav ul li a:hover{
 		background-image: url("../Main Tab/media/Bg_verti.jpg");
 		background-size: 300%;
 	}
-	.darkmode{
-		background-image: url("../Main Tab/media/Dark _verti.jpg");
+	.columnUsed {
+  		width: 25%;
+		font-size: 100%;
+	}
+	.columnUnUsed {
+  		width: 25%;
+		font-size: 100%;
+	}
+	.buttonUsed{
+		opacity: 1;
+		font-size: 100%;
+		transition: all 0.3s;
 	}
 	td { 
 		/* Behave  like a "row" */
