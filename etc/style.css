@@ -14,7 +14,8 @@
   background-color: gray;
 }
 .kritik {
-  padding: 50px;
+  padding-top: 50px;
+	padding-bottom: 50px;
   text-align: center;
   background-color: #a16af7;
   color: white;
