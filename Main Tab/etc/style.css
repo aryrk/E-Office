@@ -1,3 +1,24 @@
+.nav1{
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    display: flex;
+    background-color: transparent;
+    opacity: 0.5;
+    justify-content: space-around;
+    color: rgb(198, 238, 198);
+    height: 0px;
+    align-items: center;
+    z-index: 2;
+	transition: all 0s;
+	
+}
+.navUsed{
+	height: 50px;
+}
 html {
   	scroll-behavior: smooth;
 }
