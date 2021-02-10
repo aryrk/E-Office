@@ -75,11 +75,11 @@ background-color:#4CAF50;
 	.wraper > *{
 	}
 .skuy {
-		height: 120%;
+		height: 100%;
 		margin-left: -10px;
 	}
 	form {
-		height: 80%;
+		height: 70%;
 		font-size: 300%;
 		margin:0;
 		padding:0;
