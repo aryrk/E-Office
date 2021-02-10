@@ -473,6 +473,9 @@
 	<div id="loader"></div>
 	<div class="wow slideInDown">
 		
+		<nav id="navigation1" class="nav1">
+</nav>
+		
 <nav id="navigation">
 		<div class="menu-toggle">
 		<input type="checkbox" onClick="Hamburger()">
@@ -690,6 +693,7 @@ window.onscroll = function() {myFunction()};
 
 // Get the navbar
 var navbar = document.getElementById("navigation");
+var navbar2 = document.getElementById("navigation1");
 
 // Get the offset position of the navbar
 var sticky = navbar.offsetTop;
@@ -697,9 +701,11 @@ var sticky = navbar.offsetTop;
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
   if (window.pageYOffset > sticky) {
-    navbar.classList.add("sticky")
+	  navbar.classList.add("sticky")
+	  navbar2.classList.add("navUsed")
   } else {
-    navbar.classList.remove("sticky");
+    navbar.classList.remove("sticky")
+	navbar2.classList.remove("navUsed");
   }
 }
 </script>
