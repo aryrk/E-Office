@@ -7,6 +7,7 @@
   text-align: center;
   cursor: pointer;
   width: auto;
+	padding: 1%;
 	font-size: 200%;
 }
 
@@ -16,6 +17,8 @@
 .kritik {
   padding-top: 50px;
 	padding-bottom: 50px;
+	padding-left: 5%;
+	padding-right: 5%;
   text-align: center;
   background-color: #a16af7;
   color: white;
