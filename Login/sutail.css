@@ -72,7 +72,7 @@ background-color:#4CAF50;
 	}
 	form {
 		height: 60%;
-		font-size: 200%;
+		font-size: 250%;
 		margin:0;
 		padding:0;
 	}
@@ -81,14 +81,15 @@ background-color:#4CAF50;
 		padding:0;
 	}
 	button {
-		height: 200%;
+padding-bottom: 20px;
+		height: 150%;
 		
 	}
 	placeholder {
 		width: 30%;
 	}
 h1 {
-font-size: 40%:
+font-size: 50px:
 }
 }
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
