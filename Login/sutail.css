@@ -83,7 +83,7 @@ background-color:#4CAF50;
 	button {
 padding-bottom: 25px;
 		height: 120%;
-		
+font-size: 100%;
 	}
 	placeholder {
 		width: 30%;
@@ -91,6 +91,8 @@ padding-bottom: 25px;
 h1 {
 font-size: 50px:
 }
+p {
+font-size: 100%;
 }
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
 	.wraper{
@@ -112,7 +114,7 @@ font-size: 50px:
 	}
 	button {
 		height: 70%;
-		
+font-size: 100%:
 	}
 	placeholder {
 		width: 30%;
