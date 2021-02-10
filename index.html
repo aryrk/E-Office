@@ -43,11 +43,6 @@
 		background-color: cornflowerblue;
 		transition: all 1s;
 	}
-/*Hamburger*/
-	.ham nav{
-		transition: all 1s;
-		opacity: 0.8;
-	}
 /*Loading Page*/
 	#loader {
   		position: absolute;
@@ -92,12 +87,6 @@
 	<div class="wow slideInDown">
 		
 <nav id="navigation">
-		<div class="menu-toggle">
-		<input type="checkbox" onClick="Hamburger()">
-            <span></span>
-            <span></span>
-            <span></span>
-	</div>
 	<div class="logo">
 	<div class="wow logo">
 		<h3>Officia</h3>
@@ -166,10 +155,6 @@ function checkCookie() {
 			wosh.volume= 0.5;
 			wosh.play(); 
    		element.classList.toggle("darkmode");
-	}
-	function Hamburger() {
-   		var element = document.body;
-   		element.classList.toggle("ham");
 	}
 	function Loading() {
   		myVar = setTimeout(showPage, 1000);
