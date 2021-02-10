@@ -67,17 +67,17 @@ background-color:#4CAF50;
 	.wraper > *{
 	}
 .skuy {
-		height: 130%;
+		height: 100%;
 		margin-left: -10px;
 	}
 	form {
-		height: 130%;
+		height: 100%;
 		font-size: 300%;
 		margin:0;
 		padding:0;
 	}
 	input {
-		height: 50%;
+		height: 40%;
 		padding:0;
 	}
 	button {
