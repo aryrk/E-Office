@@ -47,7 +47,6 @@ margin: 8px 0;
 background-color: #4CAF50;
 color: white;
 text-align: center;
-font-size: 5px;
 }
 .imag {
 text-align: center;
@@ -86,9 +85,6 @@ background-color:#4CAF50;
 	input {
 		padding:0;
 margin-top: -100px;
-	}
-	button {
-margin:0;
 	}
 	placeholder {
 		width: 30%;
