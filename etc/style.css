@@ -256,6 +256,7 @@ nav ul li a:hover{
 	.columnUnUsed {
   		width: 25%;
 		font-size: 100%;
+		filter: none;
 	}
 	.buttonUsed{
 		opacity: 1;
