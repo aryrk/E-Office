@@ -19,7 +19,7 @@ display: none;
 
 body{
     position: relative;
-    background-image: url("Main Tab/media/Bg.jpg");
+    background-image: url("../Main Tab/media/Bg.jpg");
 	background-repeat: repeat-y;
 	background-size: 150%;
 	z-index: -5;
@@ -201,11 +201,11 @@ nav ul li a:hover{
 		
 	}
 	body {
-		background-image: url("Main Tab/media/Bg_verti.jpg");
+		background-image: url("../Main Tab/media/Bg_verti.jpg");
 		background-size: 300%;
 	}
 	.darkmode{
-		background-image: url("Main Tab/media/Dark _verti.jpg");
+		background-image: url("../Main Tab/media/Dark _verti.jpg");
 	}
 	td { 
 		/* Behave  like a "row" */
