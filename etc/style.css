@@ -76,6 +76,10 @@ html {
 .columnUnUsed {
   width: 22%;
 	font-size: 97%;
+	filter: blur(100%);
+	filter: brightness(70%);
+	filter: drop-shadow(100%);
+	filter: grayscale(70%);
 }
 .buttonUsed{
 	opacity: 0;
