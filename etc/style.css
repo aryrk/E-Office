@@ -107,6 +107,7 @@ display: none;
 	bottom: 0;
 	color: darkgray;
 	margin: 0;
+	z-index: 10000000;
 }
 body{
     position: relative;
