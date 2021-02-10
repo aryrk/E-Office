@@ -52,7 +52,7 @@ text-align: center;
 margin: 24px 0 12px 0;
 }
 .imeg {
-width: 55%;
+width: 50%;
 border-radius: 50%;
 }
 .canc {
@@ -77,12 +77,12 @@ background-color:#4CAF50;
 		padding:0;
 	}
 	input {
-		height: 20%;
+		height: 40%;
 		padding:0;
 	}
 	button {
-padding-bottom: 20px;
-		height: 150%;
+padding-bottom: 25px;
+		height: 120%;
 		
 	}
 	placeholder {
