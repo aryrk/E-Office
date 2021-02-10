@@ -1,3 +1,28 @@
+.kirimMail {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  color: black;
+  background-color: white;
+  text-align: center;
+  cursor: pointer;
+  width: auto;
+	font-size: 200%;
+}
+
+.kirimMail:hover {
+  background-color: gray;
+}
+.kritik {
+  padding: 50px;
+  text-align: center;
+  background-color: #a16af7;
+  color: white;
+	font-size: 80%;
+}
+.isikritik{
+	font-size: 60%;
+}
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
@@ -25,7 +50,7 @@ html {
 }
 
 .about-section {
-  padding: 50px;
+  padding: 10px;
   text-align: center;
   background-color: #474e5d;
   color: white;
@@ -69,12 +94,14 @@ html {
 display: none;
 }
 .copyr{
-	height: auto;
+	text-align: center;
+	font-size: 100%;
+	width: 100%;
+	background-color: black;
+	padding: 1%;
 	position: fixed;
 	bottom: 0;
-	right: 0;
 	color: darkgray;
-	opacity: 0.8;
 	margin: 0;
 }
 body{
