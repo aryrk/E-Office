@@ -18,7 +18,7 @@ overflow: auto;
 }
 .skuy{
 	background: #f1f1f1;
-	width: 90%
+	width: 100%;
 }
 /* FORM STYLE */
 .skuy form{
@@ -82,7 +82,7 @@ background-color:#4CAF50;
 		padding:0;
 	}
 	input {
-		height: 40%;
+		height: 50%;
 		padding:0;
 	}
 	button {
