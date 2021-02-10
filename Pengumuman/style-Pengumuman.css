@@ -1,4 +1,4 @@
-/*background*/
+//*background*/
 html{
 	background-image: url("https://i.pinimg.com/originals/db/b3/77/dbb377f962e37f4d63f78869790f0ce5.jpg");
         background-size: 100%;
@@ -359,7 +359,7 @@ pipa {
 	font-size: 80%;
 }
 html{
-       background-size: 350%;
+       background-size: 180%;
 }
 #popup{
 	margin-top: 0px;
