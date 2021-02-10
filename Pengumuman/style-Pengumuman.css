@@ -10,6 +10,8 @@ html{
 	height: 50px;
 	background-color: blue;
 	margin-top: -30px;
+        position: fixed;
+        z-index: 9999;
 }
 
 /*Jdul*/
