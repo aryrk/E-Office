@@ -1,0 +1,289 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-family: sans-serif;
+    background-color: #ececec;  
+}
+
+.container{
+    width: 95%;
+    margin: auto;
+    overflow: hidden;
+}
+
+    /* Menu Header */
+header{
+    background:linear-gradient(to left, rgb(74, 134, 223), rgb(130, 177, 253));
+    padding-top: 20px;
+    min-height: 60px;
+    border-bottom: 5px solid rgb(74, 134, 223);
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+header #logo{
+    float: left;
+    color: white;
+    margin-left: 2%;
+    font-size: 18px;
+}
+
+header #logo h1{
+    margin: 0;
+    text-shadow: 3px 3px 2px black;
+    font-family: 'Libre Caslon Text', serif;
+    letter-spacing: 1px;
+}
+
+header #logo .jam{
+    margin-top: -48px;
+    padding-left: 160px;
+    font-size: 20px;
+}
+
+header nav{
+    float: right;
+    margin-top: 10px;
+}
+
+header li{
+    float: left;
+    display: inline;
+    padding-left: 30px;
+    margin-right: 50px;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+header a:hover{
+    color:black;
+    font-weight: bolder;
+}
+
+    /* Paragraph 1 */
+#isi{
+    background-image: url("bg2.jpg");
+    background-repeat: no-repeat;
+    min-height: 700px;
+    margin-top: -30px;
+    color: white;
+}
+
+.prg{
+    text-align: center;
+    font-size: 30px;
+    padding-top: 250px;
+    animation: prg 1.5s ease 1;
+    text-shadow: 3px 2px 1px black;
+}
+
+    /* Paragraph 2 */
+#jla{
+    background: linear-gradient(to right, rgb(74, 134, 223), rgb(130, 177, 253));
+    color: white;
+    min-height: 80px;
+    margin-top: -19px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.sl{
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 40px; 
+}
+
+.bh{
+    float: right;
+    position: relative;
+    margin-top: 25px;
+    margin-right: 50px;
+    height: 25px;
+    width: 70px;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+}
+
+.bh:hover{
+    color: white;
+    background-color: rgb(94, 94, 248);
+    box-shadow: 3px 3px 3px rgb(97, 97, 97);
+}
+
+    /* Menu Hamburger */
+.menu-toggle{
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    position: relative;
+    padding-right: 20px;
+}
+
+.menu-toggle input{
+    position: absolute;
+    width: 40px;
+    height: 28px;
+    margin-left: 67%;
+    left: -5px;
+    top: -5px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.menu-toggle span{
+    display: block;
+    width: 28px;
+    height: 3px;
+    margin-left: 80%;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+.menu-toggle span:nth-child(2){
+    transform-origin: 0 0;
+}
+
+.menu-toggle span:last-child{
+    transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2){
+    background-color: white;
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-child(3){
+    opacity: 0;
+    transform: scale(0);
+}
+
+.menu-toggle input:checked ~ span:last-child{
+    background-color: white;
+    transform: rotate(-45deg) translate(-1px, 0); 
+}
+
+        /* Responsive */
+
+    /* Ukuran Tablet */
+@media screen and (max-width: 768px){
+    #logo{
+        margin-top: -3px;
+        padding-left: 220px;
+    }
+
+    #isi{
+        position: fixed;
+        height: 100%;
+        width: 100%;
+    }
+
+    .prg{
+        margin-top: 100px;
+    }
+
+    nav ul{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding-bottom: 5px;
+    }
+
+    header nav, header nav ul, header nav li{
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+    /* Ukuran HP */
+@media screen and (max-width: 576px){
+    .menu-toggle{
+        display: flex;
+    }
+
+    #logo{
+        margin: 0;
+        padding: 0;
+    }
+
+    #isi{
+        position: fixed;
+        bottom: 0%;
+    }
+
+    .prg{
+        margin-top: 80px;
+    }
+
+    .sl{
+        margin-left: -15px;
+        font-size: 17px;
+    }
+
+    li{
+        margin-top: -100%;
+    }
+
+    body{
+        overflow: auto;
+        overflow: scroll;
+    }
+
+    nav ul{
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 0%;
+        height: 107vh;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(to left, rgb(93, 146, 226), rgb(170, 203, 255));
+        z-index: 2;
+        transform: translateX(100%);
+        transition: all 1s;
+        opacity: 0;
+    }
+
+    nav ul.slide{
+        position: absolute;
+        opacity: 0.9;
+        transform: translateX(0);
+        margin-top: 85px;
+        width: 50%;
+        z-index: 2;
+    }
+}
+
+@keyframes prg{
+    0%{
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    100%{
+        opacity: 1;
+        transform:translateY(0%);
+    }
+}
