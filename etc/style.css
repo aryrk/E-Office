@@ -68,11 +68,13 @@ html {
 display: none;
 }
 .copyr{
+	height: auto;
 	position: fixed;
 	bottom: 0;
 	right: 0;
 	color: darkgray;
 	opacity: 0.8;
+	margin: 0;
 }
 body{
     position: relative;
