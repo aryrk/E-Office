@@ -5,11 +5,16 @@ html {
 display: none;
 }
 .copyr{
+	text-align: center;
+	font-size: 100%;
+	width: 100%;
+	background-color: black;
+	padding: 0.3%;
 	position: fixed;
 	bottom: 0;
-	right: 0;
 	color: darkgray;
-	opacity: 0.8;
+	margin: 0;
+	z-index: 10000000;
 }
 *{
     margin: 0;
