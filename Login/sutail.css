@@ -77,7 +77,6 @@ background-color:#4CAF50;
 		padding:0;
 	}
 	input {
-		height: 40%;
 		padding:0;
 margin-top: -100px;
 	}
@@ -91,6 +90,9 @@ font-size: 80%;
 	}
 h1 {
 font-size: 50px:
+}
+tr { 
+height: 40%;
 }
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
 	.wraper{
