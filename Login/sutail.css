@@ -9,8 +9,6 @@ overflow: auto;
 }
 .contener{
 	max-width: 1170px;
-	margin-left: auto;
-	margin-right: auto;
 }
 .wraper{
 	box-shadow: 0 0 20px 0 rgba(72,94,116,0.7);
@@ -19,9 +17,8 @@ overflow: auto;
 	padding: 1em;
 }
 .skuy{
-	background: #f9feff;
-	width: 40%;
-	margin-left: 350px;
+	background: #f1f1f1;
+	width: 100%;
 }
 /* FORM STYLE */
 .skuy form{
@@ -65,9 +62,11 @@ background-color:#4CAF50;
 @media(min-width:700px){
 	.wraper{
 		display: grid;
-		grid-templete-columns: 1fr 2fr;
+		grid-templete-columns: 1fr 2fr;	
+		margin-left: 350px;
+		margin-right: 450px;
 	}
 	.wraper > *{
 		padding: 2em;
 	}
-	
+}
