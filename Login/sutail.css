@@ -33,7 +33,7 @@ overflow: auto;
 	margin:0;
 }
 input[type=text], input[type=password] {
-width: 80%;
+width: 60%;
 padding: 12px;
 margin: 8px 0;
 display: inline-block;
@@ -41,7 +41,7 @@ border: 1px solid #ccc;
 box-sizing: border-box;
 }
 button {
-width: 80%;
+width: 60%;
 padding: 12px;
 margin: 8px 0;
 background-color: #4CAF50;
@@ -72,7 +72,7 @@ background-color:#4CAF50;
 	}
 	form {
 		height: 60%;
-		font-size: 150%;
+		font-size: 200%;
 		margin:0;
 		padding:0;
 	}
@@ -81,7 +81,7 @@ background-color:#4CAF50;
 		padding:0;
 	}
 	button {
-		height: 70%;
+		height: 100%;
 		
 	}
 	placeholder {
