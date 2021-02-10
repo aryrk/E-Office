@@ -75,11 +75,11 @@ background-color:#4CAF50;
 	.wraper > *{
 	}
 .skuy {
-		height: 70%;
+		height: 30%;
 		margin-left: -10px;
 	}
 	form {
-		height: 50%;
+		height: 30%;
 		font-size: 300%;
 		margin:0;
 		padding:0;
@@ -89,13 +89,12 @@ background-color:#4CAF50;
 margin-top: -100px;
 	}
 	button {
-		height: 70%;
-font-size: 80%;
+		height: 10%;
 	}
 	placeholder {
 		width: 30%;
 	}
 h1 {
-font-size: 150px:
+font-size: 100px:
 }
 }
