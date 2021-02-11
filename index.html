@@ -90,34 +90,34 @@
 	<div class="wow slideInUp" data-wow-delay="0.5s">
 	<div class="FeatureSel">
 		<div class="featureInner">
-		
-			<div class="featuresBox">
+
+			<div class="featuresBox" id="fea1">
 				<div class="FeatureIcon">
-					<img src="Icon/Feature/Absen.png" alt="icon">
+					<img src="Icon/Feature/Absen.png" alt="icon" id="ico1">
 				</div>
 				<h1>Absensi</h1>
 				<p>Absen datang dan pulang</p>
 			</div>
 			
-			<div class="featuresBox">
+			<div class="featuresBox" id="fea2">
 				<div class="FeatureIcon">
-					<img src="Icon/Feature/Cuti.png" alt="icon">
+					<img src="Icon/Feature/Cuti.png" alt="icon" id="ico2">
 				</div>
 				<h1>Cuti</h1>
 				<p>Kemudahan meminta cuti</p>
 			</div>
 			
-			<div class="featuresBox">
+			<div class="featuresBox" id="fea3">
 				<div class="FeatureIcon">
-					<img src="Icon/Feature/pengumuman.png" alt="icon">
+					<img src="Icon/Feature/pengumuman.png" alt="icon" id="ico3">
 				</div>
 				<h1>Pengumuman</h1>
 				<p>Pengumuman online</p>
 			</div>
 			
-			<div class="featuresBox">
+			<div class="featuresBox" id="fea4">
 				<div class="FeatureIcon">
-					<img src="Icon/Feature/Tugas.png" alt="icon">
+					<img src="Icon/Feature/Tugas.png" alt="icon" id="ico4">
 				</div>
 				<h1>Tugas</h1>
 				<p>Kemudahan tugas</p>
@@ -293,6 +293,26 @@ var button1 = document.getElementById("button1");
 var button2 = document.getElementById("button2");
 var button3 = document.getElementById("button3");
 var button4 = document.getElementById("button4");
+	
+var ico1 = document.getElementById("ico1");
+var fea1 = document.getElementById("fea1");
+document.getElementById("fea1").onmouseover = function() {mouseOverIco1()};
+document.getElementById("fea1").onmouseout = function() {mouseOutIco1()};
+
+var ico2 = document.getElementById("ico2");
+var fea2 = document.getElementById("fea2");
+document.getElementById("fea2").onmouseover = function() {mouseOverIco2()};
+document.getElementById("fea2").onmouseout = function() {mouseOutIco2()};
+	
+var ico3 = document.getElementById("ico3");
+var fea3 = document.getElementById("fea3");
+document.getElementById("fea3").onmouseover = function() {mouseOverIco3()};
+document.getElementById("fea3").onmouseout = function() {mouseOutIco3()};
+	
+var ico4 = document.getElementById("ico4");
+var fea4 = document.getElementById("fea4");
+document.getElementById("fea4").onmouseover = function() {mouseOverIco4()};
+document.getElementById("fea4").onmouseout = function() {mouseOutIco4()};
 
 function mouseOvercard1() {
   	card1.classList.add("columnUsed")
@@ -380,6 +400,38 @@ function mouseOutcard4() {
 	button1.classList.remove("buttonUsed")
 	button2.classList.remove("buttonUsed")
 	button3.classList.remove("buttonUsed");
+}
+
+function mouseOverIco1(){
+	ico1.classList.add("FIconHover");
+}
+
+function mouseOutIco1(){
+	ico1.classList.remove("FIconHover");
+}
+	
+function mouseOverIco2(){
+	ico2.classList.add("FIconHover");
+}
+
+function mouseOutIco2(){
+	ico2.classList.remove("FIconHover");
+}
+	
+function mouseOverIco3(){
+	ico3.classList.add("FIconHover");
+}
+
+function mouseOutIco3(){
+	ico3.classList.remove("FIconHover");
+}
+	
+function mouseOverIco4(){
+	ico4.classList.add("FIconHover");
+}
+
+function mouseOutIco4(){
+	ico4.classList.remove("FIconHover");
 }
 </script>
 <script src="etc/script.js"></script>
