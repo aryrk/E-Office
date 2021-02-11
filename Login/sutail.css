@@ -59,6 +59,10 @@ border-radius: 55%;
 .canc {
 background-color:#4CAF50;
 }
+.mata {
+cursor: pointer;
+margin-right: -30px;
+}
 /* LARGE */
 @media(min-width:700px){
 	.wraper{
