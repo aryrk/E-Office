@@ -27,8 +27,8 @@
 	<p>
 	<label for="pass">Password:</label><br>
 	<input type="password" placeholder="Ketik Password" name="pass"
-	autocomplete="off" id="passw" required>
-<i class="far fa-eye" id="tugel"></i>
+	autocomplete="off" id="password" required>
+<i class="far fa-eye" id="togglePassword"></i>
 	</p>
 	<p>
 	<button type="submit">Login</button><br>
@@ -47,4 +47,9 @@
 </body>
 </html>
 <script>
+togglePassword.addEventListener('click', function (e) {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    this.classList.toggle('fa-eye-slash');
+});
 </script>
