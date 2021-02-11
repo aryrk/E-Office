@@ -43,40 +43,11 @@
 		background-color: cornflowerblue;
 		transition: all 1s;
 	}
-/*Loading Page*/
-	#loader {
-  		position: absolute;
-  		left: 50%;
-  		top: 50%;
-  		z-index: 1;
-  		width: 120px;
-  		height: 120px;
-  		border: 16px solid #f3f3f3;
-  		border-radius: 50%;
-  		border-top: 16px solid #3498db;
-  		-webkit-animation: spin 2s linear infinite;
-  		animation: spin 2s linear infinite;
-	}
-
-	@-webkit-keyframes spin {
-		0% { -webkit-transform: rotate(0deg); }
-		100% { -webkit-transform: rotate(360deg); }
-	}
-
-	@keyframes spin {
-  		0% { transform: rotate(0deg); }
-  		100% { transform: rotate(360deg); }
-	}
-	#myDiv {
-  		display: none;
-	}
 </style>
 </head>
+
 	
-	<div style="display:none;" id="myDiv">
-	<div class="wow fadeIn">
-	
-<body onload="Loading()">
+<body>
 		
 		<audio id="wosh">
   			<source src="Main Tab/media/Wosh.wav" type="audio/wav">
@@ -89,7 +60,7 @@
 </nav>
 		
 		
-<nav id="navigation">
+<nav id="navigation" class="wow slideInDown" data-wow-delay="1s">
 	<div class="logo">
 	<div class="wow logo">
 		<h3>Officia</h3>
@@ -101,18 +72,22 @@
 			<div class="wow fadeInLeft"><li><img src="data:image/png;base64,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" alt="" height="23px"  style="border-radius: 50%;"></li></div>
         </ul>
 </nav>
-	</div>
+</div>
 	
-
+<div class="wow slideInRight animated" data-wow-delay="1.5s">
 	<div class="about-section">
   <h1>Kenapa Officia?</h1>
 </div>
+</div>
+	<div class="wow fadeInDown" data-wow-delay="2s">
 	<center class="mainTitle">
 	<p class="peran">peran</p>
 		<h2>Kemudahan absensi kerja</h2>
 	<p class="peranBottom">mewujudkan efisiensi pengamatan kinerja kerja</p>
 	</center>
+		</div>
 
+	<div class="wow slideInUp" data-wow-delay="2s">
 	<div class="FeatureSel">
 		<div class="featureInner">
 		
@@ -150,6 +125,7 @@
 		
 		</div>
 	</div>
+		</div>
 	
 	<div class="wow slideInLeft">
 	<div class="about-section">
@@ -223,7 +199,7 @@
 	</div>
 </div>
 	
-	<div class="wow fadeInUpBig">
+	<div class="wow fadeIn">
 		<div class="kritik">
   <h1>Punya kritik dan saran? Atau perlu bantuan?<br><br><div class="isikritik">Silahkan klik tombol dibawah untuk mengirimkan e-mail</div></h1>
 			<a href="mailto: pvdixrthirto@gmail.com"><button class="kirimMail">KIRIM EMAIL</button></a>
@@ -278,20 +254,6 @@ function checkCookie() {
   }
  }
 }
-	
-		var myVar;
-	function Loading() {
-  		myVar = setTimeout(showPage, 500);
-	}
-
-	function showPage() {
-  		document.getElementById("loader").style.display = "none";
-  		document.getElementById("myDiv").style.display = "block";
-	}
-	function task(){
-		var element = document.body;
-		element.classList.toggle("tugas");
-	}
 	
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
@@ -423,13 +385,11 @@ function mouseOutcard4() {
 }
 </script>
 <script src="etc/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="Main Tab/etc/wow.min.js"></script>
-              <script>
+<script>
               new WOW().init();
               </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
-	</div>
-	</div>
 </html>
