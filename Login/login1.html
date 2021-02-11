@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Log in</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 	<link rel="stylesheet" href="sutail.css">
 	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
 	</head>
@@ -26,7 +27,8 @@
 	<p>
 	<label for="pass">Password:</label><br>
 	<input type="password" placeholder="Ketik Password" name="pass"
-	autocomplete="off" required><br>
+	autocomplete="off" id="passw" required>
+<i class="far fa-eye" id="tugel">
 	</p>
 	<p>
 	<button type="submit">Login</button><br>
@@ -44,3 +46,12 @@
 	</center>
 </body>
 </html>
+<script>
+const tugel=document.queryselector('tugel')
+const passw=document.queryselector('passw')
+tugel.addEventListener('click', function(e) {
+const type=passw.getAttribute('type')==='passw'?'text':passw;
+passw.setAttribute('type',type);
+this.classlist.toggle(fa-eye-slash);
+});
+</script>
