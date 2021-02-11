@@ -165,7 +165,7 @@ a:hover{
 	text-align: center;
 	border: 5px solid cadetblue ;
 	padding: 1%;
-	margin: 20px;
+	margin: 25px;
 	background-color:rgba(95,158,160,0.5);
 	font-size: 200%;
 	color: white;
@@ -552,5 +552,8 @@ nav ul li a:hover{
         transform: translateX(-0%);
 		width: 40%;
     }
+	.Activated{
+		margin: 20px;
+	}
 	}
 }
