@@ -430,41 +430,9 @@
 		transition: all 3.5s;
 		animation-delay: 3s;
 	}
-/*Loading Page*/
-	#loader {
-  		position: absolute;
-  		left: 50%;
-  		top: 50%;
-  		z-index: 1;
-  		width: 120px;
-  		height: 120px;
-  		margin: -76px 0 0 -76px;
-  		border: 16px solid #f3f3f3;
-  		border-radius: 50%;
-  		border-top: 16px solid #3498db;
-  		-webkit-animation: spin 2s linear infinite;
-  		animation: spin 2s linear infinite;
-	}
-
-	@-webkit-keyframes spin {
-		0% { -webkit-transform: rotate(0deg); }
-		100% { -webkit-transform: rotate(360deg); }
-	}
-
-	@keyframes spin {
-  		0% { transform: rotate(0deg); }
-  		100% { transform: rotate(360deg); }
-	}
-	#myDiv {
-  		display: none;
-	}
 </style>
 </head>
-	
-	<div style="display:none;" id="myDiv">
-	<div class="wow fadeIn">
-	
-<body onload="Loading()">
+<body>
 		
 		<audio id="wosh">
   			<source src="../media/Wosh.wav" type="audio/wav">
@@ -639,7 +607,6 @@ function checkCookie() {
  }
 }
 	
-		var myVar;
 	function DarkMode() {
 		var element = document.body;
    		var wosh = document.getElementById("wosh");
@@ -654,14 +621,6 @@ function checkCookie() {
 	function Hamburger() {
    		var element = document.body;
    		element.classList.toggle("ham");
-	}
-	function Loading() {
-  		myVar = setTimeout(showPage, 1000);
-	}
-
-	function showPage() {
-  		document.getElementById("loader").style.display = "none";
-  		document.getElementById("myDiv").style.display = "block";
 	}
 	function task(){
 		var element = document.body;
@@ -717,6 +676,4 @@ function myFunction() {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
-	</div>
-	</div>
 </html>
