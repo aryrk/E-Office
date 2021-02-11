@@ -116,13 +116,12 @@
   border: none;
   outline: 0;
   display: inline-block;
+  padding: 8px;
   color: black;
   background-color: white;
   text-align: center;
   cursor: pointer;
-  width: auto;
-	padding: 1%;
-	font-size: 200%;
+  width: 30%;
 }
 
 .kirimMail:hover {
@@ -242,6 +241,15 @@ display: none;
 	color: darkgray;
 	margin: 0;
 	z-index: 10000000;
+}
+.copyrUnused{
+	text-align: center;
+	font-size: 100%;
+	width: 100%;
+	background-color: #474e5d;
+	padding: 1%;
+	color: transparent;
+	margin: 0;
 }
 body{
     position: relative;
