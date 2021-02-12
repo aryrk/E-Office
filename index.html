@@ -3,91 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Officia Main</title>
-	<link rel = "icon" href ="Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
-	
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css">
-	
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Roboto+Slab&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="etc/style.css">
-	<link rel="stylesheet" href="Main Tab/etc/Animate.css">
-	
-<style>
-/*Dark mode*/
-	.darkmode{
-		background-image: url("Main Tab/media/Dark.jpg");
-		transition: all 1s;
-	}
-	.darkmode nav{
-    	background-color: cornflowerblue;
-		transition: all 1s;
-	}
-	.darkmode a{
-		color:white;
-		transition: all 1s;
-	}
-	.darkmode a:hover{
-		color: cornflowerblue;
-		text-decoration: underline;
-		transition: all 1s;
-	}
-	.darkmode nav ul li a:hover{
-    	color: black;
-		background: white;
-		transition: all 1s;
-	}
-	.darkmode nav ul{
-		background-color: cornflowerblue;
-		transition: all 1s;
-	}
-</style>
+    	<title>Officia Main</title>
+<link rel = "icon" href ="Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">	
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Roboto+Slab&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="etc/style.css">
+<link rel="stylesheet" href="Main Tab/etc/Animate.css">
 </head>
 
-	
 <body>
-		
 		<audio id="wosh">
   			<source src="Main Tab/media/Wosh.wav" type="audio/wav">
 		</audio>
 		
-	<div id="loader"></div>
+<div id="loader"></div>
 	<div class="wow slideInDown">
 		
-		<nav id="navigation1" class="nav1">
+<nav id="navigation1" class="nav1">
 </nav>
-		
 		
 <nav id="navigation" class="wow slideInDown">
-	<div class="logo">
-	<div class="wow logo">
-		<h3>Officia</h3>
-	</div>
-	</div>
-
-        <ul>
-            <div class="wow fadeInLeft"><li><a href="Login/login1.html">Login</a></li></div>
-			<div class="wow fadeInLeft"><li><img src="data:image/png;base64,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" alt="" height="23px"  style="border-radius: 50%;"></li></div>
+		<div class="logo">
+			<div class="wow logo">
+	<h3>Officia</h3>
+			</div>
+		</div>
+	
+		<ul>
+		<div class="wow fadeInLeft">
+			<li>
+				<a href="Login/login1.html">Login</a>
+			</li>
+		</div>
+		<div class="wow fadeInLeft">
+			<li>
+				<img src="data:image/png;base64,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" alt="" height="23px"  style="border-radius: 50%;">
+			</li>
+		</div>
         </ul>
 </nav>
-</div>
+	</div>
 	
 <div class="wow slideInRight animated">
 	<div class="about-section">
-  <h1>Kenapa Officia?</h1>
+		<h1>Kenapa Officia?</h1>
+	</div>
 </div>
-</div>
-	<div class="wow fadeInDown" data-wow-delay="0.5s">
+	
+<div class="wow fadeInDown" data-wow-delay="0.5s">
 	<center class="mainTitle">
-	<p class="peran">peran</p>
-		<h2>Kemudahan absensi kerja</h2>
-	<p class="peranBottom">mewujudkan efisiensi pengamatan kinerja kerja</p>
+		<p class="peran">peran</p>
+			<h2>Kemudahan absensi kerja</h2>
+		<p class="peranBottom">mewujudkan efisiensi pengamatan kinerja kerja</p>
 	</center>
-		</div>
+</div>
 
-	<div class="wow slideInUp" data-wow-delay="0.5s">
+<div class="wow slideInUp" data-wow-delay="0.5s">
 	<div class="FeatureSel">
 		<div class="featureInner">
 
@@ -95,116 +68,117 @@
 				<div class="FeatureIcon">
 					<img src="Icon/Feature/Absen.png" alt="icon" id="ico1">
 				</div>
-				<h1>Absensi</h1>
-				<p>Absen datang dan pulang</p>
+						<h1>Absensi</h1>
+					<p>Absen datang dan pulang</p>
 			</div>
 			
 			<div class="featuresBox" id="fea2">
 				<div class="FeatureIcon">
 					<img src="Icon/Feature/Cuti.png" alt="icon" id="ico2">
 				</div>
-				<h1>Cuti</h1>
-				<p>Kemudahan meminta cuti</p>
+						<h1>Cuti</h1>
+					<p>Kemudahan meminta cuti</p>
 			</div>
 			
 			<div class="featuresBox" id="fea3">
 				<div class="FeatureIcon">
 					<img src="Icon/Feature/pengumuman.png" alt="icon" id="ico3">
 				</div>
-				<h1>Pengumuman</h1>
-				<p>Pengumuman online</p>
+						<h1>Pengumuman</h1>
+					<p>Pengumuman online</p>
 			</div>
 			
 			<div class="featuresBox" id="fea4">
 				<div class="FeatureIcon">
 					<img src="Icon/Feature/Tugas.png" alt="icon" id="ico4">
 				</div>
-				<h1>Tugas</h1>
-				<p>Kemudahan tugas</p>
+						<h1>Tugas</h1>
+					<p>Kemudahan tugas</p>
 			</div>
 		
 		</div>
 	</div>
-		</div>
+</div>
 	
-	<div class="wow slideInLeft">
+<div class="wow slideInLeft">
 	<div class="about-section">
-  <h1>About Us</h1>
+		<h1>About Us</h1>
+	</div>
 </div>
-		</div>
+	
 <div class="wow fadeIn">
-<h2 style="text-align:center">Our Team</h2>
-	</div>
-	<div class="wow fadeInUpBig">
-<div class="row">
-  <div class="column" id="card1">
-    <div class="card">
-      <img src="Media/Beo.jpg" alt="Aryo" style="width:100%">
-      <div class="container">
-        <h2 class="nama">Aryo Rakatama</h2>
-		  <div class="textB">
-        <p class="title">Developer Home & Main Tab</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>amanwhohave@gmail.com</p>
-			  </div>
-        <p><a href="mailto: amanwhohave@gmail.com"><button class="button" id="button1">Contact</button></a></p>
-      </div>
-    </div>
-  </div>
+	<h2 style="text-align:center">Our Team</h2>
+</div>
+	
+<div class="wow fadeInUpBig">
+	<div class="row">
+  		<div class="column" id="card1">
+    		<div class="card">
+      			<img src="Media/Beo.jpg" alt="Aryo" style="width:100%">
+      			<div class="container">
+        			<h2 class="nama">Aryo Rakatama</h2>
+		  			<div class="textB">
+        			<p class="title">Developer Home & Main Tab</p>
+        			<p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        			<p>amanwhohave@gmail.com</p>
+			  		</div>
+        			<p><a href="mailto: amanwhohave@gmail.com"><button class="button" id="button1">Contact</button></a></p>
+      			</div>
+    		</div>
+  		</div>
 
-  <div class="column" id="card2">
-    <div class="card">
-      <img src="Media/garfield.png" alt="Chandra" style="width:100%">
-      <div class="container">
-        <h2 class="nama">Chandra Andri R</h2>
-		  <div class="textB">
-        <p class="title">Developer Pengumuman</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>Nadhimwijaya@gmail.com</p>
-		  </div>
-        <p><a href="mailto: Nadhimwijaya@gmail.com"><button class="button" id="button2">Contact</button></a></p>
-      </div>
+<div class="column" id="card2">
+	<div class="card">
+		<img src="Media/garfield.png" alt="Chandra" style="width:100%">
+		<div class="container">
+		<h2 class="nama">Chandra Andri R</h2>
+			<div class="textB">
+        		<p class="title">Developer Pengumuman</p>
+        		<p>Some text that describes me lorem ipsum ipsum lorem.</p>
+       		 	<p>Nadhimwijaya@gmail.com</p>
+		  	</div>
+        		<p><a href="mailto: Nadhimwijaya@gmail.com"><button class="button" id="button2">Contact</button></a></p>
+      	</div>
     </div>
-  </div>
+</div>
   
-  <div class="column" id="card3">
-    <div class="card">
-      <img src="Media/Ayam.jpg" alt="Rifqi" style="width:100%">
-      <div class="container">
-        <h2 class="nama">M Rifqi Rahmawan P</h2>
-		  <div class="textB">
-        <p class="title">Developer Login</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>rifqirahmawan4@gmail.com</p>
-		  </div>
-        <p><a href="mailto: rifqirahmawan4@gmail.com"><button class="button" id="button3">Contact</button></a></p>
-      </div>
-    </div>
-  </div>
-	
-	<div class="column" id="card4">
-    <div class="card">
-      <img src="Media/Kuda.jpg" alt="Uta" style="width:100%">
-      <div class="container">
-        <h2 class="nama">Nurdiana Saputra</h2>
-		  <div class="textB">
-        <p class="title">Developer Absensi</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>nurdianasaputra39@gmail.com</p>
-		  </div>
-        <p><a href="mailto: nurdianasaputra39@gmail.com"><button class="button" id="button4">Contact</button></a></p>
-      </div>
-    </div>
-  </div>
+<div class="column" id="card3">
+	<div class="card">
+		<img src="Media/Ayam.jpg" alt="Rifqi" style="width:100%">
+			<div class="container">
+				<h2 class="nama">M Rifqi Rahmawan P</h2>
+					<div class="textB">
+				<p class="title">Developer Login</p>
+				<p>Some text that describes me lorem ipsum ipsum lorem.</p>
+				<p>rifqirahmawan4@gmail.com</p>
+					</div>
+				<p><a href="mailto: rifqirahmawan4@gmail.com"><button class="button" id="button3">Contact</button></a></p>
+			</div>
 	</div>
 </div>
 	
-	<div class="wow fadeIn">
-		<div class="kritik">
-  <h1>Punya kritik dan saran? Atau perlu bantuan?<br><br><div class="isikritik">Silahkan klik tombol dibawah untuk mengirimkan e-mail</div></h1>
-			<a href="mailto: pvdixrthirto@gmail.com"><button class="kirimMail">Kirim Email</button></a>
+<div class="column" id="card4">
+	<div class="card">
+		<img src="Media/Kuda.jpg" alt="Uta" style="width:100%">
+			<div class="container">
+				<h2 class="nama">Nurdiana Saputra</h2>
+					<div class="textB">
+					<p class="title">Developer Absensi</p>
+					<p>Some text that describes me lorem ipsum ipsum lorem.</p><p>nurdianasaputra39@gmail.com</p>
+					</div>
+					<p><a href="mailto: nurdianasaputra39@gmail.com"><button class="button" id="button4">Contact</button></a></p>
+			</div>
+	</div>
 </div>
-		</div>
+	</div>
+</div>
+	
+<div class="wow fadeIn">
+	<div class="kritik">
+		<h1>Punya kritik dan saran? Atau perlu bantuan?<br><br><div class="isikritik">Silahkan klik tombol dibawah untuk mengirimkan e-mail</div></h1>
+		<a href="mailto: pvdixrthirto@gmail.com"><button class="kirimMail">Kirim Email</button></a>
+	</div>
+</div>
 		<h5 class="copyr">&copy; Officia, Copyright 2021. All Right Reserved</h5>
 		<h5 class="copyrUnused">&copy; Officia, Copyright 2021. All Right Reserved</h5>
 
@@ -212,7 +186,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="Main Tab/etc/wow.min.js"></script>
 <script>
-new WOW().init();
+	new WOW().init();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 </body>
