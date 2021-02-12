@@ -1,3 +1,6 @@
+function Load(){
+	window.scrollTo(0, 0);
+}
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
 
