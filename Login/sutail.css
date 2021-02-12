@@ -61,7 +61,8 @@ background-color:#4CAF50;
 }
 .mata {
 cursor: pointer;
-margin-right: -30px;
+text-align: right;
+float: right;
 }
 /* LARGE */
 @media(min-width:700px){
