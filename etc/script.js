@@ -10,13 +10,14 @@ var sticky = navbar.offsetTop;
 
 // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
-  if (window.pageYOffset > sticky) {
-	  navbar.classList.add("sticky")
-	  navbar2.classList.add("navUsed")
-  } else {
-    navbar.classList.remove("sticky")
-	navbar2.classList.remove("navUsed");
-  }
+	if (window.pageYOffset > sticky) {
+		navbar.classList.add("sticky")
+		navbar2.classList.add("navUsed")
+	}
+	else {
+		navbar.classList.remove("sticky")
+		navbar2.classList.remove("navUsed");
+	}
 }
 var card1 = document.getElementById("card1");
 document.getElementById("card1").onmouseover = function() {mouseOvercard1()};
@@ -39,28 +40,8 @@ var button2 = document.getElementById("button2");
 var button3 = document.getElementById("button3");
 var button4 = document.getElementById("button4");
 	
-var ico1 = document.getElementById("ico1");
-var fea1 = document.getElementById("fea1");
-document.getElementById("fea1").onmouseover = function() {mouseOverIco1()};
-document.getElementById("fea1").onmouseout = function() {mouseOutIco1()};
-
-var ico2 = document.getElementById("ico2");
-var fea2 = document.getElementById("fea2");
-document.getElementById("fea2").onmouseover = function() {mouseOverIco2()};
-document.getElementById("fea2").onmouseout = function() {mouseOutIco2()};
-	
-var ico3 = document.getElementById("ico3");
-var fea3 = document.getElementById("fea3");
-document.getElementById("fea3").onmouseover = function() {mouseOverIco3()};
-document.getElementById("fea3").onmouseout = function() {mouseOutIco3()};
-	
-var ico4 = document.getElementById("ico4");
-var fea4 = document.getElementById("fea4");
-document.getElementById("fea4").onmouseover = function() {mouseOverIco4()};
-document.getElementById("fea4").onmouseout = function() {mouseOutIco4()};
-
 function mouseOvercard1() {
-  	card1.classList.add("columnUsed")
+	card1.classList.add("columnUsed")
 	card2.classList.add("columnUnUsed")
 	card3.classList.add("columnUnUsed")
 	card4.classList.add("columnUnUsed")
@@ -71,7 +52,7 @@ function mouseOvercard1() {
 }
 
 function mouseOutcard1() {
-  	card1.classList.remove("columnUsed")
+	card1.classList.remove("columnUsed")
 	card2.classList.remove("columnUnUsed")
 	card3.classList.remove("columnUnUsed")
 	card4.classList.remove("columnUnUsed")
@@ -82,7 +63,7 @@ function mouseOutcard1() {
 }
 	
 function mouseOvercard2() {
-  	card1.classList.add("columnUnUsed")
+	card1.classList.add("columnUnUsed")
 	card2.classList.add("columnUsed")
 	card3.classList.add("columnUnUsed")
 	card4.classList.add("columnUnUsed")
@@ -93,7 +74,7 @@ function mouseOvercard2() {
 }
 
 function mouseOutcard2() {
-  	card1.classList.remove("columnUnUsed")
+	card1.classList.remove("columnUnUsed")
 	card2.classList.remove("columnUsed")
 	card3.classList.remove("columnUnUsed")
 	card4.classList.remove("columnUnUsed")
@@ -104,7 +85,7 @@ function mouseOutcard2() {
 }
 	
 function mouseOvercard3() {
-  	card1.classList.add("columnUnUsed")
+	card1.classList.add("columnUnUsed")
 	card2.classList.add("columnUnUsed")
 	card3.classList.add("columnUsed")
 	card4.classList.add("columnUnUsed")
@@ -115,7 +96,7 @@ function mouseOvercard3() {
 }
 
 function mouseOutcard3() {
-  	card1.classList.remove("columnUnUsed")
+	card1.classList.remove("columnUnUsed")
 	card2.classList.remove("columnUnUsed")
 	card3.classList.remove("columnUsed")
 	card4.classList.remove("columnUnUsed")
@@ -126,7 +107,7 @@ function mouseOutcard3() {
 }
 	
 function mouseOvercard4() {
-  	card1.classList.add("columnUnUsed")
+	card1.classList.add("columnUnUsed")
 	card2.classList.add("columnUnUsed")
 	card3.classList.add("columnUnUsed")
 	card4.classList.add("columnUsed")
@@ -137,7 +118,7 @@ function mouseOvercard4() {
 }
 
 function mouseOutcard4() {
-  	card1.classList.remove("columnUnUsed")
+	card1.classList.remove("columnUnUsed")
 	card2.classList.remove("columnUnUsed")
 	card3.classList.remove("columnUnUsed")
 	card4.classList.remove("columnUsed")
@@ -146,6 +127,22 @@ function mouseOutcard4() {
 	button2.classList.remove("buttonUsed")
 	button3.classList.remove("buttonUsed");
 }
+
+var ico1 = document.getElementById("ico1");
+document.getElementById("fea1").onmouseover = function() {mouseOverIco1()};
+document.getElementById("fea1").onmouseout = function() {mouseOutIco1()};
+
+var ico2 = document.getElementById("ico2");
+document.getElementById("fea2").onmouseover = function() {mouseOverIco2()};
+document.getElementById("fea2").onmouseout = function() {mouseOutIco2()};
+	
+var ico3 = document.getElementById("ico3");
+document.getElementById("fea3").onmouseover = function() {mouseOverIco3()};
+document.getElementById("fea3").onmouseout = function() {mouseOutIco3()};
+	
+var ico4 = document.getElementById("ico4");
+document.getElementById("fea4").onmouseover = function() {mouseOverIco4()};
+document.getElementById("fea4").onmouseout = function() {mouseOutIco4()};
 
 function mouseOverIco1(){
 	ico1.classList.add("FIconHover");
