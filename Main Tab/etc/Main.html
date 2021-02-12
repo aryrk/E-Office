@@ -430,9 +430,38 @@
 		transition: all 3.5s;
 		animation-delay: 3s;
 	}
+/*Loading Page*/
+	#loader {
+  		position: absolute;
+  		left: 50%;
+  		top: 50%;
+  		z-index: 1;
+  		width: 120px;
+  		height: 120px;
+  		margin: -76px 0 0 -76px;
+  		border: 16px solid #f3f3f3;
+  		border-radius: 50%;
+  		border-top: 16px solid #3498db;
+  		-webkit-animation: spin 2s linear infinite;
+  		animation: spin 2s linear infinite;
+	}
+
+	@-webkit-keyframes spin {
+		0% { -webkit-transform: rotate(0deg); }
+		100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+  		0% { transform: rotate(0deg); }
+  		100% { transform: rotate(360deg); }
+	}
+	#myDiv {
+  		display: none;
+	}
 </style>
 </head>
-<body>
+<body onload="Loading()">
+	<div style="display:none;" id="myDiv">
 		
 		<audio id="wosh">
   			<source src="../media/Wosh.wav" type="audio/wav">
@@ -559,52 +588,17 @@
 				<hr class="BorderMax">
 			<p class="MaxBox2">Menjaga keamanan<br><br>Patroli setiap hari dari jam <b>9:00</b> sampai <b>21:00</b></p>
 		<h5 class="copyr">&copy; Officia, Copyright 2021. All Right Reserved</h5>
+	</div>
 <script>
-	/* Create or update a cookie */
-function setCookie(cookieName, cookieValue, expdays) {
+		var myVar;
+	function Loading() {
+  		myVar = setTimeout(showPage, 1000);
+	}
 
- var d = new Date();
- d.setTime(d.getTime() + (expdays * 24 * 60 * 60 * 1000));
- var expires = "; expires=" + d.toUTCString();
- document.cookie = cookieName + "=" + cookieValue + expires;
-}
-
-/* Get cookie value 
-   undefined is returned if the cookie is not available */
-function getCookie(cookieName) {
-
- var name = cookieName + "=";
- var ca = document.cookie.split(';');
- for (var i = 0; i < ca.length; i++) {
-  var c = ca[i];
-  while (c.charAt(0) === ' ') {
-   c = c.substring(1);
-  }
-  if (c.indexOf(name) === 0) {
-   return c.substring(name.length, c.length);
-  }
- }
-
- return undefined;
-}
-
-/* Delete a cookie */
-function deleteCookie(name) {
- setCookie(name, "", -1);
-}
-
-/* Check if username cookie is already created. If not, ask user for the value and create a cookie. */
-function checkCookie() {
- var username = getCookie("username");
- if (username) {
-  alert("Welcome: " + username);
- } else {
-  username = prompt("Please enter your user name:", "");
-  if (username !== "" && username !== null) {
-   setCookie("username", username, 365);
-  }
- }
-}
+	function showPage() {
+  		document.getElementById("loader").style.display = "none";
+  		document.getElementById("myDiv").style.display = "block";
+	}
 	
 	function DarkMode() {
 		var element = document.body;
