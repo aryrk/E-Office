@@ -7,7 +7,6 @@ menuToggle.addEventListener('click', function(){
 
 function Allert(){
 	Swal.fire({
-	icon: "warning",
     text: "Yakin ingin keluar?",
 	showDenyButton: true,
     confirmButtonText: "Ya",
