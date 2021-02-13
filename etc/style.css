@@ -1,3 +1,21 @@
+.tutorial{
+	align-items: center;
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+	transition: all 1s;
+	position: fixed;
+	left: 0;
+    color: white;
+    text-decoration: none;
+    font-family: 'Roboto Slab', serif;
+	transition: all 1s;
+	transform: translateX(10%);
+}
+.tutorial:hover{
+    color: black;
+	background: #ddd;
+}
 .wow {
 	visibility: hidden;
 }
