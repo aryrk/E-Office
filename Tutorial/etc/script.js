@@ -21,3 +21,17 @@ function myFunction() {
 		navbar2.classList.remove("navUsed");
 	}
 }
+var Float = document.getElementById("Float");
+function float(){
+	count = count + 1;
+	if (count == 1){
+		Float.classList.add("MenuFloatUsed")
+	}
+	else {
+		count=0;
+		Float.classList.remove("MenuFloatUsed");
+	}
+}
+function guide(){
+	Float.classList.remove("MenuFloatUsed");
+}
