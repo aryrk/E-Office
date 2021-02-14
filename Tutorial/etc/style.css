@@ -1,3 +1,31 @@
+.menuFloat{
+	border-radius: 1%;
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	position: fixed;
+	top: 50%;
+	right: 0;
+	background-color: #4691ff;
+	transform: translateX(120px);
+	transition: all 1s;
+}
+.MenuFloatUsed{
+	transform: translateX(0px);
+}
+.menu{
+	writing-mode: vertical-rl;
+	text-orientation: upright;
+}
+.menuFloat a:hover{
+	color: black;
+	text-decoration: none;
+	text-shadow: none;
+	cursor: pointer;
+}
 summary {
     display: list-item;
 	outline: none;
@@ -154,6 +182,9 @@ nav ul li a:hover{
 /* Responsive Breakpoint */
 
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
-
-	
+.menuFloat{
+	font-size: 90%;
+	top: 10%;
+	transform: translateX(110px);
+}
 	}
