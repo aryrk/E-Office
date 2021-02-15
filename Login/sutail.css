@@ -32,7 +32,16 @@ overflow: auto;
 .skuy form p{
 	margin:0;
 }
-input[type=text], input[type="password"] {
+input[type="text"] {
+width: 80%;
+padding: 12px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+margin-right: 30px;
+}
+input[type="password"] {
 width: 80%;
 padding: 12px;
 margin: 8px 0;
