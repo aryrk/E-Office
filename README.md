@@ -2,35 +2,35 @@
 Officia adalah web yang dikembangkan untuk mewujudkan sistem absen karyawan yang mudah, permintaan izin cuti yang bisa diakses dimana saja dan kapan saja. Para kariawan juga dapat menandai setiap tugas mingguan dan mengunggah perkembangannya, sehingga perusahaan dapat dengan mudah mengawasi karyawan sekaligus projek yang dikembangkan.
 <br><br>Dapatkan Officia Desktop dan Mobile:<br>https://github.com/xzoom117/E-Office-Desktop/releases<br>https://github.com/xzoom117/E-Office-Mobile/releases
 
+## Home
+<p align="center">
+<img src="https://i.ibb.co/r4xNS4F/2021-02-12-21-13-38-Window.png" width="80%"/>
+</p>
+Menu ini adalah tampilan awal dari officia, user dapat melakukan login untuk mulai mengakses officia.
+
 ## Login
 Dikembangkan oleh Muhammad Rifqi Rahmawan Putra (https://github.com/Ikiayam)
 <p align="left">
-<img src="https://i.ibb.co/51TjW1x/2021-02-03-19-22-25-Window.png" width="20%"/>
+<img src="https://i.ibb.co/FJY9s4m/2021-02-13-13-11-01-Log-in.png" width="20%"/>
 </p>
-Layaknya menu login pada umumnya, tampilan pada bagian ini memiliki fitur sign-in, sign-up, dan fitur lupa sandi
-
-### -Daftar
-<p align="left">
-<img src="https://i.ibb.co/4WFdPRJ/2021-02-03-19-26-02-Window.png" width="15%"/>
-</p>
-Tampilan menu ini mengharuskan user untuk memasukan Email, nama, password, dan jenis kelamin untuk mendaftarkan akun baru
+Layaknya menu login pada umumnya, tampilan pada bagian ini memiliki fitur sign-in dan fitur lupa sandi
 
 ## Menu utama
 Dikembangkan oleh Aryo Rakatama (https://github.com/xzoom117), tampilan ini mencangkup data basic user, overview hasil kerja, tampilan tugas, dan terhubung dengan tampilan absen serta pengumuman
 <p align="left">
-<img src="https://i.ibb.co/gD2nq3n/2021-02-03-19-35-28-Greenshot.png" width="50%"/>
+<img src="https://i.ibb.co/YpwPcST/2021-02-12-21-00-14-Window.png" width="50%"/>
 </p>
 
 ### -Overview
 Fitur ini menunjukan skills dan progres pekerjaan karyawan yang dikalkulasikan berdasarkan absen dan hasil pekerjaan
 <p align="left">
-<img src="https://i.ibb.co/5KRxHhJ/Record-2021-02-03-19-39-20-34.gif" width="30%"/>
+<img src="https://i.ibb.co/9hwnSyf/Record-2021-02-13-13-29-47-382.gif" width="30%"/>
 </p>
 
 ### -Tugas
 Bagian ini menunjukan tugas tugas yang diunggah perusahaan/karyawan itu sendiri sehingga mereka tidak lupa dan perusahaan dapat memantau progressnya dengan mudah
 <p align="left">
-<img src="https://i.ibb.co/nwY1sSS/Record-2021-02-03-19-48-47-439.gif" width="30%"/>
+<img src="https://i.ibb.co/NVFK3cZ/Record-2021-02-13-13-28-03-760.gif" width="30%"/>
 </p>
 
 ### -Dark Mode
@@ -60,7 +60,7 @@ Bagian ini akan menunjukan database kehadiran pegawai secara mendetail
 ## Pengumuman
 Dikembangkan oleh Chandra (https://github.com/DollllllllllllChan), bagian ini akan memberitahukan setiap pegawai apabila perusahaan memberikan pemberitahuan, sehingga para pegawai dapat melihat segala pemberitahuan penting dimanapun kapanpun
 <p align="left">
-<img src="https://i.ibb.co/5sJjPP2/Record-2021-02-03-20-06-38-519.gif" width="50%"/>
+<img src="https://i.ibb.co/McNXkM6/2021-02-13-13-41-58-E-Office.png" width="50%"/>
 </p>
 
 ## -Pop Up
