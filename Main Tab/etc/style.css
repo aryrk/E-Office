@@ -372,8 +372,7 @@ nav{
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     display: flex;
-    background-color: cadetblue;
-    opacity: 0.5;
+    background-color: #474e5d;
     justify-content: space-around;
     color: rgb(198, 238, 198);
     height: 50px;
