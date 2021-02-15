@@ -187,4 +187,7 @@ nav ul li a:hover{
 	top: 10%;
 	transform: translateX(110px);
 }
+	.MenuFloatUsed{
+	transform: translateX(0px);
+}
 	}
