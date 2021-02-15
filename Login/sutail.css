@@ -39,7 +39,7 @@ margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
-margin-right: 30px;
+margin-right: 100px;
 }
 input[type="password"] {
 width: 80%;
