@@ -39,7 +39,6 @@ margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
-margin-right: 100px;
 }
 input[type="password"] {
 width: 80%;
@@ -68,9 +67,10 @@ border-radius: 55%;
 .canc {
 background-color:#4CAF50;
 }
-.mata {
+i {
 cursor: pointer;
-margin-right: -10px;
+float: right;
+text-align: right;
 }
 /* LARGE */
 @media(min-width:700px){
