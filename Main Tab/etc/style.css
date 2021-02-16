@@ -539,7 +539,7 @@ nav ul li a:hover{
         justify-content: space-evenly;
         flex-direction: column;
         align-items: center; 
-        background-color: cadetblue;
+        background-color: #474e5d;
         transform: translateX(-100%);
         transition: all 1s;
         opacity: 0;
