@@ -70,10 +70,10 @@ background-color:#4CAF50;
 i {
 cursor: pointer;
 }
-cek {
+.cek {
 margin-left: -140px;
 transform: scale(1.2);
-margin-top: -
+margin-top: -20px;
 }
 /* LARGE */
 @media(min-width:700px){
