@@ -57,6 +57,7 @@ margin: 8px 0;
 background-color: #4CAF50;
 color: white;
 text-align: center;
+margin-top: -20px;
 }
 .imag {
 text-align: center;
@@ -70,6 +71,9 @@ background-color:#4CAF50;
 }
 i {
 cursor: pointer;
+}
+cek {
+margin-left: -140px;
 }
 /* LARGE */
 @media(min-width:700px){
