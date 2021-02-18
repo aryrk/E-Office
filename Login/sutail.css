@@ -72,6 +72,8 @@ cursor: pointer;
 }
 cek {
 margin-left: -140px;
+transform: scale(1.2);
+margin-top: -
 }
 /* LARGE */
 @media(min-width:700px){
