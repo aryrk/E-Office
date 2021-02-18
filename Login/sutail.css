@@ -48,7 +48,6 @@ margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
-margin-left: 25px;
 }
 button {
 width: 80%;
@@ -57,7 +56,6 @@ margin: 8px 0;
 background-color: #4CAF50;
 color: white;
 text-align: center;
-margin-top: -20px;
 }
 .imag {
 text-align: center;
