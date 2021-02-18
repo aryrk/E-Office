@@ -1,21 +1,56 @@
+<!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Forgot Password</title>
-<link rel="stylesheet" href="Forgotpassdesign.css">
-<link rel = "icon" href ="../Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
-</head>
-<center>
-<body>
-<h1><b>Forgot Your Password?</b></h1>
-<form>
-<p>Jika anda lupa password akun anda, cukup masukkan 
-Alamat Email dan kami akan memberikan instruksi bagaimana 
-mereset passowrd anda.</p><hr>
-<label for="maiil">Email:</label><br>
-<input type="text" placeholder="Masukkan Email" name="maiil"
-required>
-<button onclick="#" name="send">Kirim</button><br>
-</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<link rel="stylesheet" href="noname(1).css">
+	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
+	</head>
+        <center>
+	<body>
+	<div class="contaner">
+	<div class="wraper">
+	<div class="skuy">
+	<h1><b>Forgot Your Password?</b></h1>
+	<form>
+	<p>Masukkan Alamat Email anda untuk membuat password baru akun anda.</p><hr>
+	<p>
+	<label for="maiil">Email:</label>
+	<input type="text" placeholder="Masukkan Email" name="maiil"
+	required>
+	</p>
+	<p>
+	<label for="pas">Buat Password Baru:</label>
+	<input type="password" placeholder="Masukkan Password Baru" name="pas"
+	required id="password" >
+	</p>
+	<p>
+	<div class="cek">
+	<input type="checkbox" name="show" id="sow"
+	class="size" onclick="check()">Show Password<br>
+	</div>
+	</p>
+	<p>
+	<button name="send">Kirim</button>
+	</p>
+	</form>
+	</div>	
+</div>
+	</div>
 </body>
 </center>
 </html>
+<script>
+function check() {
+var pas = document.getElementById('password');
+if (pas.type==="password") {
+pas.type="text";
+}
+else {
+pas.type="password";
+}
+}
+</script>
