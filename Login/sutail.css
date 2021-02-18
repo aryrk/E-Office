@@ -71,9 +71,11 @@ i {
 cursor: pointer;
 }
 .cek {
-margin-left: -140px;
-transform: scale(1.2);
+margin-left: -130px;
 margin-top: -20px;
+}
+input.size {
+transform: scale(1.2);
 }
 /* LARGE */
 @media(min-width:700px){
