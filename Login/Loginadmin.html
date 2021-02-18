@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Login Admin</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<link rel="stylesheet" href="noname(3).css">
+	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
+	</head>
+        <center>
+	<body>
+	<div class="contaner">
+	<div class="wraper">
+	<div class="skuy">
+	<form action="../Main Tab/etc/Main.html">
+        <h1>LOGIN</h1>
+<div class="imag">
+<img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
+
+<map name="image-map">
+    <area target="_parent" alt="Admin" title="Admin" href="regis.html" coords="844,848,958,1002" shape="rect">
+    <area target="_parent" alt="Admin" title="Admin" href="regis.html" coords="232,700,506,649" shape="rect">
+</map>
+
+</div>
+	<p>
+	<label for="name">Nama:</label><br>
+	<input type="text" placeholder="Ketik Nama" name="name" 
+	autocomplete="off" required id="namae"><br>
+	</p>
+	<p>
+	<label for="pass">Password:</label><br>
+	<input type="password" placeholder="Ketik Password" name="pass"
+	autocomplete="off" id="password" required>
+	</p>
+	<p>
+	<div class="cek">
+	<input type="checkbox" name="show" id="sow"
+	class="size" onclick="check()">Show Password<br>
+	</div>
+	</p>
+	<p>
+	<span id="meseg"></span>
+	<input type="button" onclick="valid()" value="Login" name="masuk"><br>
+	</p>
+	<p>
+	<a href="../index.html"><button type="button" class="canc">Back</button></a>
+	</p>
+	</form>
+	</div>	
+</div>
+	</div>
+	</center>
+</body>
+</html>
+<script>
+function check() {
+var pas = document.getElementById('password');
+if (pas.type==="password") {
+pas.type="text";
+}
+else {
+pas.type="password";
+}
+}
+function valid() {
+var pes = document.getElementById('namae');
+var pos = document.getElementById('password');
+if (pes=="admin") {
+if (pos=="123456") {
+location.href="#";
+}
+}
+else {
+document.getElementById('meseg').innerHTML="*Akses Ditolak";
+return false;
+}
+}
+</script>
