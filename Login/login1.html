@@ -34,7 +34,12 @@
 	<label for="pass">Password:</label><br>
 	<input type="password" placeholder="Ketik Password" name="pass"
 	autocomplete="off" id="password" required>
-<i class="far fa-eye" id="togglePassword" class="mata"></i>
+	</p>
+	<p>
+	<div class="cek">
+	<input type="checkbox" name="show" id="sow"
+	class="size" onclick="check()">Show Password<br>
+	</div>
 	</p>
 	<p>
 	<button type="submit">Login</button><br>
@@ -53,11 +58,13 @@
 </body>
 </html>
 <script>
-const togglePassword = document.querySelector('#togglePassword');
-const password = document.querySelector('#password')
-togglePassword.addEventListener('click', function (e) {
-    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-    password.setAttribute('type', type);
-    this.classList.toggle('fa-eye-slash');
-});
+function check() {
+var pas = document.getElementById('password');
+if (pas.type==="password") {
+pas.type="text";
+}
+else {
+pas.type="password";
+}
+}
 </script>
