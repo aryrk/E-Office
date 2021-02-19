@@ -1,0 +1,369 @@
+body{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 60px;
+    font-size: 15px;
+    font-family: sans-serif;
+    background-color: #ececec;
+    background-image: url("Bg.jpg");  
+    background-size: 100%;
+}
+
+.container{
+    width: 95%;
+    position: relative; 
+    min-height: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+    /* Menu Header */
+header{
+    background: #474e5d;
+    min-height: 50px;
+    border-bottom: 5px solid gray;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    animation: head 1s ease 1;
+}
+
+header #logo{
+    float: left;
+    color: white;
+    margin-left: 2%;
+    margin-top: 0.5%;
+    font-size: 15px;
+}
+
+header #logo h1{
+    margin: 0;
+    text-shadow: 3px 3px 2px black;
+    font-family: 'Libre Caslon Text', serif;
+    letter-spacing: 1px;
+}
+
+header nav{
+    float: right;
+    margin-top: 1%;
+}
+
+header li{
+    float: left;
+    display: inline;
+    padding-left: 10px;
+    margin-right: 30px;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+header a:hover{
+    color:black;
+    font-weight: bolder;
+}
+
+    /* Paragraph 1 */
+.table{
+    position: absolute;
+    float: right;
+    border: 5px double black;
+    width: 400px;
+    margin-top: 200px;
+    margin-left: 37%;
+    background-color: white;
+    color: rgb(80, 80, 80);
+    animation: cuti 1.5s ease 1;
+}
+
+.jf{
+    text-align: center;
+}
+
+.kirim{
+    border-radius: 3px solid;
+    background-color: gray;
+    width: 80px;
+    height: 30px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+/* Paragraph 2 */
+footer{
+    background-attachment: fixed;
+    background: #474e5d;
+    color: white;
+    height: 60px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    animation: foot 1s ease 1;
+}
+
+.copy{
+    position: absolute;
+    text-align: center; 
+    padding-left: 33%;
+    font-size: 130%;
+}
+
+    /* Menu Hamburger */
+.menu-toggle{
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    position: relative;
+    padding-right: 20px;
+    padding-top: 15px;
+}
+
+.menu-toggle input{
+    position: absolute;
+    width: 40px;
+    height: 28px;
+    margin-left: 72%;
+    margin-top: 6%;
+    left: -5px;
+    top: -5px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.menu-toggle span{
+    display: block;
+    width: 28px;
+    height: 3px;
+    margin-left: 80%;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+.menu-toggle span:nth-child(2){
+    transform-origin: 0 0;
+}
+
+.menu-toggle span:last-child{
+    transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2){
+    background-color: white;
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-child(3){
+    opacity: 0;
+    transform: scale(0);
+}
+
+.menu-toggle input:checked ~ span:last-child{
+    background-color: white;
+    transform: rotate(-45deg) translate(-1px, 0); 
+}
+
+        /* Responsive */
+@media screen and (max-width: 1024px){
+    .copy{
+        position: absolute;
+        text-align: center;
+        margin-left: -10%;
+    }
+
+    .table{
+        position: absolute;
+        width: 40%;
+        margin: 0;
+        margin-top: 22%;
+        margin-left: 30%;
+    }
+
+}
+
+    /* Ukuran Tablet */
+@media screen and (max-width: 768px){
+    #logo{
+        padding-top: 2.5%;
+        padding-left: 42%;
+    }
+
+    #Cuti{
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    .table{
+        position: absolute;
+        width: 60%;
+        margin: 0;
+        margin-top: 27%;
+        margin-left: 20%;
+    }
+
+    .copy{
+        position: absolute;
+        text-align: center;
+        margin-left: -18%;
+    }
+
+    nav ul{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding-bottom: 1%;
+    }
+
+    header nav, header nav ul, header nav li{
+        float: none;
+        text-align: center;
+        width: 100%;
+        margin-top: 2%;
+        padding-left: 1%;
+    }
+}
+
+    /* Ukuran HP */
+@media screen and (max-width: 576px){
+    .menu-toggle{
+        display: flex;
+    }
+
+    header{
+        min-height: 60px;
+    }
+
+    #logo{
+        margin: 0;
+        padding: 0;
+        padding-top: 15px;
+    }
+
+    #Cuti{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    .table{
+        position: fixed;
+        margin: 0;
+        margin-top: 260px;
+        margin-left: 4%;
+        width: 90%;
+    }
+
+    .ktr{
+        width: 150px;
+        height: 75px;
+    }
+
+    .copy{
+        position: absolute;
+        text-align: center;
+        font-size: 100%;
+        margin-left: -30%;
+        margin-top: 3%;
+    }
+
+    nav ul li{
+        margin-top: -100%;
+    }
+
+    body{
+        overflow: auto;
+        overflow: scroll;
+    }
+
+    nav ul{
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 0%;
+        height: 107vh;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        background: #474e5d;
+        z-index: 2;
+        transform: translateX(100%);
+        transition: all 1s;
+        opacity: 0;
+    }
+
+    nav ul.slide{
+        opacity: 0.9;
+        transform: translateX(0);
+        margin-top: 50px;
+        width: 50%;
+        z-index: 2;
+    }
+}
+
+@keyframes head{
+    0%{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes cuti{
+    0%{
+        opacity: 0;
+    }
+
+    25%{
+        opacity: 0.25;
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    75%{
+        opacity: 0.75;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes foot{
+    0%{
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
