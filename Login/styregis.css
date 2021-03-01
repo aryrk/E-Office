@@ -77,6 +77,13 @@ color: red;
 .dis {
 display: none;
 }
+.cek {
+margin-left: -137px;
+margin-top: -20px;
+}
+input.size {
+transform: scale(1.2);
+}
 /* LARGE */
 @media(min-width:700px){
 	.wraper{
