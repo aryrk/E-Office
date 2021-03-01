@@ -35,8 +35,14 @@ name="passw" id="pasudo" required autocomplete="off"><br>
 <p>
 <label for="repeat">Ulangi Password</label><br>
 <input type="password" placeholder="Masukkan Password"
-name="repeat" id="repet" required autocomplete="off"><br>
+name="repeat" id="repeat" required autocomplete="off"><br>
 <span id="meseg"></span><br>
+</p>
+<p>
+<div class="cek">
+<input type="checkbox" name="show" id="sow"
+class="size" onclick="check()">Show Password<br>
+</div>
 </p>
 <p>
 <label for="jk">Jenis Kelamin: </label><br>
@@ -78,9 +84,11 @@ location.href="../index.html";
 }
 }
 function check() {
-var pas = document.getElementById('password');
-if (pas.type==="password") {
-pas.type="text";
+var pis = document.getElementById('password');
+var pes = document.getElementById('repeat');
+if (pis.type==="password" && pes.type==="password") {
+pis.type="text";
+pes.type="text";
 }
 else {
 pas.type="password";
