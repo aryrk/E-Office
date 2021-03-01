@@ -17,7 +17,7 @@
 	<form action="../Main Tab/etc/Main.html">
         <h1>LOGIN</h1>
 <div class="imag">
-<a href="Loginadmin.html">
+<a id="golink" href="Loginadmin.html">
 <img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
 </a>
 </div>
@@ -64,4 +64,12 @@ else {
 pas.type="password";
 }
 }
+jQuery(function($) {
+    $('#golink').click(function() {
+        return false;
+    }).dblclick(function() {
+        window.location = this.href;
+        return false;
+    });
+});
 </script>
