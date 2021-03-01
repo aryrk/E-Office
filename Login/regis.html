@@ -14,78 +14,68 @@
 	<div class="contaner">
 	<div class="wraper">
 	<div class="skuy">
-	<h1><b>Registration</b></h1>
-	<form action="resetpasa.inc.php" method="post">
-	<hr>
-	<p>
-	<label for="name">Nama:</label>
-	<input type="text" placeholder="Masukkan Nama/User" name="name"
-	autocomplete="off" required>
-	</p>
-	<p>
-	<label for="maiil">Email:</label>
-	<input type="text" placeholder="Masukkan Email" name="maiil"
-	autocomplete="off" required>
-	</p>
-	<label for="password">Password:</label>
-	<input type="password" placeholder="Masukkan Password" name="password"
-	autocomplete="off" required id="password">
-	</p>
-	<p>
-	<label for="repeat">Ulangi Password:</label>
-	<input type="password" placeholder="Masukkan Password" name="repeat"
-	autocomplete="off" required id="repeat">
-	<span id="meseg"></span>
-	</p>
-	<p>
-	<div class="cek">
-	<input type="checkbox" name="show" id="sow"
-	class="size" onclick="check()">Show Password<br><br>
-	</div>
-	</p>
-	<p>
-	<label for="gender">Jenis Kelamin:</label><br>
-	<input type="radio" name="gender" value="Laki-laki">Laki-Laki&nbsp&nbsp&nbsp&nbsp&nbsp
-	<input type="radio" name="gender" value="Perempuan">Perempuan
-	</p>
-	<p>
-	<u></u>
-	<input type="submit" onclick="valid()" name="kirim"
-	value="Daftar">
-	</p>
-	<p>
-	<input type="button" onclick="" name="back"
-	value="Back">
-	</p>
-	</form>
+	<form action="../Main Tab/etc/Main.html">
+        <h1>Registration Account</h1>
+<hr>
+<p>
+<label for="mail">Email </label><br>
+<input type="text" placeholder="Masukkan Email"
+name="mail" required autocomplete="off"><br>
+</p>
+<p>
+<label for="namae">Nama User </label><br>
+<input type="text" placeholder="Masukkan Nama" 
+name="namae" required autocomplete="off"></br>
+</p>
+<p>
+<label for="passw">Password </label><br>
+<input type="password" placeholder="Masukkan Password"
+name="passw" id="pasudo" required autocomplete="off"><br>
+</p>
+<p>
+<label for="repeat">Ulangi Password</label><br>
+<input type="password" placeholder="Masukkan Password"
+name="repeat" id="repet" required autocomplete="off"><br>
+<span id="meseg"></span><br>
+</p>
+<p>
+<label for="jk">Jenis Kelamin: </label><br>
+<input type="radio" name="gender" value="Laki-Laki">Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="gender" value="Perempuan">Perempuan<br>
+<br><hr>
+</p>
+<p>
+<input type="checkbox" name="snk">Saya telah membaca seluruh <a href="#">
+syarat dan kebijakan privasi</a><br>
+</p>
+<p>
+<div class="sub">
+<input type="submit" onclick="valid()" value="Daftar">
+</div>
+</p>
+<p>
+<div class="ca ci">
+<p>Sudah Punya Akun?<a href="../index.html">Log-in</a></p>
+</div>
+</p>
+</form>
 	</div>	
 </div>
 	</div>
+	</center>
 </body>
-</center>
 </html>
 <script>
-function check() {
-var pas = document.getElementById('password');
-var pos = document.getElementById('repeat');
-if (pas.type==="password" && pos.type==="password") {
-pas.type="text";
-pos.type="text";
-}
-else {
-pas.type="password";
-pos.type="password";
-}
-}
-function valid() {
-var pis = document.getElementById('password');
-var pes = document.getElementById('repeat');
-if (pes!=pis) {
-document.getElementById('meseg').innetHTML="*Password Salah*";
+function valid () {
+var pas = document.getElementById('pasudo');
+var pos = document.getElementById('repet');
+if (pos!=pas) {
+document.getElementById('meseg').innerHTML="*Password Salah*";
 return false;
 }
 else {
-location.href="";
+location.href="../index.html";
 }
 }
+</script>
 </script>
