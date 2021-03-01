@@ -2,7 +2,7 @@
 border-sizing: border-box;
 }
 body{
-background-image: url("../Main Tab/media/Bg.jpg");
+background-image: url("");
 background-repeat: no-repeat;
 background-size: 300%;
 overflow: auto;
@@ -33,15 +33,7 @@ overflow: auto;
 .skuy form p{
 	margin:0;
 }
-input[type="text"] {
-width: 80%;
-padding: 12px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-box-sizing: border-box;
-}
-input[type="password"] {
+input[type="text"], input[type="password"] {
 width: 80%;
 padding: 12px;
 margin: 8px 0;
@@ -50,13 +42,12 @@ border: 1px solid #ccc;
 box-sizing: border-box;
 }
 input[type="submit"] {
-width: 80%;
+width: 100%;
 padding: 15px;
 margin: 8px 0;
 background-color: #4CAF50;
 color: white;
 text-align: center;
-margin-top: 20px;
 }
 .imag {
 text-align: center;
@@ -71,16 +62,20 @@ background-color:#4CAF50;
 i {
 cursor: pointer;
 }
-input.size {
-transform: scale(1.2);
+.ca {
+padding: 5px;
 }
-.cek {
-margin-left: -145px;
-margin-top: -20px;
+.ci {
+background-color: #f1f1f1;
+text-align: center;
+}
+hr {
 }
 span {
-text-align: center;
 color: red;
+}
+.dis {
+display: none;
 }
 /* LARGE */
 @media(min-width:700px){
@@ -113,7 +108,7 @@ margin-top: -100px;
 	placeholder {
 		width: 30%;
 	}
-	.imeg {
-		width: 50%;
-	}
+h1 {
+font-size: 100px:
+}
 }
