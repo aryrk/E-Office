@@ -507,14 +507,14 @@
     			<td height="10%">Nama</td>
 				<td height="10%" style="opacity: 0">1</td>
     			<td height="10%">:</td>
-				<td height="10%">Udin Yayat</td>
+				<td height="10%"><?php echo $_GET['nama']; ?></td>
   			</tr>
   			<tr style="opacity: 0.8">
 				<td height="10%" style="opacity: 0">1</td>
     			<td height="10%">Umur</td>
 				<td height="10%" style="opacity: 0">1</td>
     			<td height="10%">:</td>
-				<td height="10%">Tdk terbatas</td>
+				<td height="10%"><?php echo $_GET['umur']; ?></td>
   			</tr>
 			<tr>
 			<tr style="opacity: 0.8">
@@ -522,7 +522,7 @@
 				<td height="10%">Jabatan</td>
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">:</td>
-				<td height="10%">Sekuriti</td>
+				<td height="10%"><?php echo $_GET['jabatan']; ?></td>
 			</tr>
 			</tr>
 			<tr style="opacity: 0.8">
@@ -530,21 +530,21 @@
 				<td height="10%">NIK</td>
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">:</td>
-				<td height="10%">068582871897</td>
+				<td height="10%"><?php echo $_GET['nik']; ?></td>
 			</tr>
 				<tr style="opacity: 0.8">
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">No.Telp</td>
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">:</td>
-				<td height="10%"><a href="tel:0815-4727-2729">081547272729</a></td>
+				<td height="10%"><a href="tel:<?php echo $_GET['tel']; ?>"><?php echo $_GET['tel']; ?></a></td>
 			</tr>
 			<tr style="opacity: 0.8">
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">Email</td>
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">:</td>
-				<td height="10%"><a href="mailto: example@gmail.com">example@gmail.com</a></td>
+				<td height="10%"><a href="mailto: <?php echo $_GET['email']; ?>"><?php echo $_GET['email']; ?></a></td>
 			</tr>
 			<tr style="width: 0%;"> 
 				<td style="opacity: 0"> 1 </td>
