@@ -13,24 +13,8 @@ if(isset($_POST['PENGUMUMAN'])){
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
-					$nama = $row['Nama'];
-					$tgl = $row['Tanggal_Lahir'];
-					$bln = $row['Bulan_Lahir'];
-					$thn = $row['Tahun_Lahir'];
-					$jabatan = $row['Jabatan'];
-					$tel = $row['No_Telp'];
-					$email = $row['Email'];
 					
-					//date in mm/dd/yyyy format; or it can be in other formats as well
-  					$birthDate = "$bln/$tgl/$thn";
-  					//explode the date to get month, day and year
-  					$birthDate = explode("/", $birthDate);
-  					//get age from date or birthdate
-  					$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
-    				? ((date("Y") - $birthDate[2]) - 1)
-    				: (date("Y") - $birthDate[2]));
-					
-					header("Location: ../../Pengumuman/pengumuman.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email");
+					header("Location: ../../Pengumuman/pengumuman.php?nik=$nik");
 				}
 			}
 		}
@@ -48,24 +32,8 @@ if(isset($_POST['ABSEN'])){
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
-					$nama = $row['Nama'];
-					$tgl = $row['Tanggal_Lahir'];
-					$bln = $row['Bulan_Lahir'];
-					$thn = $row['Tahun_Lahir'];
-					$jabatan = $row['Jabatan'];
-					$tel = $row['No_Telp'];
-					$email = $row['Email'];
-					
-					//date in mm/dd/yyyy format; or it can be in other formats as well
-  					$birthDate = "$bln/$tgl/$thn";
-  					//explode the date to get month, day and year
-  					$birthDate = explode("/", $birthDate);
-  					//get age from date or birthdate
-  					$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
-    				? ((date("Y") - $birthDate[2]) - 1)
-    				: (date("Y") - $birthDate[2]));
-					
-					header("Location: ../../Absensi/Home.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email");
+				
+					header("Location: ../../Absensi/Home.php?nik=$nik");
 				}
 			}
 		}
