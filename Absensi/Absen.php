@@ -1,6 +1,104 @@
 <?php
 require_once("../config.php");
+date_default_timezone_set('Asia/Jakarta');
 
+if(isset($_POST['SUBMIT'])){
+	$nik = trim($_POST['IDS']);
+	$radioVal = $_POST["absen"];
+
+		if($radioVal == "JamMasuk"){
+			$jam = date("H:i:s");
+    		$tgl = date("Y-m-d");
+			
+			$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM data_perusahaan;";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$jamMin = $row['Absen_datang_min'];
+					$jamMax = $row['Absen_datang_max'];
+				}
+			}
+		}
+			
+			$kalkulasi = strtotime($jam) - strtotime($jamMax);
+			
+			
+			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$nama =  $row['Nama'];
+				}
+			}
+		}
+			
+
+			if (strtotime($jam) <= strtotime($jamMax) && strtotime($jam) >= strtotime($jamMin)){
+				$status = "Sudah Absen";
+			}
+			else if (strtotime($jam) > strtotime($jamMax)){
+				$status = "Terlambat";
+			}
+			
+			$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_masuk, Terlambat, Status) VALUES ('$nik','$nama','$tgl','$jam','$kalkulasi','$status')");
+		}
+	
+		else if ($radioVal == "JamPulang"){
+    		$jam = date("H:i:s");
+    		$tgl = date("Y-m-d");
+
+			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$nama =  $row['Nama'];
+				}
+			}
+		}
+			
+			$sql = mysqli_query($konek, "SELECT * FROM absen WHERE Tanggal='$tgl'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM absen WHERE NIK='$nik';";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$cek = $row['NIK'];
+					if ($cek == NULL){
+						echo("halo");
+						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_pulang) VALUES ('$nik','$nama','$tgl','$jam')");
+					}
+					else{
+						$Jam_masuk = $row['Jam_masuk'];
+						$terlambat = $row['Terlambat'];
+						$Status = $row['Status'];
+						
+						$sql = mysqli_query($konek, "DELETE FROM absen WHERE Tanggal='$tgl' AND NIK='$nik'");
+						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_masuk, Jam_pulang, Terlambat, Status) VALUES ('$nik','$nama','$tgl','$Jam_masuk','$jam','$terlambat','$Status')");
+					}
+					
+				}
+			}
+		}
+	}
+}
 if(isset($_POST['PROFIL'])){
 	$nik = $_GET['nik'];
 		
@@ -128,12 +226,13 @@ if(isset($_POST['DATAABSEN'])){
         </div>
 
         <div class="bga">
-            <form action="">
+            <form method="post" action="">
                 <div class="radio">
                     <input type="radio" name="absen" value="JamMasuk"/><label for="Masuk">Masuk</label>
                     <input type="radio" name="absen" value="JamPulang"/><label for="Pulang">Pulang</label>
                 </div>
-                <input type="text" class="nik" name="NIK" placeholder="Email / NIK">
+                <input type="text" class="nik" name="IDS" id="IDS" placeholder="Email / NIK">
+				<input type="submit" name="SUBMIT" id="SUBMIT" value="Submit" style="width: 0%;opacity: 0%;">
             </form>
             
             <div class="pil">
