@@ -39,17 +39,20 @@ if(isset($_POST['PROFIL'])){
 if(isset($_POST['ABSEN'])){
 	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM Data_perusahaan");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM Data_perusahaan;";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
-					
-					header("Location: Absen.php?nik=$nik");
+					$Masuk_awal = $row['Absen_datang_min'];
+					$Masuk_akhir = $row['Absen_datang_max'];
+					$Keluar_awal = $row['Absen_pulang_min'];
+					$Keluar_akhir = $row['Absen_pulang_max'];
+					header("Location: Absen.php?nik=$nik && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
 				}
 			}
 		}
