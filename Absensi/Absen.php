@@ -81,17 +81,20 @@ if(isset($_POST['SUBMIT'])){
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					$cek = $row['NIK'];
-					if ($cek == NULL){
-						echo("halo");
-						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_pulang) VALUES ('$nik','$nama','$tgl','$jam')");
-					}
-					else{
+					if ($row['NIK'] != NULL){
 						$Jam_masuk = $row['Jam_masuk'];
 						$terlambat = $row['Terlambat'];
 						$Status = $row['Status'];
 						
 						$sql = mysqli_query($konek, "DELETE FROM absen WHERE Tanggal='$tgl' AND NIK='$nik'");
 						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_masuk, Jam_pulang, Terlambat, Status) VALUES ('$nik','$nama','$tgl','$Jam_masuk','$jam','$terlambat','$Status')");
+					}
+					else if($row['NIK'] === NULL){
+						$Jam_masuk = $row['Jam_masuk'];
+						$terlambat = $row['Terlambat'];
+						$Status = $row['Status'];
+						
+						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_pulang) VALUES ('$nik','$nama','$tgl','$jam')");
 					}
 					
 				}
@@ -220,8 +223,8 @@ if(isset($_POST['DATAABSEN'])){
             <center><span id="tanggalwaktu"></span></center>
             <i class="lj far fa-clock"></i>
             <div class="jmk">
-                <p>Masuk = 08.00 - 09.00</p>
-                <p>Pulang = 16.30 - 17.00</p>
+                <p>Masuk = <?php echo $_GET['masuk1']; ?> - <?php echo $_GET['masuk2']; ?></p>
+                <p>Pulang = <?php echo $_GET['keluar1']; ?> - <?php echo $_GET['keluar2']; ?></p>
             </div>
         </div>
 
