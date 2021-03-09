@@ -1,0 +1,164 @@
+*{
+border-sizing: border-box;
+}
+body{
+background-image: url("");
+background-repeat: no-repeat;
+background-size: 300%;
+overflow: auto;
+}
+.contener{
+	max-width: 1170px;
+}
+.wraper{
+	box-shadow: 0 0 20px 0 rgba(72,94,116,0.7);
+	width: 55%;
+}
+.wraper > *{
+	padding: 1em;
+}
+.skuy{
+	background: #f5f5f5;
+	width: 100%;
+}
+/* FORM STYLE */
+.skuy form{
+	display: grid;
+	grid-templete-columns: 1fr 1fr;
+	grid-gap: 10px;
+}
+.skuy form label{
+	display: block;
+}
+.skuy form p{
+	margin:0;
+}
+input[type="text"], input[type="password"] {
+width: 70%;
+padding: 12px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+input[type="submit"] {
+width: 70%;
+padding: 15px;
+margin: 8px 0;
+background-color: #4CAF50;
+color: white;
+text-align: center;
+}
+button {
+width: 100%;
+padding: 15px;
+margin: 8px 0;
+background-color: #4CAF50;
+color: white;
+text-align: center;
+}
+.aks {
+	width: 70%;
+}
+.imag {
+text-align: center;
+}
+.imeg {
+width: 30%;
+border-radius: 50%;
+}
+.canc {
+background-color:#4CAF50;
+}
+i {
+cursor: pointer;
+}
+.ca {
+padding: 5px;
+}
+.ci {
+background-color: #f1f1f1;
+text-align: center;
+}
+hr {
+}
+span {
+color: red;
+}
+.dis {
+display: none;
+}
+.cek {
+margin-left: -390px;
+margin-top: -20px;
+}	
+input.size {
+transform: scale(1.2);
+}
+.datee {
+width: 24%;
+padding: 12px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+line-height: 10px;
+}
+.nik {
+width: 70%;
+padding: 12px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+.almt {
+padding: 12px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+/* LARGE */
+@media(min-width:700px){
+	.wraper{
+		display: grid;
+		grid-templete-columns: 1fr 2fr;	
+	}
+	.wraper > *{
+	}
+}
+@media only screen and (max-width: 600px) {
+.wraper{
+		display: grid;
+		grid-templete-columns: 1fr 2fr;	
+		width: 100%;
+	}
+	.wraper > *{
+	}
+.skuy {
+		margin-left: -10px;
+	}
+	form {
+		margin:0;
+		padding:0;
+	}
+	input[type="text"], input[type="password"], input[type="submit"] {
+		width: 90%;
+	}
+	.nik {
+		width: 90%;
+	}
+	.cek {
+		margin-left: -235px;
+	}
+	placeholder {
+		width: 30%;
+	}
+	textarea {
+		width: 90%;
+	}
+h1 {
+font-size: 100px:
+}
+}
