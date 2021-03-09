@@ -1,13 +1,15 @@
 <?php
 require_once("../config.php");
+$nik = $_GET['nik'];
+$kantor = $_GET['kantor'];
+$pass = $_GET['password'];
 
 if(isset($_POST['PROFIL'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
@@ -30,7 +32,7 @@ if(isset($_POST['PROFIL'])){
     				? ((date("Y") - $birthDate[2]) - 1)
     				: (date("Y") - $birthDate[2]));
 					
-					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email");
+					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && kantor=$kantor && password=$pass");
 				}
 			}
 		}
