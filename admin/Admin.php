@@ -1,3 +1,7 @@
+<?php
+require_once("../config.php");
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,10 +11,10 @@
     </head>
     <body>
         <div class="banner">
-            <h1>Officia Administrator</h1>
+            <h1><?php echo $_GET['kantor']; ?> Administrator</h1>
 
         </div>
-        <p>Rank In Officia</p>
+        <p>Rank In <?php echo $_GET['kantor']; ?></p>
         <div class="Rank-1">
             <img class="Photo" src="Photo.png" alt="Photo">
         <div class="table">
