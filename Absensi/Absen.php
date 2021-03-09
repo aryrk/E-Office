@@ -50,7 +50,7 @@ if(isset($_POST['SUBMIT'])){
 				$status = "Terlambat";
 			}
 			
-			$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_masuk, Terlambat, Status) VALUES ('$nik','$nama','$tgl','$jam','$kalkulasi','$status')");
+			$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_masuk, Jam_pulang, Terlambat, Status) VALUES ('$nik','$nama','$tgl','$jam','00:00:00','$kalkulasi','$status')");
 		}
 	
 		else if ($radioVal == "JamPulang"){
