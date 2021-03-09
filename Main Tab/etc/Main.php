@@ -531,7 +531,7 @@ if(isset($_POST['ABSEN'])){
 
         <ul>
             <div class="wow fadeInLeft"><li><a><u>Profile</u></a></li></div>
-            <div class="wow fadeInLeft"><li><button style="background-color: transparent;border: none;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>Absen</a></li></div>
+            <div class="wow fadeInLeft"><li><button style="background-color: transparent;border: none;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>Absen</a></button></li></div>
 			<div class="wow fadeInLeft"><li><button style="background-color: transparent;border: none;" type="submit" name="PENGUMUMAN" id="PENGUMUMAN" value="pengumuman"><a>Pengumuman</a></button></li></div>
             <div class="wow fadeInLeft"><li><a onclick="Allert()">Log-out</a></li></div>
 			<div class="wow fadeInLeft"><li><button onclick="DarkMode()" class="dark"><img src="https://static.thenounproject.com/png/1664849-200.png" alt="" height="23px"></button></li></div>
