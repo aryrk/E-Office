@@ -1,6 +1,9 @@
 <?php
 require_once("../config.php");
 date_default_timezone_set('Asia/Jakarta');
+$nik = $_GET['nik'];
+$kantor = $_GET['kantor'];
+$pass = $_GET['password'];
 
 if(isset($_POST['SUBMIT'])){
 	$nik = trim($_POST['IDS']);
@@ -10,10 +13,10 @@ if(isset($_POST['SUBMIT'])){
 			$jam = date("H:i:s");
     		$tgl = date("Y-m-d");
 			
-			$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan");
+			$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM data_perusahaan;";
+			$A = "SELECT * FROM data_perusahaan WHERE Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
@@ -28,10 +31,10 @@ if(isset($_POST['SUBMIT'])){
 			$kalkulasi = strtotime($jam) - strtotime($jamMax);
 			
 			
-			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
@@ -50,17 +53,17 @@ if(isset($_POST['SUBMIT'])){
 				$status = "Terlambat";
 			}
 			
-			$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_masuk, Jam_pulang, Terlambat, Status) VALUES ('$nik','$nama','$tgl','$jam','00:00:00','$kalkulasi','$status')");
+			$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Nama_Perusahaan, Tanggal, Jam_masuk, Jam_pulang, Terlambat, Status) VALUES ('$nik','$nama','$kantor','$tgl','$jam','00:00:00','$kalkulasi','$status')");
 		}
 	
 		else if ($radioVal == "JamPulang"){
     		$jam = date("H:i:s");
     		$tgl = date("Y-m-d");
 
-			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
@@ -71,30 +74,27 @@ if(isset($_POST['SUBMIT'])){
 			}
 		}
 			
-			$sql = mysqli_query($konek, "SELECT * FROM absen WHERE Tanggal='$tgl'");
+			$sql = mysqli_query($konek, "SELECT * FROM absen WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM absen WHERE NIK='$nik';";
+			$A = "SELECT * FROM absen WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					$cek = $row['NIK'];
-					if ($row['NIK'] != NULL){
-						$Jam_masuk = $row['Jam_masuk'];
-						$terlambat = $row['Terlambat'];
-						$Status = $row['Status'];
+					if (empty($row['NIK'])) {
 						
-						$sql = mysqli_query($konek, "DELETE FROM absen WHERE Tanggal='$tgl' AND NIK='$nik'");
-						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_masuk, Jam_pulang, Terlambat, Status) VALUES ('$nik','$nama','$tgl','$Jam_masuk','$jam','$terlambat','$Status')");
+						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Nama_Perusahaan, Tanggal, Jam_masuk, Jam_pulang, Terlambat, Status) VALUES ('$nik','$nama','$kantor','$tgl','00:00:00','$jam','00:00:00','Tidak absen masuk')");
 					}
-					else if($row['NIK'] === NULL){
+					else{
 						$Jam_masuk = $row['Jam_masuk'];
 						$terlambat = $row['Terlambat'];
 						$Status = $row['Status'];
 						
-						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Tanggal, Jam_pulang) VALUES ('$nik','$nama','$tgl','$jam')");
+						$sql = mysqli_query($konek, "DELETE FROM absen WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
+						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Nama_Perusahaan, Tanggal, Jam_masuk, Jam_pulang, Terlambat, Status) VALUES ('$nik','$nama','$kantor','$tgl','$Jam_masuk','$jam','$terlambat','$Status')");
 					}
 					
 				}
@@ -103,12 +103,11 @@ if(isset($_POST['SUBMIT'])){
 	}
 }
 if(isset($_POST['PROFIL'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
@@ -131,45 +130,43 @@ if(isset($_POST['PROFIL'])){
     				? ((date("Y") - $birthDate[2]) - 1)
     				: (date("Y") - $birthDate[2]));
 					
-					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email");
+					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && password=$pass && kantor=$kantor");
 				}
 			}
 		}
 	}
 
 if(isset($_POST['HOME'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					
-					header("Location: Home.php?nik=$nik");
+					header("Location: Home.php?nik=$nik && password=$pass && kantor=$kantor");
 				}
 			}
 		}
 	}
 
 if(isset($_POST['DATAABSEN'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					
-					header("Location: DataAbsen.php?nik=$nik");
+					header("Location: DataAbsen.php?nik=$nik && password=$pass && kantor=$kantor");
 				}
 			}
 		}
@@ -223,8 +220,8 @@ if(isset($_POST['DATAABSEN'])){
             <center><span id="tanggalwaktu"></span></center>
             <i class="lj far fa-clock"></i>
             <div class="jmk">
-                <p>Masuk = <?php echo $_GET['masuk1']; ?> - <?php echo $_GET['masuk2']; ?></p>
-                <p>Pulang = <?php echo $_GET['keluar1']; ?> - <?php echo $_GET['keluar2']; ?></p>
+                <p>Masuk = <?php echo date('H:i',strtotime($_GET['masuk1'])); ?> - <?php echo date('H:i',strtotime($_GET['masuk2'])); ?></p>
+                <p>Pulang = <?php echo date('H:i',strtotime($_GET['keluar1'])); ?> - <?php echo date('H:i',strtotime($_GET['keluar2'])); ?></p>
             </div>
         </div>
 
