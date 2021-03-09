@@ -21,6 +21,7 @@ if(isset($_POST['SUBMIT'])){
 					$jabatan = $row['Jabatan'];
 					$tel = $row['No_Telp'];
 					$email = $row['Email'];
+					$kantor = $row['Nama_Perusahaan'];
 					
 					//date in mm/dd/yyyy format; or it can be in other formats as well
   					$birthDate = "$bln/$tgl/$thn";
@@ -31,7 +32,7 @@ if(isset($_POST['SUBMIT'])){
     				? ((date("Y") - $birthDate[2]) - 1)
     				: (date("Y") - $birthDate[2]));
 					
-					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email");
+					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && kantor=$kantor && password=$pw");
 				}
 			}
 		}
