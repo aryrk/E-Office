@@ -1,13 +1,24 @@
 <?php
 require_once("../config.php");
-$datang_value = date('H:i',strtotime($_GET['datang_min']));
-$datang_max_value = date('H:i',strtotime($_GET['datang_max']));
-$pulang_value = date('H:i',strtotime($_GET['pulang_min']));
-$pulang_max_value = date('H:i',strtotime($_GET['pulang_max']));
 
 $kantor = $_GET['kantor'];
 $nik = $_GET['nik'];
 $pw = $_GET['password'];
+		
+$A_check = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor';";
+$result_check = mysqli_query($konek, $A_check);			
+
+$row_check = mysqli_fetch_assoc($result_check);
+$datang_value_check = $row_check['Absen_datang_min'];
+$datang_max_value_check = $row_check['Absen_datang_max'];
+$pulang_value_check = $row_check['Absen_pulang_min'];
+$pulang_max_value_check = $row_check['Absen_pulang_max'];
+
+$datang_value = date('H:i',strtotime($datang_value_check));
+$datang_max_value = date('H:i',strtotime($datang_max_value_check));
+$pulang_value = date('H:i',strtotime($pulang_value_check));
+$pulang_max_value = date('H:i',strtotime($pulang_max_value_check));
+					
 
 if(isset($_POST['ABSEN_DATANG'])){
 	$datang_min = trim($_POST['masuk1']);
