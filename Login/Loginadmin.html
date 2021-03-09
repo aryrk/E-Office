@@ -14,7 +14,7 @@
 	<div class="contaner">
 	<div class="wraper">
 	<div class="skuy">
-	<form action="../Main Tab/etc/Main.html">
+	<form action="../admin/Admin.html">
         <h1>LOGIN</h1>
 <div class="imag">
 <img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
@@ -42,8 +42,8 @@
 	</div>
 	</p>
 	<p>
-	<span id="meseg"></span>
-	<input type="button" onclick="valid()" value="Login" name="masuk"><br>
+	<span id="meseg"></span><br>
+	<input type="submit" onclick="return valid()" value="Login" name="masuk"><br>
 	</p>
 	<p>
 	<a href="../index.html"><button type="button" class="canc">Back</button></a>
@@ -56,6 +56,14 @@
 </body>
 </html>
 <script>
+function valid() {
+var pos = document.getElementById('namae').value;
+var pes = document.getElementById('password').value;
+if (pos !="admin" && pes !="123456") {
+document.getElementById('meseg').innerHTML="*Akses Ditolak*";
+return false;
+}
+}
 function check() {
 var pas = document.getElementById('password');
 if (pas.type==="password") {
@@ -65,17 +73,5 @@ else {
 pas.type="password";
 }
 }
-function valid() {
-var pes = document.getElementById('namae');
-var pos = document.getElementById('password');
-if (pes=="admin") {
-if (pos=="123456") {
-location.href="#";
-}
-}
-else {
-document.getElementById('meseg').innerHTML="*Akses Ditolak";
-return false;
-}
-}
+
 </script>
