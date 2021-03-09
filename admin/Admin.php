@@ -15,12 +15,8 @@ if(isset($_POST['SET_ABSEN'])){
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
-					$datang_min = $row['Absen_datang_min'];
-					$datang_max = $row['Absen_datang_max'];
-					$pulang_min = $row['Absen_pulang_min'];
-					$pulang_max = $row['Absen_pulang_max'];
 					
-					header("Location: Setting-Absen.php?kantor=$kantor && nik=$nik && password=$pw && datang_min=$datang_min && datang_max=$datang_max && pulang_max=$pulang_max && pulang_min=$pulang_min");
+					header("Location: Setting-Absen.php?kantor=$kantor && nik=$nik && password=$pw");
 				}
 			}
 		}
