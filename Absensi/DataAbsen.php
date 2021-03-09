@@ -1,13 +1,20 @@
 <?php
 require_once("../config.php");
+$nik = $_GET['nik'];
+$kantor = $_GET['kantor'];
+$pass = $_GET['password'];
+
+$tgl_now = date("Y-m-d");
+$tgl_before1 = date("Y-m-d", strtotime(' -1 day'));
+$tgl_before2 = date("Y-m-d", strtotime(' -2 day'));
+$tgl_before3 = date("Y-m-d", strtotime(' -3 day'));
 
 if(isset($_POST['PROFIL'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
@@ -30,45 +37,46 @@ if(isset($_POST['PROFIL'])){
     				? ((date("Y") - $birthDate[2]) - 1)
     				: (date("Y") - $birthDate[2]));
 					
-					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email");
+					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && password=$pass && kantor=$kantor");
 				}
 			}
 		}
 	}
 
 if(isset($_POST['ABSEN'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM data_perusahaan WHERE Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
-					
-					header("Location: Absen.php?nik=$nik");
+					$Masuk_awal = $row['Absen_datang_min'];
+					$Masuk_akhir = $row['Absen_datang_max'];
+					$Keluar_awal = $row['Absen_pulang_min'];
+					$Keluar_akhir = $row['Absen_pulang_max'];
+					header("Location: Absen.php?nik=$nik && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir && password=$pass && kantor=$kantor");
 				}
 			}
 		}
 	}
 
 if(isset($_POST['HOME'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					
-					header("Location: Home.php?nik=$nik");
+					header("Location: Home.php?nik=$nik && password=$pass && kantor=$kantor");
 				}
 			}
 		}
@@ -90,7 +98,7 @@ if(isset($_POST['HOME'])){
     <header>
         <div class="container">
             <div id="logo">
-                <h1>Officia</h1>
+                <h1><?php echo $_GET['kantor']; ?></h1>
             </div>
 			<form id="form1" name="form1" method="post" action="">
             <nav>
@@ -130,43 +138,43 @@ if(isset($_POST['HOME'])){
 
                 <tbody>
                     <tr>
-                        <td>1905924783</td>
-                        <td>Ilham Kurniawan</td>
-                        <td>17-08-2020</td>
-                        <td>(08.30)</td>
-                        <td>(16.00)</td>
-                        <td>-</td>
-                        <td class="sa">Sudah Absen</td>
+                        <td><?php echo $nik ?></td>
+                        <td><?php echo $_GET['nama']; ?></td>
+                        <td><?php echo $tgl_now ?></td>
+                        <td><?php echo $_GET['masuk']; ?></td>
+                        <td><?php echo $_GET['pulang']; ?></td>
+                        <td><?php echo date('H:i',strtotime($_GET['telat'])); ?></td>
+                        <td class="sa"><?php echo $_GET['status'] ?></td>
                     </tr>
 
                     <tr>
-                        <td>1905924783</td>
-                        <td>Ilham Kurniawan</td>
-                        <td>18-08-2020</td>
-                        <td>(08.00)</td>
-                        <td>(16.30)</td>
-                        <td>-</td>
-                        <td class="sa">Sudah Absen</td>
+                        <td><?php echo $nik ?></td>
+                        <td><?php echo $_GET['nama']; ?></td>
+                        <td><?php echo $tgl_before1 ?></td>
+                        <td><?php echo $_GET['masuk1']; ?></td>
+                        <td><?php echo $_GET['pulang1']; ?></td>
+                        <td><?php echo date('H:i',strtotime($_GET['telat1'])); ?></td>
+                        <td class="sa"><?php echo $_GET['status1'] ?></td>
                     </tr>
 
                     <tr>
-                        <td>1905924783</td>
-                        <td>Ilham Kurniawan</td>
-                        <td>19-08-2020</td>
-                        <td>(09.00)</td>
-                        <td>(17.00)</td>
-                        <td>30 Menit</td>
-                        <td class="ta">Terlambat Absen</td>
+                        <td><?php echo $nik ?></td>
+                        <td><?php echo $_GET['nama']; ?></td>
+                        <td><?php echo $tgl_before2 ?></td>
+                        <td><?php echo $_GET['masuk2']; ?></td>
+                        <td><?php echo $_GET['pulang2']; ?></td>
+                        <td><?php echo date('H:i',strtotime($_GET['telat2'])); ?></td>
+                        <td class="ta"><?php echo $_GET['status2'] ?></td>
                     </tr>
                     
                     <tr>
-                        <td>1905924783</td>
-                        <td>Ilham Kurniawan</td>
-                        <td>20-08-2020</td>
-                        <td>Belum Absen</td>
-                        <td>(15.00)</td>
-                        <td>-</td>
-                        <td class="ba">Bolos</td>
+                        <td><?php echo $nik ?></td>
+                        <td><?php echo $_GET['nama']; ?></td>
+                        <td><?php echo $tgl_before3 ?></td>
+                        <td><?php echo $_GET['masuk3']; ?></td>
+                        <td><?php echo $_GET['pulang3']; ?></td>
+                        <td><?php echo date('H:i',strtotime($_GET['telat3'])); ?></td>
+                        <td class="ba"><?php echo $_GET['status3'] ?></td>
                     </tr>
                 </tbody>
             </table>
