@@ -1,13 +1,15 @@
 <?php
 require_once("../config.php");
+$nik = $_GET['nik'];
+$kantor = $_GET['kantor'];
+$pass = $_GET['password'];
 
 if(isset($_POST['PROFIL'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
@@ -30,19 +32,18 @@ if(isset($_POST['PROFIL'])){
     				? ((date("Y") - $birthDate[2]) - 1)
     				: (date("Y") - $birthDate[2]));
 					
-					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email");
+					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && password=$pass && kantor=$kantor");
 				}
 			}
 		}
 	}
 
 if(isset($_POST['ABSEN'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM Data_perusahaan");
+		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM Data_perusahaan;";
+			$A = "SELECT * FROM data_perusahaan WHERE Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
@@ -52,26 +53,25 @@ if(isset($_POST['ABSEN'])){
 					$Masuk_akhir = $row['Absen_datang_max'];
 					$Keluar_awal = $row['Absen_pulang_min'];
 					$Keluar_akhir = $row['Absen_pulang_max'];
-					header("Location: Absen.php?nik=$nik && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
+					header("Location: Absen.php?nik=$nik && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir && password=$pass && kantor=$kantor");
 				}
 			}
 		}
 	}
 
 if(isset($_POST['DATAABSEN'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' WHERE Nama_Perusahaan='$kantor' AND Password='$pass'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' WHERE Nama_Perusahaan='$kantor' AND Password='$pass';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					
-					header("Location: DataAbsen.php?nik=$nik");
+					header("Location: DataAbsen.php?nik=$nik && password=$pass && kantor=$kantor");
 				}
 			}
 		}
