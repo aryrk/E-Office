@@ -86,11 +86,15 @@ if(isset($_POST['SUBMIT'])){
 	<p>
 	<a href="../index.html"><button type="button" class="canc">Back</button></a>
 	</p>
+<p>
+<a href="Regisadmin">admin sementara</a>
+</p>
 	</form>
 	</div>	
 </div>
 	</div>
-	</body></center>
+	</body>
+</center>
 
 </html>
 <script>
