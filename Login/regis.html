@@ -14,37 +14,27 @@
 	<div class="contaner">
 	<div class="wraper">
 	<div class="skuy">
-	<form action="../Main Tab/etc/Main.html">
+	<form action="../login1.php">
         <h1>Registration Account</h1>
 <hr>
 <p>
-<label for="mail">Email </label>
+<label for="mail">Email:</label>
 <input type="text" placeholder="Masukkan Email"
 name="mail" required autocomplete="off" maxlength="4"><br>
 </p>
 <p>
-<label for="namae">NIK</label>
+<label for="namae">NIK:</label>
 <input type="number" placeholder="Masukkan NIK" 
 name="namae" required autocomplete="off" class="nik"
 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 maxlength="16"><br>
 </p>
 <p>
-<label for="passw">Password </label>
-<input type="password" placeholder="Masukkan Password"
-name="passw" id="password" required autocomplete="off"><br>
-</p>
-<p>
-<label for="repeat">Ulangi Password</label>
-<input type="password" placeholder="Masukkan Password"
-name="repeat" id="repeat" required autocomplete="off"><br>
-<span id="meseg"></span><br>
-</p>
-<p>
-<div class="cek">
-<input type="checkbox" name="show" id="sow"
-class="size" onclick="check()">Show Password<br>
-</div>
+<label for="telepon">Masukkan No Telp:</label>
+<input type="number" name="telp" placeholder="Masukkan No Telp"
+autocomplete="off" id="notelp" class="nik" required
+oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+maxlength="12"><br>
 </p>
 <p>
 <label for="jk">Jenis Kelamin: </label><br>
@@ -65,30 +55,38 @@ oninput="javascript: if (this.value.length > this.maxLength) this.value = this.v
 maxlength="4"><br>
 </p>
 <p>
-<label for="telepon">Masukkan No Telp:</label>
-<input type="number" name="telp" placeholder="Masukkan No Telp"
-autocomplete="off" id="notelp" class="nik" required
-oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-maxlength="13"><br>
-</p>
-<p>
 <label for="alamat">Alamat:</label>
 <textarea name="alamat" id="adress" class="almt"
-cols="30">
-</textarea><br><br><br>
+cols="67">
+</textarea><br>
 </p>
 <p>
-<input type="checkbox" name="snk">Saya telah membaca seluruh <a href="#">
-syarat dan kebijakan privasi</a><br>
+<label for="passw">Password </label>
+<input type="password" placeholder="Masukkan Password"
+name="passw" id="password" required autocomplete="off"><br>
 </p>
 <p>
-<div class="sub">
-<input type="submit" onclick="valid()" value="Daftar">
+<label for="repeat">Ulangi Password</label>
+<input type="password" placeholder="Masukkan Password"
+name="repeat" id="repeat" required autocomplete="off">
+</p>
+<p>
+<div class="cek">
+<input type="checkbox" name="show" id="sow"
+class="size" onclick="check()">Show Password<br>
 </div>
 </p>
 <p>
-	<a href="../index.html"><button type="button" class="canc">Back</button></a>
-	</p>
+<div class="sub">
+<span id="meseg"></span><br>
+<input type="submit" onclick="return valid()" value="Daftar">
+</div>
+</p>
+<p>
+<div class="ca ci">
+<p>Sudah Punya Akun?<a href=login1.php">Log-in</a></p>
+</div>
+</p>
 </form>
 	</div>	
 </div>
@@ -98,14 +96,11 @@ syarat dan kebijakan privasi</a><br>
 </html>
 <script>
 function valid () {
-var pas = document.getElementById('password');
-var pos = document.getElementById('repeat');
-if (pos!=pas) {
+var pas = document.getElementById('password').value;
+var pos = document.getElementById('repeat').value;
+if (pos != pas) {
 document.getElementById('meseg').innerHTML="*Password Salah*";
 return false;
-}
-else {
-location.href="../index.html";
 }
 }
 function check() {
