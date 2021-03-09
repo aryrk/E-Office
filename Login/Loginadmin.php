@@ -1,3 +1,27 @@
+<?php
+require_once("../config.php");
+
+if(isset($_POST['SUBMIT'])){
+		$nik = trim($_POST['NIK']);
+		$pw = trim($_POST['PW']);
+		
+		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw';";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$kantor = $row['Nama_Perusahaan'];
+					
+					header("Location: ../admin/Admin.html?kantor=$kantor");
+				}
+			}
+		}
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +38,7 @@
 	<div class="contaner">
 	<div class="wraper">
 	<div class="skuy">
-	<form action="../admin/Admin.html">
+	<form id="form1" name="form1" method="post" action="">
         <h1>LOGIN</h1>
 <div class="imag">
 <img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
@@ -26,14 +50,12 @@
 
 </div>
 	<p>
-	<label for="name">Nama:</label><br>
-	<input type="text" placeholder="Ketik Nama" name="name" 
-	autocomplete="off" required id="namae"><br>
+	<label for="name">NIK:</label><br>
+	<input type="text" placeholder="Ketik Nama" name="NIK" id="NIK" autocomplete="off" required id="namae"><br>
 	</p>
 	<p>
 	<label for="pass">Password:</label><br>
-	<input type="password" placeholder="Ketik Password" name="pass"
-	autocomplete="off" id="password" required>
+	<input type="password" placeholder="Ketik Password" name="PW" id="PW" autocomplete="off" id="password" required>
 	</p>
 	<p>
 	<div class="cek">
@@ -43,7 +65,7 @@
 	</p>
 	<p>
 	<span id="meseg"></span><br>
-	<input type="submit" onclick="return valid()" value="Login" name="masuk"><br>
+	<button type="submit" name="SUBMIT" id="SUBMIT" value="Submit">Login</button><br>
 	</p>
 	<p>
 	<a href="../index.html"><button type="button" class="canc">Back</button></a>
@@ -55,23 +77,3 @@
 	</center>
 </body>
 </html>
-<script>
-function valid() {
-var pos = document.getElementById('namae').value;
-var pes = document.getElementById('password').value;
-if (pos !="admin" && pes !="123456") {
-document.getElementById('meseg').innerHTML="*Akses Ditolak*";
-return false;
-}
-}
-function check() {
-var pas = document.getElementById('password');
-if (pas.type==="password") {
-pas.type="text";
-}
-else {
-pas.type="password";
-}
-}
-
-</script>
