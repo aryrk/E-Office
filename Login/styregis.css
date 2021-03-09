@@ -12,7 +12,7 @@ overflow: auto;
 }
 .wraper{
 	box-shadow: 0 0 20px 0 rgba(72,94,116,0.7);
-	width: 60%;
+	width: 55%;
 }
 .wraper > *{
 	padding: 1em;
@@ -34,7 +34,7 @@ overflow: auto;
 	margin:0;
 }
 input[type="text"], input[type="password"] {
-width: 80%;
+width: 70%;
 padding: 12px;
 margin: 8px 0;
 display: inline-block;
@@ -42,15 +42,7 @@ border: 1px solid #ccc;
 box-sizing: border-box;
 }
 input[type="submit"] {
-width: 100%;
-padding: 15px;
-margin: 8px 0;
-background-color: #4CAF50;
-color: white;
-text-align: center;
-}
-button {
-width: 80%;
+width: 70%;
 padding: 15px;
 margin: 8px 0;
 background-color: #4CAF50;
@@ -86,14 +78,14 @@ color: red;
 display: none;
 }
 .cek {
-margin-left: -145px;
-margin-top: -40px;
-}
+margin-left: -390px;
+margin-top: -20px;
+}	
 input.size {
 transform: scale(1.2);
 }
 .datee {
-width: 24%;
+width: 12%;
 padding: 12px;
 margin: 8px 0;
 display: inline-block;
@@ -102,7 +94,7 @@ box-sizing: border-box;
 line-height: 10px;
 }
 .nik {
-width: 80%;
+width: 70%;
 padding: 12px;
 margin: 8px 0;
 display: inline-block;
@@ -140,12 +132,23 @@ box-sizing: border-box;
 		margin:0;
 		padding:0;
 	}
-	input {
-		padding:0;
-margin-top: -100px;
+	input[type="text"], input[type="password"], input[type="submit"] {
+		width: 90%;
+	}
+	.nik {
+		width: 90%;
+	}
+	.cek {
+		margin-left: -235px;
 	}
 	placeholder {
 		width: 30%;
+	}
+	textarea {
+		width: 90%;
+	}
+	.datee {
+		width: 15%;
 	}
 h1 {
 font-size: 100px:
