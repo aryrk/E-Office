@@ -1,39 +1,40 @@
 <?php
 require_once("../../config.php");
+$nik = $_GET['nik'];
+$kantor = $_GET['kantor'];
+$pass = $_GET['password'];
 
 if(isset($_POST['PENGUMUMAN'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					
-					header("Location: ../../Pengumuman/pengumuman.php?nik=$nik");
+					header("Location: ../../Pengumuman/pengumuman.php?nik=$nik && kantor=$kantor && password=$pass");
 				}
 			}
 		}
 	}
 
 if(isset($_POST['ABSEN'])){
-	$nik = $_GET['nik'];
 		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik';";
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 				
-					header("Location: ../../Absensi/Home.php?nik=$nik");
+					header("Location: ../../Absensi/Home.php?nik=$nik && kantor=$kantor && password=$pass");
 				}
 			}
 		}
@@ -524,7 +525,7 @@ if(isset($_POST['ABSEN'])){
 	</div>
 	<div class="logo">
 	<div class="wow logo">
-		<h3>Officia</h3>
+		<h3><?php echo $_GET['kantor']; ?></h3>
 	</div>
 	</div>
 
