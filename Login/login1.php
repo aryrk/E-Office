@@ -86,9 +86,6 @@ if(isset($_POST['SUBMIT'])){
 	<p>
 	<a href="../index.html"><button type="button" class="canc">Back</button></a>
 	</p>
-<p>
-<a href="regis.html">klak</a>
-</p>
 	</form>
 	</div>	
 </div>
