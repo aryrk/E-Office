@@ -16,7 +16,7 @@ if(isset($_POST['SUBMIT'])){
 				while ($row = mysqli_fetch_assoc($result)){
 					$kantor = $row['Nama_Perusahaan'];
 					
-					header("Location: ../admin/Admin.php?kantor=$kantor");
+					header("Location: ../admin/Admin.php?kantor=$kantor && password=$pw && nik=$nik");
 				}
 			}
 		}
@@ -51,11 +51,11 @@ if(isset($_POST['SUBMIT'])){
 </div>
 	<p>
 	<label for="name">NIK:</label><br>
-	<input type="text" placeholder="Ketik Nama" name="NIK" id="NIK" autocomplete="off" required id="namae"><br>
+	<input type="text" placeholder="Ketik Nama" name="NIK" id="NIK" autocomplete="off" required><br>
 	</p>
 	<p>
 	<label for="pass">Password:</label><br>
-	<input type="password" placeholder="Ketik Password" name="PW" id="PW" autocomplete="off" id="password" required>
+	<input type="password" placeholder="Ketik Password" name="PW" id="PW" autocomplete="off" required>
 	</p>
 	<p>
 	<div class="cek">
