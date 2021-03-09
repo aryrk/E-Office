@@ -16,7 +16,7 @@ if(isset($_POST['SUBMIT'])){
 				while ($row = mysqli_fetch_assoc($result)){
 					$kantor = $row['Nama_Perusahaan'];
 					
-					header("Location: ../admin/Admin.html?kantor=$kantor");
+					header("Location: ../admin/Admin.php?kantor=$kantor");
 				}
 			}
 		}
