@@ -18,7 +18,7 @@ Layaknya menu login pada umumnya, tampilan pada bagian ini memiliki fitur sign-i
 ## Menu utama
 Dikembangkan oleh Aryo Rakatama (https://github.com/xzoom117), tampilan ini mencangkup data basic user, overview hasil kerja, tampilan tugas, dan terhubung dengan tampilan absen serta pengumuman
 <p align="left">
-<img src="https://i.ibb.co/YpwPcST/2021-02-12-21-00-14-Window.png" width="50%"/>
+<img src="https://i.ibb.co/CH3sD6W/2021-03-10-19-29-27-Greenshot.png" width="50%"/>
 </p>
 
 ### -Overview
@@ -42,29 +42,59 @@ Mode gelap ini cocok untuk user yang memiliki mata drakula
 ## Absen
 Dikembangkan oleh Nurdiana Saputra (https://github.com/uta17), tamplian ini memiliki fitur reminder sehingga para pegawai tidak akan lupa untuk melakukan absen setiap harinya, dilengkapi jam digital dan data absen karyawan agar perusahaan dapat memantau ketertiban pegawainya dengan mudah
 <p align="left">
-<img src="https://i.ibb.co/rZpn9vc/2021-02-03-19-56-57-Dashboard.png" width="50%"/>
+<img src="https://i.ibb.co/hB4pLD6/2021-03-10-19-30-50-Greenshot.png" width="50%"/>
 </p>
 
 ### -Absensi
-Bagian ini digunakan pegawai untuk melakukan absen harian atau meminta cuti
+Bagian ini digunakan pegawai untuk melakukan absen harian
 <p align="left">
-<img src="https://i.ibb.co/GF61hJ5/2021-02-03-20-01-18-Absensi.png" width="30%"/>
+<img src="https://i.ibb.co/31s32j4/2021-03-10-19-31-55-Greenshot.png" width="30%"/>
 </p>
 
 ### -Data Absen
 Bagian ini akan menunjukan database kehadiran pegawai secara mendetail
 <p align="left">
-<img src="https://i.ibb.co/1LhFv0y/2021-02-03-20-03-16-Data-Absen.png" width="30%"/>
+<img src="https://i.ibb.co/8mBm1VF/2021-03-10-19-32-06-Greenshot.png" width="30%"/>
+</p>
+
+### -Cuti
+Bagian ini memungkinkan pegawai untuk meminta cuti
+<p align="left">
+<img src="https://i.ibb.co/KyZ3MGN/2021-03-10-19-32-31-Greenshot.png" width="30%"/>
 </p>
 
 ## Pengumuman
 Dikembangkan oleh Chandra (https://github.com/DollllllllllllChan), bagian ini akan memberitahukan setiap pegawai apabila perusahaan memberikan pemberitahuan, sehingga para pegawai dapat melihat segala pemberitahuan penting dimanapun kapanpun
 <p align="left">
-<img src="https://i.ibb.co/McNXkM6/2021-02-13-13-41-58-E-Office.png" width="50%"/>
+<img src="https://i.ibb.co/BGJsVdQ/2021-03-10-19-34-55-Greenshot.png" width="50%"/>
 </p>
 
 ## -Pop Up
 Memudahkan user untuk membaca pemberitahuan panjang
 <p align="left">
 <img src="https://i.ibb.co/Srg9xSg/Record-2021-02-03-20-10-29-476.gif" width="30%"/>
+</p>
+
+## Admin
+Bagian ini memungkinkan admin perusahaan dapat mengontrol sistem web perusahaannya, mulai dari pengaturan absen, tambah pengumuman, tambah tugas, konfirmasi permintaan cuti, list karyawan, daftar karyawan, dll
+<p align="left">
+<img src="https://i.ibb.co/CJS0ssZ/2021-03-10-18-56-36-Greenshot.png" width="50%"/>
+</p>
+
+### -Pengaturan absen
+Dikembangkan oleh Nurdiana Saputra (https://github.com/uta17), pada bagian ini admin dapat melakukan pengaturan sistem absen minimum dan maksimum
+<p align="left">
+<img src="https://i.ibb.co/L6ZxfSC/2021-03-10-19-09-32-Greenshot.png" width="30%"/>
+</p>
+
+### -Tambah pengumuman
+Dikembangkan oleh Chandra (https://github.com/DollllllllllllChan), bagian ini memungkinkan admin untuk mengirim pemberitahuan kepada karyawan karyawan perusahaannya
+<p align="left">
+<img src="https://i.ibb.co/y4QCFhw/2021-03-10-19-15-47-Greenshot.png" width="30%"/>
+</p>
+
+### -Tambah Tugas
+Dikembangkan oleh Aryo Rakatama (https://github.com/xzoom117), admin dapat melakukan upload tugas pada bagian ini, syntax html juga dapat digunakan untuk menulis tugas
+<p align="left">
+<img src="https://i.ibb.co/CMnbGjV/2021-03-10-19-18-28-Greenshot.png" width="30%"/>
 </p>
