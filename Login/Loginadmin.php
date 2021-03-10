@@ -51,7 +51,7 @@ if(isset($_POST['SUBMIT'])){
 </div>
 	<p>
 	<label for="name">NIK:</label><br>
-	<input type="text" placeholder="Ketik Nama" name="NIK" id="NIK" autocomplete="off" required><br>
+	<input type="number" placeholder="Ketik NIK" name="NIK" id="NIK" autocomplete="off" required><br>
 	</p>
 	<p>
 	<label for="pass">Password:</label><br>
