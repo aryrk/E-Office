@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2021 at 04:51 AM
+-- Generation Time: Mar 10, 2021 at 10:40 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -114,15 +114,42 @@ CREATE TABLE `pengumuman` (
   `NIK_Admin` int(16) NOT NULL,
   `Tanggal` date NOT NULL,
   `Isi_Pengumuman` longtext NOT NULL,
-  `Tujuan` varchar(255) NOT NULL
+  `Tujuan` varchar(255) NOT NULL,
+  `Submitted_On_Hours` time NOT NULL,
+  `Submitted_On_Date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pengumuman`
 --
 
-INSERT INTO `pengumuman` (`Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Tanggal`, `Isi_Pengumuman`, `Tujuan`) VALUES
-('Officia      ', 'Admin_officia', 12345, '2021-03-10', 'blhadbhdshuhfhkaul ohfuhhkuelflfafhal ulhl', 'OB');
+INSERT INTO `pengumuman` (`Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Tanggal`, `Isi_Pengumuman`, `Tujuan`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+('Officia      ', 'Admin_officia', 12345, '2021-03-10', 'blhadbhdshuhfhkaul ohfuhhkuelflfafhal ulhl', 'OB', '00:00:00', NULL),
+('Officia            ', 'Admin_officia', 12345, '0000-00-00', 'bluh', 'Seluruh Karyawan', '15:18:14', '2021-03-10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tugas`
+--
+
+CREATE TABLE `tugas` (
+  `Nama_Perusahaan` varchar(255) NOT NULL,
+  `Nama_Admin` char(255) NOT NULL,
+  `NIK_Admin` int(16) NOT NULL,
+  `Tanggal` date NOT NULL,
+  `Isi_Tugas` longtext NOT NULL,
+  `Tujuan` varchar(255) NOT NULL,
+  `Submitted_On_Hours` time NOT NULL,
+  `Submitted_On_Date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tugas`
+--
+
+INSERT INTO `tugas` (`Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Tanggal`, `Isi_Tugas`, `Tujuan`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+('Officia           ', 'Admin_officia', 12345, '2021-03-10', 'bleeeeeh', 'Seluruh Karyawan', '15:14:39', '2021-03-10');
 
 --
 -- Indexes for dumped tables
