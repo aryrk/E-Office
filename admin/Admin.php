@@ -39,6 +39,24 @@ if(isset($_POST['PENGUMUMAN'])){
 		}
 	}
 
+if(isset($_POST['TUGAS'])){
+		
+		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor';";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					
+					header("Location: Tugas.php?kantor=$kantor && nik=$nik && password=$pw");
+				}
+			}
+		}
+	}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -167,7 +185,7 @@ if(isset($_POST['PENGUMUMAN'])){
                 <li><button style="background-color: transparent;border: none;" type="submit" name="PENGUMUMAN" id="PENGUMUMAN" value="pengumuman"><a class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></button></li>
                 <li><a href="" class="karyawan">Karyawan<i class="logo fas fa-id-card"></i></a></li>
                 <li><a href="" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
-                <li><a href="" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
+                <li><button style="background-color: transparent;border: none;" type="submit" name="TUGAS" id="TUGAS" value="tugas"><a class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></button></li>
             </ul>
 		   </form>
         </div>     
