@@ -227,7 +227,7 @@ if(isset($_POST['DATAABSEN'])){
         </div>
 
         <div class="bga">
-            <form method="post" action="">
+            <form id="form2" name="form2" method="post" action="">
                 <div class="radio">
                     <input type="radio" name="absen" value="JamMasuk"/><label for="Masuk">Masuk</label>
                     <input type="radio" name="absen" value="JamPulang"/><label for="Pulang">Pulang</label>
