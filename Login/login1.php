@@ -58,7 +58,6 @@ if(isset($_POST['SUBMIT'])){
 					$_SESSION['email'] = $email;
 					$_SESSION['kantor'] = $kantor;
 					$_SESSION['password'] = $pw;
-					session_start();
 					
 					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && kantor=$kantor && password=$pw");
 				}
