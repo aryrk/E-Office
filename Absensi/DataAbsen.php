@@ -81,6 +81,24 @@ if(isset($_POST['HOME'])){
 			}
 		}
 	}
+
+if(isset($_POST['CUTI'])){
+		
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass';";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+
+					header("Location: Cuti.php?nik=$nik && password=$pass && kantor=$kantor");
+				}
+			}
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -105,7 +123,7 @@ if(isset($_POST['HOME'])){
                 <ul>
                     <li><button style="background-color: transparent;border: none;" type="submit" name="HOME" id="HOME" value="home"><a>DASHBOARD</a></li> 
                     <li><button style="background-color: transparent;border: none;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>ABSEN</a></li>
-                    <li><a style="cursor: pointer;" onclick="Allert()">CUTI</a></li>
+                    <li><button style="background-color: transparent;border: none;" type="submit" name="CUTI" id="CUTI" value="cuti"><a>CUTI</a></button></li>
                     <li><a href=""><u style="color: rgb(190, 190, 190); text-shadow: 0px 0px 20px white;">DATA ABSEN</u></a></li>
                     <li><button style="background-color: transparent;border: none;" type="submit" name="PROFIL" id="PROFIL" value="profil"><a>PROFILE</a></li>
                 </ul>
