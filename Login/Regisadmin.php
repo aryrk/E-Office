@@ -1,3 +1,39 @@
+<?php
+require_once("../config.php");
+date_default_timezone_set('Asia/Jakarta');
+
+if(isset($_POST['SUBMIT'])){
+	$jam = date("H:i:s");
+    $tgl = date("Y-m-d");
+	
+		$mail = trim($_POST['mail']);
+		$nik = trim($_POST['name']);
+		$nama = trim($_POST['admin']);
+		$kantor = trim($_POST['peru']);
+		$no = trim($_POST['telp']);
+		$jenis = trim($_POST['gender']);
+		$alamat = trim($_POST['alamat']);
+		$pass = trim($_POST['password']);
+	
+	if($jenis == "Laki-Laki"){
+		$jenis = "L";
+	}
+	else if($jenis == "Perempuan"){
+		$jenis = "P";
+	}
+		
+		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			header("Location: ../index.html");
+		}
+		else {
+			$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
+			
+			header("Location: ../admin/Admin.php?kantor=$kantor && password=$pass && nik=$nik");
+		}
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,53 +50,53 @@
 	<div class="contaner">
 	<div class="wraper">
 	<div class="skuy">
-	<form action="https://gbf.wiki/Main_Page">
+	<form id="form1" name="form1" method="post" action="">
         <h1>Registration Admin</h1>
 <hr>
 <p>
 <label for="mail">Email:</label>
-<input type="text" placeholder="Masukkan Email"
-name="mail" required autocomplete="off"><br>
+<input type="email" placeholder="Masukkan Email"
+name="mail" id="mail" required autocomplete="off"><br>
 </p>
 <p>
-<label for="namae">NIK:</label>
+<label for="name">NIK:</label>
 <input type="number" placeholder="Masukkan NIK" 
-name="namae" required autocomplete="off" class="nik"
+name="name" id="name" required autocomplete="off" class="nik"
 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 maxlength="16"><br>
 </p>
 <p>
-<label for="nama">Nama Admin:</label>
+<label for="admin">Nama Admin:</label>
 <input type="text" placeholder="Masukkan Nama Admin"
-name="admin" required autocomplete="off"><br>
+name="admin" id="admin" required autocomplete="off"><br>
 </p>
 <p>
-<label for="perusahaan">Nama Perusahaan:</label>
+<label for="peru">Nama Perusahaan:</label>
 <input type="text" placeholder="Masukkan Nama Perusahaan"
 name="peru" id="peru" required autocomplete="off"><br>
 </p>
 <p>
-<label for="telepon">Masukkan No Telp:</label>
-<input type="number" name="telp" placeholder="Masukkan No Telp"
-autocomplete="off" id="notelp" class="nik" required
+<label for="telp">Masukkan No Telp:</label>
+<input type="tel" name="telp" placeholder="Masukkan No Telp"
+autocomplete="off" id="telp" class="nik" required
 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 maxlength="12"><br>
 </p>
 <p>
-<label for="jk">Jenis Kelamin: </label><br>
+<label for="gender">Jenis Kelamin: </label><br>
 <input type="radio" name="gender" value="Laki-Laki">Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="gender" value="Perempuan">Perempuan<br><br>
 </p>
 <p>
 <label for="alamat">Alamat Perusahaan:</label>
-<textarea name="alamat" id="adress" class="almt"
+<textarea name="alamat" id="alamat" class="almt"
 cols="67">
 </textarea><br>
 </p>
 <p>
-<label for="passw">Password:</label>
+<label for="password">Password:</label>
 <input type="password" placeholder="Masukkan Password"
-name="passw" id="password" required autocomplete="off"><br>
+name="password" id="password" required autocomplete="off"><br>
 </p>
 <p>
 <label for="repeat">Ulangi Password:</label>
@@ -76,7 +112,7 @@ class="size" onclick="check()">Show Password<br>
 <p>
 <div class="sub">
 <span id="meseg"></span>
-<input type="submit" onclick="return valid()" value="Daftar">
+<input type="submit" onclick="return valid()" name="SUBMIT" id="SUBMIT" value="Submit">
 </div>
 </p>
 </form>
