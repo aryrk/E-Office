@@ -25,7 +25,7 @@ if(isset($_POST['SUBMIT'])){
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			header("Location: ../index.html");
+			header("Location: ../etc/error/index.php?condition=6");
 		}
 		else {
 			$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
