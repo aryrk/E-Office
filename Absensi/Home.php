@@ -84,7 +84,7 @@ if(isset($_POST['DATAABSEN'])){
 					
 			$row4 = mysqli_fetch_assoc(mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl_before3';"));
 					
-					$nama = $row1['Nama'];
+					$nama = $row['Nama'];
 					$now_masuk = $row1['Jam_masuk'];
 					$now_pulang = $row1['Jam_pulang'];
 					$now_terlambat = $row1['Terlambat'];
@@ -106,6 +106,24 @@ if(isset($_POST['DATAABSEN'])){
 					$before3_stat = $row4['Status'];
 					
 					header("Location: DataAbsen.php?nik=$nik && password=$pass && kantor=$kantor && nama=$nama && masuk=$now_masuk && pulang=$now_pulang && telat=$now_terlambat && status=$now_stat && masuk1=$before1_masuk && pulang1=$before1_pulang && telat1=$before1_terlambat && status1=$before1_stat && masuk2=$before2_masuk && pulang2=$before2_pulang && telat2=$before2_terlambat && status2=$before2_stat && masuk3=$before3_masuk && pulang3=$before3_pulang && telat3=$before3_terlambat && status3=$before3_stat");
+				}
+			}
+		}
+	}
+
+if(isset($_POST['CUTI'])){
+		
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass';";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+
+					header("Location: Cuti.php?nik=$nik && password=$pass && kantor=$kantor");
 				}
 			}
 		}
@@ -134,9 +152,9 @@ if(isset($_POST['DATAABSEN'])){
                 <ul>
                     <li><a href=""><u style="color:rgb(190, 190, 190); text-shadow: 0px 0px 20px white;">DASHBOARD</u></a></li> 
 					
-                    <li><button style="background-color: transparent;border: none;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>ABSEN</a></li>
+                    <li><button style="background-color: transparent;border: none;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>ABSEN</a></button></li>
 						
-                    <li><a style="cursor: pointer;" onclick="Allert()">CUTI</a></li>
+                    <li><button style="background-color: transparent;border: none;" type="submit" name="CUTI" id="CUTI" value="cuti"><a>CUTI</a></button></li>
 					
                     <li><button style="background-color: transparent;border: none;" type="submit" name="DATAABSEN" id="DATAABSEN" value="absen"><a>DATA ABSEN</a></button></li>
 					
