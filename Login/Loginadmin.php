@@ -72,6 +72,11 @@ maxlength="16"><br>
 	<p>
 	<a href="../index.html"><button type="button" class="canc">Back</button></a>
 	</p>
+<p>
+<div class="ca">
+<p>Daftar Sebagai Admin?<a href="Regisadmin.html">Daftar</a></p>
+</div>
+</p>
 	</form>
 	</div>	
 </div>
