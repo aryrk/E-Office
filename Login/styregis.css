@@ -2,7 +2,7 @@
 border-sizing: border-box;
 }
 body{
-background-image: url("");
+background-image: url("../Main Tab/media/Bg.jpg");
 background-repeat: no-repeat;
 background-size: 300%;
 overflow: auto;
@@ -33,7 +33,7 @@ overflow: auto;
 .skuy form p{
 	margin:0;
 }
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
 width: 70%;
 padding: 12px;
 margin: 8px 0;
@@ -42,6 +42,14 @@ border: 1px solid #ccc;
 box-sizing: border-box;
 }
 input[type="submit"] {
+width: 70%;
+padding: 15px;
+margin: 8px 0;
+background-color: #4CAF50;
+color: white;
+text-align: center;
+}
+.kembali {
 width: 70%;
 padding: 15px;
 margin: 8px 0;
@@ -132,7 +140,7 @@ box-sizing: border-box;
 		margin:0;
 		padding:0;
 	}
-	input[type="text"], input[type="password"], input[type="submit"] {
+	input[type="text"], input[type="password"], input[type="submit"], input[type="email"], input[type="tel"] {
 		width: 90%;
 	}
 	.nik {
