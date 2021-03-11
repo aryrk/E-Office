@@ -87,7 +87,9 @@ if(isset($_POST['SUBMIT'])){
 	<a href="../index.html"><button type="button" class="canc">Back</button></a>
 	</p>
 <p>
-<a href="Regisadmin">admin sementara</a>
+<div class="ca">
+<p>Daftar Sebagai Admin?<a href="Regisadmin.html">Daftar</a></p>
+</div>
 </p>
 	</form>
 	</div>	
