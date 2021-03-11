@@ -1,5 +1,15 @@
 <?php
 session_start();
+require_once("config.php");
+
+if (!isset($_GET['value'])){	
+header("Location: etc/error/index.php?condition=1");
+exit();
+}
+
+else if (isset($_GET['value'])){
+	
+if($_GET['value'] == "logout"){
 	if(isset($_SESSION['LOGIN'])){
 		unset($_SESSION['LOGIN']);
 		unset($_SESSION['nama']);
@@ -14,21 +24,28 @@ session_start();
 		session_destroy();
 		session_write_close();
 		setcookie(session_name(),'',0,'/');
-		
-		header("Location: index.html");
-	exit();
 	}
-
-require_once("config.php");
+	header("Location: index.html");
+	exit();
+}
+}
 ?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>logout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel = "icon" href ="Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
+	
+<title>Officia Message</title>
+	
+<style>
+
+</style>
 </head>
 
 <body>
 redirecting...
+	
 </body>
 </html>
