@@ -43,11 +43,6 @@ if(isset($_POST['SUBMIT'])){
 <div class="imag">
 <img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
 
-<map name="image-map">
-    <area target="_parent" alt="Admin" title="Admin" href="regis.html" coords="844,848,958,1002" shape="rect">
-    <area target="_parent" alt="Admin" title="Admin" href="regis.html" coords="232,700,506,649" shape="rect">
-</map>
-
 </div>
 	<p>
 	<label for="name">NIK:</label><br>
@@ -74,13 +69,13 @@ maxlength="16"><br>
 	</p>
 <p>
 <div class="ca">
-<p>Punya Perusahaan Sendiri?<a href="Regisadmin.html">Daftar Admin</a></p>
+<p>Punya Perusahaan Sendiri?<a href="Regisadmin.php">Daftar Admin</a></p>
 </div>
 </p>
 	</form>
 	</div>	
 </div>
 	</div>
-	</center>
-</body>
+	</body></center>
+
 </html>
