@@ -1,4 +1,20 @@
 <?php
+session_start();
+if (isset($_SESSION['LOGIN'])){
+	
+	$nama = $_SESSION['nama'];
+	$age = $_SESSION['umur'];
+	$jabatan = $_SESSION['jabatan'];
+	$nik = $_SESSION['nik'];
+	$tel = $_SESSION['tel'];
+	$email = $_SESSION['email'];
+	$kantor = $_SESSION['kantor'];
+	$pw = $_SESSION['password'];
+	
+	header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && kantor=$kantor && password=$pw");
+	exit ();
+}
+
 require_once("../config.php");
 
 if(isset($_POST['SUBMIT'])){
@@ -8,6 +24,7 @@ if(isset($_POST['SUBMIT'])){
 		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password = '$pw'");
 		
 		if (mysqli_num_rows($sql) != 0){
+			
 			$A = "SELECT * FROM login WHERE NIK='$nik';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
@@ -31,6 +48,17 @@ if(isset($_POST['SUBMIT'])){
   					$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
     				? ((date("Y") - $birthDate[2]) - 1)
     				: (date("Y") - $birthDate[2]));
+					
+					$_SESSION['LOGIN'] = 1;
+					$_SESSION['nama'] = $nama;
+					$_SESSION['umur'] = $age;
+					$_SESSION['jabatan'] = $jabatan;
+					$_SESSION['nik'] = $nik;
+					$_SESSION['tel'] = $tel;
+					$_SESSION['email'] = $email;
+					$_SESSION['kantor'] = $kantor;
+					$_SESSION['password'] = $pw;
+					session_start();
 					
 					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && kantor=$kantor && password=$pw");
 				}
