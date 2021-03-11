@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2021 at 07:39 AM
+-- Generation Time: Mar 11, 2021 at 11:34 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -76,6 +76,7 @@ CREATE TABLE `data_perusahaan` (
   `Nama_Perusahaan` varchar(255) NOT NULL,
   `Nama_Admin` char(255) NOT NULL,
   `NIK_Admin` int(16) NOT NULL,
+  `Jenis_Kelamin` char(1) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `No_Telp` int(13) NOT NULL,
   `Password` varchar(255) NOT NULL,
@@ -83,16 +84,18 @@ CREATE TABLE `data_perusahaan` (
   `Absen_datang_min` time NOT NULL,
   `Absen_datang_max` time NOT NULL,
   `Absen_pulang_min` time NOT NULL,
-  `Absen_pulang_max` time NOT NULL
+  `Absen_pulang_max` time NOT NULL,
+  `Submitted_On_Hours` time NOT NULL,
+  `Submitted_On_Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `data_perusahaan`
 --
 
-INSERT INTO `data_perusahaan` (`Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Email`, `No_Telp`, `Password`, `Alamat_Perusahaan`, `Absen_datang_min`, `Absen_datang_max`, `Absen_pulang_min`, `Absen_pulang_max`) VALUES
-('Debug_mode', 'Developer', 999, 'somewhat@gmail.com', 0, 'pw', 'blah', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
-('Officia    ', 'Admin_officia', 12345, 'adminof@gmail.com', 8461891, 'pwpw', 'jl kijang', '08:00:00', '09:00:00', '17:00:00', '00:00:00');
+INSERT INTO `data_perusahaan` (`Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Jenis_Kelamin`, `Email`, `No_Telp`, `Password`, `Alamat_Perusahaan`, `Absen_datang_min`, `Absen_datang_max`, `Absen_pulang_min`, `Absen_pulang_max`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+('Debug_mode', 'Developer', 999, '', 'somewhat@gmail.com', 0, 'pw', 'blah', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '0000-00-00'),
+('Officia    ', 'Admin_officia', 12345, '', 'adminof@gmail.com', 8461891, 'pwpw', 'jl kijang', '08:00:00', '09:00:00', '17:00:00', '00:00:00', '00:00:00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -112,16 +115,19 @@ CREATE TABLE `login` (
   `Tahun_Lahir` int(4) NOT NULL,
   `Jenis_Kelamin` char(1) NOT NULL,
   `No_Telp` int(13) NOT NULL,
-  `Alamat` varchar(255) NOT NULL
+  `Alamat` varchar(255) NOT NULL,
+  `Submitted_On_Hours` time NOT NULL,
+  `Submitted_On_Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`NIK`, `Password`, `Nama`, `Nama_Perusahaan`, `Email`, `Jabatan`, `Tanggal_Lahir`, `Bulan_Lahir`, `Tahun_Lahir`, `Jenis_Kelamin`, `No_Telp`, `Alamat`) VALUES
-(69, 'pw', 'Dev', 'Debug_mode', 'blah@gmail.com', 'developer', 1, 1, 1, '1', 0, 'blu'),
-(12345, 'pw', 'Debug', 'Officia', 'opicia@gmail.com', 'OB', 12, 5, 2004, 'L', 847151810, 'Jl kapung');
+INSERT INTO `login` (`NIK`, `Password`, `Nama`, `Nama_Perusahaan`, `Email`, `Jabatan`, `Tanggal_Lahir`, `Bulan_Lahir`, `Tahun_Lahir`, `Jenis_Kelamin`, `No_Telp`, `Alamat`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+(69, 'pw', 'Dev', 'Debug_mode', 'blah@gmail.com', 'developer', 1, 1, 1, '1', 0, 'blu', '00:00:00', '0000-00-00'),
+(123, '111', 'aryo', 'Officia      ', 'bluh@gmail', 'IT', 12, 1, 2020, 'L', 123144, 'bluh', '16:55:49', '2021-03-11'),
+(12345, 'pw', 'Debug', 'Officia', 'opicia@gmail.com', 'OB', 12, 5, 2004, 'L', 847151810, 'Jl kapung', '00:00:00', '0000-00-00');
 
 -- --------------------------------------------------------
 
