@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2021 at 10:40 AM
+-- Generation Time: Mar 11, 2021 at 07:39 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -43,7 +43,28 @@ CREATE TABLE `absen` (
 --
 
 INSERT INTO `absen` (`NIK`, `Nama`, `Nama_Perusahaan`, `Tanggal`, `Jam_masuk`, `Jam_pulang`, `Terlambat`, `Status`) VALUES
-(12345, 'Debug', 'Officia', '2021-03-10', '09:34:01', '00:00:00', '00:20:41', 'Terlambat');
+(12345, 'Debug', 'Officia', '2021-03-11', '11:09:31', '00:00:00', '00:00:00', 'Terlambat'),
+(12345, 'Debug', 'Officia', '2021-03-11', '11:24:33', '00:00:00', '00:00:00', 'Terlambat'),
+(12345, 'Debug', 'Officia', '2021-03-11', '11:24:36', '00:00:00', '00:00:00', 'Terlambat'),
+(12345, 'Debug', 'Officia', '2021-03-11', '11:44:01', '00:00:00', '00:00:00', 'Terlambat'),
+(12345, 'Debug', 'Officia', '2021-03-11', '11:44:10', '00:00:00', '00:00:00', 'Terlambat');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cuti`
+--
+
+CREATE TABLE `cuti` (
+  `Nama` char(255) NOT NULL,
+  `Nama_Perusahaan` varchar(255) NOT NULL,
+  `Jenis_Cuti` varchar(255) NOT NULL,
+  `Dari` date DEFAULT NULL,
+  `Sampai` date DEFAULT NULL,
+  `Keterangan` longtext DEFAULT NULL,
+  `Submitted_On_Hours` time DEFAULT NULL,
+  `Submitted_On_Date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
