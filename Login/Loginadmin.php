@@ -74,7 +74,7 @@ maxlength="16"><br>
 	</p>
 <p>
 <div class="ca">
-<p>Daftar Sebagai Admin?<a href="Regisadmin.html">Daftar</a></p>
+<p>Punya Perusahaan Sendiri?<a href="Regisadmin.html">Daftar Admin</a></p>
 </div>
 </p>
 	</form>
