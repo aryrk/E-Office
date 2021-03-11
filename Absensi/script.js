@@ -11,11 +11,9 @@ function Allert(){
         title: 'Informasi',
         icon: 'info',
         text: 'Pastikan Meminta Izin Cuti Sebelum Hari H',
-	    showDenyButton: true,
         confirmButtonText: "Ya"
 	}).then((Answer) => {
         if ( Answer.isConfirmed ){
-            location.href="Cuti.html";
         }
     })
 };
