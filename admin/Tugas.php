@@ -9,39 +9,11 @@ $tgl = date("Y-m-d");
 $jam = date("H:i:s");
 
 if(isset($_POST['SET_ABSEN'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					
-					header("Location: Setting-Absen.php?kantor=$kantor && nik=$nik && password=$pw");
-				}
-			}
-		}
-	}
+	header("Location: Setting-Absen.php?kantor=$kantor && nik=$nik && password=$pw");
+}
 if(isset($_POST['PENGUMUMAN'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					
-					header("Location: +Pengumuman.php?kantor=$kantor && nik=$nik && password=$pw");
-				}
-			}
-		}
-	}
+	header("Location: +Pengumuman.php?kantor=$kantor && nik=$nik && password=$pw");
+}
 
 if(isset($_POST['kirim'])){
 	$tujuan = trim($_POST['tujuan']);
@@ -71,6 +43,9 @@ if(isset($_POST['prev'])){
 		
 	header("Location: preview_tugas/preview.php?tujuan=$tujuan && tanggal=$tanggal && isi=$isi");
 	}
+if(isset($_POST['DAFTAR'])){
+	header("Location: ../Login/regis.php?kantor=$kantor && nik=$nik && password=$pw");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -129,7 +104,7 @@ if(isset($_POST['prev'])){
                 <li><button style="background-color: transparent;border: none;" type="submit" name="SET_ABSEN" id="SET_ABSEN" value="set_absen"><a class="absen"><a class="mobile">Setting Absen</a><i class="logo fas fa-calendar-check absenl"></i></a></button></li>
 				<li><a class="cuti"><a class="mobile">Izin Cuti</a><i class="logo fas fa-calendar-minus cutil"></i></a></li>
                 <li><button style="background-color: transparent;border: none;" type="submit" name="PENGUMUMAN" id="PENGUMUMAN" value="pengumuman"><a class="pengumuman"><a class="mobile">Pengumuman</a><i class="logo fas fa-bullhorn pengumumanl"></i> </a></button></li>
-				<li><a href="" class="karyawan"><a class="mobile">Karyawan</a><i class="logo fas fa-id-card karyawanl"></i></a></li>
+				<li><button style="background-color: transparent;border: none;" type="submit" name="DAFTAR" id="DAFTAR" value="daftar"><a class="karyawan"><a class="karyawan"><a class="mobile">+Karyawan</a><i class="logo fas fa-id-card karyawanl"></i></a></button></li>
 				<li><a href="" class="list-karyawan"><a class="mobile">List Karyawan</a><i class="logo fas fa-tasks listl"></i></a></li>
 				<li><a href="" class="tugas"><a class="mobile">Tugas</a><i class="logo fas fa-briefcase tugasl"></i></a></li>
             </ul>
