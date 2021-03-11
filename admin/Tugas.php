@@ -67,7 +67,7 @@ if(isset($_POST['DAFTAR'])){
 <!--Used Navigation-->
 <nav id="navigation">
 		<div class="logo1">
-	<h3>Officia Administrator</h3>
+	<h3><?php echo $_GET['kantor']; ?> Administrator</h3>
 </nav>
 	</div>
 <form id="form1" name="form1" method="post" action="">
