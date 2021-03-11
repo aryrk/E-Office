@@ -36,7 +36,7 @@ if(isset($_POST['SUBMIT'])){
 				$status = "Terlambat";
 			}
 			
-			$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$jam','00:00:00','$kalkulasi','$status')");
+			$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Nama_Perusahaan, Tanggal, Jam_masuk, Terlambat, Status) VALUES ('$nik','$nama','$kantor','$tgl','$jam','$kalkulasi','$status')");
 		}
 	
 		else if ($radioVal == "JamPulang"){
@@ -50,10 +50,8 @@ if(isset($_POST['SUBMIT'])){
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
-					$cek = $row['NIK'];
-					if (empty($row['NIK'])) {
-						
-						$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','00:00:00','$jam','00:00:00','Tidak absen masuk')");
+					if (empty($A)){
+						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Nama_Perusahaan, Tanggal, Jam_pulang, Status) VALUES ('$nik','$nama','$kantor','$tgl','$jam','Tidak Absen Masuk')");
 					}
 					else{
 						$Jam_masuk = $row['Jam_masuk'];
@@ -61,9 +59,9 @@ if(isset($_POST['SUBMIT'])){
 						$Status = $row['Status'];
 						
 						$sql = mysqli_query($konek, "DELETE FROM absen WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
+							
 						$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$Jam_masuk','$jam','$terlambat','$Status')");
 					}
-					
 				}
 			}
 		}
@@ -146,7 +144,7 @@ if(isset($_POST['DATAABSEN'])){
 					
 			$row4 = mysqli_fetch_assoc(mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl_before3';"));
 					
-					$nama = $row1['Nama'];
+					$nama = $row['Nama'];
 					$now_masuk = $row1['Jam_masuk'];
 					$now_pulang = $row1['Jam_pulang'];
 					$now_terlambat = $row1['Terlambat'];
@@ -168,6 +166,24 @@ if(isset($_POST['DATAABSEN'])){
 					$before3_stat = $row4['Status'];
 					
 					header("Location: DataAbsen.php?nik=$nik && password=$pass && kantor=$kantor && nama=$nama && masuk=$now_masuk && pulang=$now_pulang && telat=$now_terlambat && status=$now_stat && masuk1=$before1_masuk && pulang1=$before1_pulang && telat1=$before1_terlambat && status1=$before1_stat && masuk2=$before2_masuk && pulang2=$before2_pulang && telat2=$before2_terlambat && status2=$before2_stat && masuk3=$before3_masuk && pulang3=$before3_pulang && telat3=$before3_terlambat && status3=$before3_stat");
+				}
+			}
+		}
+	}
+
+if(isset($_POST['CUTI'])){
+		
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass';";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+
+					header("Location: Cuti.php?nik=$nik && password=$pass && kantor=$kantor");
 				}
 			}
 		}
@@ -199,7 +215,7 @@ if(isset($_POST['DATAABSEN'])){
                 <ul>
                     <li><button style="background-color: transparent;border: none;" type="submit" name="HOME" id="HOME" value="home"><a>DASHBOARD</a></li> 
                     <li><a href=""><u style="color: srgb(190, 190, 190); text-shadow: 0px 0px 20px white;">ABSEN</u></a></li>
-                    <li><a style="cursor: pointer;" onclick="Allert()">CUTI</a></li>
+                    <li><button style="background-color: transparent;border: none;" type="submit" name="CUTI" id="CUTI" value="cuti"><a>CUTI</a></button></li>
                     <li><button style="background-color: transparent;border: none;" type="submit" name="DATAABSEN" id="DATAABSEN" value="absen"><a>DATA ABSEN</a></li>
                     <li><button style="background-color: transparent;border: none;" type="submit" name="PROFIL" id="PROFIL" value="profil"><a>PROFILE</a></li>
                 </ul>
