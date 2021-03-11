@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['LOGIN'])){
+	header("Location: ../Login/login1.php");
+	exit ();
+}
+
 require_once("../config.php");
 date_default_timezone_set('Asia/Jakarta');
 $nik = $_GET['nik'];
@@ -36,7 +42,7 @@ if(isset($_POST['SUBMIT'])){
 				$status = "Terlambat";
 			}
 			
-			$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Nama_Perusahaan, Tanggal, Jam_masuk, Terlambat, Status) VALUES ('$nik','$nama','$kantor','$tgl','$jam','$kalkulasi','$status')");
+			$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Nama_Perusahaan, Tanggal, Jam_masuk, Jam_pulang, Terlambat, Status) VALUES ('$nik','$nama','$kantor','$tgl','$jam', '00:00:00','$kalkulasi','$status')");
 		}
 	
 		else if ($radioVal == "JamPulang"){
@@ -51,7 +57,7 @@ if(isset($_POST['SUBMIT'])){
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					if (empty($A)){
-						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Nama_Perusahaan, Tanggal, Jam_pulang, Status) VALUES ('$nik','$nama','$kantor','$tgl','$jam','Tidak Absen Masuk')");
+						$sql = mysqli_query($konek, "INSERT INTO absen (NIK, Nama, Nama_Perusahaan, Tanggal, Jam_masuk, Jam_pulang, Terlambat, Status) VALUES ('$nik','$nama','$kantor','$tgl', '00:00:00','$jam', '00:00:00','Tidak Absen Masuk')");
 					}
 					else{
 						$Jam_masuk = $row['Jam_masuk'];
