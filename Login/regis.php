@@ -31,7 +31,7 @@ if(isset($_POST['SUBMIT'])){
 		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik_reg'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			header("Location: ../index.html");
+			header("Location: ../etc/error/index.php?condition=7 && kantor=$kantor && nik=$nik && password=$pw");
 		}
 		else {
 			$sql = mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','$jenis','$no','$alamat','$jam','$tgl')");
