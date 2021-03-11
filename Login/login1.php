@@ -63,6 +63,15 @@ if(isset($_POST['SUBMIT'])){
 				}
 			}
 		}
+	else if (mysqli_num_rows($sql) == 0){
+		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
+			if (mysqli_num_rows($sql) != 0){
+				header("Location: ../etc/error/index.php?condition=2");
+			}
+			else if (mysqli_num_rows($sql) == 0){
+				header("Location: ../etc/error/index.php?condition=3");
+			}
+	}
 	}
 ?>
 
@@ -115,7 +124,7 @@ if(isset($_POST['SUBMIT'])){
 	</p>
 <p>
 <div class="ca">
-<p>Punya Perusahaan Sendiri?<a href="Regisadmin.html">Daftar Admin</a></p>
+<p>Punya Perusahaan Sendiri?<a href="Regisadmin.php">Daftar Admin</a></p>
 </div>
 </p>
 	</form>
