@@ -20,6 +20,15 @@ if(isset($_POST['SUBMIT'])){
 				}
 			}
 		}
+		else if (mysqli_num_rows($sql) == 0){
+		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
+			if (mysqli_num_rows($sql) != 0){
+				header("Location: ../etc/error/index.php?condition=4");
+			}
+			else if (mysqli_num_rows($sql) == 0){
+				header("Location: ../etc/error/index.php?condition=5");
+			}
+	}
 	}
 ?>
 <!DOCTYPE html>
