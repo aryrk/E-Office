@@ -13,7 +13,7 @@ function Allert(){
 	denyButtonText: "Batal"
 	}).then((Answer) =>{
 		if (Answer.isConfirmed){
-			location.href="../../index.html";
+			location.href="../../unused.php?value=logout";
 		}
 	})
 };
