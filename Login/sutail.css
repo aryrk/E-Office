@@ -85,6 +85,11 @@ display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
 }
+.ca {
+padding 5px;
+background-color: #f5f5f5;
+text-align: center;
+}
 /* LARGE */
 @media(min-width:700px){
 	.wraper{
