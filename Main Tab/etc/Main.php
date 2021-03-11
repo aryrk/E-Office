@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['LOGIN'])){
+	header("Location: ../../Login/login1.php");
+	exit ();
+}
+
+
 require_once("../../config.php");
 $nik = $_GET['nik'];
 $kantor = $_GET['kantor'];
