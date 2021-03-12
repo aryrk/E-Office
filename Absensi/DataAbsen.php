@@ -15,6 +15,10 @@ $tgl_before1 = date("Y-m-d", strtotime(' -1 day'));
 $tgl_before2 = date("Y-m-d", strtotime(' -2 day'));
 $tgl_before3 = date("Y-m-d", strtotime(' -3 day'));
 
+$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
+$row_nama = mysqli_fetch_assoc($sql);
+$name = $row_nama['Nama'];
+
 if(isset($_POST['PROFIL'])){
 		
 		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
@@ -161,45 +165,21 @@ if(isset($_POST['CUTI'])){
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td><?php echo $nik ?></td>
-                        <td><?php echo $_GET['nama']; ?></td>
-                        <td><?php echo $tgl_now ?></td>
-                        <td><?php echo $_GET['masuk']; ?></td>
-                        <td><?php echo $_GET['pulang']; ?></td>
-                        <td><?php echo date('H:i',strtotime($_GET['telat'])); ?></td>
-                        <td class="sa"><?php echo $_GET['status'] ?></td>
-                    </tr>
-
-                    <tr>
-                        <td><?php echo $nik ?></td>
-                        <td><?php echo $_GET['nama']; ?></td>
-                        <td><?php echo $tgl_before1 ?></td>
-                        <td><?php echo $_GET['masuk1']; ?></td>
-                        <td><?php echo $_GET['pulang1']; ?></td>
-                        <td><?php echo date('H:i',strtotime($_GET['telat1'])); ?></td>
-                        <td class="sa"><?php echo $_GET['status1'] ?></td>
-                    </tr>
-
-                    <tr>
-                        <td><?php echo $nik ?></td>
-                        <td><?php echo $_GET['nama']; ?></td>
-                        <td><?php echo $tgl_before2 ?></td>
-                        <td><?php echo $_GET['masuk2']; ?></td>
-                        <td><?php echo $_GET['pulang2']; ?></td>
-                        <td><?php echo date('H:i',strtotime($_GET['telat2'])); ?></td>
-                        <td class="ta"><?php echo $_GET['status2'] ?></td>
-                    </tr>
-                    
-                    <tr>
-                        <td><?php echo $nik ?></td>
-                        <td><?php echo $_GET['nama']; ?></td>
-                        <td><?php echo $tgl_before3 ?></td>
-                        <td><?php echo $_GET['masuk3']; ?></td>
-                        <td><?php echo $_GET['pulang3']; ?></td>
-                        <td><?php echo date('H:i',strtotime($_GET['telat3'])); ?></td>
-                        <td class="ba"><?php echo $_GET['status3'] ?></td>
-                    </tr>
+<?php
+	$sql = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor';";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+			echo "<tr><td>" . $nik . "</td><td>" . $name . "</td><td>" . $row['Tanggal'] . "</td><td>" . $row['Jam_masuk'] . "</td><td>" . $row['Jam_pulang'] . "</td><td>" . $row['Terlambat'] . "</td><td>" . $row['Status'] . "</td></tr>";
+		}
+			}
+		}
+?>
                 </tbody>
             </table>
         </div>
