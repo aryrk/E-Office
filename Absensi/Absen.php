@@ -11,6 +11,7 @@ $nik = $_GET['nik'];
 $kantor = $_GET['kantor'];
 $pass = $_GET['password'];
 
+//Mendapatkan nama dari database
 $A_nama = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_perusahaan='$kantor';";
 $result_nama = mysqli_query($konek, $A_nama);
 				
@@ -25,7 +26,7 @@ if(isset($_POST['SUBMIT'])){
     $tgl = date("Y-m-d");
 
 		if($radioVal == "JamMasuk"){
-		
+//Mendapat value jam absen minimum dan maximum
 			$A_check = "SELECT * FROM data_perusahaan WHERE Nama_Perusahaan='$kantor';";
 			$result_check = mysqli_query($konek, $A_check);
 				
@@ -36,13 +37,21 @@ if(isset($_POST['SUBMIT'])){
 			$kalkulasi = strtotime($jam) - strtotime($jamMax);
 
 			if (strtotime($jam) <= strtotime($jamMax) && strtotime($jam) >= strtotime($jamMin)){
-				$status = "Sudah Absen";
+				$status = "Sudah Absen Masuk";
 			}
 			else if (strtotime($jam) > strtotime($jamMax)){
-				$status = "Terlambat";
+				$status = "Terlambat Absen";
 			}
-			
-			$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$jam', 'NULL','$kalkulasi','$status')");
+//Melakukan cek database agar user hanya dapat absen 1x dalam sehari
+		$cek_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
+			if (mysqli_num_rows($cek_awal) == 0){
+				$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$jam','S','00:00:00','B','$kalkulasi','$status')");
+//Melakukan cek apakah absen sukses dikrim
+		$cek_masuk = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
+			if (mysqli_num_rows($cek_masuk) == 0){
+				header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass");
+			}
+			}
 		}
 	
 		else if ($radioVal == "JamPulang"){
@@ -59,15 +68,37 @@ if(isset($_POST['SUBMIT'])){
 						$Jam_masuk = $row['Jam_masuk'];
 						$terlambat = $row['Terlambat'];
 						$Status = $row['Status'];
-						
+						if ($Status == "Sudah Absen Masuk"){
+							$Status = "Sudah Absen";
+						}
+//Melakukan cek apakah user sudah melakukan absen datang
+					$cek_pulang_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
+						if (mysqli_num_rows($cek_pulang_awal) == 0){
+//Delete absen masuk agar tidak terjadi duplikasi
 						$sql = mysqli_query($konek, "DELETE FROM absen WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
 							
-						$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$Jam_masuk','$jam','$terlambat','$Status')");
+						$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$Jam_masuk','S','$jam','S','$terlambat','$Status')");
+//Melakukan cek apakah absen terkirim
+					$cek_pulang = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
+						if (mysqli_num_rows($cek_pulang) == 0){
+							header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass");
+						}
+						}
 				}
 			}
 		}
+//Jika user belum mekakukan absen datang
 		else if (mysqli_num_rows($sql) == 0){
-			$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl', 'NULL','$jam', 'NULL','Tidak Absen Masuk')");
+			$cek_pulang_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
+				if (mysqli_num_rows($cek_pulang_awal) == 0){
+					
+			$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl', '00:00:00','B','$jam','S','00:00:00','Tidak Absen Masuk')");
+//Cek apakah absen terkirim
+			$cek_pulang = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
+				if (mysqli_num_rows($cek_pulang) == 0){
+					header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass");
+				}
+			}
 		}
 	}
 }
