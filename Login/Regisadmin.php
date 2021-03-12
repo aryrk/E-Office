@@ -27,10 +27,10 @@ if(isset($_POST['SUBMIT'])){
 		if (mysqli_num_rows($sql) != 0){
 			$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
 				if (mysqli_num_rows($sql) != 0){
-					header("Location: ../etc/error/index.php?condition=6");
+					header("Location: ../etc/error/index.php?condition=6 && nik=$nik");
 				}
 				else {
-					header("Location: ../etc/error/index.php?condition=8");
+					header("Location: ../etc/error/index.php?condition=8 && nik=$kantor");
 				}
 		}
 		else {
