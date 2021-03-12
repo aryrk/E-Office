@@ -22,10 +22,16 @@ if(isset($_POST['SUBMIT'])){
 		$jenis = "P";
 	}
 		
-		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' OR Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			header("Location: ../etc/error/index.php?condition=6");
+			$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
+				if (mysqli_num_rows($sql) != 0){
+					header("Location: ../etc/error/index.php?condition=6");
+				}
+				else {
+					header("Location: ../etc/error/index.php?condition=8");
+				}
 		}
 		else {
 			$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
