@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2021 at 11:34 AM
+-- Generation Time: Mar 12, 2021 at 08:06 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -33,21 +33,12 @@ CREATE TABLE `absen` (
   `Nama_Perusahaan` varchar(255) NOT NULL,
   `Tanggal` date NOT NULL,
   `Jam_masuk` time NOT NULL,
+  `stat_1` char(1) NOT NULL,
   `Jam_pulang` time NOT NULL,
+  `stat_2` char(1) NOT NULL,
   `Terlambat` time NOT NULL,
   `Status` char(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `absen`
---
-
-INSERT INTO `absen` (`NIK`, `Nama`, `Nama_Perusahaan`, `Tanggal`, `Jam_masuk`, `Jam_pulang`, `Terlambat`, `Status`) VALUES
-(12345, 'Debug', 'Officia', '2021-03-11', '11:09:31', '00:00:00', '00:00:00', 'Terlambat'),
-(12345, 'Debug', 'Officia', '2021-03-11', '11:24:33', '00:00:00', '00:00:00', 'Terlambat'),
-(12345, 'Debug', 'Officia', '2021-03-11', '11:24:36', '00:00:00', '00:00:00', 'Terlambat'),
-(12345, 'Debug', 'Officia', '2021-03-11', '11:44:01', '00:00:00', '00:00:00', 'Terlambat'),
-(12345, 'Debug', 'Officia', '2021-03-11', '11:44:10', '00:00:00', '00:00:00', 'Terlambat');
 
 -- --------------------------------------------------------
 
@@ -126,7 +117,6 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`NIK`, `Password`, `Nama`, `Nama_Perusahaan`, `Email`, `Jabatan`, `Tanggal_Lahir`, `Bulan_Lahir`, `Tahun_Lahir`, `Jenis_Kelamin`, `No_Telp`, `Alamat`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
 (69, 'pw', 'Dev', 'Debug_mode', 'blah@gmail.com', 'developer', 1, 1, 1, '1', 0, 'blu', '00:00:00', '0000-00-00'),
-(123, '111', 'aryo', 'Officia      ', 'bluh@gmail', 'IT', 12, 1, 2020, 'L', 123144, 'bluh', '16:55:49', '2021-03-11'),
 (12345, 'pw', 'Debug', 'Officia', 'opicia@gmail.com', 'OB', 12, 5, 2004, 'L', 847151810, 'Jl kapung', '00:00:00', '0000-00-00');
 
 -- --------------------------------------------------------
