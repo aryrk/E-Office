@@ -10,7 +10,7 @@ $condition = $_GET['condition'];
 //kondisi 6 = registrasi akun admin menggunakan NIK yang sudah terdaftar
 //kondisi 7 = registrasi karyawan menggunakan NIK yang sudah terdaftar
 //kondisi 8 = registrasi akun admin menggunakan nama perusahaan yang sudah terdaftar
-//kondisi 9 = error form absen tidak terkirim
+//kondisi 9-12 = error database
 
 $Masuk_awal = $_GET['masuk1'];
 $Masuk_akhir = $_GET['masuk2'];
@@ -42,14 +42,17 @@ if(isset($_POST['BACK'])){
 	else if ($condition == 4 || $condition == 5){
 	header("Location: ../../Login/Loginadmin.php");
 	}
-	else if ($condition == 6){
+	else if ($condition == 6 || $condition == 10){
 	header("Location: ../../Login/Regisadmin.php");
 	}
-	else if ($condition == 7 || $condition == 8){
+	else if ($condition == 7 || $condition == 8 || $condition == 11){
 	header("Location: ../../Login/regis.php?kantor=$kantor && nik=$nik && password=$pw");
 	}
 	else if ($condition == 9){
 	header("Location: ../../Absensi/Absen.php?kantor=$kantor && nik=$nik && password=$pw && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
+	}
+	else if ($condition == 12){
+	header("Location: ../../admin/Tugas.php?kantor=$kantor && nik=$nik && password=$pw");
 	}
 }
 ?>
@@ -338,7 +341,7 @@ if ($condition == 1){
 		  </form>';
 }
 		  
-else if ($condition == 2){
+else if ($condition == 2 || $condition == 4){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
@@ -354,17 +357,6 @@ else if ($condition == 3){
         '<h1>404</h1>
         <h2>ERROR!</h2>
         <p>Tampaknya NIK[',$nik,'] yang kamu masukan tidak terdaftar, harap cek kembali value yang anda masukan atau daftarkan akun pada administrator.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
-        </p>
-		 <form id="form1" name="form1" method="post" action="">
-		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
-        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
-		  </form>';
-}
-else if ($condition == 4){
-	echo
-        '<h1>404</h1>
-        <h2>ERROR!</h2>
-        <p>Tampaknya password yang kamu masukan salah, harap cek kembali value yang anda masukan.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -408,18 +400,18 @@ else if ($condition == 8){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya perusahaan[',$nik,'] yang kamu masukan sudah terdaftar, disarankan untuk menggunakan singkatan atau kombinasi huruf yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya nama perusahaan[',$nik,'] yang kamu masukan sudah terdaftar, disarankan untuk menggunakan singkatan atau kombinasi huruf yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
         <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
 		  </form>';
 }
-else if ($condition == 9){
+else if ($condition == 9 || $condition == 10 || $condition == 11 || $condition == 12){
 	echo
         '<h1>404</h1>
-        <h2>ERROR!</h2>
-        <p>Tampaknya server sedang bermasalah, harap coba lain kali.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        <h2>SERVER ERROR!</h2>
+        <p>Tampaknya server sedang bermasalah, harap coba lain kali.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
