@@ -19,6 +19,7 @@ $Keluar_akhir = $_GET['keluar2'];
 
 $kantor = $_GET['kantor'];
 $nik = $_GET['nik'];
+$nik_reg = $_GET['nikreg'];
 $pw = $_GET['password'];
 if (!isset($condition)){
 	$condition = 1;
@@ -352,7 +353,7 @@ else if ($condition == 3){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK yang kamu masukan tidak terdaftar, harap cek kembali value yang anda masukan atau daftarkan pada administrator.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK[',$nik,'] yang kamu masukan tidak terdaftar, harap cek kembali value yang anda masukan atau daftarkan akun pada administrator.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -374,7 +375,7 @@ else if ($condition == 5){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK yang kamu masukan tidak terdaftar, harap cek kembali value yang anda masukan atau daftarkan akun administrasi anda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK[',$nik,'] yang kamu masukan tidak terdaftar, harap cek kembali value yang anda masukan atau daftarkan akun administrasi anda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -385,7 +386,7 @@ else if ($condition == 6){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK yang kamu masukan sudah terdaftar, kamu tidak bisa mendaftarkan NIK yang sama pada akun yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK[',$nik,'] yang kamu masukan sudah terdaftar, kamu tidak bisa mendaftarkan NIK yang sama pada akun yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -396,7 +397,7 @@ else if ($condition == 7){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK yang kamu masukan sudah terdaftar, kamu tidak bisa mendaftarkan NIK yang sama pada akun yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK[',$nik_reg,'] yang kamu masukan sudah terdaftar, kamu tidak bisa mendaftarkan NIK yang sama pada akun yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -407,7 +408,7 @@ else if ($condition == 8){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya perusahaan yang kamu masukan sudah terdaftar, disarankan untuk menggunakan singkatan atau kombinasi huruf yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya perusahaan[',$nik,'] yang kamu masukan sudah terdaftar, disarankan untuk menggunakan singkatan atau kombinasi huruf yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
