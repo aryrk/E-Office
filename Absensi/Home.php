@@ -66,74 +66,12 @@ if(isset($_POST['ABSEN'])){
 	}
 
 if(isset($_POST['DATAABSEN'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					
-					$tgl_now = date("Y-m-d");
-					$tgl_before1 = date("Y-m-d", strtotime(' -1 day'));
-					$tgl_before2 = date("Y-m-d", strtotime(' -2 day'));
-					$tgl_before3 = date("Y-m-d", strtotime(' -3 day'));
-					
-			$row1 = mysqli_fetch_assoc(mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl_now';"));
-					
-			$row2 = mysqli_fetch_assoc(mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl_before1';"));
-					
-			$row3 = mysqli_fetch_assoc(mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl_before2';"));
-					
-			$row4 = mysqli_fetch_assoc(mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl_before3';"));
-					
-					$nama = $row['Nama'];
-					$now_masuk = $row1['Jam_masuk'];
-					$now_pulang = $row1['Jam_pulang'];
-					$now_terlambat = $row1['Terlambat'];
-					$now_stat = $row1['Status'];
-					
-					$before1_masuk = $row2['Jam_masuk'];
-					$before1_pulang = $row2['Jam_pulang'];
-					$before1_terlambat = $row2['Terlambat'];
-					$before1_stat = $row2['Status'];
-					
-					$before2_masuk = $row3['Jam_masuk'];
-					$before2_pulang = $row3['Jam_pulang'];
-					$before2_terlambat = $row3['Terlambat'];
-					$before2_stat = $row3['Status'];
-					
-					$before3_masuk = $row4['Jam_masuk'];
-					$before3_pulang = $row4['Jam_pulang'];
-					$before3_terlambat = $row4['Terlambat'];
-					$before3_stat = $row4['Status'];
-					
-					header("Location: DataAbsen.php?nik=$nik && password=$pass && kantor=$kantor && nama=$nama && masuk=$now_masuk && pulang=$now_pulang && telat=$now_terlambat && status=$now_stat && masuk1=$before1_masuk && pulang1=$before1_pulang && telat1=$before1_terlambat && status1=$before1_stat && masuk2=$before2_masuk && pulang2=$before2_pulang && telat2=$before2_terlambat && status2=$before2_stat && masuk3=$before3_masuk && pulang3=$before3_pulang && telat3=$before3_terlambat && status3=$before3_stat");
-				}
-			}
-		}
-	}
+	header("Location: DataAbsen.php?nik=$nik && password=$pass && kantor=$kantor");
+}
 
 if(isset($_POST['CUTI'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-
 					header("Location: Cuti.php?nik=$nik && password=$pass && kantor=$kantor");
-				}
-			}
-		}
-	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
