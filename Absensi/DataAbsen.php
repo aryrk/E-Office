@@ -179,6 +179,7 @@ if(isset($_POST['CUTI'])){
 		}
 			}
 		}
+					mysql_close();
 ?>
                 </tbody>
             </table>
