@@ -11,6 +11,11 @@ $nik = $_GET['nik'];
 $kantor = $_GET['kantor'];
 $pass = $_GET['password'];
 
+$Masuk_awal = $_GET['masuk1'];
+$Masuk_akhir = $_GET['masuk2'];
+$Keluar_awal = $_GET['keluar1'];
+$Keluar_akhir = $_GET['keluar2'];
+
 //Mendapatkan nama dari database
 $A_nama = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_perusahaan='$kantor';";
 $result_nama = mysqli_query($konek, $A_nama);
@@ -49,7 +54,7 @@ if(isset($_POST['SUBMIT'])){
 //Melakukan cek apakah absen sukses dikrim
 		$cek_masuk = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
 			if (mysqli_num_rows($cek_masuk) == 0){
-				header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass");
+				header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
 			}
 			}
 		}
@@ -81,7 +86,7 @@ if(isset($_POST['SUBMIT'])){
 //Melakukan cek apakah absen terkirim
 					$cek_pulang = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
 						if (mysqli_num_rows($cek_pulang) == 0){
-							header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass");
+							header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
 						}
 						}
 				}
@@ -96,7 +101,7 @@ if(isset($_POST['SUBMIT'])){
 //Cek apakah absen terkirim
 			$cek_pulang = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
 				if (mysqli_num_rows($cek_pulang) == 0){
-					header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass");
+					header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
 				}
 			}
 		}
