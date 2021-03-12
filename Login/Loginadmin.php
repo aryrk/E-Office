@@ -6,7 +6,7 @@ if(isset($_POST['SUBMIT'])){
 		$pw = trim($_POST['PW']);
 		
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw'");
-		
+
 		if (mysqli_num_rows($sql) != 0){
 			$A = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw';";
 			$result = mysqli_query($konek, $A);
@@ -20,13 +20,14 @@ if(isset($_POST['SUBMIT'])){
 				}
 			}
 		}
+//Jika akun tidak ditemukan, akan dialihkan ke tampilan error
 		else if (mysqli_num_rows($sql) == 0){
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
 			if (mysqli_num_rows($sql) != 0){
 				header("Location: ../etc/error/index.php?condition=4");
 			}
 			else if (mysqli_num_rows($sql) == 0){
-				header("Location: ../etc/error/index.php?condition=5");
+				header("Location: ../etc/error/index.php?condition=5 && nik=$nik");
 			}
 	}
 	}
