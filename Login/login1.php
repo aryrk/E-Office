@@ -1,4 +1,5 @@
 <?php
+//Set session agar user tidak perlu login berkali kali
 session_start();
 if (isset($_SESSION['LOGIN'])){
 	
@@ -48,7 +49,7 @@ if(isset($_POST['SUBMIT'])){
   					$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
     				? ((date("Y") - $birthDate[2]) - 1)
     				: (date("Y") - $birthDate[2]));
-					
+//Jika akun ditemukan, data login akan tersimpan pada browser lewat session
 					$_SESSION['LOGIN'] = 1;
 					$_SESSION['nama'] = $nama;
 					$_SESSION['umur'] = $age;
@@ -63,13 +64,14 @@ if(isset($_POST['SUBMIT'])){
 				}
 			}
 		}
+//Web akan dialihkan ke tampilan error jika NIK atau Password salah
 	else if (mysqli_num_rows($sql) == 0){
 		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
 			if (mysqli_num_rows($sql) != 0){
 				header("Location: ../etc/error/index.php?condition=2");
 			}
 			else if (mysqli_num_rows($sql) == 0){
-				header("Location: ../etc/error/index.php?condition=3");
+				header("Location: ../etc/error/index.php?condition=3 && nik=$nik");
 			}
 	}
 	}
