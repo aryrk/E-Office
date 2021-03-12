@@ -1,3 +1,8 @@
+var $target=$('[alt*="000webhost"]');
+if($target.length>0){
+    var $div=$target.parent().closest('div').remove();
+}
+
 const menuToggle = document.querySelector('.menu-toggle input');
 const nav = document.querySelector('nav ul');
 
