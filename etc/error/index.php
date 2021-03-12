@@ -10,6 +10,7 @@ $condition = $_GET['condition'];
 //kondisi 6 = registrasi akun admin menggunakan NIK yang sudah terdaftar
 //kondisi 7 = registrasi karyawan menggunakan NIK yang sudah terdaftar
 //kondisi 8 = registrasi akun admin menggunakan nama perusahaan yang sudah terdaftar
+//kondisi 9 = error form absen tidak terkirim
 
 $kantor = $_GET['kantor'];
 $nik = $_GET['nik'];
@@ -40,6 +41,9 @@ if(isset($_POST['BACK'])){
 	}
 	else if ($condition == 7 || $condition == 8){
 	header("Location: ../../Login/regis.php?kantor=$kantor && nik=$nik && password=$pw");
+	}
+	else if ($condition == 9){
+	header("Location: ../../Absensi/Absen.php?kantor=$kantor && nik=$nik && password=$pw");
 	}
 }
 ?>
@@ -399,6 +403,17 @@ else if ($condition == 8){
         '<h1>404</h1>
         <h2>ERROR!</h2>
         <p>Tampaknya perusahaan yang kamu masukan sudah terdaftar, disarankan untuk menggunakan singkatan atau kombinasi huruf yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        </p>
+		 <form id="form1" name="form1" method="post" action="">
+		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
+        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
+		  </form>';
+}
+else if ($condition == 9){
+	echo
+        '<h1>404</h1>
+        <h2>ERROR!</h2>
+        <p>Tampaknya server sedang bermasalah, harap coba lain kali.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
