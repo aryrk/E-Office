@@ -12,6 +12,11 @@ $condition = $_GET['condition'];
 //kondisi 8 = registrasi akun admin menggunakan nama perusahaan yang sudah terdaftar
 //kondisi 9 = error form absen tidak terkirim
 
+$Masuk_awal = $_GET['masuk1'];
+$Masuk_akhir = $_GET['masuk2'];
+$Keluar_awal = $_GET['keluar1'];
+$Keluar_akhir = $_GET['keluar2'];
+
 $kantor = $_GET['kantor'];
 $nik = $_GET['nik'];
 $pw = $_GET['password'];
@@ -43,7 +48,7 @@ if(isset($_POST['BACK'])){
 	header("Location: ../../Login/regis.php?kantor=$kantor && nik=$nik && password=$pw");
 	}
 	else if ($condition == 9){
-	header("Location: ../../Absensi/Absen.php?kantor=$kantor && nik=$nik && password=$pw");
+	header("Location: ../../Absensi/Absen.php?kantor=$kantor && nik=$nik && password=$pw && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
 	}
 }
 ?>
