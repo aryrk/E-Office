@@ -33,6 +33,12 @@ if(isset($_POST['kirim'])){
 					
 					$sql = mysqli_query($konek, "INSERT INTO tugas VALUES ('$kantor','$nama','$nik','$tanggal','$isi','$tujuan','$jam','$tgl')");
 				}
+//Mengecek apakah tugas berhasil terkirim
+	$sql = mysqli_query($konek, "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND NIK_Admin='$nik' AND Tanggal='$tanggal' AND Isi_Tugas='$isi' AND Tujuan='$tujuan'");
+		if (mysqli_num_rows($sql) == 0){
+			header("Location: ../etc/error/index.php?condition=12 && kantor=$kantor && nik=$nik && password=$pw");
+		}
+				
 			}
 		}
 	}
