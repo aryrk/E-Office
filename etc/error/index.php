@@ -1,6 +1,15 @@
 <?php
+//Hide error//
 error_reporting(E_ERROR | E_PARSE);
 $condition = $_GET['condition'];
+//kondisi 1 = user memasukan link yang salah
+//kondisi 2 = password karyawan yang diinput salah
+//kondisi 3 = login NIK karyawan tidak terdaftar
+//kondisi 4 = password admin yang diinput salah
+//kondisi 5 = login NIK admin tidak terdaftar
+//kondisi 6 = registrasi akun admin menggunakan NIK yang sudah terdaftar
+//kondisi 7 = registrasi karyawan menggunakan NIK yang sudah terdaftar
+//kondisi 8 = registrasi akun admin menggunakan nama perusahaan yang sudah terdaftar
 
 $kantor = $_GET['kantor'];
 $nik = $_GET['nik'];
@@ -19,17 +28,18 @@ if(isset($_POST['HELP'])){
 	header("Location: mailto: officiacentre@gmail.com");
 }
 if(isset($_POST['BACK'])){
+//Mendeteksi dari tampilan mana user mengalami error
 	if ($condition == 2 || $condition == 3){
-	header("Location: ../../login/login1.php");
+	header("Location: ../../Login/login1.php");
 	}
 	else if ($condition == 4 || $condition == 5){
-	header("Location: ../../login/Loginadmin.php");
+	header("Location: ../../Login/Loginadmin.php");
 	}
 	else if ($condition == 6){
-	header("Location: ../../login/Regisadmin.php");
+	header("Location: ../../Login/Regisadmin.php");
 	}
-	else if ($condition == 7){
-	header("Location: ../../login/regis.php?kantor=$kantor && nik=$nik && password=$pw");
+	else if ($condition == 7 || $condition == 8){
+	header("Location: ../../Login/regis.php?kantor=$kantor && nik=$nik && password=$pw");
 	}
 }
 ?>
@@ -43,7 +53,7 @@ if(isset($_POST['BACK'])){
 <link rel = "icon" href ="../../Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
 
 </head>
-<body>
+<body style="z-index: 1000000000;">
 <!-- partial:index.partial.html -->
 <main>
   <div class="container">
@@ -306,6 +316,7 @@ if(isset($_POST['BACK'])){
       <div class="col-md-6 align-self-center">
 		  
 <?php
+//Pesan error yang disesuaikan dengan kondisi
 if ($condition == 1){
 	echo
         '<h1>404</h1>
@@ -321,7 +332,7 @@ else if ($condition == 2){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya password yang kamu masukan salah, tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya password yang kamu masukan salah, harap cek kembali value yang anda masukan.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -332,7 +343,7 @@ else if ($condition == 3){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK yang kamu masukan tidak terdaftar, tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK yang kamu masukan tidak terdaftar, harap cek kembali value yang anda masukan atau daftarkan pada administrator.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -343,7 +354,7 @@ else if ($condition == 4){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya password yang kamu masukan salah, tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya password yang kamu masukan salah, harap cek kembali value yang anda masukan.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -354,7 +365,7 @@ else if ($condition == 5){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK yang kamu masukan tidak terdaftar, tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK yang kamu masukan tidak terdaftar, harap cek kembali value yang anda masukan atau daftarkan akun administrasi anda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -365,7 +376,7 @@ else if ($condition == 6){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK yang kamu masukan sudah terdaftar, tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK yang kamu masukan sudah terdaftar, kamu tidak bisa mendaftarkan NIK yang sama pada akun yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -376,7 +387,18 @@ else if ($condition == 7){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK yang kamu masukan sudah terdaftar, tekan tombol <u>BACK</u> untuk kembali ke halaman daftar pegawai atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK yang kamu masukan sudah terdaftar, kamu tidak bisa mendaftarkan NIK yang sama pada akun yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        </p>
+		 <form id="form1" name="form1" method="post" action="">
+		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
+        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
+		  </form>';
+}
+else if ($condition == 8){
+	echo
+        '<h1>404</h1>
+        <h2>ERROR!</h2>
+        <p>Tampaknya perusahaan yang kamu masukan sudah terdaftar, disarankan untuk menggunakan singkatan atau kombinasi huruf yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
