@@ -14,16 +14,9 @@ if(isset($_POST['SUBMIT'])){
 		$jenis = trim($_POST['gender']);
 		$alamat = trim($_POST['alamat']);
 		$pass = trim($_POST['password']);
-	
-	if($jenis == "Laki-Laki"){
-		$jenis = "L";
-	}
-	else if($jenis == "Perempuan"){
-		$jenis = "P";
-	}
-		
+//Mengecek agar tidak ada akun ganda yang menggunakan NIK atau nama perusahaan yang sama
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' OR Nama_Perusahaan='$kantor'");
-		
+
 		if (mysqli_num_rows($sql) != 0){
 			$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
 				if (mysqli_num_rows($sql) != 0){
@@ -34,9 +27,23 @@ if(isset($_POST['SUBMIT'])){
 				}
 		}
 		else {
-			$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
-			
+			if($jenis == "Laki-Laki"){
+				$jenis = "L";
+				
+				$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
+			}
+			else if($jenis == "Perempuan"){
+				$jenis = "P";
+				$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
+			}
+//Mengecek apakah data registrasi terkirim
+$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND Password='$pass'");
+	if (mysqli_num_rows($sql) != 0){
 			header("Location: ../admin/Admin.php?kantor=$kantor && password=$pass && nik=$nik");
+	}
+	else {
+		header("Location: ../etc/error/index.php?condition=10");
+	}
 		}
 	}
 ?>
