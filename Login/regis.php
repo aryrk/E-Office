@@ -20,22 +20,29 @@ if(isset($_POST['SUBMIT'])){
 		$hari = trim($_POST['hari']);
 		$bulan = trim($_POST['bulan']);
 		$tahun = trim($_POST['tahun']);
-	
-	if($jenis == "Laki-Laki"){
-		$jenis = "L";
-	}
-	else if($jenis == "Perempuan"){
-		$jenis = "P";
-	}
 		
+//Mengecek agar tidak terjadi akun ganda yang memiliki NIK yang sama
 		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik_reg'");
 		
 		if (mysqli_num_rows($sql) != 0){
 			header("Location: ../etc/error/index.php?condition=7 && kantor=$kantor && nik=$nik && password=$pw nikreg=$nik_reg");
 		}
 		else {
-			$sql = mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','$jenis','$no','$alamat','$jam','$tgl')");
-		}
+			if($jenis == "Laki-Laki"){
+				$jenis = "L";
+				
+				$sql = mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','$jenis','$no','$alamat','$jam','$tgl')");
+			}
+			else if($jenis == "Perempuan"){
+				$jenis = "P";
+				
+				$sql = mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','$jenis','$no','$alamat','$jam','$tgl')");
+			}
+			
+			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik_reg' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
+				if (mysqli_num_rows($sql) == 0){
+					header("Location: ../etc/error/index.php?condition=11 && kantor=$kantor && nik=$nik && password=$pw nikreg=$nik_reg");
+				}
 	}
 
 if(isset($_POST['BACK'])){
