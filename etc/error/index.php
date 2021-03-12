@@ -53,7 +53,7 @@ if(isset($_POST['BACK'])){
 <link rel = "icon" href ="../../Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
 
 </head>
-<body style="z-index: 1000000000;">
+<body>
 <!-- partial:index.partial.html -->
 <main>
   <div class="container">
