@@ -75,40 +75,12 @@ if(isset($_POST['ABSEN'])){
 	}
 
 if(isset($_POST['HOME'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					
-					header("Location: Home.php?nik=$nik && password=$pass && kantor=$kantor");
-				}
-			}
-		}
-	}
+	header("Location: Home.php?nik=$nik && password=$pass && kantor=$kantor");
+}
 
 if(isset($_POST['CUTI'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-
-					header("Location: Cuti.php?nik=$nik && password=$pass && kantor=$kantor");
-				}
-			}
-		}
-	}
+	header("Location: Cuti.php?nik=$nik && password=$pass && kantor=$kantor");
+}
 ?>
 
 <!DOCTYPE html>
@@ -179,7 +151,6 @@ if(isset($_POST['CUTI'])){
 		}
 			}
 		}
-					mysql_close();
 ?>
                 </tbody>
             </table>
