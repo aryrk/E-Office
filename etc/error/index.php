@@ -11,6 +11,7 @@ $condition = $_GET['condition'];
 //kondisi 7 = registrasi karyawan menggunakan NIK yang sudah terdaftar
 //kondisi 8 = registrasi akun admin menggunakan nama perusahaan yang sudah terdaftar
 //kondisi 9-12 = error database
+//Kondisi 13 = user melakukan absen untuk akun lain
 
 $Masuk_awal = $_GET['masuk1'];
 $Masuk_akhir = $_GET['masuk2'];
@@ -19,6 +20,7 @@ $Keluar_akhir = $_GET['keluar2'];
 
 $kantor = $_GET['kantor'];
 $nik = $_GET['nik'];
+$nik_input = $_GET['nik_entery'];
 $nik_reg = $_GET['nikreg'];
 $pw = $_GET['password'];
 if (!isset($condition)){
@@ -48,7 +50,7 @@ if(isset($_POST['BACK'])){
 	else if ($condition == 7 || $condition == 8 || $condition == 11){
 	header("Location: ../../Login/regis.php?kantor=$kantor && nik=$nik && password=$pw");
 	}
-	else if ($condition == 9){
+	else if ($condition == 9 || $condition == 13){
 	header("Location: ../../Absensi/Absen.php?kantor=$kantor && nik=$nik && password=$pw && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
 	}
 	else if ($condition == 12){
@@ -411,7 +413,18 @@ else if ($condition == 9 || $condition == 10 || $condition == 11 || $condition =
 	echo
         '<h1>404</h1>
         <h2>SERVER ERROR!</h2>
-        <p>Tampaknya server sedang bermasalah, harap coba lain kali.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya server kami sedang bermasalah, harap coba lain kali.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
+        </p>
+		 <form id="form1" name="form1" method="post" action="">
+		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
+        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
+		  </form>';
+}
+else if ($condition == 13){
+	echo
+        '<h1>404</h1>
+        <h2>ERROR!</h2>
+        <p>Tampaknya NIK[',$nik_input,'] yang kamu masukan tidak sama dengan nik yang terdaftar, kamu tidak dapat melakukan absen untuk akun lain.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
