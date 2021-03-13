@@ -13,7 +13,7 @@ if(isset($_POST['SUBMIT'])){
 		$mail = trim($_POST['mail']);
 		$nik_reg = trim($_POST['namae']);
 		$no = trim($_POST['telp']);
-		$jenis = trim($_POST['gender']);
+		$jenis = $_POST['gender'];
 		$alamat = trim($_POST['alamat']);
 		$pass = trim($_POST['password']);
 		$jabatan = trim($_POST['jabatan']);
@@ -29,14 +29,10 @@ if(isset($_POST['SUBMIT'])){
 		}
 		else {
 			if($jenis == "Laki-Laki"){
-				$jenis = "L";
-				
-				$sql = mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','$jenis','$no','$alamat','$jam','$tgl')");
+				$sql = mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','L','$no','$alamat','$jam','$tgl')");
 			}
 			else if($jenis == "Perempuan"){
-				$jenis = "P";
-				
-				$sql = mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','$jenis','$no','$alamat','$jam','$tgl')");
+				$sql = mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','P','$no','$alamat','$jam','$tgl')");
 			}
 			
 			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik_reg' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
