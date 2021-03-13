@@ -50,7 +50,7 @@ if(isset($_POST['SUBMIT'])){
 //Melakukan cek database agar user hanya dapat absen 1x dalam sehari
 		$cek_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
 			if (mysqli_num_rows($cek_awal) == 0){
-				$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$jam','S','00:00:00','B','$kalkulasi','$status')");
+				mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$jam','S','00:00:00','B','$kalkulasi','$status')");
 //Melakukan cek apakah absen sukses dikrim
 		$cek_masuk = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
 			if (mysqli_num_rows($cek_masuk) == 0){
