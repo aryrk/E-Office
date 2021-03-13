@@ -24,13 +24,14 @@ $row_nama = mysqli_fetch_assoc($result_nama);
 $nama = $row_nama['Nama'];
 
 if(isset($_POST['SUBMIT'])){
-	$nik = trim($_POST['IDS']);
+	$nik_input = trim($_POST['IDS']);
 	$radioVal = $_POST["absen"];
 	
 	$jam = date("H:i:s");
     $tgl = date("Y-m-d");
 
 		if($radioVal == "JamMasuk"){
+			if ($nik == $nik_input){
 //Mendapat value jam absen minimum dan maximum
 			$A_check = "SELECT * FROM data_perusahaan WHERE Nama_Perusahaan='$kantor';";
 			$result_check = mysqli_query($konek, $A_check);
@@ -48,23 +49,28 @@ if(isset($_POST['SUBMIT'])){
 				$status = "Terlambat Absen";
 			}
 //Melakukan cek database agar user hanya dapat absen 1x dalam sehari
-		$cek_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
+		$cek_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik_input' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
 			if (mysqli_num_rows($cek_awal) == 0){
-				mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$jam','S','00:00:00','B','$kalkulasi','$status')");
+				mysqli_query($konek, "INSERT INTO absen VALUES ('$nik_input','$nama','$kantor','$tgl','$jam','S','00:00:00','B','$kalkulasi','$status')");
 //Melakukan cek apakah absen sukses dikrim
-		$cek_masuk = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
+		$cek_masuk = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik_input' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
 			if (mysqli_num_rows($cek_masuk) == 0){
 				header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
 			}
 			}
+}
+else {
+	header("Location: ../etc/error/index.php?condition=13 && nik=$nik && nik_entery=$nik_input && kantor=$kantor && password=$pass && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
+}
 		}
 	
 		else if ($radioVal == "JamPulang"){
+			if ($nik == $nik_input){
 			
-			$sql = mysqli_query($konek, "SELECT * FROM absen WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
+			$sql = mysqli_query($konek, "SELECT * FROM absen WHERE Tanggal='$tgl' AND NIK='$nik_input' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM absen WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor';";
+			$A = "SELECT * FROM absen WHERE Tanggal='$tgl' AND NIK='$nik_input' AND Nama_Perusahaan='$kantor';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
@@ -77,14 +83,14 @@ if(isset($_POST['SUBMIT'])){
 							$Status = "Sudah Absen";
 						}
 //Melakukan cek apakah user sudah melakukan absen datang
-					$cek_pulang_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
+					$cek_pulang_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik_input' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
 						if (mysqli_num_rows($cek_pulang_awal) == 0){
 //Delete absen masuk agar tidak terjadi duplikasi
-						$sql = mysqli_query($konek, "DELETE FROM absen WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
+						$sql = mysqli_query($konek, "DELETE FROM absen WHERE Tanggal='$tgl' AND NIK='$nik_input' AND Nama_Perusahaan='$kantor'");
 							
-						$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$Jam_masuk','S','$jam','S','$terlambat','$Status')");
+						$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik_input','$nama','$kantor','$tgl','$Jam_masuk','S','$jam','S','$terlambat','$Status')");
 //Melakukan cek apakah absen terkirim
-					$cek_pulang = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
+					$cek_pulang = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik_input' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
 						if (mysqli_num_rows($cek_pulang) == 0){
 							header("Location: ../etc/error/index.php?condition=9 && nik=$nik && kantor=$kantor && password=$pass && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
 						}
@@ -105,6 +111,10 @@ if(isset($_POST['SUBMIT'])){
 				}
 			}
 		}
+}
+else {
+	header("Location: ../etc/error/index.php?condition=13 && nik=$nik && nik_entery=$nik_input && kantor=$kantor && password=$pass && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
+}
 	}
 }
 if(isset($_POST['PROFIL'])){
