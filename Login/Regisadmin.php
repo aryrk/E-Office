@@ -11,7 +11,7 @@ if(isset($_POST['SUBMIT'])){
 		$nama = trim($_POST['admin']);
 		$kantor = trim($_POST['peru']);
 		$no = trim($_POST['telp']);
-		$jenis = trim($_POST['gender']);
+		$jenis = $_POST['gender'];
 		$alamat = trim($_POST['alamat']);
 		$pass = trim($_POST['password']);
 //Mengecek agar tidak ada akun ganda yang menggunakan NIK atau nama perusahaan yang sama
@@ -27,14 +27,11 @@ if(isset($_POST['SUBMIT'])){
 				}
 		}
 		else {
-			if($jenis == "Laki-Laki"){
-				$jenis = "L";
-				
-				$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
+			if($jenis == "Laki-Laki"){				
+				$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','L','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
 			}
 			else if($jenis == "Perempuan"){
-				$jenis = "P";
-				$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
+				$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','P','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
 			}
 //Mengecek apakah data registrasi terkirim
 $sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND Password='$pass'");
