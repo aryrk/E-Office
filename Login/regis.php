@@ -28,19 +28,14 @@ if(isset($_POST['SUBMIT'])){
 			header("Location: ../etc/error/index.php?condition=7 && kantor=$kantor && nik=$nik && password=$pw nikreg=$nik_reg");
 		}
 		else {
-			if($jenis == "Laki-Laki"){
-				$sql = mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','L','$no','$alamat','$jam','$tgl')");
-			}
-			else if($jenis == "Perempuan"){
-				$sql = mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','P','$no','$alamat','$jam','$tgl')");
-			}
+				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','$jenis','$no','$alamat','$jam','$tgl')");
 			
 			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik_reg' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 				if (mysqli_num_rows($sql) == 0){
 					header("Location: ../etc/error/index.php?condition=11 && kantor=$kantor && nik=$nik && password=$pw nikreg=$nik_reg");
 				}
 	}
-
+}
 if(isset($_POST['BACK'])){
 		header("Location: ../admin/Admin.php?kantor=$kantor && nik=$nik && password=$pw");
 }
@@ -95,8 +90,8 @@ name="jabatan" id="jabatan" required autocomplete="off"><br>
 </p>
 <p>
 <label for="jk">Jenis Kelamin: </label><br>
-<input type="radio" name="gender" value="Laki-Laki">Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="gender" value="Perempuan">Perempuan<br>
+<input type="radio" name="gender" value="L">Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="gender" value="P">Perempuan<br>
 <br><br>
 </p>
 <p>
@@ -151,8 +146,8 @@ class="size" onclick="check()">Show Password<br>
 	</div>	
 </div>
 	</div>
-	</center>
-</body>
+	</body></center>
+
 </html>
 <script>
 function valid () {
