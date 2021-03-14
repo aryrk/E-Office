@@ -18,7 +18,7 @@ if(isset($_POST['SUBMIT'])){
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' OR Nama_Perusahaan='$kantor'");
 
 		if (mysqli_num_rows($sql) != 0){
-			$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
+			mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
 				if (mysqli_num_rows($sql) != 0){
 					header("Location: ../etc/error/index.php?condition=6 && nik=$nik");
 				}
@@ -26,13 +26,8 @@ if(isset($_POST['SUBMIT'])){
 					header("Location: ../etc/error/index.php?condition=8 && nik=$kantor");
 				}
 		}
-		else {
-			if($jenis == "Laki-Laki"){				
-				$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','L','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
-			}
-			else if($jenis == "Perempuan"){
-				$sql = mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','P','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
-			}
+		else {			
+				mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
 //Mengecek apakah data registrasi terkirim
 $sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND Password='$pass'");
 	if (mysqli_num_rows($sql) != 0){
@@ -89,13 +84,12 @@ name="peru" id="peru" required autocomplete="off"><br>
 <label for="telp">Masukkan No Telp:</label>
 <input type="tel" name="telp" placeholder="Masukkan No Telp"
 autocomplete="off" id="telp" class="nik" required
-oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-maxlength="12"><br>
+oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" minlength="12" maxlength="12"><br>
 </p>
 <p>
 <label for="gender">Jenis Kelamin: </label><br>
-<input type="radio" name="gender" value="Laki-Laki">Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="gender" value="Perempuan">Perempuan<br><br>
+<input type="radio" name="gender" value="L">Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="gender" value="P">Perempuan<br><br>
 </p>
 <p>
 <label for="alamat">Alamat Perusahaan:</label>
@@ -129,8 +123,8 @@ class="size" onclick="check()">Show Password<br>
 	</div>	
 </div>
 	</div>
-	</center>
-</body>
+	</body></center>
+
 </html>
 <script>
 function valid () {
