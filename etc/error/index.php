@@ -10,7 +10,7 @@ $condition = $_GET['condition'];
 //kondisi 6 = registrasi akun admin menggunakan NIK yang sudah terdaftar
 //kondisi 7 = registrasi karyawan menggunakan NIK yang sudah terdaftar
 //kondisi 8 = registrasi akun admin menggunakan nama perusahaan yang sudah terdaftar
-//kondisi 9-12 = error database
+//kondisi 9-12, 14 = error database
 //Kondisi 13 = user melakukan absen untuk akun lain
 
 $Masuk_awal = $_GET['masuk1'];
@@ -55,6 +55,9 @@ if(isset($_POST['BACK'])){
 	}
 	else if ($condition == 12){
 	header("Location: ../../admin/Tugas.php?kantor=$kantor && nik=$nik && password=$pw");
+	}
+	else if ($condition == 14){
+		header("Location: ../../Absensi/Cuti.php?nik=$nik && password=$pass && kantor=$kantor");
 	}
 }
 ?>
@@ -409,7 +412,7 @@ else if ($condition == 8){
         <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
 		  </form>';
 }
-else if ($condition == 9 || $condition == 10 || $condition == 11 || $condition == 12){
+else if ($condition == 9 || $condition == 10 || $condition == 11 || $condition == 12 || $condition == 14){
 	echo
         '<h1>404</h1>
         <h2>SERVER ERROR!</h2>
