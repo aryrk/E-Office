@@ -10,6 +10,7 @@ exit();
 else if (isset($_GET['value'])){
 	
 if($_GET['value'] == "logout"){
+//Menghapus data login dari browser
 	if(isset($_SESSION['LOGIN'])){
 		unset($_SESSION['LOGIN']);
 		unset($_SESSION['nama']);
@@ -20,11 +21,16 @@ if($_GET['value'] == "logout"){
 		unset($_SESSION['email']);
 		unset($_SESSION['kantor']);
 		unset($_SESSION['password']);
-		session_unset();
-		session_destroy();
-		session_write_close();
-		setcookie(session_name(),'',0,'/');
 	}
+	if (isset($_SESSION['condition'])){
+		unset($_SESSION['condition']);
+	}
+	
+	session_unset();
+	session_destroy();
+	session_write_close();
+	setcookie(session_name(),'',0,'/');
+	
 	header("Location: index.html");
 	exit();
 }
