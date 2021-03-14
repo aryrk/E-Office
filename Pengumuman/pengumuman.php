@@ -1,55 +1,27 @@
 <?php
 session_start();
+//mencegah user masuk bila mereka belum melakukan login
 if (!isset($_SESSION['LOGIN'])){
 	header("Location: ../Login/login1.php");
 	exit ();
 }
 
 require_once("../config.php");
-$nik = $_GET['nik'];
-$kantor = $_GET['kantor'];
-$pass = $_GET['password'];
+//Session akan membuat link terlihat polos dan membuat website lebih teroptimisasi dibanding sebelumnya
+$nik = $_SESSION['nik'];
+$kantor = $_SESSION['kantor'];
+$pass = $_SESSION['password'];
 
 if(isset($_POST['PROFIL'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$nama = $row['Nama'];
-					$tgl = $row['Tanggal_Lahir'];
-					$bln = $row['Bulan_Lahir'];
-					$thn = $row['Tahun_Lahir'];
-					$jabatan = $row['Jabatan'];
-					$tel = $row['No_Telp'];
-					$email = $row['Email'];
-					
-					//date in mm/dd/yyyy format; or it can be in other formats as well
-  					$birthDate = "$bln/$tgl/$thn";
-  					//explode the date to get month, day and year
-  					$birthDate = explode("/", $birthDate);
-  					//get age from date or birthdate
-  					$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
-    				? ((date("Y") - $birthDate[2]) - 1)
-    				: (date("Y") - $birthDate[2]));
-					
-					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && kantor=$kantor && password=$pass");
-				}
-			}
-		}
-	}
+	header("Location: ../Main Tab/etc/Main.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Office</title>
+    <title>Pengumuman Officia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Roboto+Slab&display=swap" rel="stylesheet">
     <link rel = "icon" href ="../Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
@@ -262,7 +234,7 @@ if(isset($_POST['PROFIL'])){
 	<div class="top">
 	<div class="animasitext">
 		<span>Pengumuman</span>
-		<span>Officia</span>
+		<span><?php echo $kantor; ?></span>
 	</div>
 		<form id="form1" name="form1" method="post" action="">
 			<p class="judul2"><button style="background-color: transparent;border: none;" type="submit" name="PROFIL" id="PROFIL" value="profil"><a>Profil</a></button></p>
