@@ -2,17 +2,7 @@
 //Set session agar user tidak perlu login berkali kali
 session_start();
 if (isset($_SESSION['LOGIN'])){
-	
-	$nama = $_SESSION['nama'];
-	$age = $_SESSION['umur'];
-	$jabatan = $_SESSION['jabatan'];
-	$nik = $_SESSION['nik'];
-	$tel = $_SESSION['tel'];
-	$email = $_SESSION['email'];
-	$kantor = $_SESSION['kantor'];
-	$pw = $_SESSION['password'];
-	
-	header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && kantor=$kantor && password=$pw");
+	header("Location: ../Main Tab/etc/Main.php");
 	exit ();
 }
 
@@ -60,7 +50,7 @@ if(isset($_POST['SUBMIT'])){
 					$_SESSION['kantor'] = $kantor;
 					$_SESSION['password'] = $pw;
 					
-					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && kantor=$kantor && password=$pw");
+					header("Location: ../Main Tab/etc/Main.php");
 				}
 			}
 		}
