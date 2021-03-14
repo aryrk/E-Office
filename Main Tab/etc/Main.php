@@ -1,5 +1,6 @@
 <?php
 session_start();
+//mencegah user masuk bila mereka belum melakukan login
 if (!isset($_SESSION['LOGIN'])){
 	header("Location: ../../Login/login1.php");
 	exit ();
@@ -7,45 +8,18 @@ if (!isset($_SESSION['LOGIN'])){
 
 
 require_once("../../config.php");
-$nik = $_GET['nik'];
-$kantor = $_GET['kantor'];
-$pass = $_GET['password'];
+//Session akan membuat link terlihat polos dan membuat website lebih teroptimisasi dibanding sebelumnya
+$nik = $_SESSION['nik'];
+$kantor = $_SESSION['kantor'];
+$pass = $_SESSION['password'];
 
 if(isset($_POST['PENGUMUMAN'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					
-					header("Location: ../../Pengumuman/pengumuman.php?nik=$nik && kantor=$kantor && password=$pass");
-				}
-			}
-		}
-	}
+	header("Location: ../../Pengumuman/pengumuman.php");
+}
 
 if(isset($_POST['ABSEN'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-				
-					header("Location: ../../Absensi/Home.php?nik=$nik && kantor=$kantor && password=$pass");
-				}
-			}
-		}
-	}
+	header("Location: ../../Absensi/Home.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -532,7 +506,7 @@ if(isset($_POST['ABSEN'])){
 	</div>
 	<div class="logo">
 	<div class="wow logo">
-		<h3><?php echo $_GET['kantor']; ?></h3>
+		<h3><?php echo $kantor; ?></h3>
 	</div>
 	</div>
 
@@ -557,14 +531,14 @@ if(isset($_POST['ABSEN'])){
     			<td height="10%">Nama</td>
 				<td height="10%" style="opacity: 0">1</td>
     			<td height="10%">:</td>
-				<td height="10%"><?php echo $_GET['nama']; ?></td>
+				<td height="10%"><?php echo $_SESSION['nama']; ?></td>
   			</tr>
   			<tr style="opacity: 0.8">
 				<td height="10%" style="opacity: 0">1</td>
     			<td height="10%">Umur</td>
 				<td height="10%" style="opacity: 0">1</td>
     			<td height="10%">:</td>
-				<td height="10%"><?php echo $_GET['umur']; ?></td>
+				<td height="10%"><?php echo $_SESSION['umur']; ?></td>
   			</tr>
 			<tr>
 			<tr style="opacity: 0.8">
@@ -572,7 +546,7 @@ if(isset($_POST['ABSEN'])){
 				<td height="10%">Jabatan</td>
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">:</td>
-				<td height="10%"><?php echo $_GET['jabatan']; ?></td>
+				<td height="10%"><?php echo $_SESSION['jabatan']; ?></td>
 			</tr>
 			</tr>
 			<tr style="opacity: 0.8">
@@ -580,21 +554,21 @@ if(isset($_POST['ABSEN'])){
 				<td height="10%">NIK</td>
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">:</td>
-				<td height="10%"><?php echo $_GET['nik']; ?></td>
+				<td height="10%"><?php echo $nik; ?></td>
 			</tr>
 				<tr style="opacity: 0.8">
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">No.Telp</td>
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">:</td>
-				<td height="10%"><a href="tel:<?php echo $_GET['tel']; ?>"><?php echo $_GET['tel']; ?></a></td>
+				<td height="10%"><a href="tel:<?php echo $_SESSION['tel']; ?>"><?php echo $_SESSION['tel']; ?></a></td>
 			</tr>
 			<tr style="opacity: 0.8">
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">Email</td>
 				<td height="10%" style="opacity: 0">1</td>
 				<td height="10%">:</td>
-				<td height="10%"><a href="mailto: <?php echo $_GET['email']; ?>"><?php echo $_GET['email']; ?></a></td>
+				<td height="10%"><a href="mailto: <?php echo $_SESSION['email']; ?>"><?php echo $_SESSION['email']; ?></a></td>
 			</tr>
 			<tr style="width: 0%;"> 
 				<td style="opacity: 0"> 1 </td>
