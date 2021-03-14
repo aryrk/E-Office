@@ -1,35 +1,42 @@
 <?php
 require_once("../config.php");
+date_default_timezone_set('Asia/Jakarta');
 
 if(isset($_POST['SUBMIT'])){
-		$nik = trim($_POST['NIK']);
-		$pw = trim($_POST['PW']);
-		
-		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw'");
+	$jam = date("H:i:s");
+    $tgl = date("Y-m-d");
+	
+		$mail = trim($_POST['mail']);
+		$nik = trim($_POST['name']);
+		$nama = trim($_POST['admin']);
+		$kantor = trim($_POST['peru']);
+		$no = trim($_POST['telp']);
+		$jenis = $_POST['gender'];
+		$alamat = trim($_POST['alamat']);
+		$pass = trim($_POST['password']);
+//Mengecek agar tidak ada akun ganda yang menggunakan NIK atau nama perusahaan yang sama
+		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' OR Nama_Perusahaan='$kantor'");
 
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$kantor = $row['Nama_Perusahaan'];
-					
-					header("Location: ../admin/Admin.php?kantor=$kantor && password=$pw && nik=$nik");
+			mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
+				if (mysqli_num_rows($sql) != 0){
+					header("Location: ../etc/error/index.php?condition=6 && nik=$nik");
 				}
-			}
+				else {
+					header("Location: ../etc/error/index.php?condition=8 && nik=$kantor");
+				}
 		}
-//Jika akun tidak ditemukan, akan dialihkan ke tampilan error
-		else if (mysqli_num_rows($sql) == 0){
-		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
-			if (mysqli_num_rows($sql) != 0){
-				header("Location: ../etc/error/index.php?condition=4");
-			}
-			else if (mysqli_num_rows($sql) == 0){
-				header("Location: ../etc/error/index.php?condition=5 && nik=$nik");
-			}
+		else {			
+				mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
+//Mengecek apakah data registrasi terkirim
+$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND Password='$pass'");
+	if (mysqli_num_rows($sql) != 0){
+			header("Location: ../admin/Admin.php?kantor=$kantor && password=$pass && nik=$nik");
 	}
+	else {
+		header("Location: ../etc/error/index.php?condition=10");
+	}
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -38,9 +45,9 @@ if(isset($_POST['SUBMIT'])){
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Login Admin</title>
+<title>Registration Admin</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-	<link rel="stylesheet" href="Loginadmin.css">
+	<link rel="stylesheet" href="styregis.css">
 	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
 	</head>
         <center>
@@ -49,43 +56,96 @@ if(isset($_POST['SUBMIT'])){
 	<div class="wraper">
 	<div class="skuy">
 	<form id="form1" name="form1" method="post" action="">
-        <h1>LOGIN</h1>
-<div class="imag">
-<img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
-
-</div>
-	<p>
-	<label for="name">NIK:</label><br>
-	<input type="number" placeholder="Ketik NIK" name="NIK" id="NIK" autocomplete="off" required
-class="nik" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-maxlength="16"><br>
-	</p>
-	<p>
-	<label for="pass">Password:</label><br>
-	<input type="password" placeholder="Ketik Password" name="PW" id="PW" autocomplete="off" required>
-	</p>
-	<p>
-	<div class="cek">
-	<input type="checkbox" name="show" id="sow"
-	class="size" onclick="check()">Show Password<br>
-	</div>
-	</p>
-	<p>
-	<span id="meseg"></span><br>
-	<button type="submit" name="SUBMIT" id="SUBMIT" value="Submit">Login</button><br>
-	</p>
-	<p>
-	<a href="../index.html"><button type="button" class="canc">Back</button></a>
-	</p>
+        <h1>Registration Admin</h1>
+<hr>
 <p>
-<div class="ca">
-<p>Punya Perusahaan Sendiri?<a href="Regisadmin.php">Daftar Admin</a></p>
+<label for="mail">Email:</label>
+<input type="email" placeholder="Masukkan Email"
+name="mail" id="mail" required autocomplete="off"><br>
+</p>
+<p>
+<label for="name">NIK:</label>
+<input type="number" placeholder="Masukkan NIK" 
+name="name" id="name" required autocomplete="off" class="nik"
+oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+maxlength="16"><br>
+</p>
+<p>
+<label for="admin">Nama Admin:</label>
+<input type="text" placeholder="Masukkan Nama Admin"
+name="admin" id="admin" required autocomplete="off"><br>
+</p>
+<p>
+<label for="peru">Nama Perusahaan:</label>
+<input type="text" placeholder="Masukkan Nama Perusahaan"
+name="peru" id="peru" required autocomplete="off"><br>
+</p>
+<p>
+<label for="telp">Masukkan No Telp:</label>
+<input type="tel" name="telp" placeholder="Masukkan No Telp"
+autocomplete="off" id="telp" class="nik" required
+oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" minlength="12" maxlength="12"><br>
+</p>
+<p>
+<label for="gender">Jenis Kelamin: </label><br>
+<input type="radio" name="gender" value="L">Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="gender" value="P">Perempuan<br><br>
+</p>
+<p>
+<label for="alamat">Alamat Perusahaan:</label>
+<textarea name="alamat" id="alamat" class="almt"
+cols="67">
+</textarea><br>
+</p>
+<p>
+<label for="password">Password:</label>
+<input type="password" placeholder="Masukkan Password"
+name="password" id="password" required autocomplete="off"><br>
+</p>
+<p>
+<label for="repeat">Ulangi Password:</label>
+<input type="password" placeholder="Masukkan Password"
+name="repeat" id="repeat" required autocomplete="off"><br>
+</p>
+<p>
+<div class="cek">
+<input type="checkbox" name="show" id="sow"
+class="size" onclick="check()">Show Password<br>
 </div>
 </p>
-	</form>
+<p>
+<div class="sub">
+<span id="meseg"></span>
+<input type="submit" onclick="return valid()" name="SUBMIT" id="SUBMIT" value="Submit">
+</div>
+</p>
+</form>
 	</div>	
 </div>
 	</div>
 	</body></center>
 
 </html>
+<script>
+function valid () {
+var pas = document.getElementById('password').value;
+var pos = document.getElementById('repeat').value;
+if (pos != pas) {
+document.getElementById('meseg').innerHTML="*Password Salah*";
+return false;
+}
+}
+function check() {
+var pis = document.getElementById('password');
+var pes = document.getElementById('repeat');
+if (pis.type==="password" && pes.type==="password") {
+pis.type="text";
+pes.type="text";
+}
+else {
+pis.type="password";
+pes.type="password";
+}
+}
+</script>
+</script>
