@@ -1,7 +1,7 @@
 <?php
 //Hide error//
 error_reporting(E_ERROR | E_PARSE);
-$condition = $_GET['condition'];
+
 //kondisi 1 = user memasukan link yang salah
 //kondisi 2 = password karyawan yang diinput salah
 //kondisi 3 = login NIK karyawan tidak terdaftar
@@ -11,21 +11,30 @@ $condition = $_GET['condition'];
 //kondisi 7 = registrasi karyawan menggunakan NIK yang sudah terdaftar
 //kondisi 8 = registrasi akun admin menggunakan nama perusahaan yang sudah terdaftar
 //kondisi 9-12, 14 = error database
-//Kondisi 13 = user melakukan absen untuk akun lain
 
 $Masuk_awal = $_GET['masuk1'];
 $Masuk_akhir = $_GET['masuk2'];
 $Keluar_awal = $_GET['keluar1'];
 $Keluar_akhir = $_GET['keluar2'];
 
-$kantor = $_GET['kantor'];
-$nik = $_GET['nik'];
+if (isset($_SESSION['LOGIN'])){
+	$nik = $_SESSION['nik'];
+	$kantor = $_SESSION['kantor'];
+	$pw = $_SESSION['password'];
+	$condition = $_SESSION['condition'];
+}
+else {
+	$kantor = $_GET['kantor'];
+	$nik = $_GET['nik'];
+	$pw = $_GET['password'];
+	$condition = $_GET['condition'];
+}
+
 $nik_input = $_GET['nik_entery'];
 $nik_reg = $_GET['nikreg'];
-$pw = $_GET['password'];
+
 if (!isset($condition)){
 	$condition = 1;
-	exit();
 }
 
 require_once("../../config.php");
@@ -39,25 +48,32 @@ if(isset($_POST['HELP'])){
 if(isset($_POST['BACK'])){
 //Mendeteksi dari tampilan mana user mengalami error
 	if ($condition == 2 || $condition == 3){
-	header("Location: ../../Login/login1.php");
+		header("Location: ../../Login/login1.php");
+		exit();
 	}
 	else if ($condition == 4 || $condition == 5){
-	header("Location: ../../Login/Loginadmin.php");
+		header("Location: ../../Login/Loginadmin.php");
+		exit();
 	}
 	else if ($condition == 6 || $condition == 10){
-	header("Location: ../../Login/Regisadmin.php");
+		header("Location: ../../Login/Regisadmin.php");
+		exit();
 	}
 	else if ($condition == 7 || $condition == 8 || $condition == 11){
-	header("Location: ../../Login/regis.php?kantor=$kantor && nik=$nik && password=$pw");
+		header("Location: ../../Login/regis.php?kantor=$kantor && nik=$nik && password=$pw");
+		exit();
 	}
-	else if ($condition == 9 || $condition == 13){
-	header("Location: ../../Absensi/Absen.php?kantor=$kantor && nik=$nik && password=$pw && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir");
+	else if ($condition == 9){
+		header("Location: ../../Absensi/Absen.php");
+		exit();
 	}
 	else if ($condition == 12){
-	header("Location: ../../admin/Tugas.php?kantor=$kantor && nik=$nik && password=$pw");
+		header("Location: ../../admin/Tugas.php?kantor=$kantor && nik=$nik && password=$pw");
+		exit();
 	}
 	else if ($condition == 14){
-		header("Location: ../../Absensi/Cuti.php?nik=$nik && password=$pass && kantor=$kantor");
+		header("Location: ../../Absensi/Cuti.php");
+		exit();
 	}
 }
 ?>
@@ -417,17 +433,6 @@ else if ($condition == 9 || $condition == 10 || $condition == 11 || $condition =
         '<h1>404</h1>
         <h2>SERVER ERROR!</h2>
         <p>Tampaknya server kami sedang bermasalah, harap coba lain kali.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
-        </p>
-		 <form id="form1" name="form1" method="post" action="">
-		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
-        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
-		  </form>';
-}
-else if ($condition == 13){
-	echo
-        '<h1>404</h1>
-        <h2>ERROR!</h2>
-        <p>Tampaknya NIK[',$nik_input,'] yang kamu masukan tidak sama dengan nik yang terdaftar, kamu tidak dapat melakukan absen untuk akun lain.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
