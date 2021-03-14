@@ -1,76 +1,31 @@
 <?php
 session_start();
+//mencegah user masuk bila mereka belum melakukan login
 if (!isset($_SESSION['LOGIN'])){
 	header("Location: ../Login/login1.php");
 	exit ();
 }
 
 require_once("../config.php");
-$nik = $_GET['nik'];
-$kantor = $_GET['kantor'];
-$pass = $_GET['password'];
+//Session akan membuat link terlihat polos dan membuat website lebih teroptimisasi dibanding sebelumnya
+$nik = $_SESSION['nik'];
+$kantor = $_SESSION['kantor'];
+$pass = $_SESSION['password'];
 
 if(isset($_POST['PROFIL'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE NIK='$nik' AND Password='$pass' AND Nama_Perusahaan='$kantor';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$nama = $row['Nama'];
-					$tgl = $row['Tanggal_Lahir'];
-					$bln = $row['Bulan_Lahir'];
-					$thn = $row['Tahun_Lahir'];
-					$jabatan = $row['Jabatan'];
-					$tel = $row['No_Telp'];
-					$email = $row['Email'];
-					
-					//date in mm/dd/yyyy format; or it can be in other formats as well
-  					$birthDate = "$bln/$tgl/$thn";
-  					//explode the date to get month, day and year
-  					$birthDate = explode("/", $birthDate);
-  					//get age from date or birthdate
-  					$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
-    				? ((date("Y") - $birthDate[2]) - 1)
-    				: (date("Y") - $birthDate[2]));
-					
-					header("Location: ../Main Tab/etc/Main.php?nama=$nama && umur=$age && jabatan=$jabatan && nik=$nik && tel=$tel && email=$email && password=$pass && kantor=$kantor");
-				}
-			}
-		}
-	}
+	header("Location: ../Main Tab/etc/Main.php");
+}
 
 if(isset($_POST['ABSEN'])){
-		
-		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE Nama_Perusahaan='$kantor'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM data_perusahaan WHERE Nama_Perusahaan='$kantor';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$Masuk_awal = $row['Absen_datang_min'];
-					$Masuk_akhir = $row['Absen_datang_max'];
-					$Keluar_awal = $row['Absen_pulang_min'];
-					$Keluar_akhir = $row['Absen_pulang_max'];
-					header("Location: Absen.php?nik=$nik && masuk1=$Masuk_awal && masuk2=$Masuk_akhir && keluar1=$Keluar_awal && keluar2=$Keluar_akhir && password=$pass && kantor=$kantor");
-				}
-			}
-		}
-	}
+	header("Location: Absen.php");
+}
 
 if(isset($_POST['DATAABSEN'])){
-	header("Location: DataAbsen.php?nik=$nik && password=$pass && kantor=$kantor");
+	header("Location: DataAbsen.php");
 }
 
 if(isset($_POST['CUTI'])){
-					header("Location: Cuti.php?nik=$nik && password=$pass && kantor=$kantor");
+	header("Location: Cuti.php");
 }
 ?>
 <!DOCTYPE html>
@@ -89,7 +44,7 @@ if(isset($_POST['CUTI'])){
     <header>
         <div class="container">
             <div id="logo">
-                <h1><?php echo $_GET['kantor']; ?></h1>
+                <h1><?php echo $kantor; ?></h1>
             </div> 
 			<form id="form1" name="form1" method="post" action="">
             <nav>
