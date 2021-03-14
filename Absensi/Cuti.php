@@ -91,7 +91,12 @@ if(isset($_POST['SUBMIT'])){
 				while ($row = mysqli_fetch_assoc($result)){
 					$nama = $row['Nama'];
 					
-					$sql = mysqli_query($konek, "INSERT INTO cuti VALUES ('$nama','$kantor','$jenis','$dari','$sampai','$ket','$jam','$tgl')");
+					$sql = mysqli_query($konek, "INSERT INTO cuti VALUES ('$nama','$nik','$kantor','$jenis','$dari','$sampai','$ket','$jam','$tgl')");
+					
+					$sql = mysqli_query($konek, "SELECT * FROM cuti WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Jenis_Cuti='$jenis' AND Dari='$dari' AND Sampai='$sampai' AND Keterangan='$ket' AND Submitted_On_Date='$tgl'");
+						if (mysqli_num_rows($sql) == 0){
+							header("Location: ../etc/error/index.php?condition=14 && nik=$nik && password=$pass && kantor=$kantor");
+						}
 				}
 			}
 		}
