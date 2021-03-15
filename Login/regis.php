@@ -28,7 +28,12 @@ if(isset($_POST['SUBMIT'])){
 			header("Location: ../etc/error/index.php?condition=7 && kantor=$kantor && nik=$nik && password=$pw nikreg=$nik_reg");
 		}
 		else if (mysqli_num_rows($sql) == 0) {
-				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','$jenis','$no','$alamat','$jam','$tgl');");
+			if($jenis == "L"){
+				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','L','$no','$alamat','$jam','$tgl');");
+			}
+			else if($jenis == "P"){
+				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','P','$no','$alamat','$jam','$tgl');");
+			}
 			
 			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik_reg' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
 				if (mysqli_num_rows($sql) == 0){
@@ -90,8 +95,8 @@ name="jabatan" id="jabatan" required autocomplete="off"><br>
 </p>
 <p>
 <label for="gender">Jenis Kelamin: </label><br>
-<input type="radio" name="gender" value="L"/>Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="gender" value="P"/>Perempuan<br>
+<input type="radio" name="gender" id="gender" value="L"/>Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="gender" id="gender" value="P"/>Perempuan<br>
 <br><br>
 </p>
 <p>
