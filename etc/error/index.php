@@ -28,10 +28,6 @@ else {
 	$nik = $_GET['nik'];
 	$pw = $_GET['password'];
 	$condition = $_GET['condition'];
-	
-	if (!isset($condition)){
-	$condition = 1;
-}
 }
 
 $nik_input = $_GET['nik_entery'];
