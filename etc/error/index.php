@@ -28,14 +28,14 @@ else {
 	$nik = $_GET['nik'];
 	$pw = $_GET['password'];
 	$condition = $_GET['condition'];
+	
+	if (!isset($condition)){
+	$condition = 1;
+}
 }
 
 $nik_input = $_GET['nik_entery'];
 $nik_reg = $_GET['nikreg'];
-
-if (!isset($condition)){
-	$condition = 1;
-}
 
 require_once("../../config.php");
 
