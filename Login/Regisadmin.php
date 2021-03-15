@@ -1,10 +1,10 @@
 <?php
 require_once("../config.php");
 date_default_timezone_set('Asia/Jakarta');
+$tgl = date("Y-m-d");
 
 if(isset($_POST['SUBMIT'])){
 	$jam = date("H:i:s");
-    $tgl = date("Y-m-d");
 	
 		$mail = trim($_POST['mail']);
 		$nik = trim($_POST['name']);
@@ -26,8 +26,13 @@ if(isset($_POST['SUBMIT'])){
 					header("Location: ../etc/error/index.php?condition=8 && nik=$kantor");
 				}
 		}
-		else if (mysqli_num_rows($sql) == 0) {			
-				mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl');");
+		else if (mysqli_num_rows($sql) == 0) {
+			if($jenis == "L"){
+				mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','L','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl');");
+			}
+			else if($jenis == "P"){
+				mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','P','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl');");
+			}
 //Mengecek apakah data registrasi terkirim
 $sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND Password='$pass'");
 	if (mysqli_num_rows($sql) != 0){
@@ -88,8 +93,8 @@ oninput="javascript: if (this.value.length > this.maxLength) this.value = this.v
 </p>
 <p>
 <label for="gender">Jenis Kelamin: </label><br>
-<input type="radio" name="gender" value="L"/>Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="gender" value="P"/>Perempuan<br><br>
+<input type="radio" name="gender" id="gender" value="L"/>Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="gender" id="gender" value="P"/>Perempuan<br><br>
 </p>
 <p>
 <label for="alamat">Alamat Perusahaan:</label>
