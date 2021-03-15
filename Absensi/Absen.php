@@ -247,31 +247,24 @@ if(isset($_POST['CUTI'])){
 //Mengubah note
 	if ($status_absen == 1){
 		echo '<p>Anda Belum Absen</p>';
-		exit();
 	}
 	else if ($status_absen == 2){
 		echo '<p>Anda Belum Melakukan Absen Pulang</p>';
-		exit();
 	}
 	else if ($status_absen == 3){
 		echo '<p>Anda Belum Melakukan Absen Datang</p>';
-		exit();
 	}
 	else if ($status_absen == 4){
 		echo '<p>Anda Sudah Melakukan Absen Harian</p>';
-		exit();
 	}
 	else if ($status_absen == 5){
 		echo '<p>Absen Terkirim</p>';
-		exit();
 	}
 	else if ($status_absen == 6){
 		echo '<p>Absen Tidak Terkirim!<br>Anda Sudah Melakukan Absen Masuk Sebelumnya</p>';
-		exit();
 	}
 	else if ($status_absen == 7){
 		echo '<p>Absen Tidak Terkirim!<br>Anda Sudah Melakukan Absen Pulang Sebelumnya</p>';
-		exit();
 	}
 ?>
             </div>
