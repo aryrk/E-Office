@@ -18,16 +18,16 @@ if(isset($_POST['SUBMIT'])){
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' OR Nama_Perusahaan='$kantor'");
 
 		if (mysqli_num_rows($sql) != 0){
-			mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
-				if (mysqli_num_rows($sql) != 0){
+			$sql_err = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
+				if (mysqli_num_rows($sql_err) != 0){
 					header("Location: ../etc/error/index.php?condition=6 && nik=$nik");
 				}
 				else {
 					header("Location: ../etc/error/index.php?condition=8 && nik=$kantor");
 				}
 		}
-		else {			
-				mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl')");
+		else if (mysqli_num_rows($sql) == 0) {			
+				mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$nama','$nik','$jenis','$mail','$no','$pass','$alamat','06:00:00','10:00:00','15:00:00','00:00:00','$jam','$tgl');");
 //Mengecek apakah data registrasi terkirim
 $sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND Password='$pass'");
 	if (mysqli_num_rows($sql) != 0){
@@ -88,8 +88,8 @@ oninput="javascript: if (this.value.length > this.maxLength) this.value = this.v
 </p>
 <p>
 <label for="gender">Jenis Kelamin: </label><br>
-<input type="radio" name="gender" value="L">Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="radio" name="gender" value="P">Perempuan<br><br>
+<input type="radio" name="gender" value="L"/>Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="gender" value="P"/>Perempuan<br><br>
 </p>
 <p>
 <label for="alamat">Alamat Perusahaan:</label>
