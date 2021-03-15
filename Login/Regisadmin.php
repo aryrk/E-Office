@@ -89,7 +89,7 @@ name="peru" id="peru" required autocomplete="off"><br>
 <label for="telp">Masukkan No Telp:</label>
 <input type="tel" name="telp" placeholder="Masukkan No Telp"
 autocomplete="off" id="telp" class="nik" required
-oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" minlength="12" maxlength="12"><br>
+oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="12"><br>
 </p>
 <p>
 <label for="gender">Jenis Kelamin: </label><br>
