@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2021 at 04:14 AM
+-- Generation Time: Mar 16, 2021 at 03:51 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -116,6 +116,7 @@ CREATE TABLE `login` (
   `Jenis_Kelamin` char(1) NOT NULL,
   `No_Telp` varchar(12) NOT NULL,
   `Alamat` varchar(255) NOT NULL,
+  `pp_name` varchar(255) NOT NULL,
   `Submitted_On_Hours` time NOT NULL,
   `Submitted_On_Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -124,9 +125,9 @@ CREATE TABLE `login` (
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`NIK`, `Password`, `Nama`, `Nama_Perusahaan`, `Email`, `Jabatan`, `Tanggal_Lahir`, `Bulan_Lahir`, `Tahun_Lahir`, `Jenis_Kelamin`, `No_Telp`, `Alamat`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
-(69, 'pw', 'Dev', 'Debug_mode', 'blah@gmail.com', 'developer', 1, 1, 1, '1', '0', 'blu', '00:00:00', '0000-00-00'),
-(12345, 'pw', 'Debug', 'Officia', 'opicia@gmail.com', 'OB', 12, 5, 2004, 'L', '847151810', 'Jl kapung', '00:00:00', '0000-00-00');
+INSERT INTO `login` (`NIK`, `Password`, `Nama`, `Nama_Perusahaan`, `Email`, `Jabatan`, `Tanggal_Lahir`, `Bulan_Lahir`, `Tahun_Lahir`, `Jenis_Kelamin`, `No_Telp`, `Alamat`, `pp_name`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+(69, 'pw', 'Dev', 'Debug_mode', 'blah@gmail.com', 'developer', 1, 1, 1, '1', '0', 'blu', 'default.png', '00:00:00', '0000-00-00'),
+(12345, 'pw', 'Debug', 'Officia', 'opicia@gmail.com', 'OB', 12, 5, 2004, 'L', '847151810', 'Jl kapung', 'default.png', '00:00:00', '0000-00-00');
 
 -- --------------------------------------------------------
 
