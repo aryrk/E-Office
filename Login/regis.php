@@ -29,10 +29,10 @@ if(isset($_POST['SUBMIT'])){
 		}
 		else if (mysqli_num_rows($sql) == 0) {
 			if($jenis == "L"){
-				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','L','$no','$alamat','$jam','$tgl');");
+				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','L','$no','$alamat','default.png','$jam','$tgl');");
 			}
 			else if($jenis == "P"){
-				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','P','$no','$alamat','$jam','$tgl');");
+				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','P','$no','$alamat','default.png','$jam','$tgl');");
 			}
 			
 			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik_reg' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
