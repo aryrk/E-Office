@@ -1,3 +1,38 @@
+::-webkit-scrollbar {
+display: none;
+}
+.isi_tugas{
+	line-height: 31px;
+	background-image: -webkit-linear-gradient(left, white 0, transparent 0), -webkit-linear-gradient(right, white 0, transparent 0), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+	background-repeat: repeat-y;
+	background-size: 100% 100%, 100% 100%, 100% 31px;
+	background-attachment: local;
+}
+.menuFloat{
+	padding: 20px;
+	border-radius: 1%;
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	position: fixed;
+	top: 38%;
+	right: 0;
+	background-color: #4691ff;
+	transition: all 1s;
+}
+.menu{
+	writing-mode: vertical-rl;
+	text-orientation: upright;
+}
+.menuFloat a:hover{
+	color: black;
+	text-decoration: none;
+	text-shadow: none;
+	cursor: pointer;
+}
 .sumbit{
 	margin-top: 15px;
 	font-weight: bold;
@@ -9,7 +44,7 @@
 }
 textarea{
 	width: 100%;
-	min-height: 50px;
+	min-height: 65px;
 	max-height: 170px;
 	resize: none;
 }
@@ -54,24 +89,54 @@ hr{
 	margin-left: 13.5%;
     border-radius: 20px;
 }
-.absenl{
-	margin-left: -60px;
+    /* Header */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.cutil{
-	margin-left: -40px;
+
+body{
+    background-image: url("../../Main Tab/media/Bg.jpg");
+	background-repeat: repeat-y;
+	background-size: 150%;
+  	font-family: Arial, Helvetica, sans-serif;
 }
-.pengumumanl{
-	margin-left: -60px;
+.banner{
+    background-color: #474e5d;
+    min-height: 85px;
+    color: white;
+    border-bottom: 5px solid #666b70;
+	top: 0;
+	position: fixed;
+	width: 100%;
 }
-.karyawanl{
-	margin-left: -50px;
+
+.banner-unused{
+    background-color: #474e5d;
+    min-height: 85px;
+    color: white;
+    border-bottom: 5px solid #666b70;
+	width: 1%;
+	font-size: 0px;
+	opacity: 0;
 }
-.listl{
-	margin-left: -70px;
+
+.h1{
+    text-align: center;
+    position: absolute;
+    margin-top: 1.5%;
+    margin-left: 40%;
 }
-.tugasl{
-	margin-left: -35px;
+
+.back{
+    position: absolute;
+    font-size: 200%;
+    margin-left: 95%;
+    margin-top: 1.5%;
 }
+
+    /* Footer */
 .logo{
     color: white;
     text-align: center;
@@ -81,33 +146,26 @@ hr{
 }
 
 .absen .logo{
-    margin-left: -10%;
+    margin-left: -4.5%;
 }
 
 .cuti .logo{
-    margin-left: -3.5%;
+    margin-left: -3%;
 }
 
 .pengumuman .logo{
-    margin-left: -5%;
+    margin-left: -4.5%;
 }
 .karyawan .logo{
-    margin-left: -3.8%;
+    margin-left: -3.5%;
 }
 .list-karyawan .logo{
-    margin-left: -5%;
+    margin-left: -4.5%;
 }
 .tugas .logo{
     margin-left: -2.6%;
 }
-.absen, .cuti, .pengumuman, .karyawan, .list-karyawan, .tugas{
-    letter-spacing: 1px;
-}
 
-.absen:hover, .cuti:hover, .pengumuman:hover, .karyawan:hover, .list-karyawan:hover, .tugas:hover{
-    color: rgb(211, 211, 211);
-    animation: prg 0.5s ease 1;
-}
 .Banner-handap{
     background-color: #474e5d;;
     position: fixed;
@@ -119,24 +177,18 @@ hr{
     color: floralwhite;
     float: left;
 }
-li{
-    display: inline;
-    margin: 30px;
-}
-.inline{
-    margin-top: -10px;
-    margin-right: 20px;
+
+.Banner-handap-used{
+	background-color: #474e5d;
+	width: 1%;
+	height: 70px;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size: 70%;
+	color: floralwhite;
+	float: left;
+	opacity: 0;
 }
 
-ul{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 15px;
-    float: right;    
-}
-a{
-    text-decoration: none;
-    color: white;
-}
 .o{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-style:oblique;
@@ -144,180 +196,494 @@ a{
     font-size: 320%;
     margin-top: 15px;
 }
-.wow {
-	visibility: hidden;
-}
-body {
-  	font-family: Arial, Helvetica, sans-serif;
-  	margin: 0;
-}
-*, *:before, *:after {
-  	box-sizing: inherit;
-}
-html {
-  	scroll-behavior: smooth;
-	box-sizing: border-box;
-}
-::-webkit-scrollbar {
-display: none;
-}
-body{
-    position: relative;
-    background-image: url("../../Main Tab/media/Bg.jpg");
-	background-repeat: repeat-y;
-	background-size: 150%;
-	z-index: -5;
-	transition: all 1s;
-}
-/* Navbar */
-nav{
-	-webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-    display: flex;
-    background-color: #474e5d;
-    opacity: 1;
-    justify-content: space-around;
-    color: rgb(198, 238, 198);
-    height: 10%;
-	width: 100%;
-    align-items: center;
-    z-index: 2;
-	transition: all 1s;
-	position: fixed;
-	top: 0;
-}
-.sticky {
-  	position: fixed;
-  	top: 0;
-  	width: 100%;
-	opacity: 1;
-}
-
-nav .logo1{
-	color: white;
-    font-family: 'Libre Caslon Text', serif;
-    letter-spacing: 3px;
-    font-size: 1.2em;
-	transition: all 1s;
-}
-
-nav ul{
-	align-items: center;
-    display: flex;
-    list-style: none;
-    width: 40%;
-    justify-content: flex-end;
-	transition: all 1s;
-	position: fixed;
-	right: 0;
-	transform: translateX(-2%);
-}
-
-nav ul li a{
-    color: white;
-    text-decoration: none;
-    font-family: 'Roboto Slab', serif;
-	transition: all 1s;
-}
-
-nav ul li a:hover{
-    color: black;
-	background: #ddd;
-}
-img[alt*="000webhost"],
-img[alt*="000webhost"][style],
-img[src*="000webhost"],
-img[src*="000webhost"][style],
-body > div:nth-last-of-type(1)[style]{
-	opacity: 0 !important;
-	pointer-events:none !important;
-	width: 0px !important;
-	height: 0px !important;
-	visibility:hidden !important;
-	display:none !important;
-}
-/* Responsive Breakpoint */
-
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
-body{
-	background-image: url("../../Main Tab/media/Bg_verti.jpg");
-}
-.logo{
-	margin-top: -5%;
-}
-ul{
-    font-size: 15px;
-}
-.mobile{
-    font-size: 0%;
-}
-.absen, .cuti, .pengumuman, .karyawan, .list-karyawan, .tugas{
-    letter-spacing: 0px;
-}
-.Banner-handap{
-    font-size: 60%;
-}
 li{
-    margin: 20px;
+    display: inline;
+    margin: 30px;
 }
-.absen .logo{
-    margin-left: -5%;
-}
-
-.cuti .logo{
-    margin-left: -3.5%;
+.inline{
+    margin-top: -10px;
 }
 
-.pengumuman .logo{
-    margin-left: -5%;
+ul{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    float: right;
 }
-.karyawan .logo{
-    margin-left: -3.8%;
+a{
+    text-decoration: none;
+    color: white;
 }
-.list-karyawan .logo{
-    margin-left: -5%;
+
+.absen:hover, .cuti:hover, .pengumuman:hover, .karyawan:hover, .list-karyawan:hover, .tugas:hover{
+    color: rgb(211, 211, 211);
+    animation: prg 0.5s ease 1;
 }
-.tugas .logo{
-    margin-left: -2.6%;
+.logo:hover{
+    color: rgb(196, 196, 196);
+    animation: logo 1s ease 1;
 }
-.absenl{
-	margin-left: 0px;
+
+@media screen and (max-width: 1024px){
+    .h1{
+        margin-left: 35%;
+    }
+
+    .back{
+        margin-left: 90%;
+        margin-top: 2%;
+    }
+
+    .wrap{
+        width: 25%;
+        margin-top: -1%;
+        margin-left: 3%;
+    }
+
+    .Photo{
+        width: 60px;
+        height: 100px;
+        position: absolute;
+        margin: 0;
+        margin-top: -1.5%;
+        padding-top: 2%;
+    }
+
+    .table{
+        margin-top: -1%;
+        font-size: 80%;
+    }
+
+    .button-terima{
+        margin-left: 63%;
+    }
+
+    .button-tidak{
+        margin-left: 63%;
+        margin-top: 5%;
+    }
+
+    .button-telepon{
+        margin-top: 2.5%;
+        margin-left: 73%;
+    }
+
+    .inline{
+        margin-top: -1%;
+    }
+
+    .absen .logo{
+        margin-top: -3.5%;
+        margin-left: -6%;
+    }
+    
+    .cuti .logo{
+        margin-top: -3.5%;
+        margin-left: -4%;
+    }
+    
+    .pengumuman .logo{
+        margin-top: -3.5%;
+        margin-left: -6%;
+    }
+    .karyawan .logo{
+        margin-top: -3.5%;
+        margin-left: -4.5%;
+    }
+    .list-karyawan .logo{
+        margin-top: -3.5%;
+        margin-left: -6%;
+    }
+    .tugas .logo{
+        margin-top: -3.5%;
+        margin-left: -3.5%;
+    }
+
+    .absen, .cuti, .pengumuman, .karyawan, .list-karyawan{
+        margin-right: -30px;
+    }
 }
-.cutil{
-	margin-left: 0px;
+
+@media screen and (max-width: 768px){
+    .h1{
+        margin-top: 2.5%;
+        margin-left: 33%;
+    }
+
+    .back{
+        margin-left: 90%;
+        margin-top: 3%;
+    }
+
+    .wrap{
+        width: 23%;
+        margin-top: -10px;
+        margin-left: 10px;
+    }
+
+    .notif{
+        height: 100px;
+        margin-top: 2%;
+    }
+
+    .Photo{
+        width: 55px;
+        height: 80px;
+        position: absolute;
+        margin: 0;
+        margin-top: -1%;
+        padding-top: 2%;
+    }
+
+    .table{
+        margin-top: -1%;
+        font-size: 70%;
+    }
+
+    .button-terima{
+        margin-left: 63%;
+    }
+
+    .button-tidak{
+        margin-left: 63%;
+        margin-top: 6%;
+    }
+
+    .button-telepon{
+        margin-top: 3%;
+        margin-left: 72.5%;
+    }
+
+    .inline{
+        margin-top: -2%;
+    }
+
+    .absen .logo{
+        margin-top: -4%;
+        margin-left: -7.5%;
+    }
+    
+    .cuti .logo{
+        margin-top: -4%;
+        margin-left: -5.5%;
+    }
+    
+    .pengumuman .logo{
+        margin-top: -4%;
+        margin-left: -7.5%;
+    }
+    .karyawan .logo{
+        margin-top: -4%;
+        margin-left: -6%;
+    }
+    .list-karyawan .logo{
+        margin-top: -4%;
+        margin-left: -8%;
+    }
+    .tugas .logo{
+        margin-top: -4%;
+        margin-left: -4.5%;
+    }
+
+    .absen, .cuti, .pengumuman, .karyawan, .list-karyawan{
+        margin-right: -50px;
+    }
 }
-.pengumumanl{
-	margin-left: 0px;
+
+@media screen and (max-width: 576px){
+    .banner{
+        min-height: 70px;
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .ket{
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
+
+    .h1{
+        font-size: 160%;
+        margin-top: 4.5%;
+        margin-left: 3%;
+        padding-right: -15%;
+    }
+
+    .back{
+        margin-left: 85%;
+        margin-top: 4.5%;
+    }
+
+    .o{
+        margin-left: 35%;
+    }
+
+    .body{
+        height: 100%;
+    }
+
+    .wrap{
+        width: 80%;
+        margin-top: -2px;
+        margin-left: 32%;
+    }
+
+    .notif{
+        width: 90%;
+        height: 150%;
+        
+    }
+
+    .Photo{
+        width: 55px;
+        height: 70px;
+        position: absolute;
+        margin: 0;
+        margin-top: 5%;
+        padding-top: 2%;
+    }
+
+    .table{
+        font-size: 50%;
+        margin-left: 20%;
+        height: 150px;
+        width: 80%;
+    }
+
+    .button-terima{
+        margin-left: -5%;
+        margin-top: 110px;
+        width: 15%;
+    }
+
+    .button-tidak{
+        margin-left: 20%;
+        margin-top: 110px;
+        width: 15%;
+    }
+
+    .button-telepon{
+        margin-top: 105px;
+        margin-left: 45%;
+        width: 40px;
+    }
+
+    .inline{
+        padding-top: 5%;
+    }
+
+    li{
+        margin-top: 10%;
+    }
+
+    .absen{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+    
+    .cuti{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+    
+    .pengumuman{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+    .karyawan{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+    .list-karyawan{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+    .tugas{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+
+    .absen .logo, .pengumuman .logo, .list-karyawan .logo{
+        margin-top: -2%;
+        margin-left: -60%;
+    }
+    .cuti .logo{
+        margin-top: -2%;
+        margin-left: -45%;
+    } 
+    .karyawan .logo{
+        margin-top: -2%;
+        margin-left: -50%;
+    }
+    .tugas .logo{
+        margin-top: -2%;
+        margin-left: -40%;
+    }
+
+    .tampilan{
+        margin-bottom: 30px;
+    }
+
+    .navbar {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        margin-left: 83%;
+        margin-top: -35px;
+        position: fixed;
+        display: flex;
+        z-index: 1000;
+    }
+
+    .navbar .toggler-navbar {
+        margin-right: 10px;
+    }
+    .sidebar {
+        position: fixed;
+        top: 70px;
+        left: 38%;
+        width: 270px;
+        height: 100%;
+        background: #666b70;
+        text-align: left;
+        font-size: 20px;
+        transform: rotate3d(0, 1, 0, 90deg);
+        transform-origin: right center;
+        transition: .5s;
+        z-index: -100;
+        opacity: 0.9;
+    }
+    
+    .sidebar.open {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    .sidebar ul{
+        list-style: none;
+    }
+    
+    .sidebar li:hover{
+        background: #0000003f;
+    }
+    
+    .sidebar li a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+    }
+
+    .hamburger-menu {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .5s ease-in-out;
+        -moz-transition: .5s ease-in-out;
+        -o-transition: .5s ease-in-out;
+        transition: .5s ease-in-out;
+        cursor: pointer;
+    }
+    
+    .hamburger-menu span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: white;
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
+    }
+    
+    .hamburger-menu span:nth-child(1) {
+        top: 2.5px;
+    }
+    
+    .hamburger-menu span:nth-child(2) {
+        top: 11px;
+    }
+    
+    .hamburger-menu span:nth-child(3) {
+        top: 21px;
+    }
+    
+    .hamburger-menu.open span:nth-child(1) {
+        top: 15px;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg);
+    }
+    
+    .hamburger-menu.open span:nth-child(2) {
+        transform: rotate(360deg);
+        top: 14px;
+        left: 75px;
+        transition: 1.5s;
+        opacity: 0.5;
+    }
+    
+    .hamburger-menu.open span:nth-child(3) {
+        top: 14px;
+        -webkit-transform: rotate(-135deg);
+        -moz-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+    }
 }
-.karyawanl{
-	margin-left: 0px;
+
+@keyframes logo{
+    0%{
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    100%{
+        opacity: 1;
+    }
 }
-.listl{
-	margin-left: 0px;
+
+@keyframes prg{
+    0%{
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    100%{
+        opacity: 1;
+    }
 }
-.tugasl{
-	margin-left: 0px;
-}
-.tugas_box{
-	width: 80%;
-	margin-top: 50%;
-	font-size: 80%;
-	letter-spacing: .0em;
-	margin-left: 10%;
-}
-hr{
-	width: 80%;
-}
-.sumbit{
-	margin-top: 5px;
-}
-.o{
-	font-size: 0%;
-	opacity: 0;
-}
-	
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+	body {
+		background-image: url("../../Main Tab/media/Bg_verti.jpg");
+		background-size: 300%;
 	}
+	.tugas_box{
+		margin-top: 10px;
+		font-size: 80%;
+	}
+	.menuFloat{
+		padding: 10px;
+		top: 18%;
+	}
+}
