@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel = "icon" href ="../Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
+    <title>Upload Tugas</title>
+    
+    <link rel="stylesheet" href="etc/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../Main Tab/etc/Animate.css">
+</head>
+	
+<body>
+    <header class="banner"> 
+        <h1 class="h1">Officia Administrator</h1>
+
+        <a href="Admin.html"><i class="back fas fa-arrow-circle-left"></i></a>
+    </header>
+	<header class="banner-unused"> 
+        <h1 class="h1">Officia Administrator</h1>
+    </header>
+	
+<form id="form1" name="form1" method="post" action="">
+	<section class="tugas_box wow fadeInDown">
+		<center>
+			<h1 class="judul wow zoomIn">Tambah Tugas</h1>
+				<hr class="wow jackInTheBox">
+		</center>
+	<div class="inner wow fadeIn">
+		<label for="isi" class="wow slideInLeft">Tugas Berisi:</label><br>
+		<textarea name="isi" id="isi" rows="2" placeholder="Isi tugas (Styling with Markdown is supported)" required class="isi_tugas"></textarea>
+		
+		<label for="tujuan" class="wow slideInLeft">Akan Dikirimkan Kepada</label>
+ 		<select name="tujuan" id="tujuan" class="tujuan wow slideInUp">
+			<option value="Seluruh Karyawan">Seluruh Karyawan</option>
+			<option value="Satpam">Satpam</option>
+			<option value="OB">OB</option>
+			<option value="Sekertaris">Sekertaris</option>
+			<option value="Akutansi">Akutansi</option>
+			<option value="Desain">Desain</option>
+			<option value="IT">IT</option>
+		</select>
+		
+		<label for="time" class="wow slideInLeft"> Pada Tanggal</label>
+		<input class="tujuan wow slideInUp" type="date" name="time" id="time" min="<?php echo $tgl ?>" value="<?php echo $tgl ?>">
+		
+		<center>
+			<button type="submit" class="sumbit wow bounce" value="Kirim" id="kirim" name="kirim">Kirim</button>&nbsp;&nbsp;&nbsp;<button type="submit" class="sumbit wow bounce" value="Preview" id="prev" name="prev">Preview</button>
+		</center>
+	</div>
+	</section>
+</form>
+	
+<div class="menuFloat wow slideInRight" id="Float">
+<table>
+	<tr>
+		<th><p class="menu"><a href="etc/history/history.html">History</a></p></th>
+	</tr>	
+</table>
+</div>
+    
+    <div class="Banner-handap">
+        <div class="o">Officia</div>
+        <nav class="navbar">
+            <a class="toggler-navbar">
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </a>
+            <div class="sidebar">
+                <ul class="inline">
+                    <li><a href="Setting-Absen.html" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
+                    <li><a href="Izin-Cuti.html" class="cuti">Izin Cuti<i class="logo fas fa-calendar-minus"></i></a></li>
+                    <li><a href="" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
+                    <li><a href="" class="karyawan">Karyawan<i class="logo fas fa-id-card"></i></a></li>
+                    <li><a href="" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
+                    <li><a href="" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="Banner-handap-used">
+        <div class="o">Officia</div>
+        <nav class="navbar">
+            <a class="toggler-navbar">
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </a>
+            <div class="sidebar">
+                <ul class="inline">
+                    <li><a href="Setting-Absen.html" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
+                    <li><a href="Izin-Cuti.html" class="cuti">Izin Cuti<i class="logo fas fa-calendar-minus"></i></a></li>
+                    <li><a href="" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
+                    <li><a href="" class="karyawan">Karyawan<i class="logo fas fa-id-card"></i></a></li>
+                    <li><a href="" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
+                    <li><a href="" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <script src="etc/script.js"></script>
+	<script src="../Main Tab/etc/wow.min.js"></script>
+<script>
+	new WOW().init();
+</script>
+</body>
+</html>
