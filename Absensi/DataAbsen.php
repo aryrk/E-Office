@@ -88,13 +88,14 @@ if(isset($_POST['CUTI'])){
 	$sql = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor';";
+			$A = "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor' ORDER BY Tanggal DESC;";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
-			echo "<tr><td>" . $nik . "</td><td>" . $nama . "</td><td>" . $row['Tanggal'] . "</td><td>" . $row['Jam_masuk'] . "</td><td>" . $row['Jam_pulang'] . "</td><td>" . $row['Terlambat'] . "</td><td>" . $row['Status'] . "</td></tr>";
+					$data_status = $row['Status'];
+			echo "<tr><td>" . $nik . "</td><td>" . $nama . "</td><td>" . $row['Tanggal'] . "</td><td>" . $row['Jam_masuk'] . "</td><td>" . $row['Jam_pulang'] . "</td><td>" . $row['Terlambat'] . "</td><td>" . $data_status . "</td></tr>";
 		}
 			}
 		}
