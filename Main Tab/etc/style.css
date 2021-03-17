@@ -1,3 +1,6 @@
+.swal2-icon.swal2-info, .swal2-icon.swal2-question, .swal2-icon.swal2-warning {
+    font-size: 1em;
+}
 :root {
   --border-size: 0.125rem;
   --duration: 250ms;
