@@ -37,7 +37,7 @@ if(isset($_POST["image"]))
 			mysqli_query($konek, "UPDATE login SET pp_name='$imageName' WHERE NIK='$nik' AND Nama_Perusahaan='$kantor' AND Password='$pass'");
 		}
 
-	echo '<img src="image/'.$imageName.'" class="img-thumbnail"/>';
+	echo '<img src="image/'.$imageName.'" class="img-thumbnail"/><br><br><button onclick="window.location.href='."'../../../unused.php?value=batalpp'".'"'.' type="button">Batal</button>&nbsp;&nbsp;&nbsp;<button onclick="window.location.href='."'../../../unused.php?value=konfirmUbahPP'".'"'.' type="button">Konfirmasi</button>';
 
 }
 
