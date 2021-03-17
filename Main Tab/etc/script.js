@@ -18,6 +18,67 @@ function Allert(){
 	})
 };
 
+function Hapus_profile(){
+Swal.fire({
+  title: 'Apakah kamu yakin?',
+  text: "Gambar yang telah dihapus tidak akan bisa dikembalikan!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Ya!'
+}).then((result) => {
+  if (result.isConfirmed) {
+	location.href="../../unused.php?value=hapuspp";
+  }
+})
+};
+
+function Login(){
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'Signed in successfully'
+})
+};
+
+function ubahPP(){
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'Upload image successfully'
+})
+};
+
+function hapusPP(){
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'Delete image successfully'
+})
+};
+
 		var myVar;
 	function Loading() {
   		myVar = setTimeout(showPage, 1000);
