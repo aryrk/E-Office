@@ -2,7 +2,7 @@
 session_start();
 //mencegah user masuk bila mereka belum melakukan login
 if (!isset($_SESSION['LOGIN'])){
-	header("Location: ../../Login/login1.php");
+	header("Location: ../../../Login/login1.php");
 	exit ();
 }
 ?>
@@ -57,11 +57,11 @@ if (!isset($_SESSION['LOGIN'])){
         		<button type="button" class="close" data-dismiss="modal">&times;</button>
         		<h4 class="modal-title">Upload & Crop Image</h4>
       		</div>
-      		<div class="modal-body" style="height: 500px;">
+      		<div class="modal-body" style="height: 450px;">
         		<div class="row">
   					<div class="col-md-8 text-center">
 						<button class="btn btn-success crop_image">Crop & Upload Image</button>
-						  <div id="image_demo" style="width:350px; margin-top:30px;"></div>
+						  <div id="image_demo" style="width:100%; margin-top:30px;"></div>
   					</div>
 				</div>
       		</div>
@@ -83,7 +83,7 @@ $(document).ready(function(){
       type:'square' //circle
     },
     boundary:{
-      width:300,
+      width:100+"%",
       height:300
     }
   });
