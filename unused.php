@@ -1,7 +1,9 @@
 <?php
 session_start();
 require_once("config.php");
-
+$nik = $_SESSION['nik'];
+$kantor = $_SESSION['kantor'];
+$pass = $_SESSION['password'];
 if (!isset($_GET['value'])){	
 header("Location: etc/error/index.php?condition=1");
 exit();
@@ -33,6 +35,35 @@ if($_GET['value'] == "logout"){
 	
 	header("Location: index.html");
 	exit();
+}
+else if($_GET['value'] == "hapuspp"){
+	$sql_cek = mysqli_query($konek, "SELECT pp_name FROM login WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
+$row = mysqli_fetch_assoc($sql_cek);
+$pp_name = $row['pp_name'];
+	
+	if ($pp_name != "default.png"){
+		unlink('Main Tab/etc/upload/image/'.$pp_name);
+		mysqli_query($konek, "UPDATE login SET pp_name='default.png' WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
+		$pp = 'src="upload/image/default.png"';
+	}
+	$_SESSION['hapusPP'] = 1;
+	header("Location: Main Tab/etc/Main.php");
+}
+else if($_GET['value'] == "batalpp"){
+	$sql_cek = mysqli_query($konek, "SELECT pp_name FROM login WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
+$row = mysqli_fetch_assoc($sql_cek);
+$pp_name = $row['pp_name'];
+	
+	if ($pp_name != "default.png"){
+		unlink('Main Tab/etc/upload/image/'.$pp_name);
+		mysqli_query($konek, "UPDATE login SET pp_name='default.png' WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
+		$pp = 'src="upload/image/default.png"';
+	}
+	header("Location: Main Tab/etc/Main.php");
+}
+else if($_GET['value'] == "konfirmUbahPP"){
+	$_SESSION['ubahPP'] = 1;
+	header("Location: Main Tab/etc/Main.php");
 }
 }
 ?>
