@@ -22,11 +22,11 @@ if(isset($_POST["image"]))
 
 	$imageName = $nik . $kantor . time() . '.png';
 
-	$sql = mysqli_query($konek, "SELECT pp_name FROM login WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
+	$sql = mysqli_query($konek, "SELECT pp_name FROM login WHERE NIK='$nik' AND Nama_Perusahaan='$kantor' AND Password='$pass'");
 		if (mysqli_num_rows($sql) != 0){
 			$row = mysqli_fetch_assoc($sql);
 			$pp_name = $row['pp_name'];
-			
+//Jika user memiliki gambar profile sebelumnya, maka gambar tersebut akan dihapus dari database
 			if ($pp_name != "default.png"){
 				unlink('image/'.$pp_name);
 				file_put_contents('image/'.$imageName, $data);
@@ -34,10 +34,10 @@ if(isset($_POST["image"]))
 			else {
 				file_put_contents('image/'.$imageName, $data);
 			}
-			mysqli_query($konek, "UPDATE login SET pp_name='$imageName' WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
+			mysqli_query($konek, "UPDATE login SET pp_name='$imageName' WHERE NIK='$nik' AND Nama_Perusahaan='$kantor' AND Password='$pass'");
 		}
 
-	echo '<img src="image/'.$imageName.'" class="img-thumbnail" />';
+	echo '<img src="image/'.$imageName.'" class="img-thumbnail"/>';
 
 }
 
