@@ -6,7 +6,6 @@ if (!isset($_SESSION['LOGIN'])){
 	exit ();
 }
 
-
 require_once("../../config.php");
 //Session akan membuat link terlihat polos dan membuat website lebih teroptimisasi dibanding sebelumnya
 $nik = $_SESSION['nik'];
@@ -27,13 +26,6 @@ if(isset($_POST['ABSEN'])){
 }
 if(isset($_POST['UBAH'])){
 	header("Location: upload/index.php");
-}
-if(isset($_POST['HAPUS'])){
-	if ($pp_name != "default.png"){
-		unlink('upload/image/'.$pp_name);
-		mysqli_query($konek, "UPDATE login SET pp_name='default.png' WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
-		$pp = 'src="upload/image/default.png"';
-	}
 }
 ?>
 <!DOCTYPE html>
@@ -590,11 +582,10 @@ if(isset($_POST['HAPUS'])){
 				<form id="form2" name="form2" method="post" action="">
 				<td>
 					<div class="multi-button">
-  						<button type="submit" name="UBAH" id="UBAH" value="ubah" class="action">Ubah</button>
-  						<button type="submit" name="HAPUS" id="HAPUS" value="hapus" class="action">Hapus</button>
+  						<button type="submit" name="UBAH" id="UBAH" value="ubah" class="action">Ubah</button></form>
+  						<button type="submit" name="HAPUS" id="HAPUS" value="hapus" class="action" onClick="Hapus_profile()">Hapus</button>
 					</div>
 				</td>
-				</form>
 			</tr>
 		</table>
 	</div>
@@ -645,5 +636,20 @@ if(isset($_POST['HAPUS'])){
     </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<?php
+sleep(3);
+if (isset($_SESSION['first_login'])){
+	echo "<script> Login(); </script>";
+	unset($_SESSION['first_login']);
+}
+else if (isset($_SESSION['ubahPP'])){
+	echo "<script> ubahPP(); </script>";
+	unset($_SESSION['ubahPP']);
+}
+else if (isset($_SESSION['hapusPP'])){
+	echo "<script> hapusPP(); </script>";
+	unset($_SESSION['hapusPP']);
+}
+?>
 </body>
 </html>
