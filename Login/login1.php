@@ -3,6 +3,7 @@
 session_start();
 if (isset($_SESSION['LOGIN'])){
 	header("Location: ../Main Tab/etc/Main.php");
+	$_SESSION['first_login'] = 1;
 	exit ();
 }
 
@@ -49,6 +50,8 @@ if(isset($_POST['SUBMIT'])){
 					$_SESSION['email'] = $email;
 					$_SESSION['kantor'] = $kantor;
 					$_SESSION['password'] = $pw;
+					
+					$_SESSION['first_login'] = 1;
 					
 					header("Location: ../Main Tab/etc/Main.php");
 				}
