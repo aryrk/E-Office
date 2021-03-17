@@ -306,6 +306,15 @@ button{
     .absen, .cuti, .pengumuman, .karyawan, .list-karyawan{
         margin-right: -50px;
     }
+     #tujuan{
+        width: 130%;
+    }
+    #isi{
+        width: 130%;
+    }
+    #tanggal{
+        width: 130%;
+    }
     .Banner-handap-used{
         background-color: #474e5d;
         width: 100%;
@@ -594,16 +603,7 @@ button{
         transform: rotate(-135deg);
     }
 }
-@keyframes bnr{
-    0%{
-        opacity: 0;
-        transform: translateY(-1%);
-    }
-    100%{
-        opacity: 1;
-        transform: translateY(0%);
-    }
-}  
+
 @keyframes logo{
     0%{
         opacity: 0;
