@@ -1,9 +1,16 @@
 <?php
 require_once("../config.php");
+session_start();
+//mencegah user masuk bila mereka belum melakukan login
+if (!isset($_SESSION['LOGIN_ADMIN'])){
+	header("Location: Loginadmin.php");
+	exit ();
+}
+
 date_default_timezone_set('Asia/Jakarta');
-$kantor = $_GET['kantor'];
-$nik = $_GET['nik'];
-$pw = $_GET['password'];
+$kantor = $_SESSION['kantor_admin'];
+$nik = $_SESSION['NIK_admin'];
+$pw = $_SESSION['PW_admin'];
 
 if(isset($_POST['SUBMIT'])){
 	$jam = date("H:i:s");
@@ -42,7 +49,7 @@ if(isset($_POST['SUBMIT'])){
 	}
 }
 if(isset($_POST['BACK'])){
-		header("Location: ../admin/Admin.php?kantor=$kantor && nik=$nik && password=$pw");
+		header("Location: ../admin/Admin1.php");
 }
 ?>
 <!DOCTYPE html>
@@ -151,8 +158,8 @@ class="size" onclick="check()">Show Password<br>
 	</div>	
 </div>
 	</div>
-	</center>
-</body>
+	</body></center>
+
 </html>
 <script>
 function valid () {
