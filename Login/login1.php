@@ -6,6 +6,10 @@ if (isset($_SESSION['LOGIN'])){
 	$_SESSION['first_login'] = 1;
 	exit ();
 }
+else if (isset($_SESSION['LOGIN_ADMIN'])){
+	header("Location: ../admin/Admin1.php");
+	exit ();
+}
 
 require_once("../config.php");
 
