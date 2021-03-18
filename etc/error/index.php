@@ -56,7 +56,7 @@ if(isset($_POST['BACK'])){
 		exit();
 	}
 	else if ($condition == 7 || $condition == 8 || $condition == 11){
-		header("Location: ../../Login/regis.php?kantor=$kantor && nik=$nik && password=$pw");
+		header("Location: ../../Login/regis.php");
 		exit();
 	}
 	else if ($condition == 9){
