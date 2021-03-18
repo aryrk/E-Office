@@ -10,7 +10,7 @@ error_reporting(E_ERROR | E_PARSE);
 //kondisi 6 = registrasi akun admin menggunakan NIK yang sudah terdaftar
 //kondisi 7 = registrasi karyawan menggunakan NIK yang sudah terdaftar
 //kondisi 8 = registrasi akun admin menggunakan nama perusahaan yang sudah terdaftar
-//kondisi 9-12, 14 = error database
+//kondisi 9-12, 14-15 = error database
 
 $Masuk_awal = $_GET['masuk1'];
 $Masuk_akhir = $_GET['masuk2'];
@@ -23,7 +23,13 @@ if (isset($_SESSION['LOGIN'])){
 	$pw = $_SESSION['password'];
 	$condition = $_SESSION['condition'];
 }
-else if (!isset($_SESSION['LOGIN'])) {
+if (isset($_SESSION['LOGIN_ADMIN'])){
+	$nik = $_SESSION['nik'];
+	$kantor = $_SESSION['kantor'];
+	$pw = $_SESSION['password'];
+	$condition = $_SESSION['condition'];
+}
+else{
 	$kantor = $_GET['kantor'];
 	$nik = $_GET['nik'];
 	$pw = $_GET['password'];
@@ -69,6 +75,10 @@ if(isset($_POST['BACK'])){
 	}
 	else if ($condition == 14){
 		header("Location: ../../Absensi/Cuti.php");
+		exit();
+	}
+	else if ($condition == 15){
+		header("Location: ../../admin/Setting-Absen.php");
 		exit();
 	}
 }
@@ -424,7 +434,7 @@ else if ($condition == 8){
         <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
 		  </form>';
 }
-else if ($condition == 9 || $condition == 10 || $condition == 11 || $condition == 12 || $condition == 14){
+else if ($condition == 9 || $condition == 10 || $condition == 11 || $condition == 12 || $condition == 14 || $condition == 15){
 	echo
         '<h1>404</h1>
         <h2>SERVER ERROR!</h2>
