@@ -21,6 +21,7 @@ $pw = $_SESSION['PW_admin'];
     
     <link rel="stylesheet" href="styleadmin.css">
 	<link rel="stylesheet" href="../etc/wmRemover.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&display=swap" rel="stylesheet">
 </head>
@@ -207,5 +208,14 @@ $pw = $_SESSION['PW_admin'];
     </div>
 
     <script src="script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="../etc/allert.js"></script>
+<?php
+if (isset($_SESSION['first_login_admin'])){
+	echo "<script> Login(); </script>";
+	unset($_SESSION['first_login_admin']);
+}
+?>
 </body>
 </html>
