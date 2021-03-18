@@ -1,33 +1,44 @@
 <?php
 require_once("../config.php");
 
+session_start();
+if (isset($_SESSION['LOGIN_ADMIN'])){
+	header("Location: ../admin/Admin1.php");
+	exit ();
+}
+
 if(isset($_POST['SUBMIT'])){
-		$nik = trim($_POST['NIK']);
-		$pw = trim($_POST['PW']);
+		$nik_admin = trim($_POST['NIK']);
+		$pw_admin = trim($_POST['PW']);
 		
-		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw'");
+		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik_admin' AND Password='$pw_admin'");
 
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw';";
+			$A = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik_admin' AND Password='$pw_admin';";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
-					$kantor = $row['Nama_Perusahaan'];
+					$kantor_admin = $row['Nama_Perusahaan'];
 					
-					header("Location: ../admin/Admin.php?kantor=$kantor && password=$pw && nik=$nik");
+					$_SESSION['LOGIN_ADMIN'] = 1;
+					$_SESSION['kantor_admin'] = $kantor_admin;
+					$_SESSION['NIK_admin'] = $nik_admin;
+					$_SESSION['PW_admin'] = $pw_admin;
+					
+					header("Location: ../admin/Admin1.php");
 				}
 			}
 		}
 //Jika akun tidak ditemukan, akan dialihkan ke tampilan error
 		else if (mysqli_num_rows($sql) == 0){
-		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
+		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik_admin'");
 			if (mysqli_num_rows($sql) != 0){
 				header("Location: ../etc/error/index.php?condition=4");
 			}
 			else if (mysqli_num_rows($sql) == 0){
-				header("Location: ../etc/error/index.php?condition=5 && nik=$nik");
+				header("Location: ../etc/error/index.php?condition=5 && nik=$nik_admin");
 			}
 	}
 	}
@@ -55,13 +66,13 @@ if(isset($_POST['SUBMIT'])){
 
 </div>
 	<p>
-	<label for="name">NIK:</label><br>
+	<label for="NIK">NIK:</label><br>
 	<input type="number" placeholder="Ketik NIK" name="NIK" id="NIK" autocomplete="off" required
 class="nik" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 maxlength="16"><br>
 	</p>
 	<p>
-	<label for="pass">Password:</label><br>
+	<label for="PW">Password:</label><br>
 	<input type="password" placeholder="Ketik Password" name="PW" id="PW" autocomplete="off" required>
 	</p>
 	<p>
