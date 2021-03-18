@@ -67,23 +67,22 @@ if(isset($_POST['CUTI'])){
 			</form>
         </div>
     </header>
-
-    <section>
-        <div class="table-responsive">
-            <table class="table-da" border="1" cellpadding="15">
-                <thead class="thead-bg">
-                    <tr>
-                        <th>NIK / ID</th>
-                        <th>Nama</th>
-                        <th>Tanggal</th>
-                        <th>Jam Absen Masuk</th>
-                        <th>Jam Absen Pulang</th>
-                        <th>Terlambat Absen</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-
-                <tbody>
+<section>
+    <!-- partial:index.partial.html -->
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>NIK / ID</th>
+			<th>Nama</th>
+			<th>Tanggal</th>
+			<th>Absen Masuk</th>
+			<th>Absen Pulang</th>
+			<th>Terlambat</th>
+			<th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
 <?php
 	$sql = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
 		
@@ -101,10 +100,10 @@ if(isset($_POST['CUTI'])){
 		}
 ?>
                 </tbody>
-            </table>
-        </div>
-    </section>
-
+    </table>
+</div>
+<!-- partial -->
+</section>
     <footer>
         <p class="copy">Absensi Online, Copyright &copy;2021 by Officia. All Right Reserved</p>
     </footer>
