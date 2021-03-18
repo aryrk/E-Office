@@ -234,7 +234,7 @@ if(isset($_POST['CUTI'])){
         <div class="bga">
             <form id="form2" name="form2" method="post" action="">
                 <div class="radio">
-                    <input type="radio" name="absen" value="JamMasuk"/><label for="Masuk">Masuk</label>
+                    <input type="radio" name="absen" value="JamMasuk" required/><label for="Masuk">Masuk</label>
                     <input type="radio" name="absen" value="JamPulang"/><label for="Pulang">Pulang</label>
                 </div>
 
