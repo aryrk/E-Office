@@ -20,6 +20,7 @@ $pw = $_SESSION['PW_admin'];
     <title>List Karyawan</title>
     
     <link rel="stylesheet" href="List-Karyawan.css">
+	<link rel="stylesheet" href="../etc/wmRemover.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&display=swap" rel="stylesheet">
