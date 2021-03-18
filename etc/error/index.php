@@ -23,7 +23,7 @@ if (isset($_SESSION['LOGIN'])){
 	$pw = $_SESSION['password'];
 	$condition = $_SESSION['condition'];
 }
-else {
+else if (!isset($_SESSION['LOGIN'])) {
 	$kantor = $_GET['kantor'];
 	$nik = $_GET['nik'];
 	$pw = $_GET['password'];
