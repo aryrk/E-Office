@@ -1,16 +1,24 @@
 <?php
 session_start();
 require_once("config.php");
+if (isset($_SESSION['LOGIN'])){
 $nik = $_SESSION['nik'];
 $kantor = $_SESSION['kantor'];
 $pass = $_SESSION['password'];
+}
+if (isset($_SESSION['LOGIN_ADMIN'])){
+$kantor_admin = $_SESSION['kantor_admin'];
+$nik_admin = $_SESSION['NIK_admin'];
+$pw_admin = $_SESSION['PW_admin'];
+	
+$Nama_kar = $_GET['kar'];
+$NIK_kar = $_GET['nik_kar'];
+}
 if (!isset($_GET['value'])){	
 header("Location: etc/error/index.php?condition=1");
-exit();
 }
 
 else if (isset($_GET['value'])){
-	
 if($_GET['value'] == "logout"){
 //Menghapus data login dari browser
 	if(isset($_SESSION['LOGIN'])){
@@ -34,7 +42,32 @@ if($_GET['value'] == "logout"){
 	setcookie(session_name(),'',0,'/');
 	
 	header("Location: index.html");
-	exit();
+}
+else if($_GET['value'] == "logoutad"){
+//Menghapus data login dari browser
+	if(isset($_SESSION['LOGIN_ADMIN'])){
+		unset($_SESSION['LOGIN_ADMIN']);
+		unset($_SESSION['kantor_admin']);
+		unset($_SESSION['NIK_admin']);
+		unset($_SESSION['PW_admin']);
+	}
+	if (isset($_SESSION['condition'])){
+		unset($_SESSION['condition']);
+	}
+	
+	session_unset();
+	session_destroy();
+	session_write_close();
+	setcookie(session_name(),'',0,'/');
+	
+	header("Location: index.html");
+}
+else if($_GET['value'] == "hapuskar "){
+	mysqli_query($konek, "DELETE FROM login WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
+	mysqli_query($konek, "DELETE FROM absen WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
+	mysqli_query($konek, "DELETE FROM cuti WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
+	$_SESSION['hapusKaryawan'] = 1;
+	header("Location: admin/List-Karyawan.php");
 }
 else if($_GET['value'] == "hapuspp"){
 	$sql_cek = mysqli_query($konek, "SELECT pp_name FROM login WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
@@ -49,6 +82,7 @@ $pp_name = $row['pp_name'];
 	$_SESSION['hapusPP'] = 1;
 	header("Location: Main Tab/etc/Main.php");
 }
+	
 else if($_GET['value'] == "batalpp"){
 	$sql_cek = mysqli_query($konek, "SELECT pp_name FROM login WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
 $row = mysqli_fetch_assoc($sql_cek);
