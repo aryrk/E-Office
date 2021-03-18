@@ -24,7 +24,7 @@ const Toast = Swal.mixin({
 
 Toast.fire({
   icon: 'success',
-  title: 'Delete successfully'
+  title: 'Update successfully'
 })
 };
 
