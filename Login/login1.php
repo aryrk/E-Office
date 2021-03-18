@@ -112,6 +112,9 @@ if(isset($_POST['SUBMIT'])){
 	</div>
 	</p>
 	<p>
+	<a href="Forgotpassdesign.php">Forgot Your Password?</a>
+	</p>
+	<p>
 	<button type="submit" name="SUBMIT" id="SUBMIT" value="Submit">Login</button><br>
 	</p>
 	<p>
