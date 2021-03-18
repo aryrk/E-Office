@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 session_start();
 require_once("config.php");
 if (isset($_SESSION['LOGIN'])){
@@ -98,6 +99,11 @@ $pp_name = $row['pp_name'];
 else if($_GET['value'] == "konfirmUbahPP"){
 	$_SESSION['ubahPP'] = 1;
 	header("Location: Main Tab/etc/Main.php");
+}
+	
+else if($_GET['value'] == "gantiabsen"){
+	$_SESSION['ubahabsen'] = 1;
+	header("Location: admin/Setting-Absen.php");
 }
 }
 ?>
