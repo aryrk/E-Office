@@ -1,3 +1,16 @@
+<?php
+require_once("../config.php");
+session_start();
+//mencegah user masuk bila mereka belum melakukan login
+if (!isset($_SESSION['LOGIN_ADMIN'])){
+	header("Location: ../Login/Loginadmin.php");
+	exit ();
+}
+
+$kantor = $_SESSION['kantor_admin'];
+$nik = $_SESSION['NIK_admin'];
+$pw = $_SESSION['PW_admin'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +25,14 @@
 </head>
 <body>
     <header class="banner"> 
-        <h1 class="h1">Officia Administrator</h1>
+        <h1 class="h1"><?php echo $kantor ?> Administrator</h1>
 
-        <a href="../index.html"><i class="back fas fa-sign-out-alt"></i></a>
+        <a href="../unused.php?value=logoutad"><i class="back fas fa-sign-out-alt"></i></a>
     </header>
     <header class="banner-used"> 
-        <h1 class="h1">Officia Administrator</h1>
+        <h1 class="h1"><?php echo $kantor ?> Administrator</h1>
 
-        <a href="../index.html"><i class="back fas fa-sign-out-alt"></i></a>
+        <a href="../unused.php?value=logoutad"><i class="back fas fa-sign-out-alt"></i></a>
     </header>
 
     <section class="tampilan">
@@ -161,8 +174,8 @@
                     <li><a href="Setting-Absen.html" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
                     <li><a href="Izin-Cuti.html" class="cuti">Izin Cuti<i class="logo fas fa-calendar-minus"></i></a></li>
                     <li><a href="" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
-                    <li><a href="" class="karyawan">Karyawan<i class="logo fas fa-id-card"></i></a></li>
-                    <li><a href="List-Karyawan.html" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
+                    <li><a href="../Login/regis.php" class="karyawan">+Karyawan<i class="logo fas fa-id-card"></i></a></li>
+                    <li><a href="List-Karyawan.php" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
                     <li><a href="" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
                 </ul>
             </div>
@@ -184,8 +197,8 @@
                     <li><a href="Setting-Absen.html" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
                     <li><a href="Izin-Cuti.html" class="cuti">Izin Cuti<i class="logo fas fa-calendar-minus"></i></a></li>
                     <li><a href="" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
-                    <li><a href="" class="karyawan">Karyawan<i class="logo fas fa-id-card"></i></a></li>
-                    <li><a href="List-Karyawan.html" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
+                    <li><a href="../Login/regis.php" class="karyawan">+Karyawan<i class="logo fas fa-id-card"></i></a></li>
+                    <li><a href="List-Karyawan.php" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
                     <li><a href="" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
                 </ul>
             </div>
