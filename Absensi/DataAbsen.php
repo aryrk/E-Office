@@ -50,11 +50,11 @@ if(isset($_POST['CUTI'])){
 			<form id="form1" name="form1" method="post" action="">
             <nav>
                 <ul>
-                    <li><button style="background-color: transparent;border: none;" type="submit" name="HOME" id="HOME" value="home"><a>DASHBOARD</a></li> 
-                    <li><button style="background-color: transparent;border: none;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>ABSEN</a></li>
-                    <li><button style="background-color: transparent;border: none;" type="submit" name="CUTI" id="CUTI" value="cuti"><a>CUTI</a></button></li>
+                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="HOME" id="HOME" value="home"><a>DASHBOARD</a></li> 
+                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>ABSEN</a></li>
+                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="CUTI" id="CUTI" value="cuti"><a>CUTI</a></button></li>
                     <li><a href=""><u style="color: rgb(190, 190, 190); text-shadow: 0px 0px 20px white;">DATA ABSEN</u></a></li>
-                    <li><button style="background-color: transparent;border: none;" type="submit" name="PROFIL" id="PROFIL" value="profil"><a>PROFILE</a></li>
+                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="PROFIL" id="PROFIL" value="profil"><a>PROFILE</a></li>
                 </ul>
             
                 <div class="menu-toggle">
