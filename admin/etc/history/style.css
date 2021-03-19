@@ -361,6 +361,7 @@ a{
     .fl-table tbody td {
         display: block;
         text-align: center;
+		width: 220px;
     }
 
     .inline{
