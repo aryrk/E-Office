@@ -50,7 +50,7 @@ if(isset($_POST['search'])){
     <div class="wrap" style="z-index: 10000;">
 		<label for="nama">Cari Berdasarkan Tanggal Pengiriman</label>
         <div class="search">
-        <input type="date" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap..." autocomplete="off">
+        <input type="date" name="nama" id="nama" class="searchTerm" autocomplete="off">
         <button type="submit" name="search" id="search" class="searchButton">
             <i class="fa fa-search"></i>
         </button>
@@ -73,7 +73,7 @@ if(isset($_POST['search'])){
 	$sql = mysqli_query($konek, "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor'");
 		
 				
-if (!isset($_GET['l']) || $_GET['l'] == NULL){
+if (!isset($_GET['l']) || $_GET['l'] == "1970-01-01"){
 		if (mysqli_num_rows($sql) != 0){
 			$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' ORDER BY Tanggal DESC;";
 			$result = mysqli_query($konek, $A);
@@ -82,9 +82,20 @@ if (!isset($_GET['l']) || $_GET['l'] == NULL){
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					$tanggal_tujuan = $row['Tanggal'];
-					$isi = $row['Isi_Tugas'];
+					$isi_cek = $row['Isi_Tugas'];
 					$tujuan = $row['Tujuan'];
 					$tanggal = $row['Submitted_On_Date'];
+					$jam = $row['Submitted_On_Hours'];
+					
+					$cek = strlen($isi_cek);
+					if ($cek >= 10){
+						$isi_cek2 = substr($isi_cek, 0, 10);
+						$a = htmlentities($isi_cek2);
+						$isi = $a.'...'. '<a href="../../preview_tugas/preview.php?kantor='.$kantor.'&&nik='.$nik.'&&tanggal='.$tanggal.'&&jam='.$jam.'&&his=1'.'" style="color: blue;"> Selengkapnya...</a>';
+					}
+					else if ($cek < 10) {
+						$isi = $isi_cek;
+					}
 			echo "<tr><td>" . $tanggal . "</td><td>" . $isi . "</td><td>" . $tujuan . "</td><td>" . $tanggal_tujuan . "</td><td style='padding: 0; background-color: red;'><button style='width: 100%; height: 100%; border: none; color: white; background-color: red; display: block; flex-grow:1;align-items: stretch;'>HAPUS</button></td></tr>";
 		}
 			}
@@ -93,16 +104,27 @@ if (!isset($_GET['l']) || $_GET['l'] == NULL){
 else if (isset($_GET['l'])){
 	$l = $_GET['l'];
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Submitted_On_Date='$l' ORDER BY Tujuan DESC;";
+			$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Submitted_On_Date='$l' ORDER BY Tanggal DESC;";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					$tanggal_tujuan = $row['Tanggal'];
-					$isi = $row['Isi_Tugas'];
+					$isi_cek = $row['Isi_Tugas'];
 					$tujuan = $row['Tujuan'];
 					$tanggal = $row['Submitted_On_Date'];
+					$jam = $row['Submitted_On_Hours'];
+					
+					$cek = strlen($isi_cek);
+					if ($cek >= 10){
+						$isi_cek2 = substr($isi_cek, 0, 10);
+						$a = htmlentities($isi_cek2);
+						$isi = $a.'...'. '<a href="../../preview_tugas/preview.php?kantor='.$kantor.'&&nik='.$nik.'&&tanggal='.$tanggal.'&&jam='.$jam.'&&his=1'.'" style="color: blue;"> Selengkapnya...</a>';
+					}
+					else if ($cek < 10) {
+						$isi = $isi_cek;
+					}
 			echo "<tr><td>" . $tanggal . "</td><td>" . $isi . "</td><td>" . $tujuan . "</td><td>" . $tanggal_tujuan . "</td><td style='padding: 0; background-color: red;'><button style='width: 100%; height: 100%; border: none; color: white; background-color: red; display: block; flex-grow:1;align-items: stretch;'>HAPUS</button></td></tr>";
 		}
 			}
