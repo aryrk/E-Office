@@ -64,6 +64,16 @@ else if($_GET['value'] == "logoutad"){
 	header("Location: index.html");
 }
 else if($_GET['value'] == "hapuskar "){
+		$sql_cek = mysqli_query($konek, "SELECT pp_name FROM login WHERE NIK='$NIK_kar' AND Nama_Perusahaan='$kantor_admin' AND Nama='$Nama_kar'");
+		$row = mysqli_fetch_assoc($sql_cek);
+		$pp_name = $row['pp_name'];
+	
+		if ($pp_name != "default.png"){
+			unlink('Main Tab/etc/upload/image/'.$pp_name);
+			mysqli_query($konek, "UPDATE login SET pp_name='default.png' WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
+		}
+	
+	
 	mysqli_query($konek, "DELETE FROM login WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
 	mysqli_query($konek, "DELETE FROM absen WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
 	mysqli_query($konek, "DELETE FROM cuti WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
