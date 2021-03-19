@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 require_once("../../config.php");
 
 session_start();
@@ -10,7 +11,19 @@ if (!isset($_SESSION['LOGIN_ADMIN'])){
 
 $tujuan = $_GET['tujuan'];
 $tanggal = $_GET['tanggal'];
-$isi = $_SESSION['isi'];
+$isi = "<p>".$_SESSION['isi']."</p>";
+
+$nik = $_GET['nik'];
+$kantor = $_GET['kantor'];
+$jam = $_GET['jam'];
+
+if (isset($_GET['his'])){
+$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Submitted_On_Date='$tanggal' AND NIK_Admin='$nik' AND Submitted_On_Hours='$jam';";
+$result = mysqli_query($konek, $A);
+$row = mysqli_fetch_assoc($result);
+$isi_tugas = "<p>".$row['Isi_Tugas']."</p>";
+	
+}
 ?>
 <!doctype html>
 <html>
@@ -27,6 +40,11 @@ $isi = $_SESSION['isi'];
 <body>
 <form id="form1" name="form1" method="post" action="">
 <?php echo $isi; ?>
+<?php
+if (isset($_GET['his'])){
+	echo $isi_tugas.'<br>Diunggah pada: '.$tanggal.' ('.$jam.')';
+}
+?>
 <?php unset($_SESSION['isi']); ?>
 	
 <p class="back wow fadeInUpBig">#Note: To go back without losing any data, just simply press 'back' button.</p>
