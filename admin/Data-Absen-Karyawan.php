@@ -48,7 +48,7 @@ if(isset($_POST['search'])){
 <form id="form1" name="form1" method="post" action="">
     <div class="wrap" style="z-index: 10000;">
         <div class="search">
-        <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap..." autocomplete="off">
+        <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap/NIK..." autocomplete="off">
         <button type="submit" name="search" id="search" class="searchButton">
             <i class="fa fa-search"></i>
         </button>
@@ -91,7 +91,7 @@ if (!isset($_GET['l']) || $_GET['l'] == NULL){
 else if (isset($_GET['l'])){
 	$l = $_GET['l'];
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM absen WHERE Nama_Perusahaan='$kantor' AND Nama='$l' ORDER BY Tanggal DESC;";
+			$A = "SELECT * FROM absen WHERE Nama_Perusahaan='$kantor' AND Nama='$l' OR Nama_Perusahaan='$kantor' AND NIK='$l' ORDER BY Tanggal DESC;";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
