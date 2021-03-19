@@ -519,11 +519,11 @@ if(isset($_POST['UBAH'])){
 	</div>
 
         <ul>
-            <div class="wow fadeInLeft"><li><a><u>Profile</u></a></li></div>
-            <div class="wow fadeInLeft"><li><button style="background-color: transparent;border: none;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>Absen</a></button></li></div>
-			<div class="wow fadeInLeft"><li><button style="background-color: transparent;border: none;" type="submit" name="PENGUMUMAN" id="PENGUMUMAN" value="pengumuman"><a>Pengumuman</a></button></li></div>
-            <div class="wow fadeInLeft"><li><a onclick="Allert()">Log-out</a></li></div>
-			<div class="wow fadeInLeft"><li><button onclick="DarkMode()" class="dark"><img src="https://static.thenounproject.com/png/1664849-200.png" alt="" height="23px"></button></li></div>
+            <div class="wow fadeInLeft"><li><a style="cursor: pointer;"><u>Profile</u></a></li></div>
+            <div class="wow fadeInLeft"><li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>Absen</a></button></li></div>
+			<div class="wow fadeInLeft"><li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="PENGUMUMAN" id="PENGUMUMAN" value="pengumuman"><a>Pengumuman</a></button></li></div>
+            <div class="wow fadeInLeft"><li><a onclick="Allert()" style="cursor: pointer;">Log-out</a></li></div>
+			<div class="wow fadeInLeft"><li><button onclick="DarkMode()" class="dark" style="cursor: pointer;"><img src="https://static.thenounproject.com/png/1664849-200.png" alt="" height="23px"></button></li></div>
         </ul>
 </nav>
 				</form>
