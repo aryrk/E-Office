@@ -1,9 +1,16 @@
 <?php
 require_once("../../config.php");
 
+session_start();
+//mencegah user masuk bila mereka belum melakukan login
+if (!isset($_SESSION['LOGIN_ADMIN'])){
+	header("Location: ../Login/Loginadmin.php");
+	exit ();
+}
+
 $tujuan = $_GET['tujuan'];
 $tanggal = $_GET['tanggal'];
-$isi = $_GET['isi'];
+$isi = $_SESSION['isi'];
 ?>
 <!doctype html>
 <html>
@@ -19,7 +26,8 @@ $isi = $_GET['isi'];
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-<?php echo $isi ?>
+<?php echo $isi; ?>
+<?php unset($_SESSION['isi']); ?>
 	
 <p class="back wow fadeInUpBig">#Note: To go back without losing any data, just simply press 'back' button.</p>
 </form>
