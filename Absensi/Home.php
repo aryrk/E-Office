@@ -86,7 +86,7 @@ if(isset($_POST['CUTI'])){
             </div>
 
             <div class="box">
-                <a class="link" style="cursor: pointer;" onclick="Allert()">
+                <a class="link" href="Cuti.php">
                     <div class="bct">
                         <i class="log fas fa-calendar-minus"></i>
                         <h1>IZIN CUTI</h1>
