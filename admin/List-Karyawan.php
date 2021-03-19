@@ -17,13 +17,16 @@ $pw = $_SESSION['PW_admin'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel = "icon" href ="../Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
     <title>List Karyawan</title>
     
     <link rel="stylesheet" href="List-Karyawan.css">
 	<link rel="stylesheet" href="../etc/wmRemover.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="../Main Tab/etc/Animate.css">
 </head>
 <body>
     <header class="banner"> 
@@ -125,7 +128,7 @@ $pw = $_SESSION['PW_admin'];
                 <ul class="inline">
                     <li><a href="Setting-Absen.php" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
                     <li><a href="Izin-Cuti.html" class="cuti">Izin Cuti<i class="logo fas fa-calendar-minus"></i></a></li>
-                    <li><a href="" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
+                    <li><a href="+Pengumuman.php" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
                     <li><a href="../Login/regis.php" class="karyawan">+Karyawan<i class="logo fas fa-id-card"></i></a></li>
                     <li><a href="List-Karyawan.php" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
                     <li><a href="" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
@@ -156,12 +159,11 @@ $pw = $_SESSION['PW_admin'];
             </div>
         </nav>
     </div>
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
     <script src="script.js"></script>
 	<script src="../etc/allert.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+	
 	<?php
-		sleep(3);
 		if (isset($_SESSION['hapusKaryawan'])){
 			echo "<script> delete_karyawan(); </script>";
 			unset($_SESSION['hapusKaryawan']);
