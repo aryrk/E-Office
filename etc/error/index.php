@@ -10,7 +10,7 @@ error_reporting(E_ERROR | E_PARSE);
 //kondisi 6 = registrasi akun admin menggunakan NIK yang sudah terdaftar
 //kondisi 7 = registrasi karyawan menggunakan NIK yang sudah terdaftar
 //kondisi 8 = registrasi akun admin menggunakan nama perusahaan yang sudah terdaftar
-//kondisi 9-12, 14-15 = error database
+//kondisi 9-12, 14-16 = error database
 
 $Masuk_awal = $_GET['masuk1'];
 $Masuk_akhir = $_GET['masuk2'];
@@ -79,6 +79,10 @@ if(isset($_POST['BACK'])){
 	}
 	else if ($condition == 15){
 		header("Location: ../../admin/Setting-Absen.php");
+		exit();
+	}
+	else if ($condition == 16){
+		header("Location: ../../admin/+Pengumuman.php");
 		exit();
 	}
 }
@@ -434,7 +438,7 @@ else if ($condition == 8){
         <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
 		  </form>';
 }
-else if ($condition == 9 || $condition == 10 || $condition == 11 || $condition == 12 || $condition == 14 || $condition == 15){
+else if ($condition == 9 || $condition == 10 || $condition == 11 || $condition == 12 || $condition == 14 || $condition == 15 || $condition == 16){
 	echo
         '<h1>404</h1>
         <h2>SERVER ERROR!</h2>
