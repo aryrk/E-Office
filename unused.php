@@ -70,6 +70,12 @@ else if($_GET['value'] == "hapuskar "){
 	$_SESSION['hapusKaryawan'] = 1;
 	header("Location: admin/List-Karyawan.php");
 }
+	
+else if($_GET['value'] == "pengumuman"){
+	$_SESSION['Pengumuman'] = 1;
+	header("Location: admin/+Pengumuman.php");
+}
+	
 else if($_GET['value'] == "hapuspp"){
 	$sql_cek = mysqli_query($konek, "SELECT pp_name FROM login WHERE NIK='$nik' AND Nama_Perusahaan='$kantor'");
 $row = mysqli_fetch_assoc($sql_cek);
