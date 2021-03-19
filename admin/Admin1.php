@@ -39,127 +39,91 @@ $pw = $_SESSION['PW_admin'];
     </header>
 
     <section class="tampilan">
-        <h1 class="ket">Rank Absen</h1>
+		<h1 class="ket">Rank Absen</h1>
+<?php
+	$sql = mysqli_query($konek, "SELECT * FROM absen WHERE Nama_Perusahaan='$kantor'");
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * ,COUNT(Tanggal), RANK() OVER(ORDER BY COUNT(Tanggal) DESC) AS Rank FROM absen WHERE Nama_Perusahaan='$kantor' GROUP BY Nama ORDER BY COUNT(Tanggal) DESC;";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$NIK_kar = $row['NIK'];
+					$Nama_kar = $row['Nama'];
+					$jumlah_absen = $row['COUNT(Tanggal)'];
+					$rank = $row['Rank'];
+					$rank_end = "th";
+					
+					if($rank == 1){
+						$rank_end = "st";
+					}
+					else if($rank == 2){
+						$rank_end = "nd";
+					}
+					else if($rank == 3){
+						$rank_end = "rd";
+					}
+					
+					
+					$A_login = "SELECT * FROM login WHERE NIK='$NIK_kar' AND Nama='$Nama_kar' AND Nama_Perusahaan='$kantor';";
+					$result_login = mysqli_query($konek, $A_login);
+					$row_login = mysqli_fetch_assoc($result_login);
+					
+					$masuk = $row_login['Submitted_On_Date'];
+					$masuk_tgl = date("d", strtotime($masuk));
+					$masuk_bln = date("m", strtotime($masuk));
+					$masuk_thn = date("Y", strtotime($masuk));
+					$bagian = $row_login['Jabatan'];
+					$pp = 'src="../Main Tab/etc/upload/image/'.$row_login['pp_name'].'"';
+					
+					//date in mm/dd/yyyy format; or it can be in other formats as well
+  					$birthDate = "$masuk_bln/$masuk_tgl/$masuk_thn";
+  					//explode the date to get month, day and year
+  					$birthDate = explode("/", $birthDate);
+  					//get age from date or birthdate
+  					$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+    				? ((date("Y") - $birthDate[2]) - 1)
+    				: (date("Y") - $birthDate[2]));
+					
+					echo '
         <div class="notif">
-            <img class="Photo" src="Photo.png" alt="Photo">
+            <img class="Photo" '.$pp.' alt="Photo">
             <div class="table">
                 <table>
                     <tr>
                         <td>Nama</td>
                         <td> &nbsp; =</td>
-                        <td> &nbsp; Asep Dapur</td>
+                        <td> &nbsp; '.$Nama_kar.'</td>
                     </tr>
                     <tr>
-                        <td>TTL</td>
+                        <td>Bagian</td>
                         <td> &nbsp; =</td>
-                        <td> &nbsp; Bandung, 17-08-1985</td>
-                    </tr>
-                    <tr>
-                        <td>Jabatan</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; Direksi</td>
-                    </tr>
-                    <tr>
-                        <td>Tanggal Masuk</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; 20-08-2021</td>
+                        <td> &nbsp; '.$bagian.'</td>
                     </tr>
                     <tr>
                         <td>Masa Kerja</td>
                         <td> &nbsp; =</td>
-                        <td> &nbsp; 30 Tahun</td>
+                        <td> &nbsp; '.$age.' Tahun</td>
                     </tr>
                     <tr>
-                        <td>Divisi</td>
+                        <td>Jumlah absen</td>
                         <td> &nbsp; =</td>
-                        <td> &nbsp; IT</td>
+                        <td> &nbsp; '.$jumlah_absen.' x</td>
                     </tr>
                     
                     <hr>
-                    <h1 class="rank">#1</h1>
+                    <h1 class="rank">'.$rank.$rank_end.'</h1>
                 </table>
             </div>
-        </div>
-
-        <div class="notif">
-            <img class="Photo" src="Photo.png" alt="Photo">
-            <div class="table">
-                <table>
-                    <tr>
-                        <td>Nama</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; Dadang Katel</td>
-                    </tr>
-                    <tr>
-                        <td>TTL</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; Kuningan, 28-06-1980</td>
-                    </tr>
-                    <tr>
-                        <td>Jabatan</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; Direktur Utama</td>
-                    </tr>
-                    <tr>
-                        <td>Tanggal Masuk</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; 25-03-2020</td>
-                    </tr>
-                    <tr>
-                        <td>Masa Kerja</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; 15 Tahun</td>
-                    </tr>
-                    <tr>
-                        <td>Divisi</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; Designer</td>
-                    </tr>
-                    <hr>
-                    <h1 class="rank">#2</h1>
-                </table>
-            </div>
-        </div>
-                
-        <div class="notif">
-            <img class="Photo" src="Photo.png" alt="Photo">
-            <div class="table">
-                <table>
-                    <tr>
-                        <td>Nama</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; Ujang Kenteng</td>
-                    </tr>
-                    <tr>
-                        <td>TTL</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; Bogor, 08-12-1990</td>
-                    </tr>
-                    <tr>
-                        <td>Jabatan</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; Manager</td>
-                    </tr>
-                    <tr>
-                        <td>Tanggal Masuk</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; 08-10-2021</td>
-                    </tr>
-                    <tr>
-                        <td>Masa Kerja</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; 10 Tahun</td>
-                    </tr>
-                    <tr>
-                        <td>Divisi</td>
-                        <td> &nbsp; =</td>
-                        <td> &nbsp; Akuntansi</td>
-                    </tr>
-                    <hr>
-                    <h1 class="rank">#3</h1>
-                </table>
-            </div>
-        </div>
+        </div>';
+					
+		}
+			}
+		}
+?>
+		
     </section>
 
     <div class="Banner-handap">
