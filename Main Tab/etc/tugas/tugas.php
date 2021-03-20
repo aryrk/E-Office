@@ -16,6 +16,7 @@ $pass = $_SESSION['password'];
 $nama = $_SESSION['nama'];
 $jabatan = $_SESSION['jabatan'];
 
+//Menghindari bug pada fungsi search
 if (isset($_GET['l'])){
 	$l = $_GET['l'];
 }
@@ -56,7 +57,7 @@ if(isset($_POST['search'])){
 	</div>
 	<div class="logo">
 	<div class="wow logo">
-		<h3>Officia</h3>
+		<h3><?php echo $kantor; ?></h3>
 	</div>
 	</div>
 
@@ -71,6 +72,7 @@ if(isset($_POST['search'])){
 	<div class="search">
 		<select name="jenis" id="jenis">
 <?php
+//Menampilkan opsi search sesuai dengan kondisi
 			if ($l == "none" || $l == "All"){
 			echo '
 				<option value="All" class="searchTerm">Semua Tugas</option>
@@ -102,6 +104,7 @@ if(isset($_POST['search'])){
 	</form>
 	
 <?php
+//Menampilkan daftar tugas sesuai dengan opsi yang dipilih
 if ($l == "none" || $l == "All"){
 	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$nama' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' AND Tanggal<='$tgl' ORDER BY Tanggal DESC;";
 	$result = mysqli_query($konek, $A);
@@ -117,6 +120,7 @@ if ($l == "none" || $l == "All"){
 			}
 			$pengiriman = $row['Tanggal'];
 			$tujuan = $row['Tujuan'];
+			$id = $row['id_tugas'];
 	
 	echo '
   		<div class="column">
@@ -129,7 +133,7 @@ if ($l == "none" || $l == "All"){
         			<p style="font-size: 90%">'.$tujuan.'</p>
 					<p>'.$kantor.' Company</p>
 			  		</div>
-        			<p><a href="detail.html"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
   		</div>
@@ -160,7 +164,7 @@ else if ($l == $jabatan){
         			<p style="font-size: 90%">'.$tujuan.'</p>
 					<p>'.$kantor.' Company</p>
 			  		</div>
-        			<p><a href="detail.html"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
   		</div>
@@ -190,7 +194,7 @@ else if ($l == $nama){
         			<p style="font-size: 90%">'.$tujuan.'</p>
 					<p>'.$kantor.' Company</p>
 			  		</div>
-        			<p><a href="detail.html"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
   		</div>
