@@ -19,6 +19,8 @@ if(isset($_POST['kirim'])){
 	$tujuan = trim($_POST['tujuan']);
 	$tanggal = $_POST["time"];
 	$isi = trim($_POST['isi']);
+	$judul = trim($_POST['judul']);
+	$id = $kantor.time();
 		
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
 		
@@ -31,7 +33,7 @@ if(isset($_POST['kirim'])){
 				while ($row = mysqli_fetch_assoc($result)){
 					$nama = $row['Nama_Admin'];
 					
-					$sql = mysqli_query($konek, "INSERT INTO tugas VALUES ('$kantor','$nama','$nik','$tanggal','$isi','$tujuan','$jam','$tgl')");
+					$sql = mysqli_query($konek, "INSERT INTO tugas VALUES ('$id','$kantor','$nama','$nik','$tanggal','$judul','$isi','$tujuan','$jam','$tgl')");
 				}
 //Mengecek apakah tugas berhasil terkirim
 	$sql = mysqli_query($konek, "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND NIK_Admin='$nik' AND Tanggal='$tanggal' AND Isi_Tugas='$isi' AND Tujuan='$tujuan'");
@@ -85,7 +87,9 @@ if(isset($_POST['prev'])){
 				<hr class="wow jackInTheBox">
 		</center>
 	<div class="inner wow fadeIn">
-		<label for="isi" class="wow slideInLeft">Tugas Berisi:</label><br>
+		<label for="judul" class="wow slideInLeft">Tugas Berjudul</label>
+		<input type="text" name="judul" id="judul" required autocomplete="off"/>
+		<label for="isi" class="wow slideInLeft">Dan Berisi:</label><br>
 		<textarea name="isi" id="isi" rows="2" placeholder="Isi tugas (Styling with Markdown is supported)" required class="isi_tugas"></textarea>
 		
 		<label for="tujuan" class="wow slideInLeft">Akan Dikirimkan Kepada</label>
