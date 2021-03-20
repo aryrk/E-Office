@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2021 at 03:51 PM
+-- Generation Time: Mar 20, 2021 at 06:52 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -46,7 +46,8 @@ CREATE TABLE `absen` (
 
 INSERT INTO `absen` (`NIK`, `Nama`, `Nama_Perusahaan`, `Tanggal`, `Jam_masuk`, `stat_1`, `Jam_pulang`, `stat_2`, `Terlambat`, `Status`) VALUES
 (12345, 'Debug', 'Officia', '2021-03-15', '11:18:45', 'S', '00:00:00', 'B', '00:00:02', 'Terlambat Absen'),
-(12345, 'Debug', 'Officia', '2021-03-16', '09:35:38', 'S', '09:38:19', 'S', '00:00:00', 'Terlambat Absen');
+(12345, 'Debug', 'Officia', '2021-03-16', '09:35:38', 'S', '09:38:19', 'S', '00:00:00', 'Terlambat Absen'),
+(12345, 'Debug', 'Officia', '2021-03-17', '13:14:31', 'S', '00:00:00', 'B', '00:00:00', 'Terlambat Absen');
 
 -- --------------------------------------------------------
 
@@ -153,15 +154,29 @@ CREATE TABLE `pengumuman` (
 --
 
 CREATE TABLE `tugas` (
+  `id_tugas` varchar(255) NOT NULL,
   `Nama_Perusahaan` varchar(255) NOT NULL,
   `Nama_Admin` char(255) NOT NULL,
   `NIK_Admin` int(16) NOT NULL,
   `Tanggal` date NOT NULL,
+  `Judul` mediumtext NOT NULL,
   `Isi_Tugas` longtext NOT NULL,
   `Tujuan` varchar(255) NOT NULL,
   `Submitted_On_Hours` time NOT NULL,
   `Submitted_On_Date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tugas`
+--
+
+INSERT INTO `tugas` (`id_tugas`, `Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Tanggal`, `Judul`, `Isi_Tugas`, `Tujuan`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+('', 'tes', 'tes', 1, '2021-03-03', '', '1', '1', '17:37:39', '2021-03-03'),
+('Officia    1616215261', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'tes', 'teeeees', 'Seluruh Karyawan', '11:41:01', '2021-03-20'),
+('Officia    1616215305', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'tes', 'teeeees', 'Seluruh Karyawan', '11:41:45', '2021-03-20'),
+('Officia    1616215312', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'teees', 'teeeees', 'Seluruh Karyawan', '11:41:52', '2021-03-20'),
+('Officia    1616215360', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'teees', 'teeeees', 'Seluruh Karyawan', '11:42:40', '2021-03-20'),
+('Officia    1616215591', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'tes', 'TTEEEEJAJADHDJNJDjdadja', 'Seluruh Karyawan', '11:46:31', '2021-03-20');
 
 --
 -- Indexes for dumped tables
