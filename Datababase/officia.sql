@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2021 at 06:52 AM
+-- Generation Time: Mar 20, 2021 at 11:22 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -171,12 +171,8 @@ CREATE TABLE `tugas` (
 --
 
 INSERT INTO `tugas` (`id_tugas`, `Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Tanggal`, `Judul`, `Isi_Tugas`, `Tujuan`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
-('', 'tes', 'tes', 1, '2021-03-03', '', '1', '1', '17:37:39', '2021-03-03'),
-('Officia    1616215261', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'tes', 'teeeees', 'Seluruh Karyawan', '11:41:01', '2021-03-20'),
-('Officia    1616215305', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'tes', 'teeeees', 'Seluruh Karyawan', '11:41:45', '2021-03-20'),
-('Officia    1616215312', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'teees', 'teeeees', 'Seluruh Karyawan', '11:41:52', '2021-03-20'),
-('Officia    1616215360', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'teees', 'teeeees', 'Seluruh Karyawan', '11:42:40', '2021-03-20'),
-('Officia    1616215591', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'tes', 'TTEEEEJAJADHDJNJDjdadja', 'Seluruh Karyawan', '11:46:31', '2021-03-20');
+('Officia    1616225784', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'Request', 'Tolong belikan shampo merek dove untuk anak saya', 'Debug', '14:36:24', '2021-03-20'),
+('Officia    1616225877', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'request lagi', 'belikan sabun juga', 'Debug', '14:37:57', '2021-03-20');
 
 --
 -- Indexes for dumped tables
