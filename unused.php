@@ -126,6 +126,10 @@ else if($_GET['value'] == "prevtugas"){
 	$_SESSION['id_tugas'] = $_GET['id_tugas'];
 	header("Location: Main Tab/etc/tugas/detail.php");
 }
+else if($_GET['value'] == "tugas_kembali"){
+	unset($_SESSION['id_tugas']);
+	header("Location: Main Tab/etc/tugas/tugas.php");
+}
 }
 ?>
 <!doctype html>
