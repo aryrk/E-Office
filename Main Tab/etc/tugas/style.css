@@ -13,11 +13,11 @@
     height: 32px;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: #9DBFAF;
+    color: black;
 }
 
 .searchTerm:focus{
-    color: #474e5d;
+    color: black;
 }
 
 .searchButton {
@@ -56,7 +56,6 @@
 }
 .card {
   	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  	margin: 8px;
 	background-color: white;
 }
 
@@ -126,6 +125,7 @@ body {
   	box-sizing: inherit;
 }
 html {
+	overflow-x: hidden;
   	scroll-behavior: smooth;
 	box-sizing: border-box;
 }
@@ -137,7 +137,7 @@ display: none;
 	font-size: 100%;
 	width: 100%;
 	background-color: black;
-	padding: 1%;
+	padding: 0.2%;
 	position: fixed;
 	bottom: 0;
 	color: darkgray;
@@ -428,5 +428,8 @@ nav ul li a:hover{
 	.wrap{
         width: 100%;
     }
+	.column {
+  	float: right;
+}
 	}
 
