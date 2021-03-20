@@ -121,6 +121,11 @@ else if($_GET['value'] == "gantiabsen"){
 	$_SESSION['ubahabsen'] = 1;
 	header("Location: admin/Setting-Absen.php");
 }
+
+else if($_GET['value'] == "prevtugas"){
+	$_SESSION['id_tugas'] = $_GET['id_tugas'];
+	header("Location: Main Tab/etc/tugas/detail.php");
+}
 }
 ?>
 <!doctype html>
