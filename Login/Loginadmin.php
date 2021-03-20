@@ -84,6 +84,9 @@ maxlength="16"><br>
 	<p>
 	<span id="meseg"></span><br>
 	<button type="submit" name="SUBMIT" id="SUBMIT" value="Submit">Login</button><br>
+</p>
+<p>
+	<a href="Forgotpassdesign.php">Forgot Your Password?</a>
 	</p>
 	<p>
 	<a href="../index.html"><button type="button" class="canc">Back</button></a>
