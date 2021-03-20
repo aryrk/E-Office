@@ -102,7 +102,7 @@ if(isset($_POST['search'])){
 	</div>
 		</div>
 	</form>
-	
+<div class="row">
 <?php
 //Menampilkan daftar tugas sesuai dengan opsi yang dipilih
 if ($l == "none" || $l == "All"){
@@ -203,6 +203,7 @@ else if ($l == $nama){
 	}
 }
 ?>
+</div>
 		<h5 class="copyr">&copy; Officia, Copyright 2021. All Right Reserved</h5>
 		<h5 class="copyrUnused">Officia, Copyright &copy; 2021. All Right Reserved</h5>
 
