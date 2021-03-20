@@ -74,7 +74,7 @@ if(isset($_POST['prev'])){
     <header class="banner"> 
         <h1 class="h1"><?php echo $kantor ?> Administrator</h1>
 
-        <a href="Admin.html"><i class="back fas fa-arrow-circle-left"></i></a>
+        <a href="Admin1.php"><i class="back fas fa-arrow-circle-left"></i></a>
     </header>
 	<header class="banner-unused"> 
         <h1 class="h1">Officia Administrator</h1>
