@@ -44,7 +44,7 @@ $pw = $_SESSION['PW_admin'];
 	$sql = mysqli_query($konek, "SELECT * FROM absen WHERE Nama_Perusahaan='$kantor'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * ,COUNT(Tanggal), RANK() OVER(ORDER BY COUNT(Tanggal) DESC) AS Rank FROM absen WHERE Nama_Perusahaan='$kantor' GROUP BY Nama ORDER BY COUNT(Tanggal) DESC;";
+			$A = "SELECT * ,COUNT(Tanggal), RANK() OVER(ORDER BY COUNT(Tanggal) DESC) AS Rank FROM absen WHERE Nama_Perusahaan='$kantor' AND stat_1='S' AND stat_2='S' GROUP BY Nama ORDER BY COUNT(Tanggal) DESC;";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
