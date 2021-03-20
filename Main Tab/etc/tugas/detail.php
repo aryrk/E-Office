@@ -1,3 +1,28 @@
+<?php
+session_start();
+//mencegah user masuk bila mereka belum melakukan login
+if (!isset($_SESSION['LOGIN']) || !isset($_SESSION['id_tugas'])){
+	header("Location: ../../../Login/login1.php");
+	exit ();
+}
+require_once("../../../config.php");
+
+$id = $_SESSION['id_tugas'];
+
+$nik = $_SESSION['nik'];
+$kantor = $_SESSION['kantor'];
+$pass = $_SESSION['password'];
+
+$A = "SELECT * FROM tugas WHERE id_tugas='$id' AND Nama_Perusahaan='$kantor';";
+$result = mysqli_query($konek, $A);
+$row = mysqli_fetch_assoc($result);
+
+$judul_tugas = $row['Judul'];
+$isi_tugas = $row['Isi_Tugas'];
+$tanggal_tujuan = $row['Tanggal'];
+$pengirim = $row['Nama_Admin'];
+$tujuan = $row['Tujuan'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +50,7 @@
 	</div>
 	<div class="logo">
 	<div class="wow logo">
-		<h3>Officia</h3>
+		<h3><?php echo $kantor; ?></h3>
 	</div>
 	</div>
 
@@ -41,20 +66,20 @@
   		<div class="column">
     		<div class="card">
 				
-        			<center><h2 class="judul">Judul Tugas</h2></center>
+        			<center><h2 class="judul"><?php echo $judul_tugas; ?></h2></center>
 				<div class="container">
 		  			<div class="textB">
-        			<p>Officia Company</p>
+        			<p><?php echo $kantor; ?> Company</p>
 			  		</div>
 					
 					<div class="box_shadow">
   						<div class="box_container">
-							teeees
+							<?php echo $isi_tugas; ?>
   						</div>
 					</div>
-					<p>(14-14-2020), Agus - IT</p>
+					<p>(<?php echo $tanggal_tujuan; ?>), <?php echo $pengirim; ?> - <?php echo $tujuan;?></p>
 					
-        			<p><a href="tugas.html"><button class="button" id="button1">Kembali</button></a></p>
+        			<p><a href="../../../unused.php?value=tugas_kembali"><button class="button" id="button1">Kembali</button></a></p>
       			</div>
     		</div>
   		</div>
