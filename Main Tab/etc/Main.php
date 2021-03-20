@@ -602,30 +602,22 @@ if(isset($_POST['UBAH'])){
 			<progress value="70" max="100"> 70% </progress>
 	</div>
 </div>
+<?php
+date_default_timezone_set('Asia/Jakarta');
+$tgl = date("Y-m-d");
+
+$nama = $_SESSION['nama'];
+$jabatan = $_SESSION['jabatan'];
+
+$sql = mysqli_query($konek, "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$nama' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' AND Tanggal<='$tgl';");
+if (mysqli_num_rows($sql) != 0){
+	echo '
 		<div class="wow fadeIn">
-		<p class="Activated"><a onclick="ActivatedTugas();setTimeout(avg, 800)">Tugas minggu ini</a></p></div>
-		<!--Tugas 1-->
-	<div class="wow fadeInDown">
-			<p class="box"><a onclick="task();setTimeout(avg, 800)">12 Agustus</a></p>
-	</div>
-	<div class="wow fadeIn">
-				<hr class="BorderOne">
-	</div>
-	<div class="wow fadeInUp">
-			<p class="box2">Menjaga keamanan<br><br>Patroli setiap hari dari jam <b>9:00</b> sampai <b>21:00</b><br></p>
-	</div>
-<!--Tugas 2-->
-			<p class="TwoNdBox"><a onclick="TwoNdTask()">9 Agustus</a></p>
-				<hr class="BorderTwo">
-			<p class="TwoNdBox2">Memperketat keamanan<br><br>Memastikan setiap pendatang tidak membawa alat tajam dan melarang siapapun untuk masuk/keluar dari rentan waktu pukul <b>12:00</b> sampai <b>14:00</b></p>
-<!--Tugas 3-->
-			<p class="ExtendBox"><a onclick="ExtendTask()">8 Agustus</a></p>
-				<hr class="BorderExtend">
-			<p class="ExtendBox2">[Libur]</p>
-<!--Tugas 4-->
-			<p class="MaxBox"><a onclick="MaxTask()">7 Agustus</a></p>
-				<hr class="BorderMax">
-			<p class="MaxBox2">Menjaga keamanan<br><br>Patroli setiap hari dari jam <b>9:00</b> sampai <b>21:00</b></p>
+		<p class="Activated"><a href="tugas/tugas.php">Tugas minggu ini</a></p></div>
+		';
+}
+			
+?>
 		<h5 class="copyr">Officia, Copyright &copy; 2021. All Right Reserved</h5>
 	</div>
 
