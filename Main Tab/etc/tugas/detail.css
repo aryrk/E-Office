@@ -372,6 +372,7 @@ nav ul li a:hover{
         transform: translateX(-100%);
         transition: all 1s;
         opacity: 0;
+		padding: 0;
     }
 
     nav ul.slide{
