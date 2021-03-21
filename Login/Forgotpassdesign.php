@@ -59,6 +59,11 @@ $random2 = mt_rand($min, $max);
 	oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 	maxlength="4"><br>
 	</p>
+<p>
+<label for="jawaban">Masukkan Jawaban Pertanyaan Sebelumnya:
+<input type="text" name="jawab" id="jawab" autocomplete="off"
+placeholder="Ketik Jawaban" class="nik" required>
+</p>
 	<p>
 	<label for="caca">Jawab Soal Dibawah Dengan Tepat!</label>
 	<?php
