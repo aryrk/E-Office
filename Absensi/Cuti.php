@@ -175,6 +175,24 @@ $sql = mysqli_query($konek, "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' 
 				$ket = $row['Keterangan'];
 				$stat = $row['Status'];
 				$upload = $row['Submitted_On_Date'];
+				$color = "red";
+				$aksi = '<button style="border: none; color: white; background-color: firebrick; width: 100%;" onclick="window.location.href='."'../unused.php?value=hapusCuti&&idCuti=".$id."'".';">Hapus</button>';
+				$aksi_style= 'style="padding: 0; background-color: firebrick;"';
+				
+				if ($stat == "unknown"){
+					$color = "yellow";
+				}
+				else if ($stat == "Diterima"){
+					$color = "limegreen";
+					$aksi = "";
+					$aksi_style = "";
+				}
+				else if ($stat == "Ditolak"){
+					$color = "red";
+					$aksi = "";
+					$aksi_style = "";
+				}
+				$style = 'Style="background-color:'.$color.';"';
 				
 				echo '
 				<tr>
@@ -182,9 +200,9 @@ $sql = mysqli_query($konek, "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' 
                     <td>'.$dari.'</td>
                     <td>'.$sampai.'</td>
                     <td>'.$ket.'</td>
-					<td>'.$stat.'</td>
+					<td '.$style.'>'.$stat.'</td>
 					<td>'.$upload.'</td>
-					<td style="padding: 0; background-color: firebrick;"><button style="border: none; color: white; background-color: firebrick; width: 100%;" onclick="window.location.href='."'../unused.php?value=hapusCuti&&idCuti=".$id."'".';">Hapus</button></td>
+					<td '.$aksi_style.' >'.$aksi.'</td>
                 </tr>
 				';
 			}
