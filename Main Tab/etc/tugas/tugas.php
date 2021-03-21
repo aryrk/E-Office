@@ -123,12 +123,7 @@ if ($l == "none" || $l == "All"){
 				
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
-			$judul_cek = $row['Judul'];
-			$judul = substr($judul_cek, 0, 10);
-			$cek = strlen($judul_cek);
-			if ($cek > 10){
-				$judul = $judul.'...';
-			}
+			$judul = $row['Judul'];
 			$pengiriman = $row['Tanggal'];
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
@@ -160,12 +155,7 @@ else if ($l == $jabatan){
 				
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
-			$judul_cek = $row['Judul'];
-			$judul = substr($judul_cek, 0, 10);
-			$cek = strlen($judul_cek);
-			if ($cek > 10){
-				$judul = $judul.'...';
-			}
+			$judul = $row['Judul'];
 			$pengiriman = $row['Tanggal'];
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
@@ -196,12 +186,7 @@ else if ($l == $nama){
 				
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
-			$judul_cek = $row['Judul'];
-			$judul = substr($judul_cek, 0, 10);
-			$cek = strlen($judul_cek);
-			if ($cek > 10){
-				$judul = $judul.'...';
-			}
+			$judul = $row['Judul'];
 			$pengiriman = $row['Tanggal'];
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
@@ -233,12 +218,7 @@ else if ($l == 'globe'){
 				
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
-			$judul_cek = $row['Judul'];
-			$judul = substr($judul_cek, 0, 10);
-			$cek = strlen($judul_cek);
-			if ($cek > 10){
-				$judul = $judul.'...';
-			}
+			$judul = $row['Judul'];
 			$pengiriman = $row['Tanggal'];
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
