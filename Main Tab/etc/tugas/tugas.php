@@ -78,13 +78,15 @@ if(isset($_POST['search'])){
 				<option value="All" class="searchTerm">Semua Tugas</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="'.$nama.'" class="searchTerm">Tugas Pribadi</option>
+				<option value="globe" class="searchTerm">Tugas Global</option>
 			';	
 			}
 			else if ($l == $jabatan){
 			echo '
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
-				<option value="'.$nama.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="All" class="searchTerm">Semua Tugas</option>
+				<option value="'.$nama.'" class="searchTerm">Tugas Pribadi</option>
+				<option value="globe" class="searchTerm">Tugas Global</option>
 			';	
 			}
 			else if ($l == $nama){
@@ -92,6 +94,15 @@ if(isset($_POST['search'])){
 				<option value="'.$nama.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="All" class="searchTerm">Semua Tugas</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
+				<option value="globe" class="searchTerm">Tugas Global</option>
+			';	
+			}
+			else if ($l == 'globe'){
+			echo '
+				<option value="globe" class="searchTerm">Tugas Global</option>
+				<option value="All" class="searchTerm">Semua Tugas</option>
+				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
+				<option value="'.$nama.'" class="searchTerm">Tugas Pribadi</option>
 			';	
 			}
 ?>
@@ -113,9 +124,9 @@ if ($l == "none" || $l == "All"){
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
 			$judul_cek = $row['Judul'];
-			$judul = substr($judul_cek, 0, 12);
+			$judul = substr($judul_cek, 0, 10);
 			$cek = strlen($judul_cek);
-			if ($cek > 12){
+			if ($cek > 10){
 				$judul = $judul.'...';
 			}
 			$pengiriman = $row['Tanggal'];
@@ -149,9 +160,15 @@ else if ($l == $jabatan){
 				
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
-			$judul = $row['Judul'];
+			$judul_cek = $row['Judul'];
+			$judul = substr($judul_cek, 0, 10);
+			$cek = strlen($judul_cek);
+			if ($cek > 10){
+				$judul = $judul.'...';
+			}
 			$pengiriman = $row['Tanggal'];
 			$tujuan = $row['Tujuan'];
+			$id = $row['id_tugas'];
 	
 	echo '
   		<div class="column">
@@ -179,9 +196,52 @@ else if ($l == $nama){
 				
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
-			$judul = $row['Judul'];
+			$judul_cek = $row['Judul'];
+			$judul = substr($judul_cek, 0, 10);
+			$cek = strlen($judul_cek);
+			if ($cek > 10){
+				$judul = $judul.'...';
+			}
 			$pengiriman = $row['Tanggal'];
 			$tujuan = $row['Tujuan'];
+			$id = $row['id_tugas'];
+	
+	echo '
+  		<div class="column">
+    		<div class="card">
+      			<img src="../../../Icon/Textless/Icon.png" alt="Logo" style="width:100%">
+      			<div class="container">
+        			<h2 class="nama">'.$judul.'</h2>
+		  			<div class="textB">
+        			<p class="title">'.$pengiriman.'</p>
+        			<p style="font-size: 90%">'.$tujuan.'</p>
+					<p>'.$kantor.' Company</p>
+			  		</div>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+      			</div>
+    		</div>
+  		</div>
+	';
+		}
+	}
+}
+	
+else if ($l == 'globe'){
+	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' ORDER BY Tanggal DESC;";
+	$result = mysqli_query($konek, $A);
+	$check = mysqli_num_rows($result);
+				
+	if ($check > 0){
+		while ($row = mysqli_fetch_assoc($result)){
+			$judul_cek = $row['Judul'];
+			$judul = substr($judul_cek, 0, 10);
+			$cek = strlen($judul_cek);
+			if ($cek > 10){
+				$judul = $judul.'...';
+			}
+			$pengiriman = $row['Tanggal'];
+			$tujuan = $row['Tujuan'];
+			$id = $row['id_tugas'];
 	
 	echo '
   		<div class="column">
