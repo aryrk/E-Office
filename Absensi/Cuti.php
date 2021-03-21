@@ -74,7 +74,7 @@ else if(!isset($_SESSION['first_cuti'])){
                         
                         <li><a href="Absen.php">ABSEN</a></li>
                                 
-                        <li><a href="">CUTI</a></li>
+                        <li><a href=""><u style="color: srgb(190, 190, 190); text-shadow: 0px 0px 20px white;">CUTI</u></a></li>
                             
                         <li><a href="DataAbsen.php">DATA ABSEN</a></li>
                             
