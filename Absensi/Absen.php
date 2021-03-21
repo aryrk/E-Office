@@ -160,21 +160,6 @@ if(isset($_POST['SUBMIT'])){
 		}
 	}
 }
-if(isset($_POST['PROFIL'])){
-	header("Location: ../Main Tab/etc/Main.php");
-}
-
-if(isset($_POST['HOME'])){
-	header("Location: Home.php");
-}
-
-if(isset($_POST['DATAABSEN'])){			
-	header("Location: DataAbsen.php");
-}
-
-if(isset($_POST['CUTI'])){
-	header("Location: Cuti.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -197,14 +182,13 @@ if(isset($_POST['CUTI'])){
             <div id="logo">
                 <h1><?php echo $kantor; ?></h1>
             </div> 
-			<form id="form1" name="form1" method="post" action="">
             <nav>
                 <ul>
-                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="HOME" id="HOME" value="home"><a>DASHBOARD</a></li>
+                    <li><a href="Home.php">DASHBOARD</a></li>
                     <li><a href=""><u style="color: srgb(190, 190, 190); text-shadow: 0px 0px 20px white;">ABSEN</u></a></li>
-                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="CUTI" id="CUTI" value="cuti"><a>CUTI</a></button></li>
-                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="DATAABSEN" id="DATAABSEN" value="absen"><a>DATA ABSEN</a></button></li>
-                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="PROFIL" id="PROFIL" value="profil"><a>PROFILE</a></li>
+                    <li><a href="Cuti.php">CUTI</a></li>
+                    <li><a href="DataAbsen.php">DATA ABSEN</a></li>
+                    <li><a href="../Main Tab/etc/Main.php">PROFILE</a></li>
                 </ul>
             
                 <div class="menu-toggle">
@@ -214,7 +198,6 @@ if(isset($_POST['CUTI'])){
                     <span></span>
                 </div>
             </nav>
-			</form>
         </div>
     </header>
 
