@@ -16,14 +16,6 @@ $sql_cek = mysqli_query($konek, "SELECT pp_name FROM login WHERE NIK='$nik' AND 
 $row = mysqli_fetch_assoc($sql_cek);
 $pp_name = $row['pp_name'];
 $pp = 'src="upload/image/'.$pp_name.'"';
-
-if(isset($_POST['PENGUMUMAN'])){
-	header("Location: ../../Pengumuman/pengumuman.php");
-}
-
-if(isset($_POST['ABSEN'])){
-	header("Location: ../../Absensi/Home.php");
-}
 if(isset($_POST['UBAH'])){
 	header("Location: upload/index.php");
 }
@@ -504,7 +496,6 @@ if(isset($_POST['UBAH'])){
 		
 		<nav id="navigation1" class="nav1">
 </nav>
-		<form id="form1" name="form1" method="post" action="">
 <nav id="navigation">
 		<div class="menu-toggle">
 		<input type="checkbox" onClick="Hamburger()">
@@ -520,13 +511,12 @@ if(isset($_POST['UBAH'])){
 
         <ul>
             <div class="wow fadeInLeft"><li><a style="cursor: pointer;"><u>Profile</u></a></li></div>
-            <div class="wow fadeInLeft"><li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>Absen</a></button></li></div>
-			<div class="wow fadeInLeft"><li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="PENGUMUMAN" id="PENGUMUMAN" value="pengumuman"><a>Pengumuman</a></button></li></div>
+            <div class="wow fadeInLeft"><li><a style="cursor: pointer;" href="../../Absensi/Home.php">Absen</a></li></div>
+			<div class="wow fadeInLeft"><li><a style="cursor: pointer;" href="../../Pengumuman/pengumuman.php">Pengumuman</a></li></div>
             <div class="wow fadeInLeft"><li><a onclick="Allert()" style="cursor: pointer;">Log-out</a></li></div>
 			<div class="wow fadeInLeft"><li><button onclick="DarkMode()" class="dark" style="cursor: pointer;"><img src="https://static.thenounproject.com/png/1664849-200.png" alt="" height="23px"></button></li></div>
         </ul>
 </nav>
-				</form>
 	</div>
 	<div class="bio">
 		<table class="center">	
