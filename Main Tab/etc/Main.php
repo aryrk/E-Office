@@ -589,19 +589,49 @@ if(isset($_POST['UBAH'])){
 			</tr>
 		</table>
 	</div>
-	<div class="ov">
+
+<?php
+$nama_pegawai = $_SESSION['nama'];
+$sql = mysqli_query($konek, "SELECT NIK, Nama, Nama_Perusahaan, Rank FROM (SELECT * ,COUNT(Tanggal), RANK() OVER(ORDER BY COUNT(Tanggal) DESC) AS Rank FROM absen WHERE Nama_Perusahaan='$kantor' AND stat_1='S' AND stat_2='S' GROUP BY Nama ORDER BY COUNT(Tanggal) DESC)AS rank WHERE Nama='$nama_pegawai'");
+	if (mysqli_num_rows($sql) != 0){
+		$A = "SELECT NIK, Nama, Nama_Perusahaan, Rank FROM (SELECT * ,COUNT(Tanggal), RANK() OVER(ORDER BY COUNT(Tanggal) DESC) AS Rank FROM absen WHERE Nama_Perusahaan='$kantor' AND stat_1='S' AND stat_2='S' GROUP BY Nama ORDER BY COUNT(Tanggal) DESC)AS rank WHERE Nama='$nama_pegawai';";
+		$result = mysqli_query($konek, $A);
+		$row = mysqli_fetch_assoc($result);
+			
+		$rank = $row['Rank'];
+		$rank_end = "th";
+			if($rank == 1){
+				$rank_end = "st";
+			}
+			else if($rank == 2){
+				$rank_end = "nd";
+			}
+			else if($rank == 3){
+				$rank_end = "rd";
+			}
+		
+//Menghitung jumlah karyawan
+$A_jum = "SELECT COUNT(NIK) from (SELECT * FROM login WHERE Nama_Perusahaan='$kantor' GROUP BY NIK) as Jumlah;";
+$result_jum = mysqli_query($konek, $A_jum);
+$row_jum = mysqli_fetch_assoc($result_jum);
+$jumlah = $row_jum['COUNT(NIK)'];
+
+		echo '
+			<div class="ov">
 		<hr>
 	<div class="wow zoomIn"><h1 class="center2"><a onClick="overview()">Overview</a></h1></div><hr>
 	</div>
 		
 	<div class="progres">
 	<div class="wow slideInLeft">
-		<label>Skills:</label><br>
-			<progress value="90" max="100"> 90% </progress><br>
-		<label>Progres pekerjaan:</label><br>
-			<progress value="70" max="100"> 70% </progress>
+		<label style="font-size: 110%;">Peringkat Absen Anda: '.$rank.$rank_end.' Dari '.$jumlah.' Pegawai</label><br>
+			<progress value="'.$rank.'" max="'.$jumlah.'"></progress><br>
 	</div>
 </div>
+		';
+	}
+	
+?>
 <?php
 date_default_timezone_set('Asia/Jakarta');
 $tgl = date("Y-m-d");
