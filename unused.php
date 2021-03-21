@@ -36,6 +36,9 @@ if($_GET['value'] == "logout"){
 	if (isset($_SESSION['condition'])){
 		unset($_SESSION['condition']);
 	}
+	if (isset($_SESSION['first_cuti'])){
+		unset($_SESSION['first_cuti']);
+	}
 	
 	session_unset();
 	session_destroy();
@@ -129,6 +132,17 @@ else if($_GET['value'] == "prevtugas"){
 else if($_GET['value'] == "tugas_kembali"){
 	unset($_SESSION['id_tugas']);
 	header("Location: Main Tab/etc/tugas/tugas.php");
+}
+else if($_GET['value'] == "cuti"){
+	unset($_SESSION['cuti']);
+	header("Location: Absensi/Cuti.php");
+}
+else if($_GET['value'] == "hapusCuti"){
+	$id = $_GET['idCuti'];
+	$_SESSION['hapusCuti'] = 1;
+	
+	mysqli_query($konek, "DELETE FROM cuti WHERE id='$id';");
+	header("Location: Absensi/Cuti.php");
 }
 }
 ?>
