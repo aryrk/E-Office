@@ -141,6 +141,24 @@ class="size" onclick="check()">Show Password<br>
 </div>
 </p>
 <p>
+<br><label for="question">Pertanyaan Keamanan</label>
+<select name="secret" id="secret" class="nik">
+<option value="awalan">Pilih Pertanyaan Rahasia</option>
+<option value="quest1">Apa Pekerjaan Impianmu</option>
+<option value="quest2">Makanan Terlezat Di Dunia</option>
+<option value="quest3">Harta Karun Masa Kecil</option>
+<option value="quest4">Hobi</option>
+<option value="quest5">Salah Satu Tempat Favorit</option>
+<option value="quest6">Nama Ibumu</option>
+<option value="quest7">Nama Panggilan Sahabat Masa Kecilmu</option>
+<option value="quest8">Warna Pakaian Yang Dipakai Saat Ini</option>
+<option value="quest9">Peristiwa Menyenangkan Dalam Hidupmu</option>
+<option value="quest10">Apa Yang Harus Dirahasiakan Dari Keluarga</option>
+</select>
+<input type="text" name="jawab" id="jawab" autocomplete="off"
+placeholder="Masukkan Jawaban" required>
+</p>
+<p>
 <div class="sub">
 <span id="meseg"></span><br>
 <input type="submit" onclick="return valid()" name="SUBMIT" id="SUBMIT" value="Submit">
