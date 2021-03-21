@@ -46,23 +46,10 @@ if(isset($_POST['ABSEN_DATANG'])){
 						$datang_min = date('H:i',strtotime($datang_value_check));
 					}
 					
-					$admin = $row['Nama_Admin'];
-					$email = $row['Email'];
-					$telp = $row['No_Telp'];
-					$pass = $row['Password'];
-					$alamat = $row['Alamat_Perusahaan'];
-					$pulang = $row['Absen_pulang_min'];
-					$max = $row['Absen_pulang_max'];
-					$jenis = $row['Jenis_Kelamin'];
-					$dibuat_jam = $row['Submitted_On_Hours'];
-					$dibuat_tgl = $row['Submitted_On_Date'];
-					
 					$datang_value = $datang_min;
 					$datang_max_value = $datang_max;
 						
-					mysqli_query($konek, "DELETE FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
-						
-					mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$admin','$nik','$jenis','$email','$telp','$pass','$alamat','$datang_min','$datang_max','$pulang','$max','$dibuat_jam','$dibuat_tgl')");
+					mysqli_query($konek, "UPDATE data_perusahaan SET Absen_datang_min='$datang_min', Absen_datang_max='$datang_max' WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
 					
 					$sql_cek = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor' AND Absen_datang_min='$datang_min' AND Absen_datang_max='$datang_max'");
 		
@@ -94,26 +81,9 @@ if(isset($_POST['ABSEN_PULANG'])){
 						$pulang_min = date('H:i',strtotime($_GET['pulang_min']));
 					}
 					
-					$admin = $row['Nama_Admin'];
-					$email = $row['Email'];
-					$telp = $row['No_Telp'];
-					$pass = $row['Password'];
-					$alamat = $row['Alamat_Perusahaan'];
-					$jenis = $row['Jenis_Kelamin'];
-					$dibuat_jam = $row['Submitted_On_Hours'];
-					$dibuat_tgl = $row['Submitted_On_Date'];
-					
-					$datang = $row['Absen_datang_min'];
-					$max = $row['Absen_datang_max'];
-					
-					$pulang_max = date('H:i',strtotime($pulang_max_value_check));
-					
 					$pulang_value = $pulang_min;
-					$pulang_max_value = $pulang_max;
 						
-					mysqli_query($konek, "DELETE FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
-						
-					mysqli_query($konek, "INSERT INTO data_perusahaan VALUES ('$kantor','$admin','$nik','$jenis','$email','$telp','$pass','$alamat','$datang','$max','$pulang_min','$pulang_max','$dibuat_jam','$dibuat_tgl')");
+					mysqli_query($konek, "UPDATE data_perusahaan SET Absen_pulang_min='$pulang_min' WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
 					
 					$sql_cek = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor' AND Absen_pulang_min='$pulang_min' AND Absen_pulang_max='$pulang_max'");
 		
