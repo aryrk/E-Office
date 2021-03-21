@@ -30,6 +30,7 @@ if(isset($_POST['search'])){
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="../Main Tab/etc/Animate.css">
+	<link rel="stylesheet" href="../etc/wmRemover.css">
 </head>
 <body>
     <header class="banner"> 
@@ -86,7 +87,7 @@ if (!isset($_GET['l']) || $_GET['l'] == NULL){
                     <tr>
                         <td>Nama</td>
                         <td> &nbsp; =</td>
-                        <td> &nbsp; Roti '.$nama_kar.'</td>
+                        <td> &nbsp; '.$nama_kar.'</td>
                     </tr>
                     <tr>
                         <td>Jenis Cuti</td>
