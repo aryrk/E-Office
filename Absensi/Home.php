@@ -11,22 +11,6 @@ require_once("../config.php");
 $nik = $_SESSION['nik'];
 $kantor = $_SESSION['kantor'];
 $pass = $_SESSION['password'];
-
-if(isset($_POST['PROFIL'])){
-	header("Location: ../Main Tab/etc/Main.php");
-}
-
-if(isset($_POST['ABSEN'])){
-	header("Location: Absen.php");
-}
-
-if(isset($_POST['DATAABSEN'])){
-	header("Location: DataAbsen.php");
-}
-
-if(isset($_POST['CUTI'])){
-	header("Location: Cuti.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,18 +30,17 @@ if(isset($_POST['CUTI'])){
             <div id="logo">
                 <h1><?php echo $kantor; ?></h1>
             </div> 
-			<form id="form1" name="form1" method="post" action="">
             <nav>
                 <ul>
                     <li><a href=""><u style="color:rgb(190, 190, 190); text-shadow: 0px 0px 20px white;">DASHBOARD</u></a></li> 
 					
-                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="ABSEN" id="ABSEN" value="absen"><a>ABSEN</a></button></li>
+                    <li><a href="Absen.php">ABSEN</a></li>
 						
-                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="CUTI" id="CUTI" value="cuti"><a>CUTI</a></button></li>
+                    <li><a href="Cuti.php">CUTI</a></li>
 					
-                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="DATAABSEN" id="DATAABSEN" value="absen"><a>DATA ABSEN</a></button></li>
+                    <li><a href="DataAbsen.php">DATA ABSEN</a></li>
 					
-                    <li><button style="background-color: transparent; border: none; cursor: pointer;" type="submit" name="PROFIL" id="PROFIL" value="profil"><a>PROFILE</a></button></li>
+                    <li><a href="../Main Tab/etc/Main.php">PROFILE</a></li>
                 </ul>
             
                 <div class="menu-toggle">
@@ -67,7 +50,6 @@ if(isset($_POST['CUTI'])){
                     <span></span>
                 </div>
             </nav>
-			</form>
         </div>
     </header>
 
