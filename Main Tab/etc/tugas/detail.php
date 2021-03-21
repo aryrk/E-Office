@@ -77,7 +77,7 @@ $tujuan = $row['Tujuan'];
 							<?php echo $isi_tugas; ?>
   						</div>
 					</div>
-					<p>(<?php echo $tanggal_tujuan; ?>), <?php echo $pengirim; ?> - <?php echo $tujuan;?></p>
+					<p><?php echo $pengirim; ?> - <?php echo $tujuan;?>, (<?php echo $tanggal_tujuan; ?>)</p>
 					
         			<p><a href="../../../unused.php?value=tugas_kembali"><button class="button" id="button1">Kembali</button></a></p>
       			</div>
