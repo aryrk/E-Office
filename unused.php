@@ -144,6 +144,20 @@ else if($_GET['value'] == "hapusCuti"){
 	mysqli_query($konek, "DELETE FROM cuti WHERE id='$id';");
 	header("Location: Absensi/Cuti.php");
 }
+else if($_GET['value'] == "terimaCuti"){
+	$id = $_GET['idCuti'];
+	$_SESSION['terimaCuti'] = 1;
+	
+	mysqli_query($konek, "UPDATE cuti SET Status='Diterima' WHERE id='$id'");
+	header("Location: admin/Izin-Cuti.php");
+}
+else if($_GET['value'] == "tolakCuti"){
+	$id = $_GET['idCuti'];
+	$_SESSION['tolakCuti'] = 1;
+	
+	mysqli_query($konek, "UPDATE cuti SET Status='Ditolak' WHERE id='$id'");
+	header("Location: admin/Izin-Cuti.php");
+}
 }
 ?>
 <!doctype html>
