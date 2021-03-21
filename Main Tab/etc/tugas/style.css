@@ -1,3 +1,17 @@
+.nama{
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.textB{
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 .search {
     width: 100%;
@@ -71,6 +85,11 @@
 
 .title {
   	color: grey;
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .button {
