@@ -116,10 +116,8 @@ if(isset($_POST['SUBMIT'])){
 //Melakukan cek apakah user sudah melakukan absen datang
 					$cek_pulang_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
 						if (mysqli_num_rows($cek_pulang_awal) == 0){
-//Delete absen masuk agar tidak terjadi duplikasi
-						mysqli_query($konek, "DELETE FROM absen WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
-							
-						$sql = mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$Jam_masuk','S','$jam','S','$terlambat','$Status')");
+//Update absen agar tidak terjadi duplikasi
+						mysqli_query($konek, "UPDATE absen SET Jam_pulang='$jam', stat_2='S', Status='$Status' WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
 //Melakukan cek apakah absen terkirim
 					$cek_pulang = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
 						if (mysqli_num_rows($cek_pulang) == 0){
