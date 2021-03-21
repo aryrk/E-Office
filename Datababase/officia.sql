@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2021 at 11:22 AM
+-- Generation Time: Mar 21, 2021 at 11:34 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -45,9 +45,9 @@ CREATE TABLE `absen` (
 --
 
 INSERT INTO `absen` (`NIK`, `Nama`, `Nama_Perusahaan`, `Tanggal`, `Jam_masuk`, `stat_1`, `Jam_pulang`, `stat_2`, `Terlambat`, `Status`) VALUES
-(12345, 'Debug', 'Officia', '2021-03-15', '11:18:45', 'S', '00:00:00', 'B', '00:00:02', 'Terlambat Absen'),
-(12345, 'Debug', 'Officia', '2021-03-16', '09:35:38', 'S', '09:38:19', 'S', '00:00:00', 'Terlambat Absen'),
-(12345, 'Debug', 'Officia', '2021-03-17', '13:14:31', 'S', '00:00:00', 'B', '00:00:00', 'Terlambat Absen');
+(12345, 'Debug', 'Officia', '2021-03-21', '11:04:46', 'S', '11:04:54', 'S', '00:00:00', 'Terlambat Absen'),
+(69, 'Dev', 'Debug_mode', '2021-03-21', '12:44:54', 'S', '00:00:00', 'B', '00:00:00', 'Terlambat Absen'),
+(12345, 'Debug', 'Officia', '2021-03-16', '27:46:40', 'S', '10:26:42', 'S', '00:00:00', 'sdah');
 
 -- --------------------------------------------------------
 
@@ -56,6 +56,7 @@ INSERT INTO `absen` (`NIK`, `Nama`, `Nama_Perusahaan`, `Tanggal`, `Jam_masuk`, `
 --
 
 CREATE TABLE `cuti` (
+  `id` varchar(255) NOT NULL,
   `Nama` char(255) NOT NULL,
   `NIK` int(16) NOT NULL,
   `Nama_Perusahaan` varchar(255) NOT NULL,
@@ -63,9 +64,19 @@ CREATE TABLE `cuti` (
   `Dari` date DEFAULT NULL,
   `Sampai` date DEFAULT NULL,
   `Keterangan` longtext DEFAULT NULL,
+  `Status` varchar(255) NOT NULL,
   `Submitted_On_Hours` time DEFAULT NULL,
   `Submitted_On_Date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cuti`
+--
+
+INSERT INTO `cuti` (`id`, `Nama`, `NIK`, `Nama_Perusahaan`, `Jenis_Cuti`, `Dari`, `Sampai`, `Keterangan`, `Status`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+('Debug1616316664', 'Debug', 12345, 'Officia', 'Cuti Tahunan', '2021-03-22', '2021-03-30', 'tes', 'Diterima', '15:51:04', '2021-03-21'),
+('Debug1616321740', 'Debug', 12345, 'Officia', 'Cuti Sakit', '2021-03-23', '2021-03-24', 'sakit uhuk', 'Ditolak', '17:15:40', '2021-03-21'),
+('Debug1616321757', 'Debug', 12345, 'Officia', 'Cuti Bersama', '2021-03-22', '2021-03-30', 'cuti bersama ganja', 'unknown', '17:15:57', '2021-03-21');
 
 -- --------------------------------------------------------
 
@@ -172,7 +183,9 @@ CREATE TABLE `tugas` (
 
 INSERT INTO `tugas` (`id_tugas`, `Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Tanggal`, `Judul`, `Isi_Tugas`, `Tujuan`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
 ('Officia    1616225784', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'Request', 'Tolong belikan shampo merek dove untuk anak saya', 'Debug', '14:36:24', '2021-03-20'),
-('Officia    1616225877', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'request lagi', 'belikan sabun juga', 'Debug', '14:37:57', '2021-03-20');
+('Officia    1616225877', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'request lagi', 'belikan sabun juga', 'Debug', '14:37:57', '2021-03-20'),
+('Officia    1616298137', 'Officia    ', 'Admin_officia', 12345, '2021-03-22', 'Perilisan Officia', 'KAMPAAAAAI', 'Seluruh Karyawan', '10:42:17', '2021-03-21'),
+('Officia    1616298370', 'Officia    ', 'Admin_officia', 12345, '2021-03-21', 'Ngetes Officia Hehe', 'Halo Halo cek 1 1 1 karyawanku', 'Seluruh Karyawan', '10:46:10', '2021-03-21');
 
 --
 -- Indexes for dumped tables
