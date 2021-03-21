@@ -141,7 +141,7 @@ class="size" onclick="check()">Show Password<br>
 </div>
 </p>
 <p>
-<br><label for="question">Pertanyaan Keamanan</label>
+<br><label for="question">Pertanyaan Keamanan:</label>
 <select name="secret" id="secret" class="nik">
 <option value="awalan">Pilih Pertanyaan Rahasia</option>
 <option value="quest1">Apa Pekerjaan Impianmu</option>
