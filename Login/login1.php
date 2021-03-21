@@ -56,6 +56,7 @@ if(isset($_POST['SUBMIT'])){
 					$_SESSION['password'] = $pw;
 					
 					$_SESSION['first_login'] = 1;
+					$_SESSION['first_cuti'] = 1;
 					
 					header("Location: ../Main Tab/etc/Main.php");
 				}
