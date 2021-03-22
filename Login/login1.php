@@ -115,12 +115,11 @@ if(isset($_POST['SUBMIT'])){
 	<input type="checkbox" name="show" id="sow"
 	class="size" onclick="check()">Show Password<br>
 	</div>
-	</p>
-	<p>
-	<a href="Forgotpassdesign.php">Forgot Your Password?</a>
-	</p>
 	<p>
 	<button type="submit" name="SUBMIT" id="SUBMIT" value="Submit">Login</button><br>
+	</p>
+<p>
+	<a href="Forgotpassdesign.php">Forgot Your Password?</a>
 	</p>
 	<p>
 	<a href="../index.html"><button type="button" class="canc">Back</button></a>
