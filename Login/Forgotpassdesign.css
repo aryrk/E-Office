@@ -102,13 +102,12 @@ input.size {
 transform: scale(1.2);
 }
 .datee {
-width: 22%;
+width: 70%;
 padding: 12px;
 margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
-line-height: 10px;
 }
 .nik {
 width: 70%;
