@@ -87,6 +87,7 @@ if(isset($_POST['SUBMIT'])){
 <title>Create New Password</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 	<link rel="stylesheet" href="newpassform.css">
+	<link rel="stylesheet" href="../etc/wmRemover.css">
 	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
 	</head>
         <center>
