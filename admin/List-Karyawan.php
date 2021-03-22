@@ -37,6 +37,15 @@ $pw = $_SESSION['PW_admin'];
 
     <section class="tampilan">
         <h1 class="ket">List Karyawan</h1>
+	    
+	   <div class="wrap">
+            <div class="search">
+                <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap..." autocomplete="off">
+                <button type="submit" name="search" id="search" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
 
         <a href="Data-Absen-Karyawan.php" class="horizontal"><span class="text">Data Absen</span></a>
 
@@ -100,7 +109,7 @@ $pw = $_SESSION['PW_admin'];
                         <td>Bagian</td>
                         <td> &nbsp; =</td>
                         <td> &nbsp; '.$bagian.'</td>
-                    </tr>
+                    </tr> <hr>
 
                     <button type="submit" name="HAPUS" id="HAPUS" class="button-hapus" onclick="window.location.href='."'../unused.php?value=hapuskar && kar=".$Nama_kar.' && nik_kar='.$NIK_kar."'".'">Hapus</button>
                 </table>
