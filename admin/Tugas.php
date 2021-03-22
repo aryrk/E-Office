@@ -1,205 +1,689 @@
-<?php
-require_once("../config.php");
-date_default_timezone_set('Asia/Jakarta');
-session_start();
-//mencegah user masuk bila mereka belum melakukan login
-if (!isset($_SESSION['LOGIN_ADMIN'])){
-	header("Location: ../Login/Loginadmin.php");
-	exit ();
+::-webkit-scrollbar {
+display: none;
+}
+.isi_tugas{
+	line-height: 31px;
+	background-image: -webkit-linear-gradient(left, white 0, transparent 0), -webkit-linear-gradient(right, white 0, transparent 0), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+	background-repeat: repeat-y;
+	background-size: 100% 100%, 100% 100%, 100% 31px;
+	background-attachment: local;
+}
+.menuFloat{
+	padding: 20px;
+	border-radius: 1%;
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	position: fixed;
+	top: 38%;
+	right: 0;
+	background-color: #4691ff;
+	transition: all 1s;
+}
+.menu{
+	writing-mode: vertical-rl;
+	text-orientation: upright;
+}
+.menuFloat a:hover{
+	color: black;
+	text-decoration: none;
+	text-shadow: none;
+	cursor: pointer;
+}
+.sumbit{
+	margin-top: 15px;
+	font-weight: bold;
+	letter-spacing: .15em;
+	color: white;
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid black;
+}
+textarea{
+	width: 100%;
+	min-height: 65px;
+	max-height: 170px;
+	resize: none;
+}
+hr{
+	width: 50%;
+	height: 1%;
+	background-color: white;
+}
+.judul{
+	padding-top: 2%;
+	font-weight: bold;
+	color: white;
+}
+.inner{
+	padding: 2%;
+	font-weight: bold;
+	letter-spacing: .15em;
+	color: white;
+}
+.tujuan{
+	margin-bottom: 1em;
+	padding: .25em;
+	border: 0;
+	border-bottom: 2px solid black;
+	font-weight: bold;
+	letter-spacing: .15em;
+	border-radius: 0;
+	background-color: transparent;
+	color: #7bd9c1;
+}
+.tujuan:focus, :active {
+	outline: 0;
+	border-bottom-color: currentColor;
+	color: black;
+  }
+.tugas_box{
+    background: #1f396e;
+    width: 73%;
+	height: auto;
+    max-height: 400px;
+	margin-top: 8%;
+	margin-left: 13.5%;
+    border-radius: 20px;
+}
+    /* Header */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-$kantor = $_SESSION['kantor_admin'];
-$nik = $_SESSION['NIK_admin'];
-$pw = $_SESSION['PW_admin'];
+body{
+    background-image: url("../../Main Tab/media/Bg.jpg");
+	background-repeat: repeat-y;
+	background-size: 150%;
+  	font-family: Arial, Helvetica, sans-serif;
+}
+.banner{
+    background-color: #474e5d;
+    min-height: 85px;
+    color: white;
+    border-bottom: 5px solid #666b70;
+	top: 0;
+	position: fixed;
+	width: 100%;
+}
 
-$tgl = date("Y-m-d");
-$jam = date("H:i:s");
+.banner-unused{
+    background-color: #474e5d;
+    min-height: 85px;
+    color: white;
+    border-bottom: 5px solid #666b70;
+	width: 1%;
+	font-size: 0px;
+	opacity: 0;
+}
 
-if(isset($_POST['kirim'])){
-	$tujuan = trim($_POST['tujuan']);
-	$tanggal = $_POST["time"];
-	$isi = trim($_POST['isi']);
-	$judul = trim($_POST['judul']);
-	$id = $kantor.time();
-		
-		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
-		
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor';";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$nama = $row['Nama_Admin'];
-					
-					$sql = mysqli_query($konek, "INSERT INTO tugas VALUES ('$id','$kantor','$nama','$nik','$tanggal','$judul','$isi','$tujuan','$jam','$tgl')");
-				}
-//Mengecek apakah tugas berhasil terkirim
-	$sql = mysqli_query($konek, "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND NIK_Admin='$nik' AND Tanggal='$tanggal' AND Isi_Tugas='$isi' AND Tujuan='$tujuan'");
-		if (mysqli_num_rows($sql) == 0){
-			header("Location: ../etc/error/index.php?condition=12 && kantor=$kantor && nik=$nik && password=$pw");
-		}
-				
-			}
-		}
-	}
-if(isset($_POST['prev'])){
-	$judul = trim($_POST['judul']);
-	$tujuan = trim($_POST['tujuan']);
-	$tanggal = $_POST["time"];
-	$isi = trim($_POST['isi']);
-	$_SESSION['isi'] = $isi;
-	$_SESSION['judul'] = $judul;
-	header("Location: preview_tugas/preview.php?tujuan=$tujuan&&tanggal=$tanggal");
-	}
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel = "icon" href ="../Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
-    <title>Upload Tugas</title>
+.h1{
+    text-align: center;
+    position: absolute;
+    margin-top: 1.5%;
+    margin-left: 40%;
+}
+
+.back{
+    position: absolute;
+    font-size: 200%;
+    margin-left: 95%;
+    margin-top: 1.5%;
+}
+
+    /* Footer */
+.logo{
+    color: white;
+    text-align: center;
+    position: absolute;
+    font-size: 180%;
+    margin-top: -2.5%;
+}
+
+.absen .logo{
+    margin-left: -4.5%;
+}
+
+.cuti .logo{
+    margin-left: -3%;
+}
+
+.pengumuman .logo{
+    margin-left: -4.5%;
+}
+.karyawan .logo{
+    margin-left: -3.5%;
+}
+.list-karyawan .logo{
+    margin-left: -4.5%;
+}
+.tugas .logo{
+    margin-left: -2.6%;
+}
+
+.Banner-handap{
+    background-color: #474e5d;;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 70%;
+    color: floralwhite;
+    float: left;
+}
+
+.Banner-handap-used{
+	background-color: #474e5d;
+	width: 1%;
+	height: 70px;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size: 70%;
+	color: floralwhite;
+	float: left;
+	opacity: 0;
+}
+
+.o{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style:oblique;
+    margin-left: 20px;
+    font-size: 320%;
+    margin-top: 15px;
+}
+li{
+    display: inline;
+    margin: 30px;
+}
+.inline{
+    margin-top: -10px;
+}
+
+ul{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    float: right;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.absen:hover, .cuti:hover, .pengumuman:hover, .karyawan:hover, .list-karyawan:hover, .tugas:hover{
+    color: rgb(211, 211, 211);
+    animation: prg 0.5s ease 1;
+}
+.logo:hover{
+    color: rgb(196, 196, 196);
+    animation: logo 1s ease 1;
+}
+
+@media screen and (max-width: 1024px){
+    .h1{
+        margin-left: 35%;
+    }
+
+    .back{
+        margin-left: 90%;
+        margin-top: 2%;
+    }
+
+    .wrap{
+        width: 25%;
+        margin-top: -1%;
+        margin-left: 3%;
+    }
+
+    .Photo{
+        width: 60px;
+        height: 100px;
+        position: absolute;
+        margin: 0;
+        margin-top: -1.5%;
+        padding-top: 2%;
+    }
+
+    .table{
+        margin-top: -1%;
+        font-size: 80%;
+    }
+
+    .button-terima{
+        margin-left: 63%;
+    }
+
+    .button-tidak{
+        margin-left: 63%;
+        margin-top: 5%;
+    }
+
+    .button-telepon{
+        margin-top: 2.5%;
+        margin-left: 73%;
+    }
+
+    .inline{
+        margin-top: -1%;
+    }
+
+    .absen .logo{
+        margin-top: -3.5%;
+        margin-left: -6%;
+    }
     
-    <link rel="stylesheet" href="etc/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="../Main Tab/etc/Animate.css">
-	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
-</head>
-	
-<body>
-    <header class="banner"> 
-        <h1 class="h1"><?php echo $kantor ?> Administrator</h1>
-
-        <a href="Admin1.php"><i class="back fas fa-arrow-circle-left"></i></a>
-    </header>
-	<header class="banner-unused"> 
-        <h1 class="h1">Officia Administrator</h1>
-    </header>
-	
-<form id="form1" name="form1" method="post" action="">
-	<section class="tugas_box wow fadeInDown">
-		<center>
-			<h1 class="judul wow zoomIn">Tambah Tugas</h1>
-				<hr class="wow jackInTheBox">
-		</center>
-	<div class="inner wow fadeIn">
-		<label for="judul" class="wow slideInLeft">Tugas Berjudul</label>
-		<input type="text" name="judul" id="judul" required/>
-		<label for="isi" class="wow slideInLeft">Dan Berisi:</label><br>
-		<textarea name="isi" id="isi" rows="2" placeholder="Isi tugas (Styling with Markdown is supported)" required class="isi_tugas"></textarea>
-		
-		<label for="tujuan" class="wow slideInLeft">Akan Dikirimkan Kepada</label>
- 		<select name="tujuan" id="tujuan" class="tujuan wow slideInUp">
-			<option value="Seluruh Karyawan">Seluruh Karyawan</option>
-<?php
-	$sql = mysqli_query($konek, "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor'");
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Jabatan DESC;";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$jabatan = $row['Jabatan'];
-			echo '
-				<option value="'.$jabatan.'">'.$jabatan.'</option>
-			';
-		}
-			}
-		}
-			
-	$sql_nama = mysqli_query($konek, "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor'");
-		if (mysqli_num_rows($sql_nama) != 0){
-			$A = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$nama = $row['Nama'];
-			echo '
-				<option value="'.$nama.'">'.$nama.'</option>
-			';
-		}
-			}
-		}
-?>
-		</select>
-		
-		<label for="time" class="wow slideInLeft"> Pada Tanggal</label>
-		<input class="tujuan wow slideInUp" type="date" name="time" id="time" min="<?php echo $tgl ?>" value="<?php echo $tgl ?>">
-		
-		<center>
-			<button type="submit" class="sumbit wow bounce" value="Kirim" id="kirim" name="kirim">Kirim</button>&nbsp;&nbsp;&nbsp;<button type="submit" class="sumbit wow bounce" value="Preview" id="prev" name="prev">Preview</button>
-		</center>
-	</div>
-	</section>
-</form>
-	
-<div class="menuFloat wow slideInRight" id="Float">
-<table>
-	<tr>
-		<th><p class="menu"><a href="etc/history/history.php">Histori</a></p></th>
-	</tr>	
-</table>
-</div>
+    .cuti .logo{
+        margin-top: -3.5%;
+        margin-left: -4%;
+    }
     
-    <div class="Banner-handap">
-        <div class="o">Officia</div>
-        <nav class="navbar">
-            <a class="toggler-navbar">
-                <div class="hamburger-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </a>
-            <div class="sidebar">
-                <ul class="inline">
-                    <li><a href="Setting-Absen.php" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
-                    <li><a href="Izin-Cuti.php" class="cuti">Izin Cuti<i class="logo fas fa-calendar-minus"></i></a></li>
-                    <li><a href="+Pengumuman.php" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
-                    <li><a href="../Login/regis.php" class="karyawan">Karyawan<i class="logo fas fa-id-card"></i></a></li>
-                    <li><a href="List-Karyawan.php" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
-                    <li><a href="" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    .pengumuman .logo{
+        margin-top: -3.5%;
+        margin-left: -6%;
+    }
+    .karyawan .logo{
+        margin-top: -3.5%;
+        margin-left: -4.5%;
+    }
+    .list-karyawan .logo{
+        margin-top: -3.5%;
+        margin-left: -6%;
+    }
+    .tugas .logo{
+        margin-top: -3.5%;
+        margin-left: -3.5%;
+    }
 
-    <div class="Banner-handap-used">
-        <div class="o">Officia</div>
-        <nav class="navbar">
-            <a class="toggler-navbar">
-                <div class="hamburger-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </a>
-            <div class="sidebar">
-                <ul class="inline">
-                    <li><a href="Setting-Absen.html" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
-                    <li><a href="Izin-Cuti.php" class="cuti">Izin Cuti<i class="logo fas fa-calendar-minus"></i></a></li>
-                    <li><a href="" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
-                    <li><a href="" class="karyawan">Karyawan<i class="logo fas fa-id-card"></i></a></li>
-                    <li><a href="" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
-                    <li><a href="" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    .absen, .cuti, .pengumuman, .karyawan, .list-karyawan{
+        margin-right: -30px;
+    }
+}
 
-    <script src="etc/script.js"></script>
-	<script src="../Main Tab/etc/wow.min.js"></script>
-<script>
-	new WOW().init();
-</script>
-</body>
-</html>
+@media screen and (max-width: 768px){
+    .h1{
+        margin-top: 2.5%;
+        margin-left: 33%;
+    }
+
+    .back{
+        margin-left: 90%;
+        margin-top: 3%;
+    }
+
+    .wrap{
+        width: 23%;
+        margin-top: -10px;
+        margin-left: 10px;
+    }
+
+    .notif{
+        height: 100px;
+        margin-top: 2%;
+    }
+
+    .Photo{
+        width: 55px;
+        height: 80px;
+        position: absolute;
+        margin: 0;
+        margin-top: -1%;
+        padding-top: 2%;
+    }
+
+    .table{
+        margin-top: -1%;
+        font-size: 70%;
+    }
+
+    .button-terima{
+        margin-left: 63%;
+    }
+
+    .button-tidak{
+        margin-left: 63%;
+        margin-top: 6%;
+    }
+
+    .button-telepon{
+        margin-top: 3%;
+        margin-left: 72.5%;
+    }
+
+    .inline{
+        margin-top: -2%;
+    }
+
+    .absen .logo{
+        margin-top: -4%;
+        margin-left: -7.5%;
+    }
+    
+    .cuti .logo{
+        margin-top: -4%;
+        margin-left: -5.5%;
+    }
+    
+    .pengumuman .logo{
+        margin-top: -4%;
+        margin-left: -7.5%;
+    }
+    .karyawan .logo{
+        margin-top: -4%;
+        margin-left: -6%;
+    }
+    .list-karyawan .logo{
+        margin-top: -4%;
+        margin-left: -8%;
+    }
+    .tugas .logo{
+        margin-top: -4%;
+        margin-left: -4.5%;
+    }
+
+    .absen, .cuti, .pengumuman, .karyawan, .list-karyawan{
+        margin-right: -50px;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .banner{
+        min-height: 70px;
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .ket{
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
+
+    .h1{
+        font-size: 160%;
+        margin-top: 4.5%;
+        margin-left: 3%;
+        padding-right: -15%;
+    }
+
+    .back{
+        margin-left: 85%;
+        margin-top: 4.5%;
+    }
+
+    .o{
+        margin-left: 35%;
+    }
+
+    .body{
+        height: 100%;
+    }
+
+    .wrap{
+        width: 80%;
+        margin-top: -2px;
+        margin-left: 32%;
+    }
+
+    .notif{
+        width: 90%;
+        height: 150%;
+        
+    }
+
+    .Photo{
+        width: 55px;
+        height: 70px;
+        position: absolute;
+        margin: 0;
+        margin-top: 5%;
+        padding-top: 2%;
+    }
+
+    .table{
+        font-size: 50%;
+        margin-left: 20%;
+        height: 150px;
+        width: 80%;
+    }
+
+    .button-terima{
+        margin-left: -5%;
+        margin-top: 110px;
+        width: 15%;
+    }
+
+    .button-tidak{
+        margin-left: 20%;
+        margin-top: 110px;
+        width: 15%;
+    }
+
+    .button-telepon{
+        margin-top: 105px;
+        margin-left: 45%;
+        width: 40px;
+    }
+
+    .inline{
+        padding-top: 5%;
+    }
+
+    li{
+        margin-top: 10%;
+    }
+
+    .absen{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+    
+    .cuti{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+    
+    .pengumuman{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+    .karyawan{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+    .list-karyawan{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+    .tugas{
+        margin-left: -140%;
+        margin-top: 30%;
+    }
+
+    .absen .logo, .pengumuman .logo, .list-karyawan .logo{
+        margin-top: -2%;
+        margin-left: -60%;
+    }
+    .cuti .logo{
+        margin-top: -2%;
+        margin-left: -45%;
+    } 
+    .karyawan .logo{
+        margin-top: -2%;
+        margin-left: -50%;
+    }
+    .tugas .logo{
+        margin-top: -2%;
+        margin-left: -40%;
+    }
+
+    .tampilan{
+        margin-bottom: 30px;
+    }
+
+    .navbar {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        margin-left: 83%;
+        margin-top: -35px;
+        position: fixed;
+        display: flex;
+        z-index: 1000;
+    }
+
+    .navbar .toggler-navbar {
+        margin-right: 10px;
+    }
+    .sidebar {
+        position: fixed;
+        top: 70px;
+        left: 38%;
+        width: 270px;
+        height: 100%;
+        background: #666b70;
+        text-align: left;
+        font-size: 20px;
+        transform: rotate3d(0, 1, 0, 90deg);
+        transform-origin: right center;
+        transition: .5s;
+        z-index: -100;
+        opacity: 0.9;
+    }
+    
+    .sidebar.open {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    .sidebar ul{
+        list-style: none;
+    }
+    
+    .sidebar li:hover{
+        background: #0000003f;
+    }
+    
+    .sidebar li a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+    }
+
+    .hamburger-menu {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .5s ease-in-out;
+        -moz-transition: .5s ease-in-out;
+        -o-transition: .5s ease-in-out;
+        transition: .5s ease-in-out;
+        cursor: pointer;
+    }
+    
+    .hamburger-menu span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: white;
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
+    }
+    
+    .hamburger-menu span:nth-child(1) {
+        top: 2.5px;
+    }
+    
+    .hamburger-menu span:nth-child(2) {
+        top: 11px;
+    }
+    
+    .hamburger-menu span:nth-child(3) {
+        top: 21px;
+    }
+    
+    .hamburger-menu.open span:nth-child(1) {
+        top: 15px;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg);
+    }
+    
+    .hamburger-menu.open span:nth-child(2) {
+        transform: rotate(360deg);
+        top: 14px;
+        left: 75px;
+        transition: 1.5s;
+        opacity: 0.5;
+    }
+    
+    .hamburger-menu.open span:nth-child(3) {
+        top: 14px;
+        -webkit-transform: rotate(-135deg);
+        -moz-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+    }
+}
+
+@keyframes logo{
+    0%{
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes prg{
+    0%{
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+	body {
+		background-image: url("../../Main Tab/media/Bg_verti.jpg");
+		background-size: 300%;
+	}
+	.tugas_box{
+		margin-top: 10px;
+		font-size: 80%;
+	}
+	.menuFloat{
+		padding: 10px;
+		top: 18%;
+	}
+}
