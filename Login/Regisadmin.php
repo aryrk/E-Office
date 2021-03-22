@@ -1,5 +1,6 @@
 <?php
 require_once("../config.php");
+session_start();
 date_default_timezone_set('Asia/Jakarta');
 $tgl = date("Y-m-d");
 
@@ -36,7 +37,11 @@ if(isset($_POST['SUBMIT'])){
 //Mengecek apakah data registrasi terkirim
 $sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND Password='$pass'");
 	if (mysqli_num_rows($sql) != 0){
-			header("Location: ../admin/Admin.php?kantor=$kantor && password=$pass && nik=$nik");
+			$_SESSION['LOGIN_ADMIN'] = 1;
+			$_SESSION['kantor_admin'] = $kantor;
+			$_SESSION['NIK_admin'] = $nik;
+			$_SESSION['PW_admin'] = $pass;
+			header("Location: ../admin/Admin1.php");
 	}
 	else {
 		header("Location: ../etc/error/index.php?condition=10");
