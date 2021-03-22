@@ -45,7 +45,7 @@ if(isset($_POST['reset'])){
 	
 <body>
     <header class="banner"> 
-        <h1 class="h1">Officia Administrator</h1>
+        <h1 class="h1"><?php echo $kantor; ?> Administrator</h1>
 
         <a href="../../Tugas.php"><i class="back fas fa-arrow-circle-left"></i></a>
     </header>
