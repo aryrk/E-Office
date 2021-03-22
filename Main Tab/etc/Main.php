@@ -536,7 +536,7 @@ if(isset($_POST['UBAH'])){
     			<td height="10%">Umur</td>
 				<td height="10%" style="opacity: 0">1</td>
     			<td height="10%">:</td>
-				<td height="10%"><?php echo $_SESSION['umur']; ?></td>
+				<td height="10%"><?php echo $_SESSION['umur']; ?> Tahun</td>
   			</tr>
 			<tr>
 			<tr style="opacity: 0.8">
