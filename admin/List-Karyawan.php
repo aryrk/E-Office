@@ -10,6 +10,11 @@ if (!isset($_SESSION['LOGIN_ADMIN'])){
 $kantor = $_SESSION['kantor_admin'];
 $nik = $_SESSION['NIK_admin'];
 $pw = $_SESSION['PW_admin'];
+
+if(isset($_POST['search'])){
+	$nama = trim($_POST['nama']);
+	header("Location: List-Karyawan.php?l=$nama");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,8 +42,8 @@ $pw = $_SESSION['PW_admin'];
 
     <section class="tampilan">
         <h1 class="ket">List Karyawan</h1>
-
-    <div class="wrap">
+<form id="form1" name="form1" method="post" action="">
+    <div class="wrap" style="z-index: 10;">
         <div class="search">
             <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap/NIK..." autocomplete="off">
             <button type="submit" name="search" id="search" class="searchButton">
@@ -46,11 +51,13 @@ $pw = $_SESSION['PW_admin'];
             </button>
         </div>
     </div>
-
+</form>
         <a href="Data-Absen-Karyawan.php" class="horizontal"><span class="text">Data Absen</span></a>
 
 		<?php
 	$sql = mysqli_query($konek, "SELECT * FROM login WHERE Nama_Perusahaan='$kantor'");
+			
+if (!isset($_GET['l']) || $_GET['l'] == NULL){
 		
 		if (mysqli_num_rows($sql) != 0){
 			$A = "SELECT * FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
@@ -119,6 +126,79 @@ $pw = $_SESSION['PW_admin'];
 		}
 			}
 		}
+}
+			
+else if (isset($_GET['l'])){
+	$l = $_GET['l'];
+		
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM login WHERE Nama_Perusahaan='$kantor' AND Nama='$l' OR Nama_Perusahaan='$kantor' AND NIK='$l';";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$NIK_kar = $row['NIK'];
+					$Nama_kar = $row['Nama'];
+					$tgl_lah = $row['Tanggal_Lahir'];
+					$bln_lah = $row['Bulan_Lahir'];
+					$thn_lah = $row['Tahun_Lahir'];
+					$masuk = $row['Submitted_On_Date'];
+					$masuk_tgl = date("d", strtotime($masuk));
+					$masuk_bln = date("m", strtotime($masuk));
+					$masuk_thn = date("Y", strtotime($masuk));
+					$bagian = $row['Jabatan'];
+					$pp = 'src="../Main Tab/etc/upload/image/'.$row['pp_name'].'"';
+					
+					//date in mm/dd/yyyy format; or it can be in other formats as well
+  					$birthDate = "$masuk_bln/$masuk_tgl/$masuk_thn";
+  					//explode the date to get month, day and year
+  					$birthDate = explode("/", $birthDate);
+  					//get age from date or birthdate
+  					$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+    				? ((date("Y") - $birthDate[2]) - 1)
+    				: (date("Y") - $birthDate[2]));
+					
+					echo '
+					<div class="notif">
+            <img class="Photo" '.$pp.' alt="Photo">
+            <div class="table">
+                <table>
+                    <tr>
+                        <td>Nama</td>
+                        <td> &nbsp; =</td>
+                        <td> &nbsp; '.$Nama_kar.'</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Lahir</td>
+                        <td> &nbsp; =</td>
+                        <td> &nbsp; '.$tgl_lah."-".$bln_lah."-".$thn_lah.'</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Masuk</td>
+                        <td> &nbsp; =</td>
+                        <td> &nbsp; '.$masuk.'</td>
+                    </tr>
+                    <tr>
+                        <td>Masa Kerja</td>
+                        <td> &nbsp; =</td>
+                        <td> &nbsp; '.$age.' Tahun</td>
+                    </tr>
+                    <tr>
+                        <td>Bagian</td>
+                        <td> &nbsp; =</td>
+                        <td> &nbsp; '.$bagian.'</td>
+                    </tr> <hr class="hr">
+                    <button type="submit" name="HAPUS" id="HAPUS" class="button-hapus" onclick="window.location.href='."'../unused.php?value=hapuskar && kar=".$Nama_kar.' && nik_kar='.$NIK_kar."'".'">Hapus</button>
+                </table>
+            </div>
+        </div>
+					';
+					
+		}
+			}
+		}
+}
 ?>
     </section>
 
