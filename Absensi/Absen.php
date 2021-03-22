@@ -65,9 +65,11 @@ if(isset($_POST['SUBMIT'])){
 	$radioVal = $_POST["absen"];
 	
 	$jam = date("H:i:s");
+	$jam_masuk_akhir = date('H:i:s',strtotime($Masuk_akhir));
 
 		if($radioVal == "JamMasuk"){
-			$kalkulasi = strtotime($jam) - strtotime($Masuk_akhir);
+			$kalkulasi = strtotime($jam) - strtotime($jam_masuk_akhir);
+			$kalkulasi = date('H:i:s',strtotime($kalkulasi));
 
 			if (strtotime($jam) <= strtotime($Masuk_akhir) && strtotime($jam) >= strtotime($Masuk_awal)){
 				$status = "Sudah Absen Masuk";
