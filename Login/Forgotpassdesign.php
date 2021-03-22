@@ -48,17 +48,9 @@ $random2 = mt_rand($min, $max);
 	maxlength="13"><br>
 	</p>
 	<p>
-	<label for="ultah">Tanggal Lahir(dd/mm/yyyy)</label>
-	<input type="number" name="hari" id="day" class="datee" autocomplete="off"
-	oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-	maxlength="2">//
-	<input type="number" name="bulan" id="month" class="datee" autocomplete="off"
-	oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-	maxlength="2">//
-	<input type="number" name="tahun" id="year" class="datee" autocomplete="off"
-	oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-	maxlength="4"><br>
-	</p>
+<label for="ultah">Tanggal Lahir:</label>
+<input type="date" class="datee" name="tgl" id="tgl" placeholder="Masukkan Tanggal Lahir">
+</p>
 <p>
 <label for="jawaban">Masukkan Jawaban Pertanyaan Sebelumnya:
 <input type="text" name="jawab" id="jawab" autocomplete="off"
