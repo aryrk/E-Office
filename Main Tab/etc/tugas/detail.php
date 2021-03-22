@@ -35,6 +35,7 @@ $tujuan = $row['Tujuan'];
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Roboto+Slab&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="detail.css">
 <link rel="stylesheet" href="../Animate.css">
+<link rel="stylesheet" href="../../../etc/wmRemover.css">
 </head>
 
 <body>
