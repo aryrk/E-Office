@@ -45,11 +45,13 @@ if(isset($_POST['kirim'])){
 		}
 	}
 if(isset($_POST['prev'])){
+	$judul = trim($_POST['judul']);
 	$tujuan = trim($_POST['tujuan']);
 	$tanggal = $_POST["time"];
 	$isi = trim($_POST['isi']);
-		$_SESSION['isi'] = $isi;
-	header("Location: preview_tugas/preview.php?tujuan=$tujuan && tanggal=$tanggal");
+	$_SESSION['isi'] = $isi;
+	$_SESSION['judul'] = $judul;
+	header("Location: preview_tugas/preview.php?tujuan=$tujuan&&tanggal=$tanggal");
 	}
 ?>
 <!DOCTYPE html>
@@ -88,7 +90,7 @@ if(isset($_POST['prev'])){
 		</center>
 	<div class="inner wow fadeIn">
 		<label for="judul" class="wow slideInLeft">Tugas Berjudul</label>
-		<input type="text" name="judul" id="judul" required autocomplete="off"/>
+		<input type="text" name="judul" id="judul" required/>
 		<label for="isi" class="wow slideInLeft">Dan Berisi:</label><br>
 		<textarea name="isi" id="isi" rows="2" placeholder="Isi tugas (Styling with Markdown is supported)" required class="isi_tugas"></textarea>
 		
