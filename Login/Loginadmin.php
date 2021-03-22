@@ -10,7 +10,7 @@ if (isset($_SESSION['LOGIN_ADMIN'])){
 if(isset($_POST['SUBMIT'])){
 		$nik_admin = trim($_POST['NIK']);
 		$pw_admin = trim($_POST['PW']);
-		---
+		
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik_admin' AND Password='$pw_admin'");
 
 		if (mysqli_num_rows($sql) != 0){
