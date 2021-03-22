@@ -89,7 +89,9 @@ color: red;
 display: none;
 }
 .cek {
-margin-left: -390px;
+text-align: left;
+display: inline-block;
+margin-left: 97px;
 margin-top: -20px;
 }	
 input.size {
@@ -162,7 +164,7 @@ body > div:nth-last-of-type(1)[style]{
 		width: 90%;
 	}
 	.cek {
-		margin-left: -178px;
+		margin-left: 15px;
 	}
 	placeholder {
 		width: 30%;
