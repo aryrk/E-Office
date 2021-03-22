@@ -158,6 +158,13 @@ else if($_GET['value'] == "tolakCuti"){
 	mysqli_query($konek, "UPDATE cuti SET Status='Ditolak' WHERE id='$id'");
 	header("Location: admin/Izin-Cuti.php");
 }
+else if($_GET['value'] == "deltugas"){
+	$id = $_GET['id_tugas'];
+	$_SESSION['deltugas'] = 1;
+	
+	mysqli_query($konek, "DELETE FROM tugas WHERE id_tugas='$id'");
+	header("Location: admin/etc/history/history.php");
+}
 }
 ?>
 <!doctype html>
