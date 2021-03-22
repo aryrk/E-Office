@@ -93,7 +93,9 @@ span {
 	color: red;
 }
 .cek {
-margin-left: -390px;
+text-align: left;
+display: inline-block;
+margin-left: 97px;
 margin-top: -20px;
 }	
 input.size {
@@ -161,7 +163,7 @@ box-sizing: border-box;
 		width: 77%;
 	}
 	.cek {
-		margin-left: -178px;
+		margin-left: 15px;
 	}
 	placeholder {
 		width: 30%;
