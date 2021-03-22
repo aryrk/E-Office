@@ -11,6 +11,12 @@ error_reporting(E_ERROR | E_PARSE);
 //kondisi 7 = registrasi karyawan menggunakan NIK yang sudah terdaftar
 //kondisi 8 = registrasi akun admin menggunakan nama perusahaan yang sudah terdaftar
 //kondisi 9-12, 14-16 = error database
+//kondisi 17 = error perhitungan forgot password
+//kondisi 18 = NIK forgot password tidak terdaftar
+//kondisi 19 = email forgot password tidak terdaftar/bukan email miliknya
+//kondisi 20 = no telp forgot password tidak terdaftar/bukan nomber miliknya
+//kondisi 21 = tgl lahir forgot password bukan miliknya
+//kondisi 22 = pertanyaan keamanan forgot password tidak sesuai
 
 $Masuk_awal = $_GET['masuk1'];
 $Masuk_akhir = $_GET['masuk2'];
@@ -83,6 +89,14 @@ if(isset($_POST['BACK'])){
 	}
 	else if ($condition == 16){
 		header("Location: ../../admin/+Pengumuman.php");
+		exit();
+	}
+	else if ($condition == 17 || $condition == 18 || $condition == 19 || $condition == 20 || $condition == 21){
+		header("Location: ../../Login/Forgotpassdesign.php");
+		exit();
+	}
+	else if ($condition == 22){
+		header("Location: ../../Login/newpassform.php");
 		exit();
 	}
 }
@@ -398,7 +412,7 @@ else if ($condition == 5){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK[',$nik,'] yang kamu masukan tidak terdaftar, harap cek kembali value yang anda masukan atau daftarkan akun administrasi anda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK['.$nik.'] yang kamu masukan tidak terdaftar, harap cek kembali value yang anda masukan atau daftarkan akun administrasi anda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman login atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -409,7 +423,7 @@ else if ($condition == 6){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK[',$nik,'] yang kamu masukan sudah terdaftar, kamu tidak bisa mendaftarkan NIK yang sama pada akun yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK['.$nik.'] yang kamu masukan sudah terdaftar, kamu tidak bisa mendaftarkan NIK yang sama pada akun yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -420,7 +434,7 @@ else if ($condition == 7){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya NIK[',$nik_reg,'] yang kamu masukan sudah terdaftar, kamu tidak bisa mendaftarkan NIK yang sama pada akun yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya NIK['.$nik_reg.'] yang kamu masukan sudah terdaftar, kamu tidak bisa mendaftarkan NIK yang sama pada akun yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -431,7 +445,7 @@ else if ($condition == 8){
 	echo
         '<h1>404</h1>
         <h2>ERROR!</h2>
-        <p>Tampaknya nama perusahaan[',$nik,'] yang kamu masukan sudah terdaftar, disarankan untuk menggunakan singkatan atau kombinasi huruf yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
+        <p>Tampaknya nama perusahaan['.$nik.'] yang kamu masukan sudah terdaftar, disarankan untuk menggunakan singkatan atau kombinasi huruf yang berbeda.<br>Tekan tombol <u>BACK</u> untuk kembali ke halaman registrasi atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
@@ -443,6 +457,89 @@ else if ($condition == 9 || $condition == 10 || $condition == 11 || $condition =
         '<h1>404</h1>
         <h2>SERVER ERROR!</h2>
         <p>Tampaknya server kami sedang bermasalah, harap coba lain kali.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
+        </p>
+		 <form id="form1" name="form1" method="post" action="">
+		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
+        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
+		  </form>';
+}
+		  
+else if ($condition == 17){
+	$num1 = $_GET['1'];
+	$num2 = $_GET['2'];
+	$hasil = $_GET['3'];
+	echo
+        '<h1>404</h1>
+        <h2>BAP BIP BUP?</h2>
+        <p>Tampaknya kamu memasukan value captcha dengan salah ('.$num1.'+'.$num2.'!='.$hasil.').<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
+        </p>
+		 <form id="form1" name="form1" method="post" action="">
+		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
+        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
+		  </form>';
+}
+		  
+else if ($condition == 18){
+	$nik = $_GET['nik'];
+
+	echo
+        '<h1>404</h1>
+        <h2>ERROR!</h2>
+        <p>Tampaknya NIK['.$nik.'] yang kamu masukan tidak terdaftar pada server kami, harap cek kembali value yang anda masukan.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
+        </p>
+		 <form id="form1" name="form1" method="post" action="">
+		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
+        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
+		  </form>';
+}
+		  
+else if ($condition == 19){
+	$mail = $_GET['mail'];
+
+	echo
+        '<h1>404</h1>
+        <h2>ERROR!</h2>
+        <p>Kami tidak yakin email['.$mail.'] adalah milik anda, harap cek kembali value yang anda masukan.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
+        </p>
+		 <form id="form1" name="form1" method="post" action="">
+		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
+        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
+		  </form>';
+}
+		  
+else if ($condition == 20){
+	$telp = $_GET['telp'];
+
+	echo
+        '<h1>404</h1>
+        <h2>ERROR!</h2>
+        <p>Kami tidak yakin nomor['.$telp.'] adalah milik anda, harap cek kembali value yang anda masukan.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
+        </p>
+		 <form id="form1" name="form1" method="post" action="">
+		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
+        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
+		  </form>';
+}
+		  
+else if ($condition == 21){
+
+	echo
+        '<h1>404</h1>
+        <h2>ERROR!</h2>
+        <p>Kami tidak yakin tanggal kelahiran anda benar, harap cek kembali value yang anda masukan.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
+        </p>
+		 <form id="form1" name="form1" method="post" action="">
+		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
+        <button class="btn green" type="submit" name="HELP" id="HELP" value="Help">HELP</button>
+		  </form>';
+}
+		  
+else if ($condition == 22){
+
+	echo
+        '<h1>404</h1>
+        <h2>Something Went Wrong!</h2>
+        <p>Kami tidak yakin bahwa itu benar benar anda, harap cek kembali jawaban keamanan yang anda masukan.<br>Tekan tombol <u>BACK</u> untuk kembali atau <u>HELP</u> untuk meminta bantuan.
         </p>
 		 <form id="form1" name="form1" method="post" action="">
 		 <button class="btn green" type="submit" name="BACK" id="BACK" value="Home">BACK</button>
