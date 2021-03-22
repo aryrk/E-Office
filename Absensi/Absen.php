@@ -83,7 +83,7 @@ if(isset($_POST['SUBMIT'])){
 		$cek_masuk = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
 			if (mysqli_num_rows($cek_masuk) == 0){
 				$_SESSION['condition'] = 9;
-				header("Location: ../etc/error/index.php");
+				header("Location: ../etc/error/index.php?condition=9");
 			}
 //Memberikan note absen terkirim
 			else {
