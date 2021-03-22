@@ -85,6 +85,9 @@ if(isset($_POST['SUBMIT'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <link rel="stylesheet" href="sutail.css">
 <link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
+<link rel="stylesheet" href="../Main Tab/etc/Animate.css">
 </head>
 	
 	<center>
@@ -156,3 +159,12 @@ jQuery(function($) {
     });
 });
 </script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
+	<script src="../etc/allert.js"></script>
+	
+	<?php
+		if (isset($_SESSION['gantipw'])){
+			echo "<script> gantipw(); </script>";
+			unset($_SESSION['gantipw']);
+		}
+?>
