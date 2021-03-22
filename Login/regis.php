@@ -24,11 +24,11 @@ if(isset($_POST['SUBMIT'])){
 		$alamat = trim($_POST['alamat']);
 		$pass = trim($_POST['password']);
 		$jabatan = trim($_POST['jabatan']);
-		$tgl = trim($_POST['tgl']);
+		$tgl_input = trim($_POST['tgl']);
 	
-		$hari = date('d',strtotime($tgl));
-		$bulan = date('m',strtotime($tgl));
-		$tahun = date('Y',strtotime($tgl));
+		$hari = date('d',strtotime($tgl_input));
+		$bulan = date('m',strtotime($tgl_input));
+		$tahun = date('Y',strtotime($tgl_input));
 	
 		$pertanyaan = trim($_POST['secret']);
 		$jawab = trim($_POST['jawab']);
