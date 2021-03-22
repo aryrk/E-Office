@@ -1,6 +1,3 @@
-::-webkit-scrollbar {
-    display: none;
-}
 /* Header */
 *{
     margin: 0;
@@ -34,6 +31,51 @@ body{
 }
 
     /* Tampilan Isi */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.searchTerm {
+    width: 100%;
+    border: 3px solid #666b70;
+    border-right: none;
+    padding: 5px;
+    height: 32px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+
+.searchTerm:focus{
+    color: #474e5d;
+}
+
+.searchButton {
+    width: 35px;
+    height: 32px;
+    border: 1px solid #666b70;
+    background: #474e5d;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+    /*Resize the wrap to see the search bar change!*/
+.wrap{
+    width: 20%;
+    position: absolute;
+    top: 140px;
+    left: 17.5%;
+    transform: translate(-50%, -50%);
+    z-index: -100;
+}
+
 :root {
     --base-color: #474e5d;
     --hover-color: white;
@@ -115,6 +157,11 @@ body{
     margin-top: -8%;
     font-size: 80%;
     min-height: 10%;
+}
+
+hr{
+    width: 0;
+    opacity: 0;
 }
 
 .button-hapus{
@@ -226,6 +273,15 @@ a{
         margin-left: 35%;
     }
 
+    .wrap{
+        width: 25%;
+        position: absolute;
+        top: 140px;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        z-index: -100;
+    }
+
     .horizontal{
         width: 10%;
         height: 40px;
@@ -316,6 +372,19 @@ a{
         margin-top: 3%;
     }
 
+    .ket{
+        padding-bottom: 3%;
+    }
+
+    .wrap{
+        width: 25%;
+        position: absolute;
+        top: 140px;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        z-index: -100;
+    }
+
     .horizontal{
         width: 15%;
         height: 40px;
@@ -398,7 +467,6 @@ a{
 @media screen and (max-width: 576px){
     .banner{
         min-height: 70px;
-        z-index: 100;
         position: fixed;
         top: 0;
         width: 100%;
@@ -421,6 +489,14 @@ a{
         margin-top: 4.5%;
     }
 
+    .wrap{
+        width: 80%;
+        position: absolute;
+        top: 140px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
     .o{
         margin-left: 35%;
     }
@@ -433,7 +509,7 @@ a{
         width: 80%;
         height: 40px;
         margin-left: 10%;
-        margin-top: -10%;
+        margin-top: 10%;
         margin-bottom: 5%;
     }
 
@@ -449,7 +525,7 @@ a{
         position: absolute;
         margin: 0;
         margin-left: 1%;
-        margin-top: 5%;
+        margin-top: 1.5%;
         padding-top: 2%;
     }
 
@@ -461,9 +537,19 @@ a{
         width: 80%;
     }
 
+    hr{
+        width: 80%;
+        opacity: 1;
+        position: absolute;
+        margin-top: 85px;
+        margin-left: -20%;
+        border: 0.5px solid black;
+        background: black;
+    }
+
     .button-hapus{
         margin-left: 10%;
-        margin-top: 90px;
+        margin-top: 95px;
         width: 20%;
     }
 
