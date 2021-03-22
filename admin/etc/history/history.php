@@ -39,6 +39,7 @@ if(isset($_POST['reset'])){
     <link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="../etc/wmRemover.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../../../Main Tab/etc/Animate.css">
 </head>
@@ -167,7 +168,7 @@ else if(isset($_GET['ldate'])){
         			<p style="font-size: 90%">'.$tujuan.'</p>
 					<p>'.$kantor.' Company</p>
 			  		</div>
-        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas_admin&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
 				<p><a href="../../../unused.php?value=deltugas&&id_tugas='.$id.'"><button class="button_hapus" id="button_hapus">HAPUS</button></a></p>
     		</div>
@@ -201,7 +202,7 @@ else if(isset($_GET['ldate'])){
         			<p style="font-size: 90%">'.$tujuan.'</p>
 					<p>'.$kantor.' Company</p>
 			  		</div>
-        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas_admin&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
 				<p><a href="../../../unused.php?value=deltugas&&id_tugas='.$id.'"><button class="button_hapus" id="button_hapus">HAPUS</button></a></p>
     		</div>
@@ -234,7 +235,7 @@ else if(isset($_GET['ldate'])){
         			<p style="font-size: 90%">'.$tujuan.'</p>
 					<p>'.$kantor.' Company</p>
 			  		</div>
-        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas_admin&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
 				<p><a href="../../../unused.php?value=deltugas&&id_tugas='.$id.'"><button class="button_hapus" id="button_hapus">HAPUS</button></a></p>
     		</div>
@@ -295,6 +296,15 @@ else if(isset($_GET['ldate'])){
 
     <script src="../../script.js"></script>
 	<script src="../../../Main Tab/etc/wow.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
+	<script src="../../../etc/allert.js"></script>
+	
+	<?php
+		if (isset($_SESSION['deltugas'])){
+			echo "<script> deltugas(); </script>";
+			unset($_SESSION['deltugas']);
+		}
+?>
 <script>
 	new WOW().init();
 </script>
