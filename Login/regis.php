@@ -101,22 +101,14 @@ maxlength="12"><br>
 name="jabatan" id="jabatan" required autocomplete="off"><br>
 </p>
 <p>
-<label for="gender">Jenis Kelamin: </label><br>
+<label for="gender">Jenis Kelamin:</label><br>
 <input type="radio" name="gender" id="gender" value="L"/>Laki-Laki&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="radio" name="gender" id="gender" value="P"/>Perempuan<br>
 <br><br>
 </p>
 <p>
-<label for="ultah">Tanggal Lahir(dd/mm/yyyy)</label>
-<input type="number" name="hari" id="hari" class="datee"
-oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-maxlength="2">//
-<input type="number" name="bulan" id="bulan" class="datee"
-oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-maxlength="2">//
-<input type="number" name="tahun" id="tahun" class="datee"
-oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-maxlength="4"><br>
+<label for="ultah">Tanggal Lahir:</label>
+<input type="date" class="datee" name="tgl" id="tgl" placeholder="Masukkan Tanggal Lahir">
 </p>
 <p>
 <label for="alamat">Alamat:</label>
