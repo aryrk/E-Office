@@ -24,9 +24,14 @@ if(isset($_POST['SUBMIT'])){
 		$alamat = trim($_POST['alamat']);
 		$pass = trim($_POST['password']);
 		$jabatan = trim($_POST['jabatan']);
-		$hari = trim($_POST['hari']);
-		$bulan = trim($_POST['bulan']);
-		$tahun = trim($_POST['tahun']);
+		$tgl = trim($_POST['tgl']);
+	
+		$hari = date('d',strtotime($tgl));
+		$bulan = date('m',strtotime($tgl));
+		$tahun = date('Y',strtotime($tgl));
+	
+		$pertanyaan = trim($_POST['secret']);
+		$jawab = trim($_POST['jawab']);
 		
 //Mengecek agar tidak terjadi akun ganda yang memiliki NIK yang sama
 		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik_reg'");
@@ -36,10 +41,10 @@ if(isset($_POST['SUBMIT'])){
 		}
 		else if (mysqli_num_rows($sql) == 0) {
 			if($jenis == "L"){
-				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','L','$no','$alamat','default.png','$jam','$tgl');");
+				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','L','$no','$alamat','default.png','$pertanyaan','$jawab','$jam','$tgl');");
 			}
 			else if($jenis == "P"){
-				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','P','$no','$alamat','default.png','$jam','$tgl');");
+				mysqli_query($konek, "INSERT INTO login VALUES ('$nik_reg','$pass','$nama','$kantor','$mail','$jabatan','$hari','$bulan','$tahun','P','$no','$alamat','default.png','$pertanyaan','$jawab','$jam','$tgl');");
 			}
 			
 			$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik_reg' AND Password='$pass' AND Nama_Perusahaan='$kantor'");
@@ -135,17 +140,17 @@ class="size" onclick="check()">Show Password<br>
 <p>
 <br><label for="question">Pertanyaan Keamanan:</label>
 <select name="secret" id="secret" class="nik">
-<option value="awalan">Pilih Pertanyaan Rahasia</option>
-<option value="quest1">Apa Pekerjaan Impianmu</option>
-<option value="quest2">Makanan Terlezat Di Dunia</option>
-<option value="quest3">Harta Karun Masa Kecil</option>
-<option value="quest4">Hobi</option>
-<option value="quest5">Salah Satu Tempat Favorit</option>
-<option value="quest6">Nama Ibumu</option>
-<option value="quest7">Nama Panggilan Sahabat Masa Kecilmu</option>
-<option value="quest8">Warna Pakaian Yang Dipakai Saat Ini</option>
-<option value="quest9">Peristiwa Menyenangkan Dalam Hidupmu</option>
-<option value="quest10">Apa Yang Harus Dirahasiakan Dari Keluarga</option>
+<option value="0">Pilih Pertanyaan Rahasia</option>
+<option value="1">Apa Pekerjaan Impianmu</option>
+<option value="2">Makanan Terlezat Di Dunia</option>
+<option value="3">Harta Karun Masa Kecil</option>
+<option value="4">Hobi</option>
+<option value="5">Salah Satu Tempat Favorit</option>
+<option value="6">Nama Ibumu</option>
+<option value="7">Nama Panggilan Sahabat Masa Kecilmu</option>
+<option value="8">Warna Pakaian Yang Dipakai Saat Ini</option>
+<option value="9">Peristiwa Menyenangkan Dalam Hidupmu</option>
+<option value="10">Apa Yang Harus Dirahasiakan Dari Keluarga</option>
 </select>
 <input type="text" name="jawab" id="jawab" autocomplete="off"
 placeholder="Masukkan Jawaban" required>
