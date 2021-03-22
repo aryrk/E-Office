@@ -10,7 +10,7 @@ if (isset($_SESSION['LOGIN_ADMIN'])){
 if(isset($_POST['SUBMIT'])){
 		$nik_admin = trim($_POST['NIK']);
 		$pw_admin = trim($_POST['PW']);
-		
+		---
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik_admin' AND Password='$pw_admin'");
 
 		if (mysqli_num_rows($sql) != 0){
@@ -49,7 +49,7 @@ if(isset($_POST['SUBMIT'])){
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Login Admin</title>
+<title>Log-in Admin</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 	<link rel="stylesheet" href="Loginadmin.css">
 	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
@@ -60,7 +60,7 @@ if(isset($_POST['SUBMIT'])){
 	<div class="wraper">
 	<div class="skuy">
 	<form id="form1" name="form1" method="post" action="">
-        <h1>LOGIN</h1>
+        <h1>LOGIN ADMIN</h1>
 <div class="imag">
 <img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
 
