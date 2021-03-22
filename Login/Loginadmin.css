@@ -84,7 +84,7 @@ span {
 .cek {
 text-align: left;
 display: inline-block;
-margin-left: 97px;
+margin-left: 108px;
 margin-top: -20px;
 }	
 input.size {
@@ -149,7 +149,7 @@ body > div:nth-last-of-type(1)[style]{
 		width: 90%;
 	}
 	.cek {
-		margin-left: 15px;
+		margin-left: 20px;
 	}
 	placeholder {
 		width: 30%;
