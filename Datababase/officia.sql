@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2021 at 11:34 AM
+-- Generation Time: Mar 22, 2021 at 11:02 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -76,7 +76,8 @@ CREATE TABLE `cuti` (
 INSERT INTO `cuti` (`id`, `Nama`, `NIK`, `Nama_Perusahaan`, `Jenis_Cuti`, `Dari`, `Sampai`, `Keterangan`, `Status`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
 ('Debug1616316664', 'Debug', 12345, 'Officia', 'Cuti Tahunan', '2021-03-22', '2021-03-30', 'tes', 'Diterima', '15:51:04', '2021-03-21'),
 ('Debug1616321740', 'Debug', 12345, 'Officia', 'Cuti Sakit', '2021-03-23', '2021-03-24', 'sakit uhuk', 'Ditolak', '17:15:40', '2021-03-21'),
-('Debug1616321757', 'Debug', 12345, 'Officia', 'Cuti Bersama', '2021-03-22', '2021-03-30', 'cuti bersama ganja', 'unknown', '17:15:57', '2021-03-21');
+('Debug1616321757', 'Debug', 12345, 'Officia', 'Cuti Bersama', '2021-03-22', '2021-03-30', 'cuti bersama ganja', 'Ditolak', '17:15:57', '2021-03-21'),
+('Debug1616402225', 'Debug', 12345, 'Officia', 'Cuti Tahunan', '2021-03-23', '2021-03-23', 'halo', 'unknown', '15:37:05', '2021-03-22');
 
 -- --------------------------------------------------------
 
@@ -106,6 +107,7 @@ CREATE TABLE `data_perusahaan` (
 --
 
 INSERT INTO `data_perusahaan` (`Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Jenis_Kelamin`, `Email`, `No_Telp`, `Password`, `Alamat_Perusahaan`, `Absen_datang_min`, `Absen_datang_max`, `Absen_pulang_min`, `Absen_pulang_max`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+('CDI', 'Aryo', 111, 'L', 'aryo@gmail.com', '081547272729', '111', 'jl holis', '06:00:00', '10:00:00', '15:00:00', '00:00:00', '16:47:47', '2021-03-22'),
 ('Debug_mode', 'Developer', 999, '', 'somewhat@gmail.com', '0', 'pw', 'blah', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '0000-00-00'),
 ('Officia    ', 'Admin_officia', 12345, '', 'adminof@gmail.com', '8461891', 'pwpw', 'jl kijang', '08:00:00', '09:00:00', '17:00:00', '00:00:00', '00:00:00', '0000-00-00');
 
@@ -129,6 +131,8 @@ CREATE TABLE `login` (
   `No_Telp` varchar(12) NOT NULL,
   `Alamat` varchar(255) NOT NULL,
   `pp_name` varchar(255) NOT NULL,
+  `Pertanyaan` int(2) NOT NULL,
+  `Jawaban` varchar(255) NOT NULL,
   `Submitted_On_Hours` time NOT NULL,
   `Submitted_On_Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -137,9 +141,9 @@ CREATE TABLE `login` (
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`NIK`, `Password`, `Nama`, `Nama_Perusahaan`, `Email`, `Jabatan`, `Tanggal_Lahir`, `Bulan_Lahir`, `Tahun_Lahir`, `Jenis_Kelamin`, `No_Telp`, `Alamat`, `pp_name`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
-(69, 'pw', 'Dev', 'Debug_mode', 'blah@gmail.com', 'developer', 1, 1, 1, '1', '0', 'blu', 'default.png', '00:00:00', '0000-00-00'),
-(12345, 'pw', 'Debug', 'Officia', 'opicia@gmail.com', 'OB', 12, 5, 2004, 'L', '847151810', 'Jl kapung', 'default.png', '00:00:00', '0000-00-00');
+INSERT INTO `login` (`NIK`, `Password`, `Nama`, `Nama_Perusahaan`, `Email`, `Jabatan`, `Tanggal_Lahir`, `Bulan_Lahir`, `Tahun_Lahir`, `Jenis_Kelamin`, `No_Telp`, `Alamat`, `pp_name`, `Pertanyaan`, `Jawaban`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+(69, 'pw', 'Dev', 'Debug_mode', 'blah@gmail.com', 'developer', 1, 1, 1, '1', '0', 'blu', 'default.png', 0, '', '00:00:00', '0000-00-00'),
+(12345, 'pw', 'Debug', 'Officia', 'opicia@gmail.com', 'OB', 12, 5, 2004, 'L', '847151810', 'Jl kapung', 'default.png', 0, '', '00:00:00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -157,6 +161,13 @@ CREATE TABLE `pengumuman` (
   `Submitted_On_Hours` time NOT NULL,
   `Submitted_On_Date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pengumuman`
+--
+
+INSERT INTO `pengumuman` (`Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Tanggal`, `Isi_Pengumuman`, `Tujuan`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+('Officia    ', 'Admin_officia', 12345, '2021-03-23', 'tes', 'Seluruh Karyawan', '15:22:18', '2021-03-22');
 
 -- --------------------------------------------------------
 
@@ -182,10 +193,9 @@ CREATE TABLE `tugas` (
 --
 
 INSERT INTO `tugas` (`id_tugas`, `Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Tanggal`, `Judul`, `Isi_Tugas`, `Tujuan`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
-('Officia    1616225784', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'Request', 'Tolong belikan shampo merek dove untuk anak saya', 'Debug', '14:36:24', '2021-03-20'),
-('Officia    1616225877', 'Officia    ', 'Admin_officia', 12345, '2021-03-20', 'request lagi', 'belikan sabun juga', 'Debug', '14:37:57', '2021-03-20'),
-('Officia    1616298137', 'Officia    ', 'Admin_officia', 12345, '2021-03-22', 'Perilisan Officia', 'KAMPAAAAAI', 'Seluruh Karyawan', '10:42:17', '2021-03-21'),
-('Officia    1616298370', 'Officia    ', 'Admin_officia', 12345, '2021-03-21', 'Ngetes Officia Hehe', 'Halo Halo cek 1 1 1 karyawanku', 'Seluruh Karyawan', '10:46:10', '2021-03-21');
+('Officia    1616405487', 'Officia    ', 'Admin_officia', 12345, '2021-03-22', 'Untuk seluruh', 'HAHAAA', 'Seluruh Karyawan', '16:31:27', '2021-03-22'),
+('Officia    1616405495', 'Officia    ', 'Admin_officia', 12345, '2021-03-22', 'OB', 'hei obe', 'OB', '16:31:35', '2021-03-22'),
+('Officia    1616405502', 'Officia    ', 'Admin_officia', 12345, '2021-03-22', 'debug', 'debug', 'Debug', '16:31:42', '2021-03-22');
 
 --
 -- Indexes for dumped tables
