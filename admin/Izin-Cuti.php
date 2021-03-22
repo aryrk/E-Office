@@ -156,7 +156,7 @@ else if (isset($_GET['l'])){
                     <tr>
                         <td>Nama</td>
                         <td> &nbsp; =</td>
-                        <td> &nbsp; Roti '.$nama_kar.'</td>
+                        <td> &nbsp; '.$nama_kar.'</td>
                     </tr>
                     <tr>
                         <td>Jenis Cuti</td>
