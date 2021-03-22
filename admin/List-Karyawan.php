@@ -82,9 +82,9 @@ $pw = $_SESSION['PW_admin'];
                         <td> &nbsp; '.$Nama_kar.'</td>
                     </tr>
                     <tr>
-                        <td>Tgl Lahir</td>
+                        <td>Tanggal Lahir</td>
                         <td> &nbsp; =</td>
-                        <td> &nbsp; '.$tgl_lah.'</td>
+                        <td> &nbsp; '.$tgl_lah."-".$bln_lah."-".$thn_lah.'</td>
                     </tr>
                     <tr>
                         <td>Tanggal Masuk</td>
