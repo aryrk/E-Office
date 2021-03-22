@@ -88,20 +88,19 @@ display: none;
 .cek {
 text-align: left;
 display: inline-block;
-margin-left: 97px;
+margin-left: 108px;
 margin-top: -20px;
 }	
 input.size {
 transform: scale(1.2);
 }
 .datee {
-width: 12%;
+width: 70%;
 padding: 12px;
 margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
-line-height: 10px;
 }
 .nik {
 width: 70%;
@@ -161,7 +160,7 @@ body > div:nth-last-of-type(1)[style]{
 		width: 90%;
 	}
 	.cek {
-		margin-left: 15px;
+		margin-left: 20px;
 	}
 	placeholder {
 		width: 30%;
@@ -170,7 +169,7 @@ body > div:nth-last-of-type(1)[style]{
 		width: 90%;
 	}
 	.datee {
-		width: 15%;
+		width: 90%;
 	}
 h1 {
 font-size: 100px:
