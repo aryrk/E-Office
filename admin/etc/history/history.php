@@ -59,13 +59,13 @@ if(isset($_POST['reset'])){
 	<div class="search">
 		<select name="jenis" id="jenis">
 <?php
-			if (!isset($_GET['l']) && !isset($_GET['ldate'])){
+			if (!isset($_GET['l']) && !isset($_GET['ldate']) && $_GET['l'] == "All"){
 			echo '
 				<option value="All" class="searchTerm">Semua Tugas Terkirim</option>
 				<option value="Global" class="searchTerm">Tugas Global</option>
 				';
 			}
-			else if (isset($_GET['l']) && !isset($_GET['ldate'])){
+			else if (isset($_GET['l']) && !isset($_GET['ldate']) && $_GET['l'] != "All"){
 				$cari = $_GET['l'];
 			echo '
 				<option value="'.$cari.'" class="searchTerm">Tugas '.$cari.'</option>
@@ -178,9 +178,8 @@ else if(isset($_GET['ldate'])){
 		}
 	}
 	
-	else if (isset($_GET['l'])){
-		$l = $_GET['l'];
-		$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='$l' OR Nama_Perusahaan='$kantor' AND Submitted_On_Date='$l' ORDER BY Submitted_On_Date DESC;";
+	else if ($_GET['l'] == "Global"){
+		$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' ORDER BY Submitted_On_Date DESC;";
 		$result = mysqli_query($konek, $A);
 		$check = mysqli_num_rows($result);
 				
@@ -212,8 +211,9 @@ else if(isset($_GET['ldate'])){
 		}
 	}
 	
-	if (isset($_GET['l']) == "Global"){
-		$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' ORDER BY Submitted_On_Date DESC;";
+	else if (isset($_GET['l'])){
+		$l = $_GET['l'];
+		$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='$l' OR Nama_Perusahaan='$kantor' AND Submitted_On_Date='$l' ORDER BY Submitted_On_Date DESC;";
 		$result = mysqli_query($konek, $A);
 		$check = mysqli_num_rows($result);
 				
