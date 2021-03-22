@@ -628,6 +628,7 @@ a{
         margin-left: 83%;
         margin-top: -35px;
         position: fixed;
+        bottom: 0;
         display: flex;
         z-index: 1000;
     }
