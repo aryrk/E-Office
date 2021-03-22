@@ -165,6 +165,10 @@ else if($_GET['value'] == "deltugas"){
 	mysqli_query($konek, "DELETE FROM tugas WHERE id_tugas='$id'");
 	header("Location: admin/etc/history/history.php");
 }
+else if($_GET['value'] == "prevtugas_admin"){
+	$_SESSION['id_tugas'] = $_GET['id_tugas'];
+	header("Location: admin/preview_tugas/preview.php");
+}
 }
 ?>
 <!doctype html>
