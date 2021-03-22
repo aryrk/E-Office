@@ -37,7 +37,7 @@ if(isset($_POST['reset'])){
     <title>Log Pengiriman Tugas</title>
     
     <link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="../etc/wmRemover.css">
+	<link rel="stylesheet" href="../../../etc/wmRemover.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&display=swap" rel="stylesheet">
