@@ -73,6 +73,8 @@ if(isset($_POST['SUBMIT'])){
 		$_SESSION['gantipw'] = 1;
 		
 		mysqli_query($konek, "UPDATE login SET Password='$pass_baru' WHERE NIK='$NIK' AND Email='$Mail' AND Tanggal_Lahir='$Hari' AND Bulan_Lahir='$Bulan' AND Tahun_Lahir='$Tahun' AND No_Telp='$Telp'");
+		
+		header("Location: login1.php");
 	}
 }
 ?>
