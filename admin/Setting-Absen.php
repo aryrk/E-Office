@@ -12,6 +12,14 @@ $kantor = $_SESSION['kantor_admin'];
 $nik = $_SESSION['NIK_admin'];
 $pw = $_SESSION['PW_admin'];
 
+$count_nama_kantor = strlen($kantor);
+if ($count_nama_kantor <= 7){
+	$nama_kantor = $kantor." Administrator";
+}
+else {
+	$nama_kantor = $kantor;
+}
+
 $A_check = "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor';";
 $result_check = mysqli_query($konek, $A_check);			
 
@@ -116,7 +124,7 @@ if(isset($_POST['ABSEN_PULANG'])){
 </head>
 <body>
     <header class="banner">
-        <h1 class="h1"><?php echo $kantor; ?> Administrator</h1>
+        <h1 class="h1"><?php echo $nama_kantor; ?></h1>
 
         <a href="Admin1.php"><i class="back fas fa-arrow-circle-left"></i></a>
     </header>
