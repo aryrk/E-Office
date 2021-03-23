@@ -10,6 +10,15 @@ if (!isset($_SESSION['LOGIN_ADMIN'])){
 $kantor = $_SESSION['kantor_admin'];
 $nik = $_SESSION['NIK_admin'];
 $pw = $_SESSION['PW_admin'];
+
+$count_nama_kantor = strlen($kantor);
+if ($count_nama_kantor <= 7){
+	$nama_kantor = $kantor." Administrator";
+}
+else {
+	$nama_kantor = $kantor;
+}
+echo $count_nama_kantor;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +37,7 @@ $pw = $_SESSION['PW_admin'];
 </head>
 <body>
     <header class="banner"> 
-        <h1 class="h1"><?php echo $kantor ?> Administrator</h1>
+        <h1 class="h1"><?php echo $nama_kantor; ?></h1>
 
         <a href="../unused.php?value=logoutad"><i class="back fas fa-sign-out-alt"></i></a>
     </header>
