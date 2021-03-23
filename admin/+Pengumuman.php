@@ -12,6 +12,14 @@ $kantor = $_SESSION['kantor_admin'];
 $nik = $_SESSION['NIK_admin'];
 $pw = $_SESSION['PW_admin'];
 
+$count_nama_kantor = strlen($kantor);
+if ($count_nama_kantor <= 7){
+	$nama_kantor = $kantor." Administrator";
+}
+else {
+	$nama_kantor = $kantor;
+}
+
 $tgl = date("Y-m-d");
 $jam = date("H:i:s");
 
@@ -65,7 +73,7 @@ if(isset($_POST['SUBMIT'])){
 </head>
 <body>
     <header class="banner">
-        <h1 class="h1"><?php echo $kantor ?> Administrator</h1>
+        <h1 class="h1"><?php echo $nama_kantor; ?></h1>
         <a href="Admin.html"><i class="back fas fa-arrow-circle-left"></i></a>
     </header>
 
