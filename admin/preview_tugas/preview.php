@@ -13,6 +13,14 @@ $kantor = $_SESSION['kantor_admin'];
 $nik = $_SESSION['NIK_admin'];
 $pw = $_SESSION['PW_admin'];
 
+$count_nama_kantor = strlen($kantor);
+if ($count_nama_kantor <= 7){
+	$nama_kantor = $kantor." Administrator";
+}
+else {
+	$nama_kantor = $kantor;
+}
+
 $A = "SELECT Nama_Admin FROM data_perusahaan WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND Password='$pw';";
 $result = mysqli_query($konek, $A);
 $row = mysqli_fetch_assoc($result);
@@ -51,7 +59,7 @@ else {
 	
 <body>
     <header class="banner"> 
-        <h1 class="h1"><?php echo $kantor; ?> Administrator</h1>
+        <h1 class="h1"><?php echo $nama_kantor; ?></h1>
 <?php
 		if (isset($_SESSION['isi'])){
 		}
