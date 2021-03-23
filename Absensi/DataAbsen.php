@@ -76,7 +76,19 @@ $nama = $_SESSION['nama'];
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					$data_status = $row['Status'];
-			echo "<tr><td>" . $nik . "</td><td>" . $nama . "</td><td>" . $row['Tanggal'] . "</td><td>" . $row['Jam_masuk'] . "</td><td>" . $row['Jam_pulang'] . "</td><td>" . $row['Terlambat'] . "</td><td>" . $data_status . "</td></tr>";
+					
+					$color = "yellow";
+					if ($data_status == "Terlambat Absen"){
+						$color = "red";
+					}
+					else if ($data_status == "Sudah Absen Masuk" || $data_status == "Absen Terlalu Pagi"){
+						$color = "limegreen";
+					}
+					else if ($data_status == "Sudah Absen"){
+						$color = "green";
+					}
+					$style = 'style="background-color: '.$color.';"';
+			echo "<tr><td>" . $nik . "</td><td>" . $nama . "</td><td>" . $row['Tanggal'] . "</td><td>" . $row['Jam_masuk'] . "</td><td>" . $row['Jam_pulang'] . "</td><td>" . $row['Terlambat'] . "</td><td $style>" . $data_status . "</td></tr>";
 		}
 			}
 		}
