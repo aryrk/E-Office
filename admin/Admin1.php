@@ -18,7 +18,6 @@ if ($count_nama_kantor <= 7){
 else {
 	$nama_kantor = $kantor;
 }
-echo $count_nama_kantor;
 ?>
 <!DOCTYPE html>
 <html lang="en">
