@@ -3,6 +3,7 @@ require_once("../config.php");
 
 session_start();
 if (isset($_SESSION['LOGIN_ADMIN'])){
+	$_SESSION['first_login_admin'] = 1;
 	header("Location: ../admin/Admin1.php");
 	exit ();
 }
@@ -23,6 +24,7 @@ if(isset($_POST['SUBMIT'])){
 					$kantor_admin = $row['Nama_Perusahaan'];
 					
 					$_SESSION['LOGIN_ADMIN'] = 1;
+					$_SESSION['first_login_admin'] = 1;
 					$_SESSION['kantor_admin'] = $kantor_admin;
 					$_SESSION['NIK_admin'] = $nik_admin;
 					$_SESSION['PW_admin'] = $pw_admin;
