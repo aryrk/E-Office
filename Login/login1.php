@@ -7,6 +7,7 @@ if (isset($_SESSION['LOGIN'])){
 	exit ();
 }
 else if (isset($_SESSION['LOGIN_ADMIN'])){
+	$_SESSION['first_login_admin'] = 1;
 	header("Location: ../admin/Admin1.php");
 	exit ();
 }
