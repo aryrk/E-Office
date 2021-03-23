@@ -76,8 +76,14 @@ if(isset($_POST['SUBMIT'])){
 			}
 			else if (strtotime($jam) > strtotime($Masuk_akhir)){
 				$status = "Terlambat Absen";
-				$kalkulasi = strtotime($jam) - strtotime($jam_masuk_akhir);
-				$kalkulasi = date("H:i:s",strtotime($kalkulasi));
+				
+				$date_expire = $tgl.' '.$jam_masuk_akhir;
+				$date_absen = $tgl.' '.$jam;   
+				
+				$date = new DateTime($date_expire);
+				$now = new DateTime($date_absen);
+				
+				$kalkulasi = $date->diff($now)->format("%H:%i:%s");
 			}
 			else if (strtotime($jam) < strtotime($Masuk_akhir)){
 				$status = "Absen Terlalu Pagi";
