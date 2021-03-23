@@ -519,7 +519,7 @@ if(isset($_POST['UBAH'])){
 </nav>
 	</div>
 	<div class="bio">
-		<table class="center">	
+		<table class="center mail">	
 	  		<tr>
     			<td rowspan="8"><img <?php echo $pp ?> alt="" draggable="false" style="overflow: hidden"></td>
   			</tr>
