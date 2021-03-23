@@ -11,6 +11,14 @@ $kantor = $_SESSION['kantor_admin'];
 $nik = $_SESSION['NIK_admin'];
 $pw = $_SESSION['PW_admin'];
 
+$count_nama_kantor = strlen($kantor);
+if ($count_nama_kantor <= 7){
+	$nama_kantor = $kantor." Administrator";
+}
+else {
+	$nama_kantor = $kantor;
+}
+
 if(isset($_POST['search'])){
 	$nama = trim($_POST['nama']);
 	header("Location: List-Karyawan.php?l=$nama");
@@ -35,7 +43,7 @@ if(isset($_POST['search'])){
 </head>
 <body>
     <header class="banner"> 
-        <h1 class="h1"><?php echo $kantor ?> Administrator</h1>
+        <h1 class="h1"><?php echo $nama_kantor; ?></h1>
 
         <a href="Admin1.php"><i class="back fas fa-arrow-circle-left"></i></a>
     </header>
