@@ -30,7 +30,7 @@ else {
     
     <link rel="stylesheet" href="styleadmin.css">
 	<link rel="stylesheet" href="../etc/wmRemover.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&display=swap" rel="stylesheet">
 </head>
@@ -38,12 +38,12 @@ else {
     <header class="banner"> 
         <h1 class="h1"><?php echo $nama_kantor; ?></h1>
 
-        <a href="../unused.php?value=logoutad"><i class="back fas fa-sign-out-alt"></i></a>
+        <a onClick="Logout()"><i class="back fas fa-sign-out-alt"></i></a>
     </header>
     <header class="banner-used"> 
         <h1 class="h1"><?php echo $kantor ?> Administrator</h1>
 
-        <a href="../unused.php?value=logoutad"><i class="back fas fa-sign-out-alt"></i></a>
+        <a onClick="Logout()"><i class="back fas fa-sign-out-alt"></i></a>
     </header>
 
     <section class="tampilan">
@@ -181,7 +181,7 @@ else {
     </div>
 
     <script src="script.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../etc/allert.js"></script>
 <?php
