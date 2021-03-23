@@ -49,6 +49,7 @@ if(isset($_POST['SUBMIT'])){
 
     <link rel = "icon" href ="../Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
     <link rel="stylesheet" href="styleCuti.css">
+	<link rel="stylesheet" href="../etc/wmRemover.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="../Main Tab/etc/Animate.css">
 </head>
