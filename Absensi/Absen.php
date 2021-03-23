@@ -65,17 +65,22 @@ if(isset($_POST['SUBMIT'])){
 	$radioVal = $_POST["absen"];
 	
 	$jam = date("H:i:s");
-	$jam_masuk_akhir = date('H:i:s',strtotime($Masuk_akhir));
+	$jam_masuk_akhir = date("H:i:s",strtotime($Masuk_akhir));
 
 		if($radioVal == "JamMasuk"){
-			$kalkulasi = strtotime($jam) - strtotime($jam_masuk_akhir);
-			$kalkulasi = date('H:i:s',strtotime($kalkulasi));
+			$kalkulasi = "00:00:00";
+			$status = "unkown";
 
 			if (strtotime($jam) <= strtotime($Masuk_akhir) && strtotime($jam) >= strtotime($Masuk_awal)){
 				$status = "Sudah Absen Masuk";
 			}
 			else if (strtotime($jam) > strtotime($Masuk_akhir)){
 				$status = "Terlambat Absen";
+				$kalkulasi = strtotime($jam) - strtotime($jam_masuk_akhir);
+				$kalkulasi = date("H:i:s",strtotime($kalkulasi));
+			}
+			else if (strtotime($jam) < strtotime($Masuk_akhir)){
+				$status = "Absen Terlalu Pagi";
 			}
 //Melakukan cek database agar user hanya dapat absen 1x dalam sehari
 		$cek_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
