@@ -147,3 +147,16 @@ Toast.fire({
   title: 'Update password successfully'
 })
 };
+
+function Logout(){
+	Swal.fire({
+    text: "Yakin ingin keluar?",
+	showDenyButton: true,
+    confirmButtonText: "Ya",
+	denyButtonText: "Batal"
+	}).then((Answer) =>{
+		if (Answer.isConfirmed){
+			location.href="../unused.php?value=logoutad";
+		}
+	})
+};
