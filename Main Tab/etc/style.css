@@ -175,6 +175,10 @@ a:hover{
   	margin-right: auto;
   	margin-bottom: auto;
 	transition: all 1s;
+	display: block;
+	overflow: scroll;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .center img{
 	width: 100%;
