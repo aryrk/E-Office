@@ -51,7 +51,7 @@ if(isset($_POST['search'])){
     <section class="tampilan">
         <h1 class="ket">List Karyawan</h1>
 <form id="form1" name="form1" method="post" action="">
-    <div class="wrap" style="z-index: 10;">
+    <div class="wrap">
         <div class="search">
             <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap/NIK..." autocomplete="off">
             <button type="submit" name="search" id="search" class="searchButton">
