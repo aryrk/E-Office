@@ -43,7 +43,7 @@ else {
     <header class="banner-used"> 
         <h1 class="h1"><?php echo $kantor ?> Administrator</h1>
 
-        <a onClick="Logout()"><i class="back fas fa-sign-out-alt"></i></a>
+        <a href="../unused.php?value=logoutad"><i class="back fas fa-sign-out-alt"></i></a>
     </header>
 
     <section class="tampilan">
