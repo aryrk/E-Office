@@ -1,3 +1,31 @@
+<?php
+require_once("../config.php");
+session_start();
+//mencegah user masuk bila mereka belum melakukan login
+if (!isset($_SESSION['LOGIN_ADMIN'])){
+	header("Location: ../Login/Loginadmin.php");
+	exit ();
+}
+date_default_timezone_set('Asia/Jakarta');
+$tgl = date("Y-m-d");
+
+$kantor = $_SESSION['kantor_admin'];
+$nik = $_SESSION['NIK_admin'];
+$pw = $_SESSION['PW_admin'];
+
+$count_nama_kantor = strlen($kantor);
+if ($count_nama_kantor <= 7){
+	$nama_kantor = $kantor." Administrator";
+}
+else {
+	$nama_kantor = $kantor;
+}
+
+if(isset($_POST['search'])){
+	$nama = trim($_POST['nama']);
+	header("Location: History-Izin-Cuti.php?l=$nama");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +44,7 @@
 	
 <body>
     <header class="banner"> 
-        <h1 class="h1">Officia Administrator</h1>
+        <h1 class="h1"><?php echo $nama_kantor ?></h1>
 
         <a href="Izin-Cuti.php"><i class="back fas fa-arrow-circle-left"></i></a>
     </header>
@@ -27,7 +55,7 @@
 <!-- partial:index.partial.html -->
 <section class="tampilan">
     <h2 class="h2">Data Cuti Semua Karyawan</h2>
-
+<form id="form1" name="form1" method="post" action="">
     <div class="wrap">
         <div class="search">
         <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap/NIK..." autocomplete="off">
@@ -53,116 +81,133 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Content 1</td>
-                    <td>Content 1</td>
-                    <td>Content 1</td>
-                    <td>Content 1</td>
-                    <td>Content 1</td>
-                    <td>Content 1</td>
-                    <td>Content 1</td>
-                    <td>Content 1</td>
-                    <td>Content 1</td>
+<?php
+	$sql = mysqli_query($konek, "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' AND Status='Diterima' OR Nama_Perusahaan='$kantor' AND Status='Ditolak' OR Nama_Perusahaan='$kantor' AND Sampai<'$tgl'");
+		
+				
+if (!isset($_GET['l']) || $_GET['l'] == NULL){
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' AND Status='Diterima' OR Nama_Perusahaan='$kantor' AND Status='Ditolak' OR Nama_Perusahaan='$kantor' AND Sampai<'$tgl' ORDER BY Submitted_On_Date DESC;";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$nik_kar = $row['NIK'];
+					$nama = $row['Nama'];
+					$jenis = $row['Jenis_Cuti'];
+					$dari = $row['Dari'];
+					$sampai = $row['Sampai'];
+					$keterangan = $row['Keterangan'];
+					$stat = $row['Status'];
+					$upload = $row['Submitted_On_Date'];
+					
+					$aktif = "";
+					
+					$color_stat = "yellow";
+				
+					if ($stat == "Diterima"){
+						$color_stat = "limegreen";
+						
+						if($dari > $tgl){
+							$aktif = "Belum Aktif";
+						}
+						else if($dari <= $tgl && $sampai >= $tgl){
+							$aktif = "Aktif";
+						}
+						else if($sampai < $tgl){
+							$aktif = "Kadaluarsa";
+						}
+					}
+					else if ($stat == "Ditolak"){
+						$color_stat = "red";
+						$aktif = "Tidak Aktif";
+					}
+					else if ($stat == "unknown"){
+						$aktif = "Kadaluarsa";
+					}
+					$style_stat = 'Style="background-color:'.$color_stat.';"';
+					
+					echo'
+				<tr>
+                    <td>'.$nik_kar.'</td>
+                    <td>'.$nama.'</td>
+                    <td>'.$jenis.'</td>
+                    <td>'.$dari.'</td>
+                    <td>'.$sampai.'</td>
+                    <td>'.$keterangan.'</td>
+                    <td '.$style_stat.'>'.$stat.'</td>
+                    <td>'.$upload.'</td>
+                    <td>'.$aktif.'</td>
                 </tr>
-                <tr>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
-                    <td>Content 2</td>
+					';
+				}
+			}
+		}
+}
+			
+else if (isset($_GET['l'])){
+	$l = $_GET['l'];
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT * FROM (SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' AND Status='Diterima' OR Nama_Perusahaan='$kantor' AND Status='Ditolak' OR Nama_Perusahaan='$kantor' AND Sampai<'$tgl') as Jumlah WHERE Nama='$l' OR NIK='$l' ORDER BY Submitted_On_Date DESC;";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$nik_kar = $row['NIK'];
+					$nama = $row['Nama'];
+					$jenis = $row['Jenis_Cuti'];
+					$dari = $row['Dari'];
+					$sampai = $row['Sampai'];
+					$keterangan = $row['Keterangan'];
+					$stat = $row['Status'];
+					$upload = $row['Submitted_On_Date'];
+					
+					$aktif = "";
+					
+					$color_stat = "yellow";
+				
+					if ($stat == "Diterima"){
+						$color_stat = "limegreen";
+						
+						if($dari > $tgl){
+							$aktif = "Belum Aktif";
+						}
+						else if($dari <= $tgl && $sampai >= $tgl){
+							$aktif = "Aktif";
+						}
+						else if($sampai < $tgl){
+							$aktif = "Kadaluarsa";
+						}
+					}
+					else if ($stat == "Ditolak"){
+						$color_stat = "red";
+						$aktif = "Tidak Aktif";
+					}
+					else if ($stat == "unknown"){
+						$aktif = "Kadaluarsa";
+					}
+					$style_stat = 'Style="background-color:'.$color_stat.';"';
+					
+					echo'
+				<tr>
+                    <td>'.$nik_kar.'</td>
+                    <td>'.$nama.'</td>
+                    <td>'.$jenis.'</td>
+                    <td>'.$dari.'</td>
+                    <td>'.$sampai.'</td>
+                    <td>'.$keterangan.'</td>
+                    <td '.$style_stat.'>'.$stat.'</td>
+                    <td>'.$upload.'</td>
+                    <td>'.$aktif.'</td>
                 </tr>
-                <tr>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                    <td>Content 3</td>
-                </tr>
-                <tr>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                    <td>Content 4</td>
-                </tr>
-                <tr>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                    <td>Content 5</td>
-                </tr>
-                <tr>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                    <td>Content 6</td>
-                </tr>
-                <tr>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                    <td>Content 7</td>
-                </tr>
-                <tr>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                    <td>Content 8</td>
-                </tr>
-                <tr>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                    <td>Content 9</td>
-                </tr>
-                <tr>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                    <td>Content 10</td>
-                </tr>
+					';
+				}
+			}
+		}
+}
+?>
             </tbody>
         </table>
     </div>
