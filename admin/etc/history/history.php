@@ -106,15 +106,16 @@ if(isset($_POST['reset'])){
 			
 	$sql_nama = mysqli_query($konek, "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor'");
 		if (mysqli_num_rows($sql_nama) != 0){
-			$A = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
+			$A = "SELECT Nama, NIK FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					$nama = $row['Nama'];
+					$nik_tujuan = $row['NIK'];
 			echo '
-				<option value="'.$nama.'">Tugas '.$nama.'</option>
+				<option value="'.$nik_tujuan.'">Tugas '.$nama.'</option>
 			';
 		}
 			}
@@ -163,6 +164,13 @@ else if(isset($_GET['ldate'])){
 				$judul = $row['Judul'];
 				$pengiriman = $row['Submitted_On_Date'];
 				$tujuan = $row['Tujuan'];
+				if(is_numeric($tujuan)){
+					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
+					$result_nama = mysqli_query($konek, $A_nama);
+					$row_nama = mysqli_fetch_assoc($result_nama);
+					
+					$tujuan = $row_nama['Nama'];
+				}
 				$id = $row['id_tugas'];
 				
 				echo '
@@ -230,6 +238,13 @@ else if(isset($_GET['ldate'])){
 				$judul = $row['Judul'];
 				$pengiriman = $row['Submitted_On_Date'];
 				$tujuan = $row['Tujuan'];
+				if(is_numeric($tujuan)){
+					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
+					$result_nama = mysqli_query($konek, $A_nama);
+					$row_nama = mysqli_fetch_assoc($result_nama);
+					
+					$tujuan = $row_nama['Nama'];
+				}
 				$id = $row['id_tugas'];
 				
 				echo '
