@@ -260,6 +260,10 @@ a{
         margin-left: 90%;
         margin-top: 3%;
     }
+    body {
+		background-image: url("../../../Main Tab/media/Bg_verti.jpg");
+		background-size: 300%;
+	}
 
     
     /*Resize the wrap to see the search bar change!*/
@@ -637,7 +641,7 @@ a{
   	background-color: firebrick;
 }
 
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+@media only screen and (max-width: 760px) and (max-device-width: 1024px)  {
 	body {
 		background-image: url("../../../Main Tab/media/Bg_verti.jpg");
 		background-size: 300%;
