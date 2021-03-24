@@ -42,7 +42,7 @@ if(isset($_POST['search'])){
 </head>
 <body>
     <header class="banner"> 
-        <h1 class="h1"><?php echo $nama_kantor; ?> Administrator</h1>
+        <h1 class="h1"><?php echo $nama_kantor; ?></h1>
 
         <a href="Admin1.php"><i class="back fas fa-arrow-circle-left"></i></a>
     </header>
@@ -52,14 +52,13 @@ if(isset($_POST['search'])){
 <form id="form1" name="form1" method="post" action="">
         <div class="wrap">
             <div class="search">
-                <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap..." autocomplete="off">
-                <button type="submit" name="search" id="search" class="searchButton">
-                    <i class="fa fa-search"></i>
-                </button>
+               <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap/NIK..." autocomplete="off">
+        <button type="submit" name="search" id="search" class="searchButton">
+                 <i class="fa fa-search"></i>
+              </button>
             </div>
-        </div>
-
-        <a href="History-Izin-Cuti.html" class="horizontal"><span class="text">Data Cuti</span></a>
+         </div>
+	<a href="History-Izin-Cuti.php" class="horizontal"><span class="text">Data Cuti</span></a>
 </form>
 <?php
 $sql = mysqli_query($konek, "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' AND Status='unknown'");
@@ -117,9 +116,9 @@ if (!isset($_GET['l']) || $_GET['l'] == NULL){
                     <tr>
                         <td>Alasan</td>
                         <td> &nbsp; =</td>
-                        <td> &nbsp; '.$ket.'</td>
+                        <td> &nbsp; '.$ket.' </td>
                     </tr>
-                    <tr> <hr class="hr">
+					<tr> <hr class="hr">
 
                     <button type="submit" class="button-terima" onclick="window.location.href='."'../unused.php?value=terimaCuti&&idCuti=".$id."'".';">Terima</button>
                     <button type="submit" class="button-tidak" onclick="window.location.href='."'../unused.php?value=tolakCuti&&idCuti=".$id."'".';">Tidak</button>
@@ -189,6 +188,7 @@ else if (isset($_GET['l'])){
                         <td> &nbsp; =</td>
                         <td> &nbsp; '.$ket.' </td>
                     </tr>
+					<tr> <hr class="hr">
 
                     <button type="submit" class="button-terima" onclick="window.location.href='."'../unused.php?value=terimaCuti&&idCuti=".$id."'".';">Terima</button>
                     <button type="submit" class="button-tidak" onclick="window.location.href='."'../unused.php?value=tolakCuti&&idCuti=".$id."'".';">Tidak</button>
