@@ -125,7 +125,13 @@ if (!isset($_GET['l']) || $_GET['l'] == "All"){
 			$judul = $row['Judul'];
 			$pengiriman = $row['Tanggal'];
 			$tujuan = $row['Tujuan'];
-			$id = $row['id_tugas'];
+			if(is_numeric($tujuan)){
+					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
+					$result_nama = mysqli_query($konek, $A_nama);
+					$row_nama = mysqli_fetch_assoc($result_nama);
+					
+					$tujuan = $row_nama['Nama'];
+				}$id = $row['id_tugas'];
 	
 	echo '
   		<div class="column">
@@ -159,7 +165,13 @@ else if (isset($_GET['l']) && $_GET['l'] == $nama){
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
 	
-	echo '
+if(is_numeric($tujuan)){
+					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
+					$result_nama = mysqli_query($konek, $A_nama);
+					$row_nama = mysqli_fetch_assoc($result_nama);
+					
+					$tujuan = $row_nama['Nama'];
+				}	echo '
   		<div class="column">
     		<div class="card">
       			<img src="../../../Icon/Textless/Icon.png" alt="Logo" style="width:100%">
