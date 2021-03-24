@@ -29,6 +29,13 @@ $nama = $row['Nama_Admin'];
 
 if (isset($_SESSION['isi'])){
 	$tujuan = $_GET['tujuan'];
+	if(is_numeric($tujuan)){
+		$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
+		$result_nama = mysqli_query($konek, $A_nama);
+		$row_nama = mysqli_fetch_assoc($result_nama);
+					
+		$tujuan = $row_nama['Nama'];
+	}
 	$tanggal = $_GET['tanggal'];
 	$isiPrev = $_SESSION['isi'];
 	$judul = $_SESSION['judul'];
@@ -114,6 +121,13 @@ else {
 		$isi = $row['Isi_Tugas'];
 		$nama = $row['Nama_Admin'];
 		$tujuan = $row['Tujuan'];
+		if(is_numeric($tujuan)){
+			$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
+			$result_nama = mysqli_query($konek, $A_nama);
+			$row_nama = mysqli_fetch_assoc($result_nama);
+					
+			$tujuan = $row_nama['Nama'];
+		}
 		$tanggal = $row['Tanggal'];
 		$from = $row['Submitted_On_Date'];
 		
