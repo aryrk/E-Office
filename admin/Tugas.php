@@ -125,15 +125,16 @@ if(isset($_POST['prev'])){
 			
 	$sql_nama = mysqli_query($konek, "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor'");
 		if (mysqli_num_rows($sql_nama) != 0){
-			$A = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
+			$A = "SELECT Nama, NIK FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					$nama = $row['Nama'];
+					$nik_tujuan = $row['NIK'];
 			echo '
-				<option value="'.$nama.'">'.$nama.'</option>
+				<option value="'.$nik_tujuan.'">'.$nama.'</option>
 			';
 		}
 			}
