@@ -1,4 +1,4 @@
-    /* Header */
+/* Header */
 *{
     margin: 0;
     padding: 0;
@@ -70,11 +70,66 @@ body{
 .wrap{
     width: 20%;
     position: absolute;
-    top: 130px;
-    left: 18%;
+    top: 140px;
+    left: 17.5%;
     transform: translate(-50%, -50%);
+    z-index: -100;
 }
+
+:root {
+    --base-color: #474e5d;
+    --hover-color: white;
+}
+
+.horizontal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dfdfdf;
+    position: relative;
+    width: 100px;
+    height: 50px;
+    margin-left: 81%;
+    margin-top: -3.5%;
+    border: 5px solid var(--base-color);
+    cursor: pointer;
+}
+.horizontal .text {
+    position: relative;
+    color: transparent;
+    font-size: 100%;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(90deg, var(--hover-color) 0%, var(--hover-color) 50%, var(--base-color) 50%, var(--base-color) 100%);
+    background-repeat: repeat;
+    background-size: 200%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: background-position 300ms;
+}
+.horizontal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--base-color);
+    transform-origin: 100% 0;
+    transform: scale3d(0, 1, 1);
+    transition: transform 300ms;
+}
+.horizontal:hover .text {
+    background-position: 0 0;
+}
+.horizontal:hover::before {
+    transform-origin: 0 0;
+    transform: scale3d(1, 1, 1);
+}
+
 .ket{
+    font-size: 170%;
     text-align: center;
     margin-top: 2%;
     padding-bottom: 1%;
@@ -83,6 +138,7 @@ body{
 .notif{
     background-color:white;
     width: 90%;
+    height: 130px;
     box-shadow: 0px 5px 10px black;
     border-radius: 15px;
     margin-left: 5%;
@@ -147,6 +203,16 @@ body{
     color: #474e5d;
 }
 
+.hr{
+    width: 0;
+    opacity: 0;
+}
+
+.button-hapus:hover{
+    background: gainsboro;
+    color: #474e5d;
+}
+
     /* Footer */
 .logo{
     color: white;
@@ -198,7 +264,6 @@ body{
     color: floralwhite;
     float: left;
     opacity: 0;
-    z-index: -100;
 }
 
 .o{
@@ -240,15 +305,26 @@ a{
         margin-left: 35%;
     }
 
+    .wrap{
+        width: 25%;
+        position: absolute;
+        top: 160px;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        z-index: -100;
+    }
+
+    .horizontal{
+        width: 10%;
+        height: 40px;
+        margin-left: 78%;
+        margin-top: -2%;
+        margin-bottom: 2%;
+    }
+
     .back{
         margin-left: 90%;
         margin-top: 2%;
-    }
-
-    .wrap{
-        width: 25%;
-        margin-top: -1%;
-        margin-left: 3%;
     }
 
     .Photo{
@@ -313,6 +389,17 @@ a{
     .absen, .cuti, .pengumuman, .karyawan, .list-karyawan{
         margin-right: -30px;
     }
+
+    .Banner-handap-used{
+        background-color: #474e5d;
+        width: 100%;
+        height: 70px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 70%;
+        color: floralwhite;
+        float: left;
+        opacity: 0;
+    }   
 }
 
 @media screen and (max-width: 768px){
@@ -326,14 +413,29 @@ a{
         margin-top: 3%;
     }
 
+    .ket{
+        padding-bottom: 3%;
+    }
+
     .wrap{
-        width: 23%;
-        margin-top: -10px;
-        margin-left: 10px;
+        width: 30%;
+        position: absolute;
+        top: 155px;
+        left: 23%;
+        transform: translate(-50%, -50%);
+        z-index: -100;
+    }
+
+    .horizontal{
+        width: 15%;
+        height: 40px;
+        margin-left: 75%;
+        margin-top: -4%;
+        margin-bottom: 2%;
     }
 
     .notif{
-        height: 100px;
+        height: 110px;
         margin-top: 2%;
     }
 
@@ -399,12 +501,22 @@ a{
     .absen, .cuti, .pengumuman, .karyawan, .list-karyawan{
         margin-right: -50px;
     }
+
+    .Banner-handap-used{
+        background-color: #474e5d;
+        width: 100%;
+        height: 70px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 70%;
+        color: floralwhite;
+        float: left;
+        opacity: 0;
+    }
 }
 
 @media screen and (max-width: 576px){
     .banner{
         min-height: 70px;
-        z-index: 100;
         position: fixed;
         top: 0;
         width: 100%;
@@ -427,6 +539,14 @@ a{
         margin-top: 4.5%;
     }
 
+    .wrap{
+        width: 80%;
+        position: absolute;
+        top: 140px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
     .o{
         margin-left: 35%;
     }
@@ -435,50 +555,64 @@ a{
         height: 100%;
     }
 
-    .wrap{
+    .horizontal{
         width: 80%;
-        margin-top: -2px;
-        margin-left: 32%;
+        height: 40px;
+        margin-left: 10%;
+        margin-top: 10%;
+        margin-bottom: 5%;
     }
 
     .notif{
         width: 90%;
-        height: 150%;
+        height: 150px
         
     }
 
     .Photo{
-        width: 55px;
-        height: 70px;
+        width: 65px;
+        height: 80px;
         position: absolute;
         margin: 0;
-        margin-top: 5%;
+        margin-left: 1%;
+        margin-top: 1.5%;
         padding-top: 2%;
     }
 
     .table{
-        font-size: 50%;
-        margin-left: 20%;
+        font-size: 60%;
+        margin-left: 27%;
+        margin-top: 3%;
         height: 150px;
         width: 80%;
     }
 
     .button-terima{
-        margin-left: -5%;
-        margin-top: 110px;
+        margin-left: -10%;
+        margin-top: 95px;
         width: 15%;
     }
 
     .button-tidak{
-        margin-left: 20%;
-        margin-top: 110px;
+        margin-left: 15%;
+        margin-top: 95px;
         width: 15%;
     }
 
     .button-telepon{
-        margin-top: 105px;
-        margin-left: 45%;
-        width: 40px;
+        margin-top: 90px;
+        margin-left: 40%;
+        width: 40   px;
+    }
+
+    .hr{
+        width: 80%;
+        opacity: 1;
+        position: absolute;
+        margin-top: 85px;
+        margin-left: -20%;
+        border: 0.5px solid black;
+        background: black;
     }
 
     .inline{
@@ -539,7 +673,7 @@ a{
 
     .Banner-handap-used{
         background-color: #474e5d;
-        width: 1%;
+        width: 100%;
         height: 70px;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         font-size: 70%;
