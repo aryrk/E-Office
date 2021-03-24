@@ -80,6 +80,7 @@ else if($_GET['value'] == "hapuskar "){
 	mysqli_query($konek, "DELETE FROM login WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
 	mysqli_query($konek, "DELETE FROM absen WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
 	mysqli_query($konek, "DELETE FROM cuti WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
+	
 	$_SESSION['hapusKaryawan'] = 1;
 	header("Location: admin/List-Karyawan.php");
 }
@@ -168,6 +169,15 @@ else if($_GET['value'] == "deltugas"){
 else if($_GET['value'] == "prevtugas_admin"){
 	$_SESSION['id_tugas'] = $_GET['id_tugas'];
 	header("Location: admin/preview_tugas/preview.php");
+}
+	
+else if($_GET['value'] == "prevpengumuman"){
+	$_SESSION['id_pengumuman'] = $_GET['id_pengumuman'];
+	header("Location: Pengumuman/BP.php");
+}
+else if($_GET['value'] == "pengumuman_kembali"){
+	unset($_SESSION['id_pengumuman']);
+	header("Location: Pengumuman/pengumuman.php");
 }
 }
 ?>
