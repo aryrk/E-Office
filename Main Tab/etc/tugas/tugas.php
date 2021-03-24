@@ -70,7 +70,7 @@ if(isset($_POST['search'])){
 			echo '
 				<option value="All" class="searchTerm">Semua Tugas</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
-				<option value="'.$nama.'" class="searchTerm">Tugas Pribadi</option>
+				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
 			';	
 			}
@@ -81,14 +81,14 @@ if(isset($_POST['search'])){
 			echo '
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="All" class="searchTerm">Semua Tugas</option>
-				<option value="'.$nama.'" class="searchTerm">Tugas Pribadi</option>
+				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
 			';
 				}
 				
-				else if($l == $nama){
+				else if($l == $nik){
 			echo '
-				<option value="'.$nama.'" class="searchTerm">Tugas Pribadi</option>
+				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="All" class="searchTerm">Semua Tugas</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
@@ -100,7 +100,7 @@ if(isset($_POST['search'])){
 				<option value="globe" class="searchTerm">Tugas Global</option>
 				<option value="All" class="searchTerm">Semua Tugas</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
-				<option value="'.$nama.'" class="searchTerm">Tugas Pribadi</option>
+				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 			';
 				}
 			}
@@ -116,7 +116,7 @@ if(isset($_POST['search'])){
 <?php
 //Menampilkan daftar tugas sesuai dengan opsi yang dipilih
 if (!isset($_GET['l']) || $_GET['l'] == "All"){
-	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$nama' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' AND Tanggal<='$tgl' ORDER BY Tanggal DESC;";
+	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$nik' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' AND Tanggal<='$tgl' ORDER BY Tanggal DESC;";
 	$result = mysqli_query($konek, $A);
 	$check = mysqli_num_rows($result);
 				
@@ -153,8 +153,8 @@ if (!isset($_GET['l']) || $_GET['l'] == "All"){
 	}
 }
 	
-else if (isset($_GET['l']) && $_GET['l'] == $nama){
-	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='$nama' AND Tanggal<='$tgl' ORDER BY Tanggal DESC;";
+else if (isset($_GET['l']) && $_GET['l'] == $nik){
+	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='$nik' AND Tanggal<='$tgl' ORDER BY Tanggal DESC;";
 	$result = mysqli_query($konek, $A);
 	$check = mysqli_num_rows($result);
 				
@@ -165,13 +165,14 @@ else if (isset($_GET['l']) && $_GET['l'] == $nama){
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
 	
-if(is_numeric($tujuan)){
+			if(is_numeric($tujuan)){
 					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
 					$result_nama = mysqli_query($konek, $A_nama);
 					$row_nama = mysqli_fetch_assoc($result_nama);
 					
 					$tujuan = $row_nama['Nama'];
-				}	echo '
+				}
+			echo '
   		<div class="column">
     		<div class="card">
       			<img src="../../../Icon/Textless/Icon.png" alt="Logo" style="width:100%">
