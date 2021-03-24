@@ -177,7 +177,7 @@ $sql = mysqli_query($konek, "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' 
 				$stat = $row['Status'];
 				$upload = $row['Submitted_On_Date'];
 				$color = "red";
-				$aksi = '<button style="border: none; color: white; background-color: firebrick; width: 100%;" onclick="window.location.href='."'../unused.php?value=hapusCuti&&idCuti=".$id."'".';">Hapus</button>';
+				$aksi = '<button class="hapus" style="border: none; color: white; background-color: firebrick; width: 100%;" onclick="window.location.href='."'../unused.php?value=hapusCuti&&idCuti=".$id."'".';">Hapus</button>';
 				$aksi_style= 'style="padding: 0; background-color: firebrick;"';
 				
 				if ($stat == "unknown"){
