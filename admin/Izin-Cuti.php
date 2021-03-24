@@ -6,6 +6,8 @@ if (!isset($_SESSION['LOGIN_ADMIN'])){
 	header("Location: ../Login/Loginadmin.php");
 	exit ();
 }
+date_default_timezone_set('Asia/Jakarta');
+$tgl = date("Y-m-d");
 
 $kantor = $_SESSION['kantor_admin'];
 $nik = $_SESSION['NIK_admin'];
@@ -61,11 +63,11 @@ if(isset($_POST['search'])){
 	<a href="History-Izin-Cuti.php" class="horizontal"><span class="text">Data Cuti</span></a>
 </form>
 <?php
-$sql = mysqli_query($konek, "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' AND Status='unknown'");
+$sql = mysqli_query($konek, "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' AND Status='unknown' AND Sampai>='$tgl'");
 		
 if (!isset($_GET['l']) || $_GET['l'] == NULL){
 	if (mysqli_num_rows($sql) != 0){
-		$A = "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' AND Status='unknown' ORDER BY Submitted_On_Date DESC;";
+		$A = "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' AND Status='unknown' AND Sampai>='$tgl' ORDER BY Submitted_On_Date DESC;";
 		$result = mysqli_query($konek, $A);
 		$check = mysqli_num_rows($result);
 				
@@ -135,7 +137,7 @@ if (!isset($_GET['l']) || $_GET['l'] == NULL){
 else if (isset($_GET['l'])){
 	$l = $_GET['l'];
 		if (mysqli_num_rows($sql) != 0){
-		$A = "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' AND Nama='$l' AND Status='unknown' OR Nama_Perusahaan='$kantor' AND NIK='$l' AND Status='unknown' ORDER BY Submitted_On_Date DESC;";
+		$A = "SELECT * FROM cuti WHERE Nama_Perusahaan='$kantor' AND Nama='$l' AND Status='unknown' AND Sampai>='$tgl' OR Nama_Perusahaan='$kantor' AND NIK='$l' AND Status='unknown' AND Sampai>='$tgl' ORDER BY Submitted_On_Date DESC;";
 		$result = mysqli_query($konek, $A);
 		$check = mysqli_num_rows($result);
 				
