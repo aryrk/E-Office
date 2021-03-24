@@ -78,6 +78,7 @@ hr{
 .tujuan:focus, :active {
 	outline: 0;
 	border-bottom-color: currentColor;
+	color: black;
   }
 .tugas_box{
     background: #1f396e;
