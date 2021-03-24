@@ -206,7 +206,7 @@ body > div:nth-last-of-type(1)[style]{
 }
 /* Responsive Breakpoint */
 
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+@media only screen and (max-width: 760px) and (max-device-width: 1024px)  {
 
 	/* Force table to not be like tables anymore */
 	table, th, td, tr { 
@@ -386,6 +386,10 @@ nav ul li a:hover{
         width: 55%;
         justify-content: space-between;
     }
+    	body {
+		background-image: url("../../media/Bg_verti.jpg");
+		background-size: 300%;
+	}
 }
 
 /* Ukuran Mobile */
@@ -394,7 +398,7 @@ nav ul li a:hover{
         display: flex;
     }
 }
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+@media only screen and (max-width: 760px) and (max-device-width: 1024px)  {
 
 	/* Force table to not be like tables anymore */
 	table, th, td, tr { 
