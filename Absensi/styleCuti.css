@@ -423,6 +423,9 @@ hr{
     .menu-toggle{
         display: flex;
     }
+	.hapus{
+		padding: 20px .625em .625em .625em;
+	}
 
     header{
         min-height: 60px;
