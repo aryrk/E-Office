@@ -22,6 +22,13 @@ $isi_tugas = $row['Isi_Tugas'];
 $tanggal_tujuan = $row['Tanggal'];
 $pengirim = $row['Nama_Admin'];
 $tujuan = $row['Tujuan'];
+if(is_numeric($tujuan)){
+	$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
+	$result_nama = mysqli_query($konek, $A_nama);
+	$row_nama = mysqli_fetch_assoc($result_nama);
+					
+	$tujuan = $row_nama['Nama'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
