@@ -176,7 +176,6 @@ body{
     top: 190px;
     left: 17.5%;
     transform: translate(-50%, -50%);
-    z-index: -10000;
 }
     
     /* Footer */
@@ -282,7 +281,6 @@ a{
         top: 190px;
         left: 25%;
         transform: translate(-50%, -50%);
-        z-index: -100;
     }
 
     .table-wrapper{
@@ -425,7 +423,6 @@ a{
         top: 175px;
         left: 30%;
         transform: translate(-50%, -50%);
-        z-index: -100;
     }
 
     .table-wrapper{
@@ -473,7 +470,6 @@ a{
 @media screen and (max-width: 576px){
     .banner{
         min-height: 70px;
-        z-index: 100;
         position: fixed;
         top: 0;
         width: 100%;
@@ -501,7 +497,6 @@ a{
         top: 150px;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: -100;
     }
 
     .table-wrapper{
