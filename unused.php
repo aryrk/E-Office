@@ -80,6 +80,8 @@ else if($_GET['value'] == "hapuskar "){
 	mysqli_query($konek, "DELETE FROM login WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
 	mysqli_query($konek, "DELETE FROM absen WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
 	mysqli_query($konek, "DELETE FROM cuti WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
+	mysqli_query($konek, "DELETE FROM pengumuman WHERE Tujuan='$NIK_kar' AND Nama_Perusahaan='$kantor_admin';");
+	mysqli_query($konek, "DELETE FROM tugas WHERE Tujuan='$NIK_kar' AND Nama_Perusahaan='$kantor_admin';");
 	
 	$_SESSION['hapusKaryawan'] = 1;
 	header("Location: admin/List-Karyawan.php");
