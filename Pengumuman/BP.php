@@ -45,7 +45,7 @@ if(is_numeric($tujuan)){
         <h1><?php echo $kantor; ?></h1>
     </header>
     <header-used">
-        <h1>Officia</h1>
+        <h1 style="opacity: 0;">Officia</h1>
     </header-used>
     <div class="box">
         <h1 class="jd"><?php echo $judul; ?></h1>
