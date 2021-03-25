@@ -104,7 +104,40 @@ if(isset($_POST['prev'])){
 		<textarea name="isi" id="isi" rows="2" placeholder="Isi tugas (Styling with Markdown is supported)" required class="isi_tugas"></textarea>
 		
 		<label for="tujuan" class="wow slideInLeft">Akan Dikirimkan Kepada</label>
- 		<select name="tujuan" id="tujuan" class="tujuan wow slideInUp">
+		
+<?php
+		$sql = mysqli_query($konek, "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor'");
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Jabatan DESC;";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				$list1 = "";
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$jabatan = $row['Jabatan'];
+			$list1 = $list1.$jabatan."|";
+		}
+			}
+		}
+		
+		$sql_nama = mysqli_query($konek, "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor'");
+		if (mysqli_num_rows($sql_nama) != 0){
+			$A = "SELECT Nama, NIK FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$nama = $row['Nama'];
+					$nik_tujuan = $row['NIK'];
+			$list2 = "|".$nik_tujuan."|".$nama;
+		}
+			}
+		}
+		$pat = 'pattern="Seluruh Karyawan|'.$list1.$list2.'"';
+?>
+		<input list="list" type="text" name="tujuan" id="tujuan" class="tujuan wow slideInUp" required autocomplete="off" <?php echo $pat ?> title='Harap isi bidang sesuai list'>
+ 		<datalist name="list" id="list" class="tujuan wow slideInUp">
 			<option value="Seluruh Karyawan">Seluruh Karyawan</option>
 <?php
 	$sql = mysqli_query($konek, "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor'");
@@ -140,7 +173,7 @@ if(isset($_POST['prev'])){
 			}
 		}
 ?>
-		</select>
+		</datalist>
 		
 		<label for="time" class="wow slideInLeft"> Pada Tanggal</label>
 		<input class="tujuan wow slideInUp" type="date" name="time" id="time" min="<?php echo $tgl ?>" value="<?php echo $tgl ?>">
@@ -175,7 +208,7 @@ if(isset($_POST['prev'])){
                     <li><a href="Setting-Absen.php" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
                     <li><a href="Izin-Cuti.php" class="cuti">Izin Cuti<i class="logo fas fa-calendar-minus"></i></a></li>
                     <li><a href="+Pengumuman.php" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
-                    <li><a href="../Login/regis.php" class="karyawan">Karyawan<i class="logo fas fa-id-card"></i></a></li>
+                    <li><a href="../Login/regis.php" class="karyawan">+Karyawan<i class="logo fas fa-id-card"></i></a></li>
                     <li><a href="List-Karyawan.php" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
                     <li><a href="" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
                 </ul>
