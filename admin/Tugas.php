@@ -125,12 +125,12 @@ if(isset($_POST['prev'])){
 			$A = "SELECT Nama, NIK FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
-				
+				$list2 = "";
 			if ($check > 0){
 				while ($row = mysqli_fetch_assoc($result)){
 					$nama = $row['Nama'];
 					$nik_tujuan = $row['NIK'];
-			$list2 = "|".$nik_tujuan."|".$nama;
+			$list2 = $list2."|".$nik_tujuan."|".$nama;
 		}
 			}
 		}
