@@ -168,6 +168,12 @@ else if($_GET['value'] == "deltugas"){
 	mysqli_query($konek, "DELETE FROM tugas WHERE id_tugas='$id'");
 	header("Location: admin/etc/history/history.php");
 }
+else if($_GET['value'] == "delpengumuman"){
+	$id = $_GET['id_pengumuman'];
+	
+	mysqli_query($konek, "DELETE FROM pengumuman WHERE id_pengumuman='$id'");
+	header("Location: Pengumuman/hp.php");
+}
 else if($_GET['value'] == "prevtugas_admin"){
 	$_SESSION['id_tugas'] = $_GET['id_tugas'];
 	header("Location: admin/preview_tugas/preview.php");
@@ -177,9 +183,17 @@ else if($_GET['value'] == "prevpengumuman"){
 	$_SESSION['id_pengumuman'] = $_GET['id_pengumuman'];
 	header("Location: Pengumuman/BP.php");
 }
+else if($_GET['value'] == "prevpengumuman_ad"){
+	$_SESSION['id_pengumuman'] = $_GET['id_pengumuman'];
+	header("Location: Pengumuman/BP_admin.php");
+}
 else if($_GET['value'] == "pengumuman_kembali"){
 	unset($_SESSION['id_pengumuman']);
 	header("Location: Pengumuman/pengumuman.php");
+}
+else if($_GET['value'] == "pengumuman_kembali_admin"){
+	unset($_SESSION['id_pengumuman']);
+	header("Location: Pengumuman/hp.php");
 }
 }
 ?>
