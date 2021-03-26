@@ -84,6 +84,7 @@ if(isset($_POST['SUBMIT'])){
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Log in</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="sutail.css">
 <link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
 	
@@ -104,20 +105,18 @@ if(isset($_POST['SUBMIT'])){
 		<img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
 </a>
 </div>
-	<p>
-	<label for="name">NIK:</label><br>
+	<p><br>
+	<label for="name">NIK:</label>
 	<input type="number" placeholder="Ketik NIK" name="NIK" id="NIK" 
 	autocomplete="off" class="nik" required><br>
 	</p>
 	<p>
-	<label for="pass">Password:</label><br>
+	<label for="pass">Password:</label>
+	</p>
+	<div class="form-contener">
 	<input type="password" placeholder="Ketik Password" name="PW" id="PW"
 	autocomplete="off" id="password" required>
-	</p>
-	<p>
-	<div class="cek">
-	<input type="checkbox" name="show" id="sow"
-	class="size" onclick="check()">Show Password<br>
+		<i class="material-icons visibility">visibility_off</i>
 	</div>
 	<p>
 	<button type="submit" name="SUBMIT" id="SUBMIT" value="Submit">Login</button><br>
@@ -142,6 +141,21 @@ if(isset($_POST['SUBMIT'])){
 
 </html>
 <script>
+const visibilityToogle = document.querySelector('.visibility');
+const input = document.querySelector('.form-contener input');
+var password = true;
+visibilityToogle.addEventListener('click', function() {
+if (password) {
+input.setAttribute('type', 'text');
+visibilityToogle.innerHTML = 'visibility';
+}
+else {
+input.setAttribute('type', 'password');
+visibilityToogle.innerHTML = 'visibility_off';
+}
+password = !password;
+});
+
 function check() {
 var pas = document.getElementById('password');
 if (pas.type==="password") {
