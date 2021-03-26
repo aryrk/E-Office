@@ -54,6 +54,7 @@ if(isset($_POST['SUBMIT'])){
 <title>Log-in Admin</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 	<link rel="stylesheet" href="Loginadmin.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
 	</head>
         <center>
@@ -68,21 +69,19 @@ if(isset($_POST['SUBMIT'])){
 
 </div>
 	<p>
-	<label for="NIK">NIK:</label><br>
+	<label for="NIK">NIK:</label>
 	<input type="number" placeholder="Ketik NIK" name="NIK" id="NIK" autocomplete="off" required
 class="nik" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 maxlength="16"><br>
 	</p>
 	<p>
-	<label for="PW">Password:</label><br>
-	<input type="password" placeholder="Ketik Password" name="PW" id="PW" autocomplete="off" required>
-	</p>
-	<p>
-	<div class="cek">
-	<input type="checkbox" name="show" id="sow"
-	class="size" onclick="check()">Show Password<br>
+	<label for="PW">Password:</label>
+</p>
+	<div class="form-contener">
+	<input type="password" placeholder="Ketik Password" name="PW" id="PW"
+	autocomplete="off" id="password" required>
+		<i class="material-icons visibility">visibility_off</i>
 	</div>
-	</p>
 	<p>
 	<span id="meseg"></span><br>
 	<button type="submit" name="SUBMIT" id="SUBMIT" value="Submit">Login</button><br>
@@ -105,3 +104,4 @@ maxlength="16"><br>
 	</body></center>
 
 </html>
+<script src="show.js"></script>
