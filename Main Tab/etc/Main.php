@@ -649,7 +649,6 @@ if (mysqli_num_rows($sql) != 0){
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <?php
-sleep(3);
 if (isset($_SESSION['first_login'])){
 	echo "<script> Login(); </script>";
 	unset($_SESSION['first_login']);
