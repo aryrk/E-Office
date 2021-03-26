@@ -137,7 +137,7 @@ p{
         font-size: 75%;
     }
     body{
-        background-size: 200%;
+        background-size: 250%;
     }
 }
 @media screen and (max-width: 376px){
@@ -148,12 +148,12 @@ p{
         font-size: 95%;
     }
     body{
-        background-size: 230%;
+        background-size: 270%;
     }
 }
 @media screen and (max-width: 326px){
     body{
-        background-size: 260%;
+        background-size: 320%;
     }
 }
 @keyframes header{
