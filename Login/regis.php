@@ -161,8 +161,6 @@ placeholder="Masukkan Jawaban" required><br>
 <input type="submit" onclick="return valid()" name="SUBMIT" id="SUBMIT" value="Submit">
 </div>
 </p>
-<p>
-</p>
 </form>
 
 <form id="form2" name="form2" method="post" action="">
