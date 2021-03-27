@@ -57,8 +57,9 @@ $sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Registration Admin</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-	<link rel="stylesheet" href="styregis.css">
+	<link rel="stylesheet" href="Regisadmin.css">
 	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
         <center>
 	<body>
@@ -68,9 +69,9 @@ $sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik
 	<form id="form1" name="form1" method="post" action="">
         <h1>Registration Admin</h1>
 <hr>
-<p>
+<p><br>
 <label for="mail">Email:</label>
-<input type="email" placeholder="Masukkan Email"
+<input type="email" placeholder="Masukkan Email" class="nik"
 name="mail" id="mail" required autocomplete="off"><br>
 </p>
 <p>
@@ -104,28 +105,27 @@ oninput="javascript: if (this.value.length > this.maxLength) this.value = this.v
 <p>
 <label for="alamat">Alamat Perusahaan:</label>
 <textarea name="alamat" id="alamat" class="almt"
-cols="67">
+cols="35">
 </textarea><br>
 </p>
 <p>
 <label for="password">Password:</label>
-<input type="password" placeholder="Masukkan Password"
-name="password" id="password" required autocomplete="off"><br>
 </p>
+<div class="form-contener">
+<input type="password" placeholder="Masukkan Password"
+name="password" id="password" required autocomplete="off">
+	<i class="material-icons visibility">visibility_off</i>
+</div>
 <p>
 <label for="repeat">Ulangi Password:</label>
+</p>
+<div class="fai">
 <input type="password" placeholder="Masukkan Password"
-name="repeat" id="repeat" required autocomplete="off"><br>
-</p>
-<p>
-<div class="cek">
-<input type="checkbox" name="show" id="sow"
-class="size" onclick="check()">Show Password<br>
+name="repeat" id="repeat" required autocomplete="off">
 </div>
-</p>
 <p>
 <div class="sub">
-<span id="meseg"></span>
+<span id="meseg"></span><br>
 <input type="submit" onclick="return valid()" name="SUBMIT" id="SUBMIT" value="Submit">
 </div>
 </p>
@@ -145,17 +145,7 @@ document.getElementById('meseg').innerHTML="*Password Salah*";
 return false;
 }
 }
-function check() {
-var pis = document.getElementById('password');
-var pes = document.getElementById('repeat');
-if (pis.type==="password" && pes.type==="password") {
-pis.type="text";
-pes.type="text";
-}
-else {
-pis.type="password";
-pes.type="password";
-}
-}
+
 </script>
-</script>
+<script src="show.js"></script>
+<script src="regis1.js"></script>
