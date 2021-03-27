@@ -74,9 +74,11 @@ if(isset($_POST['SUBMIT'])){
 	<div class="skuy">
 	<form action="" id="form1" name="form1" method="POST">
         <h1>Forgot Password?</h1>
+<hr>
         <p class="kuy"><b>
         Isi Form untuk mereset password Anda.<br><br>
        </b></p>
+<hr>
     <p>
     <label for="namae">NIK:</label>
     <input type="number" placeholder="Masukkan NIK" 
