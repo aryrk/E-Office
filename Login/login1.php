@@ -160,7 +160,7 @@ jQuery(function($) {
     });
 });
 </script>
-<script src="login.js"></script>
+<script src="show.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
 	<script src="../etc/allert.js"></script>
 	
