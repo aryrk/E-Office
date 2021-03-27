@@ -89,6 +89,12 @@ font-size: 15px;
 i {
 cursor: pointer;
 }
+hr {
+size: 30px;
+width: 100%;
+color: black;
+margin-top: -10px;
+}
 span {
 	color: red;
 }
