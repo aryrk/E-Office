@@ -88,6 +88,7 @@ if(isset($_POST['SUBMIT'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 	<link rel="stylesheet" href="newpassform.css">
 	<link rel="stylesheet" href="../etc/wmRemover.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
 	</head>
         <center>
@@ -99,26 +100,25 @@ if(isset($_POST['SUBMIT'])){
 	<p>
 <label for="jawab"><?php echo $pertanyaan; ?></label>
 <input type="text" name="jawab" id="jawab" autocomplete="off"
-placeholder="Ketik Jawaban" class="nik" required>
+placeholder="Ketik Jawaban" class="nik" required><br>
 </p>
-	<p>
+<p>
 	<label for="pass">Password Baru:</label><br>
+</p>
+<div class="form-contener">
 	<input type="password" placeholder="Ketik Password" name="pass"
-	autocomplete="off" id="pass" required>
-	</p>
-	<p>
-	<label for="repeat">Ulangi Password:</label><br>
-	<input type="password" placeholder="Ketik Password" name="repeat"
-	autocomplete="off" id="repeat" required>
-	</p>
-	<p>
-	<div class="cek">
-	<input type="checkbox" name="show" id="sow"
-	class="size" onclick="check()">Show Password<br>
+	autocomplete="off" id="pass" required><br>
+	<i class="material-icons visibility">visibility_off</i>
 	</div>
-	</p>
 	<p>
-	<span id="meseg"></span>
+	<label for="repeat">Ulangi Password:</label>
+</p>
+<div class="fai">
+	<input type="password" placeholder="Ketik Password" name="repeat"
+	autocomplete="off" id="repeat" required><br>
+	</div>
+	<p>
+	<span id="meseg"></span><br>
 	<input type="submit" onclick="return valid()" value="Submit" name="SUBMIT" id="SUBMIT"><br>
 	</p>
 	</form>
@@ -150,3 +150,4 @@ pes.type="pass";
 }
 }
 </script>
+<script src="show.js"></script>
