@@ -65,6 +65,7 @@ if(isset($_POST['BACK'])){
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Registration</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="styregis.css">
 	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
 	</head>
@@ -123,20 +124,19 @@ cols="67">
 </p>
 <p>
 <label for="password">Password </label>
+</p>
+<div class="form-contener">
 <input type="password" placeholder="Masukkan Password"
 name="password" id="password" required autocomplete="off"><br>
-</p>
+	<i class="material-icons visibility">visibility_off</i>
+</div>
 <p>
 <label for="repeat">Ulangi Password</label>
+</p>
+<div class="fai">
 <input type="password" placeholder="Masukkan Password"
-name="repeat" id="repeat" required autocomplete="off">
-</p>
-<p>
-<div class="cek">
-<input type="checkbox" name="show" id="sow"
-class="size" onclick="check()">Show Password<br>
+name="repeat" id="repeat" required autocomplete="off"><br>
 </div>
-</p>
 <p>
 <br><label for="question">Pertanyaan Keamanan:</label>
 <select name="secret" id="secret" class="nik">
@@ -153,7 +153,7 @@ class="size" onclick="check()">Show Password<br>
 <option value="10">Apa Yang Harus Dirahasiakan Dari Keluarga</option>
 </select>
 <input type="text" name="jawab" id="jawab" autocomplete="off"
-placeholder="Masukkan Jawaban" required>
+placeholder="Masukkan Jawaban" required><br>
 </p>
 <p>
 <div class="sub">
@@ -198,4 +198,4 @@ pes.type="password";
 }
 }
 </script>
-</script>
+<script src="show.js"></script>
