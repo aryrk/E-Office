@@ -85,7 +85,7 @@ if(isset($_POST['SUBMIT'])){
 		<title>Log in</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="sutail.css">
+<link rel="stylesheet" href="noname(2).css">
 <link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
 	
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
@@ -141,20 +141,6 @@ if(isset($_POST['SUBMIT'])){
 
 </html>
 <script>
-const visibilityToogle = document.querySelector('.visibility');
-const input = document.querySelector('.form-contener input');
-var password = true;
-visibilityToogle.addEventListener('click', function() {
-if (password) {
-input.setAttribute('type', 'text');
-visibilityToogle.innerHTML = 'visibility';
-}
-else {
-input.setAttribute('type', 'password');
-visibilityToogle.innerHTML = 'visibility_off';
-}
-password = !password;
-});
 
 function check() {
 var pas = document.getElementById('password');
@@ -174,6 +160,7 @@ jQuery(function($) {
     });
 });
 </script>
+<script src="login.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
 	<script src="../etc/allert.js"></script>
 	
