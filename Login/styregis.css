@@ -33,7 +33,7 @@ overflow: auto;
 .skuy form p{
 	margin:0;
 }
-input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+input[type="text"], input[type="email"], input[type="tel"] {
 width: 70%;
 padding: 12px;
 margin: 8px 0;
@@ -69,6 +69,8 @@ background-color:#4CAF50;
 }
 i {
 cursor: pointer;
+color: #aaa;
+margin-right: 7px;
 }
 .ca {
 padding: 5px;
@@ -78,6 +80,10 @@ background-color: #f1f1f1;
 text-align: center;
 }
 hr {
+size: 30px;
+width: 100%;
+color: black;
+margin-top: -10px;
 }
 span {
 color: red;
@@ -116,6 +122,37 @@ margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+.form-contener {
+width: 90%;
+margin-left: 15px;
+display: flex ;
+align-items: center;
+border: 1px solid #ccc;
+background-color: white;
+height: 40px;
+margin-bottom: 10px;
+}
+.form-contener input{
+border: 0;
+outline: none;
+padding: 12px;
+}
+.fai {
+width: 90%;
+margin-left: 15px;
+display: flex ;
+align-items: center;
+border: 1px solid #ccc;
+background-color: white;
+height: 40px;
+margin-bottom: 10px;
+}
+.fai input {
+border: 0;
+outline: none;
+padding: 12px;
 }
 img[alt*="000webhost"],
 img[alt*="000webhost"][style],
