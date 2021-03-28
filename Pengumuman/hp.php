@@ -18,6 +18,10 @@ if(isset($_POST['search'])){
 	$jenis = trim($_POST['pil']);
 	header("Location: hp.php?l=$jenis");
 }
+if (!empty($_POST)){
+	$jenis = trim($_POST['pil']);
+	header("Location: hp.php?l=$jenis");
+}
 if(isset($_POST['search_2'])){
 	$date = trim($_POST['tgl']);
 	$date = date('Y-m-d',strtotime($date));
@@ -58,7 +62,7 @@ if(isset($_POST['search_2'])){
     </header>
 <form id="form1" name="form1" method="post" action="">
     <div class="search">
-            <select name="pil" id="pil">
+            <select name="pil" id="pil" onchange='if(this.value != 0) { this.form.submit(); }'>
 <?php
 			if (!isset($_GET['l']) && !isset($_GET['ldate']) && $_GET['l'] == "All"){
 			echo '
@@ -68,8 +72,16 @@ if(isset($_POST['search_2'])){
 			}
 			else if (isset($_GET['l']) && !isset($_GET['ldate']) && $_GET['l'] != "All"){
 				$cari = $_GET['l'];
+				$cari_nama = $_GET['l'];
+				if(is_numeric($cari)){
+					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$cari';";
+					$result_nama = mysqli_query($konek, $A_nama);
+					$row_nama = mysqli_fetch_assoc($result_nama);
+					
+					$cari_nama = $row_nama['Nama'];
+				}
 			echo '
-				<option value="'.$cari.'">Pengumuman '.$cari.'</option>
+				<option value="'.$cari.'">Pengumuman '.$cari_nama.'</option>
 				<option value="All">Semua Terkirim</option>
 				<option value="Global">Pengumuman Global</option>
 				';
