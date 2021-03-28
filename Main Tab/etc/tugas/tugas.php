@@ -20,6 +20,10 @@ if(isset($_POST['search'])){
 	$jenis = trim($_POST['jenis']);
 	header("Location: tugas.php?l=$jenis");
 }
+if (!empty($_POST)){
+	$jenis = trim($_POST['jenis']);
+	header("Location: tugas.php?l=$jenis");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +67,7 @@ if(isset($_POST['search'])){
 <form id="form1" name="form1" method="post" action="">
 	<div class="wrap" style="z-index: 10000;">
 	<div class="search">
-		<select name="jenis" id="jenis">
+		<select name="jenis" id="jenis" onchange='if(this.value != 0) { this.form.submit(); }'>
 <?php
 //Menampilkan opsi search sesuai dengan kondisi
 			if (!isset($_GET['l']) || $_GET['l'] == "All"){
