@@ -53,7 +53,7 @@ if(isset($_POST['search_2'])){
         </select>-->
         
         </div>
-        <a href="pengumuman.php"><i class="back fas fa-arrow-circle-left"></i></a>
+        <a href="../admin/+Pengumuman.php"><i class="back fas fa-arrow-circle-left"></i></a>
     </header>
     <header class="banner-used">
     
