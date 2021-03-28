@@ -7,6 +7,11 @@ if (isset($_SESSION['LOGIN_ADMIN'])){
 	header("Location: ../admin/Admin1.php");
 	exit ();
 }
+if (isset($_SESSION['LOGIN'])){
+	header("Location: ../Main Tab/etc/Main.php");
+	$_SESSION['first_login'] = 1;
+	exit ();
+}
 
 if(isset($_POST['SUBMIT'])){
 		$nik_admin = trim($_POST['NIK']);
