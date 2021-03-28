@@ -125,7 +125,7 @@ box-sizing: border-box;
 }
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 .form-contener {
-width: 90%;
+width: 70%;
 margin-left: 15px;
 display: flex ;
 align-items: center;
@@ -138,9 +138,10 @@ margin-bottom: 10px;
 border: 0;
 outline: none;
 padding: 12px;
+width: 100%;
 }
 .fai {
-width: 90%;
+width: 70%;
 margin-left: 15px;
 display: flex ;
 align-items: center;
@@ -152,6 +153,7 @@ margin-bottom: 10px;
 .fai input {
 border: 0;
 outline: none;
+width: 100%;
 padding: 12px;
 }
 img[alt*="000webhost"],
@@ -210,5 +212,14 @@ body > div:nth-last-of-type(1)[style]{
 	}
 h1 {
 font-size: 100px:
+}
+hr {
+width: 100%;
+}
+.form-contener {
+width: 90%;
+}
+.fai {
+width: 90%;
 }
 }
