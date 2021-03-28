@@ -27,6 +27,8 @@ if(isset($_POST['SUBMIT'])){
 	$tanggal = trim($_POST['tanggal']);
 	$isi = $_POST["isi"];
 	$tujuan = trim($_POST['tujuan']);
+	$judul = trim($_POST['jdl']);
+	$id = $kantor.time();
 		
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
 		
@@ -39,7 +41,7 @@ if(isset($_POST['SUBMIT'])){
 				while ($row = mysqli_fetch_assoc($result)){
 					$nama = $row['Nama_Admin'];
 					
-					mysqli_query($konek, "INSERT INTO pengumuman VALUES ('$kantor','$nama','$nik','$tanggal','$isi','$tujuan','$jam','$tgl')");
+					mysqli_query($konek, "INSERT INTO pengumuman VALUES ('$id','$kantor','$nama','$nik','$tanggal','$judul','$isi','$tujuan','$jam','$tgl')");
 					
 					$sql_cek = mysqli_query($konek, "SELECT * FROM pengumuman WHERE NIK_Admin='$nik' AND Nama_Admin='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tanggal' AND Tujuan='$tujuan' AND Isi_Pengumuman='$isi'");
 		
@@ -87,7 +89,7 @@ if(isset($_POST['SUBMIT'])){
             <tr>
                 <td><label>Judul</label></td>
                 <td>:</td>
-                <td><input class="jdl" type="text"></td>
+                <td><input class="jdl" id="jdl" name="jdl" type="text"></td>
             </tr>
         </p>
             <tr>
