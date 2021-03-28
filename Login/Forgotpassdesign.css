@@ -179,4 +179,7 @@ box-sizing: border-box;
 	.imeg {
 		width: 50%;
 	}
+hr {
+width: 100%;
+}
 }
