@@ -129,7 +129,7 @@ box-sizing: border-box;
 }
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 .form-contener {
-width: 90%;
+width: 70%;
 margin-left: 15px;
 display: flex ;
 align-items: center;
@@ -144,7 +144,7 @@ outline: none;
 padding: 12px;
 }
 .fai {
-width: 90%;
+width: 70%;
 margin-left: 15px;
 display: flex ;
 align-items: center;
@@ -211,7 +211,11 @@ body > div:nth-last-of-type(1)[style]{
 	}
 h1 {
 font-size: 100px:
+}
 hr {
 width: 100%;
+}
+.form-contener {
+width: 90%;
 }
 }
