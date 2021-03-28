@@ -85,7 +85,7 @@ if(isset($_POST['SUBMIT'])){
 		<title>Log in</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="noname(2).css">
+<link rel="stylesheet" href="sutail.css">
 <link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
 	
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
