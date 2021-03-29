@@ -73,7 +73,6 @@ body{
     top: 140px;
     left: 17.5%;
     transform: translate(-50%, -50%);
-    z-index: -100;
 }
 
 :root {
@@ -311,7 +310,6 @@ a{
         top: 160px;
         left: 20%;
         transform: translate(-50%, -50%);
-        z-index: -100;
     }
 
     .horizontal{
@@ -423,7 +421,6 @@ a{
         top: 155px;
         left: 23%;
         transform: translate(-50%, -50%);
-        z-index: -100;
     }
 
     .horizontal{
