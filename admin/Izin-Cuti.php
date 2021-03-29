@@ -89,6 +89,14 @@ if (!isset($_GET['l']) || $_GET['l'] == NULL){
 					
 					$pp = 'src="'.'../Main Tab/etc/upload/image/'.$row_pp['pp_name'].'"';
 					$telp = $row_pp['No_Telp'];
+					$hp = $telp;
+						if(!preg_match('/[^+0-9]/',trim($telp))){
+         					// cek apakah no hp karakter 1 adalah 0
+         					if(substr(trim($telp), 0, 1)=='0'){
+             					$hp = '62'.substr(trim($telp), 1);
+         					}
+     					}
+					$telp = "https://wa.me/".$hp."?text=ID cuti=".$id;
 					
 		echo '
 		<div class="notif">
@@ -124,7 +132,7 @@ if (!isset($_GET['l']) || $_GET['l'] == NULL){
 
                     <button type="submit" class="button-terima" onclick="window.location.href='."'../unused.php?value=terimaCuti&&idCuti=".$id."'".';">Terima</button>
                     <button type="submit" class="button-tidak" onclick="window.location.href='."'../unused.php?value=tolakCuti&&idCuti=".$id."'".';">Tidak</button>
-                    <button type="submit" class="button-telepon" onclick="window.location.href='."'tel:".$telp."'".';"><i class="telepon fas fa-phone"></i></button>
+                    <button type="submit" class="button-telepon" onclick="window.location.href='."'".$telp."'".';"><i class="telepon fas fa-phone"></i></button>
                 </table>
             </div>
         </div>
@@ -159,6 +167,14 @@ else if (isset($_GET['l'])){
 					
 					$pp = 'src="'.'../Main Tab/etc/upload/image/'.$row_pp['pp_name'].'"';
 					$telp = $row_pp['No_Telp'];
+					$hp = $telp;
+						if(!preg_match('/[^+0-9]/',trim($telp))){
+         					// cek apakah no hp karakter 1 adalah 0
+         					if(substr(trim($telp), 0, 1)=='0'){
+             					$hp = '62'.substr(trim($telp), 1);
+         					}
+     					}
+					$telp = "https://wa.me/".$hp."?text=ID cuti=".$id;
 					
 		echo '
 		<div class="notif">
@@ -194,7 +210,7 @@ else if (isset($_GET['l'])){
 
                     <button type="submit" class="button-terima" onclick="window.location.href='."'../unused.php?value=terimaCuti&&idCuti=".$id."'".';">Terima</button>
                     <button type="submit" class="button-tidak" onclick="window.location.href='."'../unused.php?value=tolakCuti&&idCuti=".$id."'".';">Tidak</button>
-                    <button type="submit" class="button-telepon" onclick="window.location.href='."'tel:".$telp."'".';"><i class="telepon fas fa-phone"></i></button>
+                    <button type="submit" class="button-telepon" onclick="window.location.href='."'".$telp."'".';"><i class="telepon fas fa-phone"></i></button>
                 </table>
             </div>
         </div>
