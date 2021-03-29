@@ -130,13 +130,12 @@ box-sizing: border-box;
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 .form-contener {
 width: 70%;
-margin-left: 15px;
+margin-left: 15%;
 display: flex ;
 align-items: center;
 border: 1px solid #ccc;
 background-color: white;
 height: 40px;
-margin-bottom: 10px;
 }
 .form-contener input{
 border: 0;
@@ -146,13 +145,12 @@ width: 100%;
 }
 .fai {
 width: 70%;
-margin-left: 15px;
+margin-left: 15%;
 display: flex ;
 align-items: center;
 border: 1px solid #ccc;
 background-color: white;
 height: 40px;
-margin-bottom: 10px;
 }
 .fai input{
 border: 0;
@@ -217,10 +215,15 @@ font-size: 100px:
 hr {
 width: 100%;
 }
-.form-contener {
-width: 90%;
-}
-.fai {
-width: 90%;
-}
+	.form-contener {
+		width: 90%;
+		margin-left: 5%;
+	}
+	i {
+		margin-right: 7px;
+	}
+	.fai {
+		width: 90%;
+		margin-left: 5%;
+	}
 }
