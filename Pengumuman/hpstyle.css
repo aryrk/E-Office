@@ -477,6 +477,11 @@ textarea.notes {
 }
 
 @media screen and (max-width: 576px){
+	.atau{
+		font-size: 0;
+		padding: 0;
+		margin: 0;
+	}
     .banner{
         min-height: 50px;
         z-index: 1;
