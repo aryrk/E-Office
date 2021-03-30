@@ -130,7 +130,7 @@ if(isset($_POST['search_2'])){
             <button type="submit" name="search" id="search" class="Ktk"> 
                 <i class="icon1 fas fa-search"></i>
             </button>
-              <h6>Atau</h6>
+              <h6 class="atau">Atau</h6>
             <input type="date" name="tgl" id="tgl">
             <button type="submit" name="search_2" id="search_2" class="Ktk2"> 
                 <i class="icon1 fas fa-search"></i>
