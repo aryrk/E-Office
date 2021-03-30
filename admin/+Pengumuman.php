@@ -76,7 +76,7 @@ if(isset($_POST['SUBMIT'])){
 <body>
     <header class="banner">
         <h1 class="h1"><?php echo $nama_kantor; ?></h1>
-        <a href="Admin.html"><i class="back fas fa-arrow-circle-left"></i></a>
+        <a href="Admin1.php"><i class="back fas fa-arrow-circle-left"></i></a>
     </header>
 
     <div><a href="../Pengumuman/hp.php"><button class="H">History</button></a></div>
