@@ -114,7 +114,7 @@ if(isset($_POST['SUBMIT'])){
 <?php
 	$sql = mysqli_query($konek, "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor'");
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Jabatan DESC;";
+			$A = "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor' GROUP BY Jabatan ORDER BY Jabatan DESC;";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
