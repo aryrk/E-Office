@@ -93,7 +93,7 @@ if(isset($_POST['ABSEN_PULANG'])){
 						
 					mysqli_query($konek, "UPDATE data_perusahaan SET Absen_pulang_min='$pulang_min' WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
 					
-					$sql_cek = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor' AND Absen_pulang_min='$pulang_min' AND Absen_pulang_max='$pulang_max'");
+					$sql_cek = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor' AND Absen_pulang_min='$pulang_min'");
 		
 					if (mysqli_num_rows($sql_cek) == 0){
 						$_SESSION['condition'] = 15;
