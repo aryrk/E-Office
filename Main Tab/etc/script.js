@@ -1,17 +1,3 @@
-var textarea = document.querySelector('textarea');
-
-textarea.addEventListener('keydown', autosize);
-             
-function autosize(){
-  var el = this;
-  setTimeout(function(){
-    // for box-sizing other than "content-box" use:
-    // el.style.cssText = '-moz-box-sizing:content-box';
-    el.style.cssText = 'height:' + el.scrollHeight + 'px';
-	this.value = this.value + "\n";
-  },0);
-}
-
 const menuToggle = document.querySelector('.menu-toggle input');
 const nav = document.querySelector('nav ul');
 
