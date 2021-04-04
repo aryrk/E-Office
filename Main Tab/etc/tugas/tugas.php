@@ -127,7 +127,9 @@ if (!isset($_GET['l']) || $_GET['l'] == "All"){
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
 			$judul = $row['Judul'];
-			$pengiriman = $row['Tanggal'];
+			$pengiriman = date("D - d/m/Y", strtotime($row['Tanggal']));
+			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
+			
 			$tujuan = $row['Tujuan'];
 			if(is_numeric($tujuan)){
 					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
@@ -148,6 +150,8 @@ if (!isset($_GET['l']) || $_GET['l'] == "All"){
         			<p style="font-size: 90%">'.$tujuan.'</p>
 					<p>'.$kantor.' Company</p>
 			  		</div>
+					<p>Deadline:</p>
+					<p class="title">'.$dead.'</p>
         			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
@@ -165,7 +169,8 @@ else if (isset($_GET['l']) && $_GET['l'] == $nik){
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
 			$judul = $row['Judul'];
-			$pengiriman = $row['Tanggal'];
+			$pengiriman = date("D - d/m/Y", strtotime($row['Tanggal']));
+			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
 	
@@ -187,6 +192,8 @@ else if (isset($_GET['l']) && $_GET['l'] == $nik){
         			<p style="font-size: 90%">'.$tujuan.'</p>
 					<p>'.$kantor.' Company</p>
 			  		</div>
+					<p>Deadline:</p>
+					<p class="title">'.$dead.'</p>
         			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
@@ -203,7 +210,8 @@ else if (isset($_GET['l']) && $_GET['l'] == $jabatan){
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
 			$judul = $row['Judul'];
-			$pengiriman = $row['Tanggal'];
+			$pengiriman = date("D - d/m/Y", strtotime($row['Tanggal']));
+			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
 	
@@ -218,6 +226,8 @@ else if (isset($_GET['l']) && $_GET['l'] == $jabatan){
         			<p style="font-size: 90%">'.$tujuan.'</p>
 					<p>'.$kantor.' Company</p>
 			  		</div>
+					<p>Deadline:</p>
+					<p class="title">'.$dead.'</p>
         			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
@@ -235,7 +245,8 @@ else if (isset($_GET['l']) == 'globe'){
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
 			$judul = $row['Judul'];
-			$pengiriman = $row['Tanggal'];
+			$pengiriman = date("D - d/m/Y", strtotime($row['Tanggal']));
+			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
 	
@@ -250,6 +261,8 @@ else if (isset($_GET['l']) == 'globe'){
         			<p style="font-size: 90%">'.$tujuan.'</p>
 					<p>'.$kantor.' Company</p>
 			  		</div>
+					<p>Deadline:</p>
+					<p class="title">'.$dead.'</p>
         			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
