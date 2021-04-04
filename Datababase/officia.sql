@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 04, 2021 at 05:05 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.23
+-- Host: 127.0.0.1
+-- Generation Time: Apr 04, 2021 at 01:04 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `id16340083_officia`
+-- Database: `officia`
 --
 
 -- --------------------------------------------------------
@@ -94,6 +93,37 @@ INSERT INTO `data_perusahaan` (`Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Je
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kirim_tugas`
+--
+
+CREATE TABLE `kirim_tugas` (
+  `id_laporan` varchar(255) NOT NULL,
+  `id_tugas` varchar(255) NOT NULL,
+  `Nama_Perusahaan` varchar(255) NOT NULL,
+  `NIK` varchar(255) NOT NULL,
+  `Pengirim` char(255) NOT NULL,
+  `Laporan` longtext NOT NULL,
+  `is_file` tinyint(1) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `dir_to_file` longtext NOT NULL,
+  `Edit_left` int(3) NOT NULL,
+  `Submitted_On_Hours` time NOT NULL,
+  `Submitted_On_Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kirim_tugas`
+--
+
+INSERT INTO `kirim_tugas` (`id_laporan`, `id_tugas`, `Nama_Perusahaan`, `NIK`, `Pengirim`, `Laporan`, `is_file`, `file_name`, `dir_to_file`, `Edit_left`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+('12345Officia1617533731', 'Officia1617526180', 'Officia', '12345', 'Debug', 'aaa', 1, 'Screenshot-(13).png', 'uploads/12345Officia1617526180/Screenshot-(13).png', 2, '17:55:31', '2021-04-04'),
+('12345Officia1617533754', 'Officia1617513859', 'Officia', '12345', 'Debug', 'bbbb', 1, '74758565.png', 'uploads/12345Officia1617513859/74758565.png', 2, '17:55:54', '2021-04-04'),
+('123456Officia1617533807', 'Officia1617513859', 'Officia', '123456', 'Aryo Rakatama', 'cccc', 1, '2021-03-20-12_37_38-Greenshot.png', 'uploads/123456Officia1617513859/2021-03-20-12_37_38-Greenshot.png', 2, '17:56:47', '2021-04-04'),
+('123456Officia1617533844', 'Officia1617526180', 'Officia', '123456', 'Aryo Rakatama', 'dddd', 1, '2021-03-18 10_28_50-Greenshot.png', 'uploads/123456Officia1617526180/2021-03-18 10_28_50-Greenshot.png', 2, '17:57:24', '2021-04-04');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login`
 --
 
@@ -122,7 +152,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`NIK`, `Password`, `Nama`, `Nama_Perusahaan`, `Email`, `Jabatan`, `Tanggal_Lahir`, `Bulan_Lahir`, `Tahun_Lahir`, `Jenis_Kelamin`, `No_Telp`, `Alamat`, `pp_name`, `Pertanyaan`, `Jawaban`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
-('12345', 'pw', 'Debug', 'Officia', 'debug@gmail.com', 'OB', 18, 5, 2004, 'L', '081547272729', 'Jl holis', '12345Officia1617512641.png', 2, 'Pizza', '12:02:01', '2021-04-04');
+('12345', 'pw', 'Debug', 'Officia', 'debug@gmail.com', 'OB', 18, 5, 2004, 'L', '081547272729', 'Jl holis', '12345Officia1617525486.png', 2, 'Pizza', '12:02:01', '2021-04-04'),
+('123456', 'pw', 'Aryo Rakatama', 'Officia', 'aryorakatama@gmail.com', 'IT', 18, 5, 2004, 'L', '081547272729', 'jl Holis', '123456Officia1617525554.png', 2, 'Pizza', '15:37:29', '2021-04-04');
 
 -- --------------------------------------------------------
 
@@ -164,6 +195,16 @@ CREATE TABLE `tugas` (
   `Submitted_On_Hours` time NOT NULL,
   `Submitted_On_Date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tugas`
+--
+
+INSERT INTO `tugas` (`id_tugas`, `Nama_Perusahaan`, `Nama_Admin`, `NIK_Admin`, `Tanggal`, `Deadline`, `Judul`, `Isi_Tugas`, `Tujuan`, `colom_active`, `is_pub`, `Submitted_On_Hours`, `Submitted_On_Date`) VALUES
+('Officia1617513859', 'Officia', 'Admin_officia', '12345', '2021-04-04', '2021-04-05', 'tes', 'debug form', 'Seluruh Karyawan', 1, 1, '12:24:19', '2021-04-04'),
+('Officia1617515254', 'Officia', 'Admin_officia', '12345', '2021-04-02', '2021-04-03', 'kadeluarsa', 'debug kada', 'Seluruh Karyawan', 1, 1, '12:47:34', '2021-04-04'),
+('Officia1617526162', 'Officia', 'Admin_officia', '12345', '2021-04-04', '2021-04-05', 'no jawaban', 'no jawaban', 'Seluruh Karyawan', 0, 0, '15:49:22', '2021-04-04'),
+('Officia1617526180', 'Officia', 'Admin_officia', '12345', '2021-04-04', '2021-04-05', 'tdk publik', 'aaa', 'Seluruh Karyawan', 1, 0, '15:49:40', '2021-04-04');
 
 --
 -- Indexes for dumped tables
