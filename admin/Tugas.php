@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 require_once("../config.php");
 date_default_timezone_set('Asia/Jakarta');
 session_start();
@@ -25,10 +26,21 @@ $jam = date("H:i:s");
 
 if(isset($_POST['kirim'])){
 	$tujuan = trim($_POST['tujuan']);
-	$tanggal = $_POST["time"];
+	$tanggal = $_POST["date"];
+	$deadline = $_POST["dead"];
 	$isi = trim($_POST['isi']);
 	$judul = trim($_POST['judul']);
 	$id = $kantor.time();
+	
+	$jawaban = $_POST["kolom"];
+	$pub = $_POST["publik"];
+	
+	if ($jawaban != "true"){
+		$jawaban = "false";
+	}
+	if ($pub != "true"){
+		$pub = "false";
+	}
 		
 		$sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik' AND Password='$pw' AND Nama_Perusahaan='$kantor'");
 		
@@ -41,25 +53,20 @@ if(isset($_POST['kirim'])){
 				while ($row = mysqli_fetch_assoc($result)){
 					$nama = $row['Nama_Admin'];
 					
-					$sql = mysqli_query($konek, "INSERT INTO tugas VALUES ('$id','$kantor','$nama','$nik','$tanggal','$judul','$isi','$tujuan','$jam','$tgl')");
+					$sql = mysqli_query($konek, "INSERT INTO tugas VALUES ('$id','$kantor','$nama','$nik','$tanggal','$deadline','$judul','$isi','$tujuan',$jawaban,$pub,'$jam','$tgl')");
 				}
 //Mengecek apakah tugas berhasil terkirim
 	$sql = mysqli_query($konek, "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Nama_Admin='$nama' AND NIK_Admin='$nik' AND Tanggal='$tanggal' AND Isi_Tugas='$isi' AND Tujuan='$tujuan'");
 		if (mysqli_num_rows($sql) == 0){
 			header("Location: ../etc/error/index.php?condition=12 && kantor=$kantor && nik=$nik && password=$pw");
 		}
+				else {
+					$_SESSION['kirimTugas'] = 1;
+					header("Location: Tugas.php");
+				}
 				
 			}
 		}
-	}
-if(isset($_POST['prev'])){
-	$judul = trim($_POST['judul']);
-	$tujuan = trim($_POST['tujuan']);
-	$tanggal = $_POST["time"];
-	$isi = trim($_POST['isi']);
-	$_SESSION['isi'] = $isi;
-	$_SESSION['judul'] = $judul;
-	header("Location: preview_tugas/preview.php?tujuan=$tujuan&&tanggal=$tanggal");
 	}
 ?>
 <!DOCTYPE html>
@@ -77,13 +84,14 @@ if(isset($_POST['prev'])){
 	<link rel="stylesheet" href="../Main Tab/etc/Animate.css">
 	<link rel="stylesheet" href="../etc/wmRemover.css">
 	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
 </head>
 	
 <body>
     <header class="banner"> 
-        <h1 class="h1"><?php echo $nama_kantor; ?></h1>
+        <h1 class="h1"><?php echo $nama_kantor ?></h1>
 
         <a href="Admin1.php"><i class="back fas fa-arrow-circle-left"></i></a>
     </header>
@@ -94,94 +102,61 @@ if(isset($_POST['prev'])){
 <form id="form1" name="form1" method="post" action="">
 	<section class="tugas_box wow fadeInDown">
 		<center>
-			<h1 class="judul wow zoomIn">Tambah Tugas</h1>
-				<hr class="wow jackInTheBox">
+			<h1 class="judul wow zoomIn">Kirim Tugas Pegawai</h1>
 		</center>
-	<div class="inner wow fadeIn">
-		<label for="judul" class="wow slideInLeft">Tugas Berjudul</label>
-		<input type="text" name="judul" id="judul" required/>
-		<label for="isi" class="wow slideInLeft">Dan Berisi:</label><br>
-		<textarea name="isi" id="isi" rows="2" placeholder="Isi tugas (Styling with Markdown is supported)" required class="isi_tugas"></textarea>
-		
-		<label for="tujuan" class="wow slideInLeft">Akan Dikirimkan Kepada</label>
-		
-<?php
-		$sql = mysqli_query($konek, "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor'");
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor' GROUP BY Jabatan ORDER BY Jabatan DESC;";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				$list1 = "";
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$jabatan = $row['Jabatan'];
-			$list1 = $list1.$jabatan."|";
-		}
-			}
-		}
-		
-		$sql_nama = mysqli_query($konek, "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor'");
-		if (mysqli_num_rows($sql_nama) != 0){
-			$A = "SELECT Nama, NIK FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				$list2 = "";
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$nama = $row['Nama'];
-					$nik_tujuan = $row['NIK'];
-			$list2 = $list2."|".$nik_tujuan."|".$nama;
-		}
-			}
-		}
-		$pat = 'pattern="Seluruh Karyawan|'.$list1.$list2.'"';
-?>
-		<input list="list" type="text" name="tujuan" id="tujuan" class="tujuan wow slideInUp" required autocomplete="off" <?php echo $pat ?> title='Harap isi bidang sesuai list'>
- 		<datalist name="list" id="list" class="tujuan wow slideInUp">
-			<option value="Seluruh Karyawan">Seluruh Karyawan</option>
-<?php
-	$sql = mysqli_query($konek, "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor'");
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor' GROUP BY Jabatan ORDER BY Jabatan DESC;";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$jabatan = $row['Jabatan'];
-			echo '
-				<option value="'.$jabatan.'">'.$jabatan.'</option>
-			';
-		}
-			}
-		}
+
+	</section>
+	<section class="tugas_box2 wow fadeInDown">
+		<div class="form">
+			<div class="form__group field">
+  				<input type="input" class="form__field" placeholder="Judul" name="judul" id="judul" required autocomplete="off" />
+  				<label for="judul" class="form__label">Judul</label>
+			</div>
 			
-	$sql_nama = mysqli_query($konek, "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor'");
-		if (mysqli_num_rows($sql_nama) != 0){
-			$A = "SELECT Nama, NIK FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
+			<div class="form__group field">
+				<textarea class="form__field" placeholder="Isi" name="isi" id="isi" required></textarea>
+  				<label for="isi" class="form__label">Isi Tugas</label>
+			</div>
+			
+			<div class="form__group field">
+			<input type="date" class="form__field" name="date" id="date" required min="<?php echo $tgl ?>" value="<?php echo $tgl ?>" />
+  				<label for="date" class="form__label">Dikirimkan Pada:</label>
+			</div>
+			
+			<div class="form__group field">
+			<input type="date" class="form__field" name="dead" id="dead" required/>
+  				<label for="dead" class="form__label">Deadline:</label>
+			</div>
+			
+			<div class="form__group field">
+			<input list="list" type="text" class="form__field" name="tujuan" id="tujuan" required autocomplete="off" />
+  				<label for="tujuan" class="form__label">Tujuan</label>
 				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$nama = $row['Nama'];
-					$nik_tujuan = $row['NIK'];
-			echo '
-				<option value="'.$nik_tujuan.'">'.$nama.'</option>
-			';
-		}
-			}
-		}
-?>
-		</datalist>
-		
-		<label for="time" class="wow slideInLeft"> Pada Tanggal</label>
-		<input class="tujuan wow slideInUp" type="date" name="time" id="time" min="<?php echo $tgl ?>" value="<?php echo $tgl ?>">
-		
-		<center>
-			<button type="submit" class="sumbit wow bounce" value="Kirim" id="kirim" name="kirim">Kirim</button>&nbsp;&nbsp;&nbsp;<button type="submit" class="sumbit wow bounce" value="Preview" id="prev" name="prev">Preview</button>
-		</center>
-	</div>
+				<datalist name="list" id="list" class="tujuan wow slideInUp">
+			<option value="Seluruh Karyawan">Seluruh Karyawan</option>
+				</datalist>
+			</div>
+			
+			<div class="lanjutan">
+				<div class="pretty p-switch p-fill" style="margin-bottom: 10px;">
+        			<input type="checkbox" checked name="kolom" value="true"/>
+        		<div class="state">
+            		<label>Aktifkan Kolom Jawaban</label>
+        		</div>
+    			</div>
+				
+				<br>
+				
+				<div class="pretty p-switch p-fill">
+        			<input type="checkbox" name="publik" value="true"/>
+        		<div class="state">
+            		<label>Jawaban Bersifat Publik</label>
+        		</div>
+    			</div>
+			</div>
+
+		</div>
+<button type="submit" class="sumbit" value="Kirim" id="kirim" name="kirim">Kirim</button>
 	</section>
 </form>
 	
@@ -240,9 +215,25 @@ if(isset($_POST['prev'])){
     </div>
 
     <script src="etc/script.js"></script>
+	<script src="../etc/allert.js"></script>
 	<script src="../Main Tab/etc/wow.min.js"></script>
 <script>
 	new WOW().init();
 </script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<?php
+if (isset($_SESSION['kirimTugas'])){
+	echo "<script> kirimTugas(); </script>";
+	unset($_SESSION['kirimTugas']);
+}
+?>
+	<script>
+	document.getElementById("date").onchange = function () {
+    	var input = document.getElementById("dead");
+    	input.setAttribute("min", this.value);
+		input.setAttribute("value", this.value);
+	}
+	</script>
 </body>
 </html>
