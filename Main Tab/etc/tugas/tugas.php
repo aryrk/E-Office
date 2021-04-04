@@ -76,6 +76,8 @@ if (!empty($_POST)){
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
+				<option value="done" class="searchTerm">Tugas Selesai</option>
+				<option value="dead" class="searchTerm">Tugas Kadeluarsa</option>
 			';	
 			}
 			else if (isset($_GET['l'])){
@@ -87,6 +89,8 @@ if (!empty($_POST)){
 				<option value="All" class="searchTerm">Semua Tugas</option>
 				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
+				<option value="done" class="searchTerm">Tugas Selesai</option>
+				<option value="dead" class="searchTerm">Tugas Kadeluarsa</option>
 			';
 				}
 				
@@ -96,6 +100,8 @@ if (!empty($_POST)){
 				<option value="All" class="searchTerm">Semua Tugas</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
+				<option value="done" class="searchTerm">Tugas Selesai</option>
+				<option value="dead" class="searchTerm">Tugas Kadeluarsa</option>
 			';
 				}
 				
@@ -105,7 +111,29 @@ if (!empty($_POST)){
 				<option value="All" class="searchTerm">Semua Tugas</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
+				<option value="done" class="searchTerm">Tugas Selesai</option>
+				<option value="dead" class="searchTerm">Tugas Kadeluarsa</option>
 			';
+				}
+				else if ($l == "done"){
+			echo '
+				<option value="done" class="searchTerm">Tugas Selesai</option>
+				<option value="All" class="searchTerm">Semua Tugas</option>
+				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
+				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
+				<option value="globe" class="searchTerm">Tugas Global</option>
+				<option value="dead" class="searchTerm">Tugas Kadeluarsa</option>
+			';	
+				}
+				else if ($l == "dead"){
+			echo '
+				<option value="dead" class="searchTerm">Tugas Kadeluarsa</option>
+				<option value="All" class="searchTerm">Semua Tugas</option>
+				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
+				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
+				<option value="globe" class="searchTerm">Tugas Global</option>
+				<option value="done" class="searchTerm">Tugas Selesai</option>
+			';	
 				}
 			}
 ?>
@@ -120,7 +148,7 @@ if (!empty($_POST)){
 <?php
 //Menampilkan daftar tugas sesuai dengan opsi yang dipilih
 if (!isset($_GET['l']) || $_GET['l'] == "All"){
-	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$nik' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' AND Tanggal<='$tgl' ORDER BY Tanggal DESC;";
+	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' AND Deadline>='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$nik' AND Tanggal<='$tgl' AND Deadline>='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' AND Tanggal<='$tgl' AND Deadline>='$tgl' ORDER BY Tanggal DESC;";
 	$result = mysqli_query($konek, $A);
 	$check = mysqli_num_rows($result);
 				
@@ -162,7 +190,7 @@ if (!isset($_GET['l']) || $_GET['l'] == "All"){
 }
 	
 else if (isset($_GET['l']) && $_GET['l'] == $nik){
-	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='$nik' AND Tanggal<='$tgl' ORDER BY Tanggal DESC;";
+	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='$nik' AND Tanggal<='$tgl' AND Deadline>='$tgl' ORDER BY Tanggal DESC;";
 	$result = mysqli_query($konek, $A);
 	$check = mysqli_num_rows($result);
 				
@@ -203,7 +231,42 @@ else if (isset($_GET['l']) && $_GET['l'] == $nik){
 	}
 }
 else if (isset($_GET['l']) && $_GET['l'] == $jabatan){
-	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' AND Tanggal<='$tgl' ORDER BY Tanggal DESC;";
+	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' AND Tanggal<='$tgl' AND Deadline>='$tgl' ORDER BY Tanggal DESC;";
+	$result = mysqli_query($konek, $A);
+	$check = mysqli_num_rows($result);
+				
+	if ($check > 0){
+		while ($row = mysqli_fetch_assoc($result)){
+			$judul = $row['Judul'];
+			$pengiriman = date("D - d/m/Y", strtotime($row['Tanggal']));
+			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
+			$tujuan = $row['Tujuan'];
+			$id = $row['id_tugas'];
+	
+	echo '
+  		<div class="column">
+    		<div class="card">
+      			<img src="../../../Icon/Textless/Icon.png" alt="Logo" style="width:100%">
+      			<div class="container">
+        			<h2 class="nama">'.$judul.'</h2>
+		  			<div class="textB">
+        			<p class="title">'.$pengiriman.'</p>
+        			<p style="font-size: 90%">'.$tujuan.'</p>
+					<p>'.$kantor.' Company</p>
+			  		</div>
+					<p>Deadline:</p>
+					<p class="title">'.$dead.'</p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+      			</div>
+    		</div>
+  		</div>
+	';
+		}
+	}
+}
+
+else if (isset($_GET['l']) && $_GET['l'] == 'dead'){
+	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Deadline<'$tgl' ORDER BY Tanggal DESC;";
 	$result = mysqli_query($konek, $A);
 	$check = mysqli_num_rows($result);
 				
@@ -238,7 +301,7 @@ else if (isset($_GET['l']) && $_GET['l'] == $jabatan){
 }
 	
 else if (isset($_GET['l']) == 'globe'){
-	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' ORDER BY Tanggal DESC;";
+	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' AND Deadline>='$tgl' ORDER BY Tanggal DESC;";
 	$result = mysqli_query($konek, $A);
 	$check = mysqli_num_rows($result);
 				
