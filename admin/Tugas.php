@@ -129,11 +129,76 @@ if(isset($_POST['kirim'])){
 			</div>
 			
 			<div class="form__group field">
-			<input list="list" type="text" class="form__field" name="tujuan" id="tujuan" required autocomplete="off" />
+<?php
+		$sql = mysqli_query($konek, "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor'");
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor' GROUP BY Jabatan ORDER BY Jabatan DESC;";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				$list1 = "";
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$jabatan = $row['Jabatan'];
+			$list1 = $list1.$jabatan."|";
+		}
+			}
+		}
+		
+		$sql_nama = mysqli_query($konek, "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor'");
+		if (mysqli_num_rows($sql_nama) != 0){
+			$A = "SELECT Nama, NIK FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				$list2 = "";
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$nama = $row['Nama'];
+					$nik_tujuan = $row['NIK'];
+			$list2 = $list2."|".$nik_tujuan."|".$nama;
+		}
+			}
+		}
+		$pat = 'pattern="Seluruh Karyawan|'.$list1.$list2.'"';
+?>
+			<input list="list" type="text" class="form__field" name="tujuan" id="tujuan" required autocomplete="off" <?php echo $pat ?> />
   				<label for="tujuan" class="form__label">Tujuan</label>
 				
 				<datalist name="list" id="list" class="tujuan wow slideInUp">
 			<option value="Seluruh Karyawan">Seluruh Karyawan</option>
+<?php
+	$sql = mysqli_query($konek, "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor'");
+		if (mysqli_num_rows($sql) != 0){
+			$A = "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor' GROUP BY Jabatan ORDER BY Jabatan DESC;";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$jabatan = $row['Jabatan'];
+			echo '
+				<option value="'.$jabatan.'">'.$jabatan.'</option>
+			';
+		}
+			}
+		}
+			
+	$sql_nama = mysqli_query($konek, "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor'");
+		if (mysqli_num_rows($sql_nama) != 0){
+			$A = "SELECT Nama, NIK FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
+			$result = mysqli_query($konek, $A);
+			$check = mysqli_num_rows($result);
+				
+			if ($check > 0){
+				while ($row = mysqli_fetch_assoc($result)){
+					$nama = $row['Nama'];
+					$nik_tujuan = $row['NIK'];
+			echo '
+				<option value="'.$nik_tujuan.'">'.$nama.'</option>
+			';
+		}
+			}
+		}
+?>
 				</datalist>
 			</div>
 			
