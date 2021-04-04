@@ -72,7 +72,7 @@ if (!empty($_POST)){
 //Menampilkan opsi search sesuai dengan kondisi
 			if (!isset($_GET['l']) || $_GET['l'] == "All"){
 			echo '
-				<option value="All" class="searchTerm">Semua Tugas</option>
+				<option value="All" class="searchTerm">Semua Tugas Aktif</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
@@ -86,7 +86,7 @@ if (!empty($_POST)){
 				if($l == $jabatan){
 			echo '
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
-				<option value="All" class="searchTerm">Semua Tugas</option>
+				<option value="All" class="searchTerm">Semua Tugas Aktif</option>
 				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
 				<option value="done" class="searchTerm">Tugas Selesai</option>
@@ -97,7 +97,7 @@ if (!empty($_POST)){
 				else if($l == $nik){
 			echo '
 				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
-				<option value="All" class="searchTerm">Semua Tugas</option>
+				<option value="All" class="searchTerm">Semua Tugas Aktif</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
 				<option value="done" class="searchTerm">Tugas Selesai</option>
@@ -108,7 +108,7 @@ if (!empty($_POST)){
 				else if($l == "globe"){
 			echo '
 				<option value="globe" class="searchTerm">Tugas Global</option>
-				<option value="All" class="searchTerm">Semua Tugas</option>
+				<option value="All" class="searchTerm">Semua Tugas Aktif</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="done" class="searchTerm">Tugas Selesai</option>
@@ -118,7 +118,7 @@ if (!empty($_POST)){
 				else if ($l == "done"){
 			echo '
 				<option value="done" class="searchTerm">Tugas Selesai</option>
-				<option value="All" class="searchTerm">Semua Tugas</option>
+				<option value="All" class="searchTerm">Semua Tugas Aktif</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
@@ -128,7 +128,7 @@ if (!empty($_POST)){
 				else if ($l == "dead"){
 			echo '
 				<option value="dead" class="searchTerm">Tugas Kadeluarsa</option>
-				<option value="All" class="searchTerm">Semua Tugas</option>
+				<option value="All" class="searchTerm">Semua Tugas Aktif</option>
 				<option value="'.$jabatan.'" class="searchTerm">Tugas Bagian</option>
 				<option value="'.$nik.'" class="searchTerm">Tugas Pribadi</option>
 				<option value="globe" class="searchTerm">Tugas Global</option>
