@@ -130,11 +130,20 @@ else if($_GET['value'] == "gantiabsen"){
 
 else if($_GET['value'] == "prevtugas"){
 	$_SESSION['id_tugas'] = $_GET['id_tugas'];
+	$_SESSION['l_back'] = $_GET['l'];
 	header("Location: Main Tab/etc/tugas/detail.php");
 }
 else if($_GET['value'] == "tugas_kembali"){
 	unset($_SESSION['id_tugas']);
-	header("Location: Main Tab/etc/tugas/tugas.php");
+	$l = $_SESSION['l_back'];
+	unset($_SESSION['l_back']);
+	
+	if ($l == "All"){
+		header("Location: Main Tab/etc/tugas/tugas.php");
+	}
+	else {
+		header("Location: Main Tab/etc/tugas/tugas.php?l=$l");
+	}
 }
 else if($_GET['value'] == "cuti"){
 	unset($_SESSION['cuti']);
