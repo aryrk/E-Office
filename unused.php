@@ -235,6 +235,11 @@ else if($_GET['value'] == "prevtugas_admin"){
 	$_SESSION['id_tugas'] = $_GET['id_tugas'];
 	header("Location: admin/etc/history/detail.php");
 }
+else if($_GET['value'] == "prevtugas_admin_data"){
+	$_SESSION['id_tugas'] = $_GET['id_tugas'];
+	$l = $_GET['l'];
+	header("Location: admin/etc/history/detail.php?l=".$l);
+}
 	
 else if($_GET['value'] == "prevpengumuman"){
 	$_SESSION['id_pengumuman'] = $_GET['id_pengumuman'];
