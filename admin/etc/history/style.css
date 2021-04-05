@@ -150,7 +150,7 @@ h2{
     text-align: center;
     position: absolute;
     margin-top: 2%;
-    margin-left: 40%;
+    width: 100%;
 }
 
 .back{
@@ -431,7 +431,7 @@ a{
 @media screen and (max-width: 768px){
     .h1{
         margin-top: 2.5%;
-        margin-left: 33%;
+        width: 100%;
     }
 
     .h2{
@@ -509,7 +509,7 @@ a{
 
     .h1{
         margin-top: 5%;
-        margin-left: 5%;
+        width: 100%;
         font-size: 150%;
     }
 
