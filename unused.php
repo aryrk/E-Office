@@ -202,7 +202,26 @@ else if($_GET['value'] == "tolakCuti"){
 else if($_GET['value'] == "deltugas"){
 	$id = $_GET['id_tugas'];
 	$_SESSION['deltugas'] = 1;
-	
+			
+	$A_del = "SELECT NIK, id_tugas FROM kirim_tugas WHERE Nama_Perusahaan='$kantor_admin' AND id_tugas='$id' ORDER BY Submitted_On_Date DESC;";
+	$result_del = mysqli_query($konek, $A_del);
+	$check_del = mysqli_num_rows($result_del);
+				
+		if ($check_del > 0){
+			while ($row_del = mysqli_fetch_assoc($result_del)){
+				$del_folder = $row_del['id_tugas'];
+				$nik_karyawan = $row_del['NIK'];
+					
+				$files = glob("Main Tab/etc/tugas/uploads/".$nik_karyawan.$del_folder."/*"); // get all file names
+				foreach($files as $file){ // iterate files
+  					if(is_file($file)) {
+						unlink($file); // delete file
+  					}
+						}
+					rmdir("Main Tab/etc/tugas/uploads/".$nik_karyawan.$del_folder);
+				}
+			}
+	mysqli_query($konek, "DELETE FROM kirim_tugas WHERE Nama_Perusahaan='$kantor_admin' AND id_tugas='$id';");
 	mysqli_query($konek, "DELETE FROM tugas WHERE id_tugas='$id'");
 	header("Location: admin/etc/history/history.php");
 }
@@ -214,7 +233,7 @@ else if($_GET['value'] == "delpengumuman"){
 }
 else if($_GET['value'] == "prevtugas_admin"){
 	$_SESSION['id_tugas'] = $_GET['id_tugas'];
-	header("Location: admin/preview_tugas/preview.php");
+	header("Location: admin/etc/history/detail.php");
 }
 	
 else if($_GET['value'] == "prevpengumuman"){
