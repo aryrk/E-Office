@@ -151,6 +151,11 @@ if ($check > 0){
 		else {
 			$file_dir = '<p></p>';
 		}
+		$edit_detect = $row['Edit_left'];
+		
+		if($edit_detect < 2){
+			$diupload_pada = $diupload_pada." (edited)";
+		}
 		
 		echo '
 		<div class="row">
