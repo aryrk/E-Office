@@ -81,8 +81,37 @@ else if($_GET['value'] == "hapuskar "){
 	mysqli_query($konek, "DELETE FROM absen WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
 	mysqli_query($konek, "DELETE FROM cuti WHERE Nama='$Nama_kar' AND Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
 	mysqli_query($konek, "DELETE FROM pengumuman WHERE Tujuan='$NIK_kar' AND Nama_Perusahaan='$kantor_admin';");
-	mysqli_query($konek, "DELETE FROM tugas WHERE Tujuan='$NIK_kar' AND Nama_Perusahaan='$kantor_admin';");
 	
+	$A = "SELECT id_tugas FROM tugas WHERE Nama_Perusahaan='$kantor_admin' ORDER BY Submitted_On_Date DESC;";
+	$result = mysqli_query($konek, $A);
+	$check = mysqli_num_rows($result);
+				
+	if ($check > 0){
+		while ($row = mysqli_fetch_assoc($result)){
+			$id_pengiriman = $row['id_tugas'];
+			
+			$A_del = "SELECT id_tugas FROM kirim_tugas WHERE Nama_Perusahaan='$kantor_admin' AND id_tugas='$id_pengiriman' AND NIK='$NIK_kar' ORDER BY Submitted_On_Date DESC;";
+			$result_del = mysqli_query($konek, $A_del);
+			$check_del = mysqli_num_rows($result_del);
+				
+			if ($check_del > 0){
+				while ($row_del = mysqli_fetch_assoc($result_del)){
+					$del_folder = $row_del['id_tugas'];
+					
+					$files = glob("Main Tab/etc/tugas/uploads/".$NIK_kar.$del_folder."/*"); // get all file names
+						foreach($files as $file){ // iterate files
+  					if(is_file($file)) {
+						unlink($file); // delete file
+  					}
+						}
+					rmdir("Main Tab/etc/tugas/uploads/".$NIK_kar.$del_folder);
+				}
+			}
+		}
+	}
+	mysqli_query($konek, "DELETE FROM kirim_tugas WHERE Nama_Perusahaan='$kantor_admin' AND NIK='$NIK_kar';");
+	
+	mysqli_query($konek, "DELETE FROM tugas WHERE Tujuan='$NIK_kar' AND Nama_Perusahaan='$kantor_admin';");
 	$_SESSION['hapusKaryawan'] = 1;
 	header("Location: admin/List-Karyawan.php");
 }
