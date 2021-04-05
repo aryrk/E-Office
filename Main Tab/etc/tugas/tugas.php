@@ -165,7 +165,14 @@ if (!isset($_GET['l']) || $_GET['l'] == "All"){
 					$row_nama = mysqli_fetch_assoc($result_nama);
 					
 					$tujuan = $row_nama['Nama'];
-				}$id = $row['id_tugas'];
+				}
+			$id = $row['id_tugas'];
+			
+			$A_saver = "SELECT * FROM kirim_tugas WHERE Nama_Perusahaan='$kantor' AND id_tugas='$id' AND NIK='$nik' AND Pengirim='$nama'";
+			$result_saver = mysqli_query($konek, $A_saver);
+			$check_saver = mysqli_num_rows($result_saver);
+				
+			if ($check_saver == 0){
 	
 	echo '
   		<div class="column">
@@ -185,6 +192,7 @@ if (!isset($_GET['l']) || $_GET['l'] == "All"){
     		</div>
   		</div>
 	';
+			}
 		}
 	}
 }
@@ -209,6 +217,12 @@ else if (isset($_GET['l']) && $_GET['l'] == $nik){
 					
 					$tujuan = $row_nama['Nama'];
 				}
+			
+			$A_saver = "SELECT * FROM kirim_tugas WHERE Nama_Perusahaan='$kantor' AND id_tugas='$id' AND NIK='$nik' AND Pengirim='$nama'";
+			$result_saver = mysqli_query($konek, $A_saver);
+			$check_saver = mysqli_num_rows($result_saver);
+				
+			if ($check_saver == 0){
 			echo '
   		<div class="column">
     		<div class="card">
@@ -227,6 +241,7 @@ else if (isset($_GET['l']) && $_GET['l'] == $nik){
     		</div>
   		</div>
 	';
+			}
 		}
 	}
 }
@@ -242,6 +257,12 @@ else if (isset($_GET['l']) && $_GET['l'] == $jabatan){
 			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
+			
+			$A_saver = "SELECT * FROM kirim_tugas WHERE Nama_Perusahaan='$kantor' AND id_tugas='$id' AND NIK='$nik' AND Pengirim='$nama'";
+			$result_saver = mysqli_query($konek, $A_saver);
+			$check_saver = mysqli_num_rows($result_saver);
+				
+			if ($check_saver == 0){
 	
 	echo '
   		<div class="column">
@@ -261,12 +282,13 @@ else if (isset($_GET['l']) && $_GET['l'] == $jabatan){
     		</div>
   		</div>
 	';
+			}
 		}
 	}
 }
 
 else if (isset($_GET['l']) && $_GET['l'] == 'dead'){
-	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Deadline<'$tgl' ORDER BY Tanggal DESC;";
+	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Deadline<'$tgl' AND Tujuan='Seluruh Karyawan' OR Nama_Perusahaan='$kantor' AND Deadline<'$tgl' AND Tujuan='$nik' OR Nama_Perusahaan='$kantor' AND Deadline<'$tgl' AND Tujuan='$jabatan' ORDER BY Tanggal DESC;";
 	$result = mysqli_query($konek, $A);
 	$check = mysqli_num_rows($result);
 				
@@ -277,6 +299,12 @@ else if (isset($_GET['l']) && $_GET['l'] == 'dead'){
 			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
+			
+			$A_saver = "SELECT * FROM kirim_tugas WHERE Nama_Perusahaan='$kantor' AND id_tugas='$id' AND NIK='$nik' AND Pengirim='$nama'";
+			$result_saver = mysqli_query($konek, $A_saver);
+			$check_saver = mysqli_num_rows($result_saver);
+				
+			if ($check_saver == 0){
 	
 	echo '
   		<div class="column">
@@ -296,6 +324,48 @@ else if (isset($_GET['l']) && $_GET['l'] == 'dead'){
     		</div>
   		</div>
 	';
+			}
+		}
+	}
+}
+	
+else if (isset($_GET['l']) && $_GET['l'] == 'done'){
+	$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' OR Nama_Perusahaan='$kantor' AND Tujuan='$nik' OR Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' ORDER BY Tanggal DESC;";
+	$result = mysqli_query($konek, $A);
+	$check = mysqli_num_rows($result);
+				
+	if ($check > 0){
+		while ($row = mysqli_fetch_assoc($result)){
+			$judul = $row['Judul'];
+			$pengiriman = date("D - d/m/Y", strtotime($row['Tanggal']));
+			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
+			$tujuan = $row['Tujuan'];
+			$id = $row['id_tugas'];
+			
+			$A_saver = "SELECT * FROM kirim_tugas WHERE Nama_Perusahaan='$kantor' AND id_tugas='$id' AND NIK='$nik' AND Pengirim='$nama'";
+			$result_saver = mysqli_query($konek, $A_saver);
+			$check_saver = mysqli_num_rows($result_saver);
+				
+			if ($check_saver > 0){
+	
+	echo '
+  		<div class="column">
+    		<div class="card">
+      			<img src="../../../Icon/Textless/Icon.png" alt="Logo" style="width:100%">
+      			<div class="container">
+        			<h2 class="nama">'.$judul.'</h2>
+		  			<div class="textB">
+        			<p class="title">'.$pengiriman.'</p>
+        			<p style="font-size: 90%">'.$tujuan.'</p>
+					<p>'.$kantor.' Company</p>
+			  		</div>
+					<p class="title">(Telah Dikerjakan)</p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+      			</div>
+    		</div>
+  		</div>
+	';
+			}
 		}
 	}
 }
@@ -312,6 +382,12 @@ else if (isset($_GET['l']) == 'globe'){
 			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
 			$tujuan = $row['Tujuan'];
 			$id = $row['id_tugas'];
+			
+			$A_saver = "SELECT * FROM kirim_tugas WHERE Nama_Perusahaan='$kantor' AND id_tugas='$id' AND NIK='$nik' AND Pengirim='$nama'";
+			$result_saver = mysqli_query($konek, $A_saver);
+			$check_saver = mysqli_num_rows($result_saver);
+				
+			if ($check_saver == 0){
 	
 	echo '
   		<div class="column">
@@ -331,6 +407,7 @@ else if (isset($_GET['l']) == 'globe'){
     		</div>
   		</div>
 	';
+			}
 		}
 	}
 }
