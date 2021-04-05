@@ -187,7 +187,7 @@ if (!isset($_GET['l']) || $_GET['l'] == "All"){
 			  		</div>
 					<p>Deadline:</p>
 					<p class="title">'.$dead.'</p>
-        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'&&l=All"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
   		</div>
@@ -236,7 +236,7 @@ else if (isset($_GET['l']) && $_GET['l'] == $nik){
 			  		</div>
 					<p>Deadline:</p>
 					<p class="title">'.$dead.'</p>
-        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'&&l='.$nik.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
   		</div>
@@ -277,7 +277,7 @@ else if (isset($_GET['l']) && $_GET['l'] == $jabatan){
 			  		</div>
 					<p>Deadline:</p>
 					<p class="title">'.$dead.'</p>
-        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'&&l='.$jabatan.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
   		</div>
@@ -319,7 +319,7 @@ else if (isset($_GET['l']) && $_GET['l'] == 'dead'){
 			  		</div>
 					<p>Deadline:</p>
 					<p class="title">'.$dead.'</p>
-        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'&&l=dead"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
   		</div>
@@ -360,7 +360,7 @@ else if (isset($_GET['l']) && $_GET['l'] == 'done'){
 					<p>'.$kantor.' Company</p>
 			  		</div>
 					<p class="title">(Telah Dikerjakan)</p>
-        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'&&l=done"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
   		</div>
@@ -402,7 +402,7 @@ else if (isset($_GET['l']) == 'globe'){
 			  		</div>
 					<p>Deadline:</p>
 					<p class="title">'.$dead.'</p>
-        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
+        			<p><a href="../../../unused.php?value=prevtugas&&id_tugas='.$id.'&&l=globe"><button class="button" id="button1">Lihat Tugas</button></a></p>
       			</div>
     		</div>
   		</div>
