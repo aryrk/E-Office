@@ -57,7 +57,7 @@ if(isset($_POST['search'])){
 <form id="form1" name="form1" method="post" action="">
     <div class="wrap">
         <div class="search">
-        <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap/NIK..." autocomplete="off">
+        <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari ID/Tujuan Tugas" autocomplete="off">
         <button type="submit" name="search" id="search" class="searchButton">
             <i class="fa fa-search"></i>
         </button>
@@ -79,9 +79,31 @@ if(isset($_POST['search'])){
             </thead>
             <tbody>
 <?php
-$A = "SELECT * FROM tugas WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' ORDER BY Tanggal DESC;";
-$result = mysqli_query($konek, $A);
-$check = mysqli_num_rows($result);
+if (!isset($_GET['l']) || $_GET['l'] == NULL){
+	$A = "SELECT * FROM tugas WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' ORDER BY Tanggal DESC;";
+	$result = mysqli_query($konek, $A);
+	$check = mysqli_num_rows($result);
+}
+else if (isset($_GET['l'])){
+	$l = $_GET['l'];
+	
+	$A_saver = "SELECT NIK FROM login WHERE Nama='$l' AND Nama_Perusahaan='$kantor';";
+	$result_saver = mysqli_query($konek, $A_saver);
+	$check_saver = mysqli_num_rows($result_saver);
+				
+	if ($check_saver > 0){
+		$row_saver = mysqli_fetch_assoc($result_saver);
+		
+		$nama_cari = $row_saver['NIK'];
+	}
+	else {
+		$nama_cari = time();
+	}
+	
+	$A = "SELECT * FROM tugas WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND id_tugas='$l' OR NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND Tujuan='$l' OR NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' AND Tujuan='$nama_cari' ORDER BY Tanggal DESC;";
+	$result = mysqli_query($konek, $A);
+	$check = mysqli_num_rows($result);
+}
 				
 	if ($check > 0){
 		while ($row = mysqli_fetch_assoc($result)){
@@ -89,6 +111,14 @@ $check = mysqli_num_rows($result);
 			$judul_tugas = $row['Judul'];
 			$tanggal_tugas = $row['Tanggal'];
 			$tujuan_tugas = $row['Tujuan'];
+			
+			if(is_numeric($tujuan_tugas)){
+					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan_tugas';";
+					$result_nama = mysqli_query($konek, $A_nama);
+					$row_nama = mysqli_fetch_assoc($result_nama);
+					
+					$tujuan_tugas = $row_nama['Nama'];
+				}
 			
 			$A_count = "SELECT COUNT(id_laporan) FROM kirim_tugas WHERE Nama_Perusahaan='$kantor' AND id_tugas='$id_tugas' ORDER BY Submitted_On_Hours DESC;";
 			$result_count = mysqli_query($konek, $A_count);
@@ -109,7 +139,7 @@ $check = mysqli_num_rows($result);
                 <td>'.$judul_tugas.'</td>
                 <td>'.$tanggal_tugas.'</td>
                 <td>'.$tujuan_tugas.'</td>
-                <td>'.$jumlah_orang.'</td>
+                <td><a style="color: black;" href="list.php?id='.$id_tugas.'">'.$jumlah_orang.'</a></td>
                 <td class="button_collumn" style="padding: 0px;"><a href="../../../unused.php?value=prevtugas_admin&&id_tugas='.$id_tugas.'"><button class="button_detail">Lihat Detail</button></a></td>
                 <td class="button_collumn2" style="padding: 0px;"><a href="../../../unused.php?value=deltugas&&id_tugas='.$id_tugas.'"><button class="button_detail2">Hapus</button></a></td>
             </tr>
