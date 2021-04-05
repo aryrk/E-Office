@@ -23,6 +23,8 @@ $row = mysqli_fetch_assoc($result);
 $judul_tugas = $row['Judul'];
 $isi_tugas = $row['Isi_Tugas'];
 
+$deadline_saver = $row['Deadline'];
+
 $tanggal_tujuan = date("D - d/m/Y", strtotime($row['Tanggal']));
 $deadline = date("D - d/m/Y", strtotime($row['Deadline']));
 
@@ -190,7 +192,7 @@ else if (empty($_FILES['file']['name'])) {
   		</div>
 	</div>
 <?php
-if ($comment_allowed == true && $sisa != 0){
+if ($comment_allowed == true && $sisa != 0 && $deadline_saver>=$tgl){
 	echo '
 <!--Form kirim tugas-->
 	<div class="row">
