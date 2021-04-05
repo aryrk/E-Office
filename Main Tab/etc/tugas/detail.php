@@ -234,7 +234,7 @@ if ($check > 0){
 		$dir_to_file_mandiri = $row['dir_to_file'];
 		$diupload_pada_mandiri = date("D - d/m/Y", strtotime($row['Submitted_On_Date']));
 		
-		$file_mandiri = '<a href="'.$dir_to_file_mandiri.'"><p>'.$nama_file_mandiri.'</p></a>';
+		$file_mandiri = '<a href="'.$dir_to_file_mandiri.'" target="_blank"><p>'.$nama_file_mandiri.'</p></a>';
 		
 		echo '
 <hr style="margin-top: 20px;">
@@ -304,7 +304,7 @@ echo '
 		$dir_to_file = $row['dir_to_file'];
 		$diupload_pada = date("D - d/m/Y", strtotime($row['Submitted_On_Date']));
 		
-		$file_dir = '<a href="'.$dir_to_file.'"><p>'.$nama_file.'</p></a>';
+		$file_dir = '<a href="'.$dir_to_file.'" target="_blank"><p>'.$nama_file.'</p></a>';
 		
 		echo '
 	<div class="row">
