@@ -7,9 +7,6 @@ if (!isset($_SESSION['LOGIN_ADMIN'])){
 	exit ();
 }
 
-date_default_timezone_set('Asia/Jakarta');
-$tgl = date("Y-m-d");
-
 $kantor = $_SESSION['kantor_admin'];
 $nik = $_SESSION['NIK_admin'];
 $pw = $_SESSION['PW_admin'];
@@ -23,20 +20,8 @@ else {
 }
 
 if(isset($_POST['search'])){
-	$jenis = trim($_POST['jenis']);
-	header("Location: history.php?l=$jenis");
-}
-if (!empty($_POST)){
-	$jenis = trim($_POST['jenis']);
-	header("Location: history.php?l=$jenis");
-}
-if(isset($_POST['search_2'])){
-	$date = trim($_POST['date']);
-	$date = date('Y-m-d',strtotime($date));
-	header("Location: history.php?l=$date&&ldate=$date");
-}
-if(isset($_POST['reset'])){
-	header("Location: history.php");
+	$nama = trim($_POST['nama']);
+	header("Location: history.php?l=$nama");
 }
 ?>
 <!DOCTYPE html>
@@ -46,14 +31,14 @@ if(isset($_POST['reset'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel = "icon" href ="../../../Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
-    <title>Log Pengiriman Tugas</title>
+    <title>Data Tugas</title>
     
     <link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="../../../etc/wmRemover.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../../../Main Tab/etc/Animate.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css">
 </head>
 	
 <body>
@@ -65,223 +50,78 @@ if(isset($_POST['reset'])){
 	<header class="banner-unused"> 
         <h1 class="h1">Officia Administrator</h1>
     </header>
-<!--Inner-->
+	
+<!-- partial:index.partial.html -->
+<section class="tampilan">
+    <h2 class="h2">Data Pengerjaan Tugas</h2>
 <form id="form1" name="form1" method="post" action="">
-	<div class="wrap" style="z-index: 10000;">
-	<div class="search">
-		<select name="jenis" id="jenis" onchange='if(this.value != 0) { this.form.submit(); }'>
+    <div class="wrap">
+        <div class="search">
+        <input type="text" name="nama" id="nama" class="searchTerm" placeholder="Cari Nama Lengkap/NIK..." autocomplete="off">
+        <button type="submit" name="search" id="search" class="searchButton">
+            <i class="fa fa-search"></i>
+        </button>
+        </div>
+    </div>
+	</form>
+    <div class="table-wrapper">
+        <table class="fl-table" border="2" rules="cols">
+            <thead>
+            <tr>
+                <th>ID Tugas</th>
+                <th>Judul</th>
+                <th>Tanggal Pengiriman</th>
+                <th>Tujuan</th>
+                <th>Dikerjakan Oleh</th>
+                <th>Aksi 1</th>
+                <th>Aksi 2</th>
+            </tr>
+            </thead>
+            <tbody>
 <?php
-			if (!isset($_GET['l']) && !isset($_GET['ldate']) && $_GET['l'] == "All"){
-			echo '
-				<option value="All" class="searchTerm">Semua Tugas Terkirim</option>
-				<option value="Global" class="searchTerm">Tugas Global</option>
-				';
-			}
-			else if (isset($_GET['l']) && !isset($_GET['ldate']) && $_GET['l'] != "All"){
-				$cari = $_GET['l'];
-				$cari_nama = $_GET['l'];
-				if(is_numeric($cari)){
-					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$cari';";
-					$result_nama = mysqli_query($konek, $A_nama);
-					$row_nama = mysqli_fetch_assoc($result_nama);
-					
-					$cari_nama = $row_nama['Nama'];
-				}
-			echo '
-				<option value="'.$cari.'" class="searchTerm">Tugas '.$cari_nama.'</option>
-				<option value="All" class="searchTerm">Semua Tugas Terkirim</option>
-				<option value="Global" class="searchTerm">Tugas Global</option>
-				';
+$A = "SELECT * FROM tugas WHERE NIK_Admin='$nik' AND Nama_Perusahaan='$kantor' ORDER BY Tanggal DESC;";
+$result = mysqli_query($konek, $A);
+$check = mysqli_num_rows($result);
+				
+	if ($check > 0){
+		while ($row = mysqli_fetch_assoc($result)){
+			$id_tugas = $row['id_tugas'];
+			$judul_tugas = $row['Judul'];
+			$tanggal_tugas = $row['Tanggal'];
+			$tujuan_tugas = $row['Tujuan'];
+			
+			$A_count = "SELECT COUNT(id_laporan) FROM kirim_tugas WHERE Nama_Perusahaan='$kantor' AND id_tugas='$id_tugas' ORDER BY Submitted_On_Hours DESC;";
+			$result_count = mysqli_query($konek, $A_count);
+			$row_count = mysqli_fetch_assoc($result_count);
+			
+			$jumlah_orang = $row_count['COUNT(id_laporan)'];
+			
+			if ($jumlah_orang == 0){
+				$jumlah_orang = "Belum ada";
 			}
 			else {
-			echo '
-				<option value="All" class="searchTerm">Semua Tugas Terkirim</option>
-				<option value="Global" class="searchTerm">Tugas Global</option>
-				';
+				$jumlah_orang = $jumlah_orang." Pegawai";
 			}
-
-	$sql = mysqli_query($konek, "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor'");
-		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT Jabatan FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Jabatan DESC;";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$jabatan = $row['Jabatan'];
-			echo '
-				<option value="'.$jabatan.'">Tugas '.$jabatan.'</option>
-			';
-		}
-			}
-		}
 			
-	$sql_nama = mysqli_query($konek, "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor'");
-		if (mysqli_num_rows($sql_nama) != 0){
-			$A = "SELECT Nama, NIK FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
-			$result = mysqli_query($konek, $A);
-			$check = mysqli_num_rows($result);
-				
-			if ($check > 0){
-				while ($row = mysqli_fetch_assoc($result)){
-					$nama = $row['Nama'];
-					$nik_tujuan = $row['NIK'];
 			echo '
-				<option value="'.$nik_tujuan.'">Tugas '.$nama.'</option>
+			<tr>
+                <td>'.$id_tugas.'</td>
+                <td>'.$judul_tugas.'</td>
+                <td>'.$tanggal_tugas.'</td>
+                <td>'.$tujuan_tugas.'</td>
+                <td>'.$jumlah_orang.'</td>
+                <td class="button_collumn" style="padding: 0px;"><a href="../../../unused.php?value=prevtugas_admin&&id_tugas='.$id_tugas.'"><button class="button_detail">Lihat Detail</button></a></td>
+                <td class="button_collumn2" style="padding: 0px;"><a href="../../../unused.php?value=deltugas&&id_tugas='.$id_tugas.'"><button class="button_detail2">Hapus</button></a></td>
+            </tr>
 			';
-		}
-			}
-		}
-
-if(!isset($_GET['ldate'])){
-			echo'
-		</select>
-		<button type="submit" name="search" id="search" class="searchButton">
-			<i class="fa fa-search"></i>
-		</button>
-		
-		<label style="padding: 6px;">Atau</label><input type="date" name="date" id='."date".' value="'.$tgl.'"/>
-		<button type="submit" name="search_2" id="search_2" class="searchButton">
-			<i class="fa fa-search"></i>
-		</button>';
-}
-else if(isset($_GET['ldate'])){
-	$tanggal_cari = $_GET['ldate'];
-			echo'
-		</select>
-		<button type="submit" name="search" id="search" class="searchButton">
-			<i class="fa fa-search"></i>
-		</button>
-		
-		<label style="padding: 6px;">Atau</label><input type="date" name="date" id='."date".' value="'.$tanggal_cari.'"/>
-		<button type="submit" name="search_2" id="search_2" class="searchButton">
-			<i class="fa fa-search"></i>
-		</button>';
-}
-			?>
-	</div>
-		<br><button type="submit" name="reset" id="reset" class="searchButton_2">Reset Pencarian</button>
-		</div>
-	</form>
-	
-<div class="row">
-<?php
-	if (!isset($_GET['l']) || $_GET['l'] == NULL || $_GET['l'] == "All"){
-		$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' ORDER BY Submitted_On_Date DESC;";
-		$result = mysqli_query($konek, $A);
-		$check = mysqli_num_rows($result);
-				
-		if ($check > 0){
-			while ($row = mysqli_fetch_assoc($result)){
-				$judul = $row['Judul'];
-				$pengiriman = $row['Submitted_On_Date'];
-				$tujuan = $row['Tujuan'];
-				if(is_numeric($tujuan)){
-					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
-					$result_nama = mysqli_query($konek, $A_nama);
-					$row_nama = mysqli_fetch_assoc($result_nama);
-					
-					$tujuan = $row_nama['Nama'];
-				}
-				$id = $row['id_tugas'];
-				
-				echo '
-  		<div class="column">
-    		<div class="card">
-      			<img src="../../../Icon/Textless/Icon.png" alt="Logo" style="width:100%">
-      			<div class="container">
-        			<h2 class="nama">'.$judul.'</h2>
-		  			<div class="textB">
-        			<p class="title">'.$pengiriman.'</p>
-        			<p style="font-size: 90%">'.$tujuan.'</p>
-					<p>'.$kantor.' Company</p>
-			  		</div>
-        			<p><a href="../../../unused.php?value=prevtugas_admin&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
-      			</div>
-				<p><a href="../../../unused.php?value=deltugas&&id_tugas='.$id.'"><button class="button_hapus" id="button_hapus">HAPUS</button></a></p>
-    		</div>
-  		</div>
-		';
-			}
-		}
-	}
-	
-	else if ($_GET['l'] == "Global"){
-		$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' ORDER BY Submitted_On_Date DESC;";
-		$result = mysqli_query($konek, $A);
-		$check = mysqli_num_rows($result);
-				
-		if ($check > 0){
-			while ($row = mysqli_fetch_assoc($result)){
-				$judul = $row['Judul'];
-				$pengiriman = $row['Submitted_On_Date'];
-				$tujuan = $row['Tujuan'];
-				$id = $row['id_tugas'];
-				
-				echo '
-  		<div class="column">
-    		<div class="card">
-      			<img src="../../../Icon/Textless/Icon.png" alt="Logo" style="width:100%">
-      			<div class="container">
-        			<h2 class="nama">'.$judul.'</h2>
-		  			<div class="textB">
-        			<p class="title">'.$pengiriman.'</p>
-        			<p style="font-size: 90%">'.$tujuan.'</p>
-					<p>'.$kantor.' Company</p>
-			  		</div>
-        			<p><a href="../../../unused.php?value=prevtugas_admin&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
-      			</div>
-				<p><a href="../../../unused.php?value=deltugas&&id_tugas='.$id.'"><button class="button_hapus" id="button_hapus">HAPUS</button></a></p>
-    		</div>
-  		</div>
-		';
-			}
-		}
-	}
-	
-	else if (isset($_GET['l'])){
-		$l = $_GET['l'];
-		$A = "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='$l' OR Nama_Perusahaan='$kantor' AND Submitted_On_Date='$l' ORDER BY Submitted_On_Date DESC;";
-		$result = mysqli_query($konek, $A);
-		$check = mysqli_num_rows($result);
-				
-		if ($check > 0){
-			while ($row = mysqli_fetch_assoc($result)){
-				$judul = $row['Judul'];
-				$pengiriman = $row['Submitted_On_Date'];
-				$tujuan = $row['Tujuan'];
-				if(is_numeric($tujuan)){
-					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
-					$result_nama = mysqli_query($konek, $A_nama);
-					$row_nama = mysqli_fetch_assoc($result_nama);
-					
-					$tujuan = $row_nama['Nama'];
-				}
-				$id = $row['id_tugas'];
-				
-				echo '
-  		<div class="column">
-    		<div class="card">
-      			<img src="../../../Icon/Textless/Icon.png" alt="Logo" style="width:100%">
-      			<div class="container">
-        			<h2 class="nama">'.$judul.'</h2>
-		  			<div class="textB">
-        			<p class="title">'.$pengiriman.'</p>
-        			<p style="font-size: 90%">'.$tujuan.'</p>
-					<p>'.$kantor.' Company</p>
-			  		</div>
-        			<p><a href="../../../unused.php?value=prevtugas_admin&&id_tugas='.$id.'"><button class="button" id="button1">Lihat Tugas</button></a></p>
-      			</div>
-				<p><a href="../../../unused.php?value=deltugas&&id_tugas='.$id.'"><button class="button_hapus" id="button_hapus">HAPUS</button></a></p>
-    		</div>
-  		</div>
-		';
-			}
 		}
 	}
 ?>
-</div>
-<!--Inner-->
+            </tbody>
+        </table>
+    </div>
+</section>
+<!-- partial -->
     
     <div class="Banner-handap">
         <div class="o">Officia</div>
@@ -318,30 +158,30 @@ else if(isset($_GET['ldate'])){
             </a>
             <div class="sidebar">
                 <ul class="inline">
-                    <li><a href="Setting-Absen.php" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
-                    <li><a href="Izin-Cuti.html" class="cuti">Izin Cuti<i class="logo fas fa-calendar-minus"></i></a></li>
-                    <li><a href="+Pengumuman.php" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
-                    <li><a href="../Login/regis.php" class="karyawan">Karyawan<i class="logo fas fa-id-card"></i></a></li>
-                    <li><a href="List-Karyawan.php" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
-                    <li><a href="" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
+                    <li><a href="../../Setting-Absen.php" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
+                    <li><a href="../../Izin-Cuti.php" class="cuti">Izin Cuti<i class="logo fas fa-calendar-minus"></i></a></li>
+                    <li><a href="../../+Pengumuman.php" class="pengumuman">Pengumuman<i class="logo fas fa-bullhorn"></i> </a></li>
+                    <li><a href="../../../Login/regis.php" class="karyawan">Karyawan<i class="logo fas fa-id-card"></i></a></li>
+                    <li><a href="../../List-Karyawan.php" class="list-karyawan">List Karyawan<i class="logo fas fa-tasks"></i></a></li>
+                    <li><a href="../../Tugas.php" class="tugas">Tugas<i class="logo fas fa-briefcase"></i></a></li>
                 </ul>
             </div>
         </nav>
     </div>
 
-    <script src="../../script.js"></script>
-	<script src="../../../Main Tab/etc/wow.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
-	<script src="../../../etc/allert.js"></script>
-	
-	<?php
-		if (isset($_SESSION['deltugas'])){
-			echo "<script> deltugas(); </script>";
-			unset($_SESSION['deltugas']);
-		}
-?>
+    <script src="../script.js"></script>
+	<script src="../Main Tab/etc/wow.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 	new WOW().init();
 </script>
+	
+<?php
+if (isset($_SESSION['deltugas'])){
+	echo "<script> deltugas(); </script>";
+		unset($_SESSION['deltugas']);
+}
+?>
 </body>
 </html>
