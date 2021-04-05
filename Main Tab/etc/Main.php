@@ -629,7 +629,7 @@ $tgl = date("Y-m-d");
 $nama = $_SESSION['nama'];
 $jabatan = $_SESSION['jabatan'];
 
-$sql = mysqli_query($konek, "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$nama' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' AND Tanggal<='$tgl';");
+$sql = mysqli_query($konek, "SELECT * FROM tugas WHERE Nama_Perusahaan='$kantor' AND Tujuan='Seluruh Karyawan' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$nik' AND Tanggal<='$tgl' OR Nama_Perusahaan='$kantor' AND Tujuan='$jabatan' AND Tanggal<='$tgl';");
 if (mysqli_num_rows($sql) != 0){
 	echo '
 		<div class="wow fadeIn">
