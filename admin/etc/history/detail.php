@@ -72,6 +72,13 @@ $row = mysqli_fetch_assoc($result);
 $judul_tugas = $row['Judul'];
 $isi_tugas = $row['Isi_Tugas'];
 $tujuan_tugas = $row['Tujuan'];
+if(is_numeric($tujuan_tugas)){
+	$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan_tugas';";
+	$result_nama = mysqli_query($konek, $A_nama);
+	$row_nama = mysqli_fetch_assoc($result_nama);
+					
+	$tujuan_tugas = $row_nama['Nama'];
+}
 $tanggal_tugas = date("D - d/m/Y", strtotime($row['Tanggal']));
 $deadline_tugas = date("D - d/m/Y", strtotime($row['Deadline']));
 			
