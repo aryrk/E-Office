@@ -119,12 +119,12 @@ if(isset($_POST['kirim'])){
 			</div>
 			
 			<div class="form__group field">
-			<input type="date" class="form__field" name="date" id="date" required min="<?php echo $tgl ?>" value="<?php echo $tgl ?>" />
+			<input type="date" class="form__field" name="date" id="date" required min="<?php echo $tgl ?>"/>
   				<label for="date" class="form__label">Dikirimkan Pada:</label>
 			</div>
 			
 			<div class="form__group field">
-			<input type="date" class="form__field" name="dead" id="dead" required/>
+			<input type="date" class="form__field" name="dead" id="dead" required min="<?php echo $tgl ?>"/>
   				<label for="dead" class="form__label">Deadline:</label>
 			</div>
 			
