@@ -298,6 +298,13 @@ else if (isset($_GET['l']) && $_GET['l'] == 'dead'){
 			$pengiriman = date("D - d/m/Y", strtotime($row['Tanggal']));
 			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
 			$tujuan = $row['Tujuan'];
+			if(is_numeric($tujuan)){
+					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
+					$result_nama = mysqli_query($konek, $A_nama);
+					$row_nama = mysqli_fetch_assoc($result_nama);
+					
+					$tujuan = $row_nama['Nama'];
+				}
 			$id = $row['id_tugas'];
 			
 			$A_saver = "SELECT * FROM kirim_tugas WHERE Nama_Perusahaan='$kantor' AND id_tugas='$id' AND NIK='$nik' AND Pengirim='$nama'";
@@ -340,6 +347,13 @@ else if (isset($_GET['l']) && $_GET['l'] == 'done'){
 			$pengiriman = date("D - d/m/Y", strtotime($row['Tanggal']));
 			$dead = date("D - d/m/Y", strtotime($row['Deadline']));
 			$tujuan = $row['Tujuan'];
+			if(is_numeric($tujuan)){
+					$A_nama = "SELECT Nama FROM login WHERE Nama_Perusahaan='$kantor' AND NIK='$tujuan';";
+					$result_nama = mysqli_query($konek, $A_nama);
+					$row_nama = mysqli_fetch_assoc($result_nama);
+					
+					$tujuan = $row_nama['Nama'];
+				}
 			$id = $row['id_tugas'];
 			
 			$A_saver = "SELECT * FROM kirim_tugas WHERE Nama_Perusahaan='$kantor' AND id_tugas='$id' AND NIK='$nik' AND Pengirim='$nama'";
