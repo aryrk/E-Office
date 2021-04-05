@@ -312,10 +312,10 @@ echo '
 		
 		$file_saver = $row['is_file'];
 		if ($file_saver == true){
-			$file_mandiri = '<a href="'.$dir_to_file_mandiri.'" target="_blank"><p>'.$nama_file_mandiri.'</p></a>';
+			$file_dir = '<a href="'.$dir_to_file.'" target="_blank"><p>'.$nama_file.'</p></a>';
 		}
 		else {
-			$file_mandiri = '<p></p>';
+			$file_dir = '<p></p>';
 		}
 		
 		echo '
