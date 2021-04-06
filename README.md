@@ -6,7 +6,7 @@ Anda dapat mengakses Officia melalui: https://officiacentre.000webhostapp.com/
 
 # How To Install
 - Download repo sebagai zip
-- Ekstrak zip tersebut pada htdoc xampp
+- Ekstrak zip tersebut pada htdocs xampp
 - Jalankan Apache dan MySQL
 - Buka phpMyAdmin
 - Buat database bernama 'officia'
