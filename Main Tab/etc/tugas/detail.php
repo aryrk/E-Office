@@ -359,7 +359,7 @@ echo '
 	}
 }
 ?>
-		<h5 class="copyr">&copy; Officia, Copyright 2021. All Right Reserved</h5>
+		<h5 class="copyr">Officia, Copyright &copy; 2021. All Right Reserved</h5>
 		<h5 class="copyrUnused">Officia, Copyright &copy; 2021. All Right Reserved</h5>
 
 <script src="../script.js"></script>
