@@ -37,8 +37,10 @@ input[type="text"] {
 width: 70%;
 padding: 12px;
 margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
+display: none;
+border: 1px solid red;
+animation-name: inputMove;
+animation-duration: .5s;
 box-sizing: border-box;
 }
 input[type="password"] {
@@ -48,6 +50,14 @@ margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
+}
+input[type="submit"] {
+width: 70%;
+padding: 15px;
+margin: 8px 0;
+background-color: #4CAF50;
+color: white;
+text-align: center;
 }
 button {
 width: 70%;
@@ -89,6 +99,9 @@ display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
 }
+.plus {
+background-color: #ffE4E1;
+}
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 .form-contener {
 width: 70%;
@@ -110,6 +123,22 @@ padding: 5px;
 background-color: #f5f5f5;
 text-align: center;
 }
+@keyframes inputMove {
+    0% {
+        transform: translateX(5px);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+  }
+  }
 img[alt*="000webhost"],
 img[alt*="000webhost"][style],
 img[src*="000webhost"],
