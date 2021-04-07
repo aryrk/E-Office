@@ -87,9 +87,12 @@ maxlength="16"><br>
 	autocomplete="off" id="password" required>
 		<i class="material-icons visibility">visibility_off</i>
 	</div>
-	<p>
-	<span id="meseg"></span><br>
-	<button type="submit" name="SUBMIT" id="SUBMIT" value="Submit">Login</button><br>
+<p>
+<input type="text" placeholder="NIK Atau Password Salah" id="salah"
+class="plus" READONLY/>
+</p>
+<p>
+<input type="submit" onclick="return falsepass()" name="SUBMIT" id="SUBMIT" value="Submit"><br>
 </p>
 <p>
 	<a href="Forgotpassdesign.php">Forgot Your Password?</a>
@@ -109,4 +112,19 @@ maxlength="16"><br>
 	</body></center>
 
 </html>
+<script type="text/javascript">
+function falsepass() {
+var ask = document.getElementById('PW').value;
+var ask1 = document.getElementById('NIK').value;
+if (ask!=ask1) {
+document.getElementById('salah').style.display='block';
+return false;
+}
+else {
+document.getElementById('salah').style.display='none';
+return true;
+}
+}
+
+</script>
 <script src="show.js"></script>
