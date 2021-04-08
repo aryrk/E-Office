@@ -65,13 +65,7 @@ if(isset($_POST['SUBMIT'])){
 		}
 //Web akan dialihkan ke tampilan error jika NIK atau Password salah
 	else if (mysqli_num_rows($sql) == 0){
-		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
-			if (mysqli_num_rows($sql) != 0){
-				header("Location: ../etc/error/index.php?condition=2");
-			}
-			else if (mysqli_num_rows($sql) == 0){
-				header("Location: ../etc/error/index.php?condition=3 && nik=$nik");
-			}
+		$_SESSION['error'] = 1;
 	}
 	}
 ?>
@@ -118,12 +112,19 @@ if(isset($_POST['SUBMIT'])){
 	autocomplete="off" id="password" required>
 		<i class="material-icons visibility">visibility_off</i>
 	</div>
+<?php
+if (isset($_SESSION['error']) == 1){
+	echo '
 	<p>
 	<input type="text" placeholder="NIK Atau Password Salah" id="salah"
-	class="plus" READONLY/>
+	class="plus" READONLY style="display: block;"/>
 	</p>
+	';
+	unset($_SESSION['error']);
+}
+?>
 	<p>
-	<input type="submit" onclick="return falsepass()" name="SUBMIT" id="SUBMIT" value="Submit"><br>
+	<input type="submit" name="SUBMIT" id="SUBMIT" value="Submit"><br>
 	</p>
 <p>
 	<a href="Forgotpassdesign.php">Forgot Your Password?</a>
