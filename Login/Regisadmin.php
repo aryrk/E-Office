@@ -21,10 +21,10 @@ if(isset($_POST['SUBMIT'])){
 		if (mysqli_num_rows($sql) != 0){
 			$sql_err = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik'");
 				if (mysqli_num_rows($sql_err) != 0){
-					header("Location: ../etc/error/index.php?condition=6 && nik=$nik");
+					$_SESSION['error'] = 1;
 				}
 				else {
-					header("Location: ../etc/error/index.php?condition=8 && nik=$kantor");
+					$_SESSION['error'] = 2;
 				}
 		}
 		else if (mysqli_num_rows($sql) == 0) {
@@ -69,6 +69,23 @@ $sql = mysqli_query($konek, "SELECT * FROM data_perusahaan WHERE NIK_Admin='$nik
 	<form id="form1" name="form1" method="post" action="">
         <h1>Registration Admin</h1>
 <hr>
+<?php
+if (isset($_SESSION['error'])){
+	if ($_SESSION['error'] == 1){
+		$pesan = "NIK Sudah Digunakan Akun Lain";
+	}
+	else if ($_SESSION['error'] == 2){
+		$pesan = "Nama Perusahaan Sudah Digunakan Akun Lain";
+	}
+	echo '
+	<p>
+	<input type="text" placeholder="'.$pesan.'" id="salah"
+	class="plus" READONLY style="display: block; background-color: #ffE4E1;"/>
+	</p>
+	';
+	unset($_SESSION['error']);
+}
+?>
 <p><br>
 <label for="mail">Email:</label>
 <input type="email" placeholder="Masukkan Email" class="nik"
