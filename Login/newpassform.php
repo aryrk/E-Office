@@ -59,7 +59,7 @@ if(isset($_POST['SUBMIT'])){
 	$pass_baru = trim($_POST['pass']);
 	
 	if($jawaban != $jawaban_user){
-		header("Location: ../etc/error/index.php?condition=22");
+		$_SESSION['error'] = 1;
 	}
 	else if($jawaban == $jawaban_user){
 		unset($_SESSION['NIK_Lupa']);
@@ -117,6 +117,17 @@ placeholder="Ketik Jawaban" class="nik" required><br>
 	<input type="password" placeholder="Ketik Password" name="repeat"
 	autocomplete="off" id="repeat" required><br>
 	</div>
+<?php
+if (isset($_SESSION['error']) == 1){
+	echo '
+	<p>
+	<input type="text" placeholder="Harap Masukan Value Yang Valid!" id="salah"
+	class="plus" READONLY style="display: block;background-color: #ffE4E1;"/>
+	</p>
+	';
+	unset($_SESSION['error']);
+}
+?>
 	<p>
 	<span id="meseg"></span><br>
 	<input type="submit" onclick="return valid()" value="Submit" name="SUBMIT" id="SUBMIT"><br>
