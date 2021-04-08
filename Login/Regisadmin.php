@@ -80,7 +80,7 @@ if (isset($_SESSION['error'])){
 	echo '
 	<p>
 	<input type="text" placeholder="'.$pesan.'" id="salah"
-	class="plus" READONLY style="display: block; background-color: #ffE4E1;"/>
+	class="plus" READONLY style="display: block; background-color: #ffE4E1; border: 1px solid red; animation-name: inputMove; animation-duration: .5s; box-sizing: border-box;"/>
 	</p>
 	';
 	unset($_SESSION['error']);
