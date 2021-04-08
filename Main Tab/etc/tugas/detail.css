@@ -381,6 +381,7 @@ nav ul li a:hover{
         opacity: 1;
         transform: translateX(-0%);
 		width: 40%;
+		z-index: 1;
     }
 	.Activated{
 		margin: 20px;
