@@ -33,22 +33,22 @@ if(isset($_POST['SUBMIT'])){
 		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik'");
 		
 		if (mysqli_num_rows($sql) == 0){
-			header("Location: ../etc/error/index.php?condition=18&&nik=$nik");
+			$_SESSION['error'] = 1;
 		}
 		else if (mysqli_num_rows($sql) != 0){
 			$sql = mysqli_query($konek, "SELECT * FROM login WHERE Email='$mail' AND NIK='$nik'");
 		
 			if (mysqli_num_rows($sql) == 0){
-				header("Location: ../etc/error/index.php?condition=19 && mail=$mail");
+				$_SESSION['error'] = 2;
 			}
 			else if (mysqli_num_rows($sql) != 0){
 				$sql = mysqli_query($konek, "SELECT * FROM login WHERE Email='$mail' AND NIK='$nik' AND No_Telp='$telp'");
 		
 				if (mysqli_num_rows($sql) == 0){
-					header("Location: ../etc/error/index.php?condition=20&&telp=$telp");
+					$_SESSION['error'] = 3;
 				}
 				else if (mysqli_num_rows($sql) != 0){
-					header("Location: ../etc/error/index.php?condition=21");
+					$_SESSION['error'] = 4;
 				}
 			}
 		}
@@ -75,10 +75,36 @@ if(isset($_POST['SUBMIT'])){
 	<form action="" id="form1" name="form1" method="POST">
         <h1>Forgot Password?</h1>
 <hr>
-        <p class="kuy"><b>
+		<p class="kuy"><b>
         Isi Form untuk mereset password Anda.<br><br>
        </b></p>
 <hr>
+<?php
+if (isset($_SESSION['error'])){
+	if ($_SESSION['error'] == 1){
+		$pesan = "NIK Tidak Terdaftar Pada Akun Manapun";
+	}
+	else if ($_SESSION['error'] == 2){
+		$pesan = "Email Tidak Terdaftar Pada Akun Manapun";
+	}
+	else if ($_SESSION['error'] == 3){
+		$pesan = "Harap Masukan No Telp Yang Terdaftar";
+	}
+	else if ($_SESSION['error'] == 4){
+		$pesan = "Masukan Tanggal Lahir Yang Terdaftar";
+	}
+	else if ($_SESSION['error'] == 5){
+		$pesan = "Harap Masukan Jawaban Yang Valid!";
+	}
+	echo '
+	<p>
+	<input type="text" placeholder="'.$pesan.'" id="salah"
+	class="plus" READONLY style="display: block; background-color: #ffE4E1;"/>
+	</p>
+	';
+	unset($_SESSION['error']);
+}
+?>
     <p>
     <label for="namae">NIK:</label>
     <input type="number" placeholder="Masukkan NIK" 
