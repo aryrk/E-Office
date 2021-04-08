@@ -37,7 +37,7 @@ if(isset($_POST['SUBMIT'])){
 		$sql = mysqli_query($konek, "SELECT * FROM login WHERE NIK='$nik_reg'");
 		
 		if (mysqli_num_rows($sql) != 0){
-			header("Location: ../etc/error/index.php?condition=7 && kantor=$kantor && nik=$nik && password=$pw nikreg=$nik_reg");
+			$_SESSION['error'] = 1;
 		}
 		else if (mysqli_num_rows($sql) == 0) {
 			if($jenis == "L"){
@@ -77,6 +77,17 @@ if(isset($_POST['BACK'])){
 	<form id="form1" name="form1" method="post" action="">
         <h1>Registration Account</h1>
 <hr>
+<?php
+if (isset($_SESSION['error']) == 1){
+	echo '
+	<p>
+	<input type="text" placeholder="NIK sudah digunakan akun lain" id="salah"
+	class="plus" READONLY style="display: block; background-color: #ffE4E1; border: 1px solid red; animation-name: inputMove; animation-duration: .5s; box-sizing: border-box;"/>
+	</p>
+	';
+	unset($_SESSION['error']);
+}
+?>
 <p>
 <label for="nama">Nama Lengkap:</label>
 <input type="text" placeholder="Masukkan Nama Karyawan"
