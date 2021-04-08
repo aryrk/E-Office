@@ -195,13 +195,6 @@ else{
     <div class="Banner-handap">
         <div class="o">Officia</div>
         <nav class="navbar">
-            <a class="toggler-navbar">
-                <div class="hamburger-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </a>
             <div class="sidebar">
                 <ul class="inline">
                     <li><a href="../../Setting-Absen.php" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
@@ -218,13 +211,6 @@ else{
     <div class="Banner-handap-used">
         <div class="o">Officia</div>
         <nav class="navbar">
-            <a class="toggler-navbar">
-                <div class="hamburger-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </a>
             <div class="sidebar">
                 <ul class="inline">
                     <li><a href="../../Setting-Absen.php" class="absen">Setting Absen<i class="logo fas fa-calendar-check"></i></a></li>
