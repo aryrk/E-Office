@@ -12,7 +12,8 @@ $angka2 = $_GET["2"];
 
 $cek = $angka1 + $angka2;
 if ($captcha != $cek) {
-	header("Location: ../etc/error/index.php?condition=17&&1=$angka1&&2=$angka2&&3=$captcha");
+	$_SESSION['error'] = 5;
+	header("Location: Forgotpassdesign.php");
 }
 	else {
 		$_SESSION['NIK_Lupa'] = $_GET['nik'];
