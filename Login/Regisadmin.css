@@ -126,6 +126,7 @@ margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;
+resize: 0;
 }
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 .form-contener {
