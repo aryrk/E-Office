@@ -61,6 +61,8 @@ $cek_sudah = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama
 			}
 	}
 
+	$alasan = 0;
+
 
 if(isset($_POST['SUBMIT'])){
 	$radioVal = $_POST["absen"];
@@ -93,7 +95,7 @@ if(isset($_POST['SUBMIT'])){
 //Melakukan cek database agar user hanya dapat absen 1x dalam sehari
 		$cek_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
 			if (mysqli_num_rows($cek_awal) == 0){
-				mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$jam','S','00:00:00','B','$kalkulasi','$status')");
+				mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$jam','S','00:00:00','B','$kalkulasi','$status', '-')");
 //Melakukan cek apakah absen sukses dikrim
 		$cek_masuk = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
 			if (mysqli_num_rows($cek_masuk) == 0){
@@ -125,6 +127,13 @@ if(isset($_POST['SUBMIT'])){
 						$Jam_masuk = $row['Jam_masuk'];
 						$terlambat = $row['Terlambat'];
 						$Status = $row['Status'];
+						if ($alasan == 2){
+							$alasan2 = trim($_POST["alasan"]);
+							$alasan = 0;
+							mysqli_query($konek, "UPDATE absen SET Jam_pulang='$jam', stat_2='S', Status='$Status', Alasan = '$alasan2' WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
+							echo 'aaaa';
+							exit();
+						}
 						if ($Status == "Sudah Absen Masuk"){
 							$Status = "Sudah Absen";
 						}
@@ -148,6 +157,7 @@ if(isset($_POST['SUBMIT'])){
 					}
 					else {
 							$status_absen = 8;
+							$alasan = 1;
 						}
 						}
 //Jika user melakukan absen pulang 2x
@@ -177,6 +187,7 @@ if(isset($_POST['SUBMIT'])){
 					}
 					else {
 							$status_absen = 8;
+							$alasan = 1;
 						}
 			}
 //Jika user melakukan absen pulang 2x
@@ -245,11 +256,22 @@ if(isset($_POST['SUBMIT'])){
                     <input type="radio" name="absen" value="JamPulang"/><label for="Pulang">Pulang</label>
                 </div>
 
-                <button type="submit" class="button-absen" name="SUBMIT" id="SUBMIT">Absen Disini</button>
+				<?php 
+					if ($alasan == 1){
+						$alasan = 2;
+						echo '<textarea name="alasan" id="alasan" class="alasan" placeholder="Ketik Alasan Disini..."></textarea>
+						<button type="submit" class="button-absen" name="SUBMIT" id="SUBMIT">Kirim Alasan</button>';
+						
+					} else{
+						echo '<button type="submit" class="button-absen" name="SUBMIT" id="SUBMIT">Absen Disini</button>';
+					}
+				?>
+                
             </form> <br>
             
             <div class="pil">
                 <p><i class="note fas fa-envelope-open-text"></i><b> &nbsp; *Note</b></p>
+
 <?php
 //Mengubah note
 	if ($status_absen == 1){
@@ -268,13 +290,13 @@ if(isset($_POST['SUBMIT'])){
 		echo '<p>Absen Terkirim</p>';
 	}
 	else if ($status_absen == 6){
-		echo '<p>Absen Tidak Terkirim!<br>Anda Sudah Melakukan Absen Masuk Sebelumnya</p>';
+		echo '<p style="font-size: 13px">Absen Tidak Terkirim!<br>Anda Sudah Melakukan Absen Masuk Sebelumnya</p>';
 	}
 	else if ($status_absen == 7){
-		echo '<p>Absen Tidak Terkirim!<br>Anda Sudah Melakukan Absen Pulang Sebelumnya</p>';
+		echo '<p style="font-size: 13px">Absen Tidak Terkirim!<br>Anda Sudah Melakukan Absen Pulang Sebelumnya</p>';
 	}
 	else if ($status_absen == 8){
-		echo '<p>Absen Tidak Terkirim!<br>Anda Melakukan Absen Diluar Waktu Yang Ditentukan</p>';
+		echo '<p style="font-size: 13px">Anda Melakukan Absen Diluar Waktu Yang Ditentukan <br> Harap Isi Alasan Anda</p>';
 	}
 ?>
             </div>
