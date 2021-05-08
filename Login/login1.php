@@ -107,30 +107,19 @@ if(isset($_POST['SUBMIT'])){
 	<p>
 	<label for="pass">Password:</label>
 	</p>
-	<div class="form-contener">
-	<input type="password" placeholder="Ketik Password" name="PW" id="PW"
-	autocomplete="off" id="password" required>
-		<i class="material-icons visibility">visibility_off</i>
-	</div>
-<?php
-if (isset($_SESSION['error']) == 1){
-	echo '
+<div class="form-contener">
+<input type="password" placeholder="Masukkan Password"
+name="password" id="password" required autocomplete="off"><br>
+	<i class="material-icons visibility">visibility_off</i>
+</div>
 	<p>
-	<input type="text" placeholder="NIK Atau Password Salah" id="salah"
-	class="plus" READONLY style="display: block;"/>
-	</p>
-	';
-	unset($_SESSION['error']);
-}
-?>
-	<p>
-	<input type="submit" name="SUBMIT" id="SUBMIT" value="Submit"><br>
+	<input type="submit" onclick="return falsepass()" name="SUBMIT" id="SUBMIT" value="Submit"><br>
 	</p>
 <p>
 	<a href="Forgotpassdesign.php">Forgot Your Password?</a>
 	</p>
 	<p>
-	<a href="../index.html"><button type="button" class="canc">Back</button></a>
+	<a href="../index.html"><button type="button" class="kembali">Back</button></a>
 	</p>
 <p>
 <div class="ca">
@@ -158,7 +147,6 @@ document.getElementById('salah').style.display='none';
 return true;
 }
 }
-
 jQuery(function($) {
     $('#golink').click(function() {
         return false;
@@ -169,9 +157,6 @@ jQuery(function($) {
 });
 </script>
 <script src="falsepass.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.all.min.js"></script>
-	<script src="../etc/allert.js"></script>
-	
 	<?php
 		if (isset($_SESSION['gantipw'])){
 			echo "<script> gantipw(); </script>";
