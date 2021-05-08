@@ -86,7 +86,7 @@ if(isset($_POST['SUBMIT'])){
 name="password" id="password" required autocomplete="off"><br>
 	<i class="material-icons visibility">visibility_off</i>
 </div>
-<php 
+<?php 
 if (isset($_SESSION['error']) == 1){
 echo '
 <p>
