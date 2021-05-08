@@ -47,43 +47,48 @@ if(isset($_POST['SUBMIT'])){
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Log-in Admin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Log in</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-	<link rel="stylesheet" href="Loginadmin.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
-	</head>
-        <center>
-	<body>
+<link rel="stylesheet" href="Loginadmin.css.css">
+<link rel="shortcut icon" href="../Icon/Sign_only_Inverted/Transparent.png">
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
+<link rel="stylesheet" href="../Main Tab/etc/Animate.css">
+</head>
+	
+	<center>
+<body>
 	<div class="contaner">
 	<div class="wraper">
 	<div class="skuy">
+		
 	<form id="form1" name="form1" method="post" action="">
-        <h1>LOGIN ADMIN</h1>
-<div class="imag">
-<img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
-
+        <h1>LOGIN</h1>
+	<div class="imag">
+		<a id="golink" href="Loginadmin.php">
+		<img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
+</a>
 </div>
-	<p>
-	<label for="NIK">NIK:</label>
-	<input type="number" placeholder="Ketik NIK" name="NIK" id="NIK" autocomplete="off" required
-class="nik" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-maxlength="16"><br>
+	<p><br>
+	<label for="name">NIK:</label>
+	<input type="number" placeholder="Ketik NIK" name="NIK" id="NIK" 
+	autocomplete="off" class="nik" required><br>
 	</p>
 	<p>
-	<label for="PW">Password:</label>
-</p>
-	<div class="form-contener">
-	<input type="password" placeholder="Ketik Password" name="PW" id="PW"
-	autocomplete="off" id="password" required>
-		<i class="material-icons visibility">visibility_off</i>
-	</div>
-<?php
+	<label for="pass">Password:</label>
+	</p>
+<div class="form-contener">
+<input type="password" placeholder="Masukkan Password"
+name="password" id="password" required autocomplete="off"><br>
+	<i class="material-icons visibility">visibility_off</i>
+</div>
+<php 
 if (isset($_SESSION['error']) == 1){
-	echo '
+echo '
 <p>
 <input type="text" placeholder="NIK Atau Password Salah" id="salah"
 class="plus" READONLY style="display: block;"/>
@@ -92,14 +97,14 @@ class="plus" READONLY style="display: block;"/>
 	unset($_SESSION['error']);
 }
 ?>
-<p>
-<input type="submit" name="SUBMIT" id="SUBMIT" value="Submit"><br>
-</p>
+	<p>
+	<input type="submit" onclick="return falsepass()" name="SUBMIT" id="SUBMIT" value="Submit"><br>
+	</p>
 <p>
 	<a href="Forgotpassdesign.php">Forgot Your Password?</a>
 	</p>
 	<p>
-	<a href="../index.html"><button type="button" class="canc">Back</button></a>
+	<a href="../index.html"><button type="button" class="kembali">Back</button></a>
 	</p>
 <p>
 <div class="ca">
@@ -110,10 +115,11 @@ class="plus" READONLY style="display: block;"/>
 	</div>	
 </div>
 	</div>
-	</body></center>
+	</body>
+</center>
 
 </html>
-<script type="text/javascript">
+<script>
 function falsepass() {
 var ask = document.getElementById('PW').value;
 var ask1 = document.getElementById('NIK').value;
@@ -126,6 +132,13 @@ document.getElementById('salah').style.display='none';
 return true;
 }
 }
-
+jQuery(function($) {
+    $('#golink').click(function() {
+        return false;
+    }).dblclick(function() {
+        window.location = this.href;
+        return false;
+    });
+});
 </script>
 <script src="falsepass.js"></script>
