@@ -1,6 +1,5 @@
 const visibilityToogle = document.querySelector('.visibility');
-const input = document.querySelector('.form-contener');
-
+const input = document.querySelector('.form-contener input');
 var password = true;
 
 visibilityToogle.addEventListener('click', function() {
