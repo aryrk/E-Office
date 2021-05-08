@@ -95,7 +95,7 @@ if(isset($_POST['SUBMIT'])){
 //Melakukan cek database agar user hanya dapat absen 1x dalam sehari
 		$cek_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
 			if (mysqli_num_rows($cek_awal) == 0){
-				mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$jam','S','00:00:00','B','$kalkulasi','$status', '-')");
+				mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl','$jam','S','00:00:00','B','$kalkulasi','$status')");
 //Melakukan cek apakah absen sukses dikrim
 		$cek_masuk = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_1='S'");
 			if (mysqli_num_rows($cek_masuk) == 0){
@@ -127,21 +127,13 @@ if(isset($_POST['SUBMIT'])){
 						$Jam_masuk = $row['Jam_masuk'];
 						$terlambat = $row['Terlambat'];
 						$Status = $row['Status'];
-						if ($alasan == 2){
-							$alasan2 = trim($_POST["alasan"]);
-							$alasan = 0;
-							mysqli_query($konek, "UPDATE absen SET Jam_pulang='$jam', stat_2='S', Status='$Status', Alasan = '$alasan2' WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
-							echo 'aaaa';
-							exit();
-						}
 						if ($Status == "Sudah Absen Masuk"){
 							$Status = "Sudah Absen";
 						}
 //Melakukan cek apakah user sudah melakukan absen datang
 					$cek_pulang_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
 						if (mysqli_num_rows($cek_pulang_awal) == 0){
-//Update absen agar tidak terjadi duplikasi
-					if (strtotime($jam) >= strtotime($jam_pulang_awal)){
+
 						mysqli_query($konek, "UPDATE absen SET Jam_pulang='$jam', stat_2='S', Status='$Status' WHERE Tanggal='$tgl' AND NIK='$nik' AND Nama_Perusahaan='$kantor'");
 						
 						//Melakukan cek apakah absen terkirim
@@ -153,11 +145,6 @@ if(isset($_POST['SUBMIT'])){
 //Memberikan note absen terkirim
 						else {
 							$status_absen = 5;
-						}
-					}
-					else {
-							$status_absen = 8;
-							$alasan = 1;
 						}
 						}
 //Jika user melakukan absen pulang 2x
@@ -171,7 +158,6 @@ if(isset($_POST['SUBMIT'])){
 		else if (mysqli_num_rows($sql) == 0){
 			$cek_pulang_awal = mysqli_query($konek, "SELECT * FROM absen WHERE NIK='$nik' AND Nama='$nama' AND Nama_Perusahaan='$kantor' AND Tanggal='$tgl' AND stat_2='S'");
 				if (mysqli_num_rows($cek_pulang_awal) == 0){
-					if (strtotime($jam) >= strtotime($jam_pulang_awal)){
 			mysqli_query($konek, "INSERT INTO absen VALUES ('$nik','$nama','$kantor','$tgl', '00:00:00','B','$jam','S','00:00:00','Tidak Absen Masuk')");
 						
 						//Cek apakah absen terkirim
@@ -184,11 +170,6 @@ if(isset($_POST['SUBMIT'])){
 				else {
 					$status_absen = 5;
 				}
-					}
-					else {
-							$status_absen = 8;
-							$alasan = 1;
-						}
 			}
 //Jika user melakukan absen pulang 2x
 			else {
