@@ -83,7 +83,7 @@ if(isset($_POST['SUBMIT'])){
 	</p>
 <div class="form-contener">
 <input type="password" placeholder="Masukkan Password"
-name="password" id="password" required autocomplete="off"><br>
+name="PW" id="PW" required autocomplete="off"><br>
 	<i class="material-icons visibility">visibility_off</i>
 </div>
 <?php 
