@@ -43,6 +43,21 @@ Toast.fire({
 })
 };
 
+function update_jabatan(){
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'Update Jabatan Berhasil!'
+})
+};
+
 function Pengumuman(){
 const Toast = Swal.mixin({
   toast: true,
