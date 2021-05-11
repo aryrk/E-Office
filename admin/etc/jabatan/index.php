@@ -23,7 +23,8 @@ else {
 
 if(isset($_POST['kirim'])){
 	$jabatan_baru = trim($_POST['name']);
-	if (isset($jabatan_baru)){
+	$count = strlen($jabatan_baru);
+	if (isset($jabatan_baru) && $count > 0){
 		$sql = mysqli_query($konek, "UPDATE login SET Jabatan='$jabatan_baru' WHERE NIK='".$_GET['nik_kar']."'");
 	}
 	header("Location: ../../List-Karyawan.php?update='true'");
@@ -35,6 +36,7 @@ if(isset($_POST['batal'])){
 <!doctype html>
 <html lang="en">
   <head>
+	  <link rel="stylesheet" href="../../../etc/wmRemover.css">
 	  <link rel = "icon" href ="../../../Icon/Sign_only_Inverted/Transparent.png" type = "image/x-icon">
   	<title>Ubah Jabatan</title>
     <meta charset="utf-8">
@@ -113,7 +115,7 @@ if(isset($_POST['batal'])){
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="label" for="name">Ubah Jabatan</label>
-													<input list="list" type="text" class="form-control" name="name" id="name" placeholder="Jabatan" autocomplete="off">
+													<input list="list" type="text" class="form-control" name="name" id="name" placeholder="<?php echo $_GET['jabatan']; ?>" autocomplete="off">
 													
 													<datalist name="list" id="list">
 			<?php
