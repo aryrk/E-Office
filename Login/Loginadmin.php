@@ -67,7 +67,7 @@ if(isset($_POST['SUBMIT'])){
 	<div class="skuy">
 		
 	<form id="form1" name="form1" method="post" action="">
-        <h1>LOGIN</h1>
+        <h1>LOGIN ADMIN</h1>
 	<div class="imag">
 		<a id="golink" href="Loginadmin.php">
 		<img src="../Icon/Inverted/Icon.png" width="200" height="200" usemap="#image-map">
