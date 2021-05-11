@@ -68,7 +68,7 @@ if(isset($_POST['search'])){
 if (!isset($_GET['l']) || $_GET['l'] == NULL){
 		
 		if (mysqli_num_rows($sql) != 0){
-			$A = "SELECT * FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama DESC;";
+			$A = "SELECT * FROM login WHERE Nama_Perusahaan='$kantor' ORDER BY Nama;";
 			$result = mysqli_query($konek, $A);
 			$check = mysqli_num_rows($result);
 				
@@ -85,6 +85,10 @@ if (!isset($_GET['l']) || $_GET['l'] == NULL){
 					$masuk_thn = date("Y", strtotime($masuk));
 					$bagian = $row['Jabatan'];
 					$pp = 'src="../Main Tab/etc/upload/image/'.$row['pp_name'].'"';
+					
+					$alamat = $row['Alamat'];
+					$no_telp = $row['No_Telp'];
+					$email = $row['Email'];
 					
 					//date in mm/dd/yyyy format; or it can be in other formats as well
   					$birthDate = "$masuk_bln/$masuk_tgl/$masuk_thn";
@@ -123,7 +127,7 @@ if (!isset($_GET['l']) || $_GET['l'] == NULL){
                     <tr>
                         <td>Bagian</td>
                         <td> &nbsp; =</td>
-                        <td> &nbsp; '.$bagian.'</td>
+                        <td> &nbsp; <a style="color: black"; href="etc/jabatan/index.php?alamat='.$alamat.'&&telp='.$no_telp.'&&mail='.$email.'&&masa='.$age.'&&nama='.$Nama_kar.'&&jabatan='.$bagian.'&&nik_kar='.$NIK_kar.'">'.$bagian.'</a></td>
                     </tr> <hr class="hr">
                     <button type="submit" name="HAPUS" id="HAPUS" class="button-hapus" onclick="window.location.href='."'../unused.php?value=hapuskar && kar=".$Nama_kar.' && nik_kar='.$NIK_kar."'".'">Hapus</button>
                 </table>
@@ -262,6 +266,10 @@ else if (isset($_GET['l'])){
 	<?php
 		if (isset($_SESSION['hapusKaryawan'])){
 			echo "<script> delete_karyawan(); </script>";
+			unset($_SESSION['hapusKaryawan']);
+		}
+	if ($_GET['update'] = "true"){
+			echo "<script> update_jabatan(); </script>";
 			unset($_SESSION['hapusKaryawan']);
 		}
 ?>
